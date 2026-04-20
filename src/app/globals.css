@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand-50: #eeecff;
+  --color-brand-100: #dcd8ff;
+  --color-brand-200: #b8b0ff;
+  --color-brand-300: #8c80ff;
+  --color-brand-400: #6a5aff;
+  --color-brand-500: #563bff;
+  --color-brand-600: #4125e0;
+  --color-brand-700: #2d22b3;
+  --color-brand-800: #221a85;
+  --color-brand-900: #0b1031;
+
+  --color-ink-900: #0b1031;
+  --color-ink-700: #2b3557;
+  --color-ink-500: #5a6277;
+  --color-ink-300: #a0a6b8;
+
+  --color-surface-50: #fbfbff;
+  --color-surface-100: #f6f7fb;
+  --color-surface-200: #eef0f6;
+  --color-surface-300: #e3e6f0;
+
+  --color-success-50: #e4f6ec;
+  --color-success-600: #0e6b3b;
+  --color-warning-50: #fff7e6;
+  --color-warning-500: #f2a73a;
+  --color-warning-600: #8a5a00;
+  --color-danger-50: #fdecec;
+  --color-danger-600: #b32323;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: #ffffff;
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100dvh;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(11, 16, 49, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 16, 49, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.bg-brand-gradient {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(86, 59, 255, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(140, 128, 255, 0.18), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
 }

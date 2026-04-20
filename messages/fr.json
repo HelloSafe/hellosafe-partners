@@ -1,0 +1,469 @@
+{
+  "common": {
+    "brand": "HelloSafe",
+    "brandSuffix": "Partners",
+    "cta": {
+      "joinNow": "Rejoindre le programme",
+      "becomePartner": "Devenir partenaire",
+      "login": "Se connecter",
+      "signup": "S'inscrire",
+      "getStarted": "Commencer",
+      "goToDashboard": "Mon espace",
+      "logout": "Déconnexion"
+    },
+    "nav": {
+      "why": "Pourquoi nous rejoindre",
+      "how": "Comment ça marche",
+      "faq": "FAQ"
+    },
+    "footer": {
+      "tagline": "Le programme d'affiliation de la meilleure offre d'assurance voyage du marché.",
+      "columns": {
+        "program": "Programme",
+        "resources": "Ressources",
+        "legal": "Légal"
+      },
+      "links": {
+        "why": "Avantages partenaires",
+        "how": "Fonctionnement",
+        "faq": "Questions fréquentes",
+        "terms": "Conditions du programme",
+        "privacy": "Confidentialité",
+        "contact": "Nous contacter"
+      },
+      "copyright": "© {year} HelloSafe. Tous droits réservés.",
+      "internal": "Démo interne, données simulées."
+    }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Programme d'affiliation HelloSafe",
+      "title": "Monétisez votre audience avec les meilleures assurances voyage du marché",
+      "subtitle": "Une marketplace d'assurance voyage : vos lecteurs comparent les meilleurs contrats et souscrivent en ligne au même endroit, avec des tarifs négociés. Jusqu'à 20 % de commission récurrente pour vous.",
+      "primaryCta": "Rejoindre le programme",
+      "secondaryCta": "Voir comment ça marche",
+      "social": "Déjà utilisé par plus de 800 éditeurs voyage francophones",
+      "stats": {
+        "commission": "jusqu'à 20 %",
+        "commissionLabel": "de commission",
+        "conversion": "10,8 %",
+        "conversionLabel": "taux de conversion moyen",
+        "cookie": "90 jours",
+        "cookieLabel": "de cookie d'attribution",
+        "recurring": "Oui",
+        "recurringLabel": "commissions récurrentes sur renouvellements"
+      }
+    },
+    "value": {
+      "title": "Pourquoi les éditeurs qui comptent travaillent avec HelloSafe",
+      "items": [
+        {
+          "title": "Une vraie marketplace, pas un revendeur",
+          "body": "HelloSafe compare les offres de plusieurs assureurs en temps réel ET permet à votre lecteur de souscrire directement, en ligne, au même endroit. Pas de redirection vers l'assureur, pas de devis à rappeler 48h plus tard. Un taux de conversion que les programmes mono-produit ne peuvent pas atteindre."
+        },
+        {
+          "title": "Jusqu'à 20 % de commission",
+          "body": "Rémunération parmi les plus élevées du marché de l'assurance voyage. Paliers progressifs selon le volume, bonus sur les renouvellements. Paiement mensuel sans seuil après validation."
+        },
+        {
+          "title": "Parcours souscription intégré",
+          "body": "L'internaute compare, souscrit et télécharge son attestation visa en moins de 2 minutes, sans sortir de votre univers (white-label optionnel). Moins de friction, plus de ventes."
+        },
+        {
+          "title": "Tarifs négociés et service client expert",
+          "body": "Grâce au volume HelloSafe, vos lecteurs profitent de tarifs souvent plus bas qu'en souscription directe chez l'assureur. Et en cas de pépin en voyage, un service client expert assurance voyage répond en moins de 2 minutes, 7j/7, en français. Deux arguments qui convertissent et fidélisent."
+        }
+      ]
+    },
+    "personas": {
+      "title": "Qui est déjà partenaire ?",
+      "items": [
+        { "label": "Blogs voyage", "count": "420+ blogs" },
+        { "label": "Comparateurs visa", "count": "60+ sites" },
+        { "label": "Agences de voyage en ligne", "count": "140+ OTAs" },
+        { "label": "Créateurs & médias voyage", "count": "180+ créateurs" }
+      ]
+    },
+    "testimonials": {
+      "title": "Ce que disent les partenaires qui ont changé",
+      "subtitle": "Avant HelloSafe, ils étaient sur un programme mono-assureur ou un comparateur anglo-saxon. Voici ce qu'ils constatent.",
+      "items": [
+        {
+          "quote": "HelloSafe convertit aussi bien sur mes articles PVT que sur mes guides voyage génériques. La différence avec mon ancien programme : +18 % de revenu par visiteur dès le premier mois, et un support qui répond vraiment.",
+          "author": "Sarah L.",
+          "role": "Blog voyage FR, 45k visites/mois",
+          "metric": "+18 % RPV"
+        },
+        {
+          "quote": "On avait testé trois programmes concurrents avant. Ici l'API est propre, le reporting est en temps réel, et l'équipe répond en moins d'une heure quand on a une question technique. Jamais vu ça ailleurs.",
+          "author": "Romain D.",
+          "role": "Comparateur visa, CTO",
+          "metric": "Intégration < 4h"
+        },
+        {
+          "quote": "Les tarifs négociés font la différence pour ma communauté : les followers me remercient d'avoir trouvé moins cher qu'en direct. C'est ça aussi, la confiance — et c'est ce qui fidélise.",
+          "author": "Camille M.",
+          "role": "Créatrice Instagram voyage, 120k followers",
+          "metric": "3,1× taux de clic"
+        }
+      ]
+    },
+    "steps": {
+      "title": "Trois étapes, zéro obstacle",
+      "items": [
+        {
+          "step": "01",
+          "title": "Inscription en 2 minutes",
+          "body": "Créez votre espace partenaire, décrivez votre audience, nous validons sous 24h ouvrées."
+        },
+        {
+          "step": "02",
+          "title": "Génération de liens traqués",
+          "body": "Pour chaque contenu, générez un deep-link vers la bonne page HelloSafe avec un Sub-ID pour tracker article par article."
+        },
+        {
+          "step": "03",
+          "title": "Commissions & reporting temps réel",
+          "body": "Suivez clics, devis, ventes et commissions dans un tableau de bord clair. Paiement mensuel, virement SEPA ou wire."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Prêt à transformer votre audience voyage en revenu récurrent ?",
+      "body": "L'inscription est gratuite et sans engagement. Vous gardez la main sur l'expérience, on s'occupe du reste.",
+      "primary": "Créer mon espace partenaire",
+      "secondary": "Parler à un account manager"
+    }
+  },
+  "why": {
+    "hero": {
+      "eyebrow": "Avantages partenaires",
+      "title": "Un programme pensé pour les éditeurs qui veulent maximiser la valeur par visiteur",
+      "subtitle": "HelloSafe n'est pas un comparateur de plus. C'est le partenaire que vos lecteurs voyage méritent, et le plus rémunérateur que vous puissiez brancher."
+    },
+    "pillars": [
+      {
+        "badge": "Revenu",
+        "title": "Jusqu'à 20 % de commission",
+        "body": "Rémunération à deux chiffres sur un panier moyen de 79 €, avec des paliers de volume qui récompensent la croissance. Pas de clawback sur les contrats longue durée."
+      },
+      {
+        "badge": "Conversion",
+        "title": "10,8 % de taux de conversion moyen",
+        "body": "Parcours ultra-optimisé, attestation visa envoyée en 90 secondes, conseillers experts joignables 7j/7. Les partenaires constatent en moyenne 3× plus de conversions qu'avec un programme mono-assureur."
+      },
+      {
+        "badge": "Offre",
+        "title": "Marketplace : comparer ET souscrire au même endroit",
+        "body": "HelloSafe compare les offres de plusieurs assureurs et distribue les contrats directement. Votre lecteur voit la meilleure option pour son profil et peut la souscrire dans la foulée, sans quitter HelloSafe. Ancrage de confiance, moins de friction, moins de paniers abandonnés."
+      },
+      {
+        "badge": "Attribution",
+        "title": "Cookie 90 jours et commissions récurrentes",
+        "body": "Fenêtre d'attribution de 90 jours (contre 30 – 45 jours chez la plupart des concurrents anglo-saxons) et commissions qui se répètent à chaque renouvellement de contrat. Vous construisez un revenu cumulatif, pas un one-shot."
+      },
+      {
+        "badge": "Produit",
+        "title": "Souscription & attestation visa en ligne",
+        "body": "Tout se passe sur le web, du devis au certificat PDF. Valable auprès des ambassades pour les visas Schengen, USA, Canada, Inde, Thaïlande, etc."
+      },
+      {
+        "badge": "Support",
+        "title": "Un account manager dédié",
+        "body": "Au-delà de 50 conversions par mois, un interlocuteur unique, des assets sur mesure, des intégrations API et des co-ops sur vos pages à fort trafic."
+      },
+      {
+        "badge": "Expérience",
+        "title": "Service client expert et prix négociés",
+        "body": "Pour vos lecteurs : un service client spécialisé assurance voyage, joignable 7j/7 en français, qui décroche en moins de 2 minutes. Et grâce au volume HelloSafe, des tarifs négociés avec les assureurs, souvent inférieurs à la souscription en direct. Deux leviers qui font monter le taux de conversion et baisser le taux d'annulation."
+      }
+    ],
+    "tiers": {
+      "title": "Des paliers de commission transparents",
+      "subtitle": "Votre taux augmente mécaniquement avec le volume. Recalculé le 1er de chaque mois.",
+      "items": [
+        { "name": "Starter", "range": "0 – 20 ventes / mois", "rate": "10 %" },
+        { "name": "Growth", "range": "21 – 100 ventes / mois", "rate": "15 %" },
+        { "name": "Scale", "range": "101 – 300 ventes / mois", "rate": "18 %" },
+        { "name": "Elite", "range": "300+ ventes / mois", "rate": "20 %" }
+      ]
+    },
+    "comparison": {
+      "title": "Comment HelloSafe se positionne face au reste du marché",
+      "subtitle": "Les chiffres qui comptent pour un éditeur voyage qui sait compter.",
+      "legend": "Comparaison faite à partir des conditions publiques des principaux programmes en avril 2026.",
+      "columns": ["HelloSafe", "Programmes mono-assureur", "Comparateurs anglo-saxons"],
+      "rows": [
+        { "label": "Taux de commission", "values": ["Jusqu'à 20 %", "10 – 12 % flat", "≈ 10 %"] },
+        { "label": "Cookie d'attribution", "values": ["90 jours", "30 – 45 jours", "30 – 45 jours"] },
+        { "label": "Commissions récurrentes", "values": ["Oui, sur renouvellements", "Non", "Rarement"] },
+        { "label": "Deep links dynamiques", "values": ["Oui, sur toutes les pages", "Limités", "De plus en plus retirés"] },
+        { "label": "Comparaison + souscription", "values": ["Au même endroit", "Au même endroit", "Redirection vers l'assureur"] },
+        { "label": "Tarifs négociés vs direct", "values": ["Oui, jusqu'à -15 %", "Non", "Rares"] },
+        { "label": "Support client en français 7j/7", "values": ["Oui, < 2 min", "Souvent EN only", "EN only"] },
+        { "label": "Paiement mensuel sans seuil", "values": ["Oui", "Seuil 50 – 100 €", "Seuil 250 $"] }
+      ]
+    }
+  },
+  "how": {
+    "hero": {
+      "eyebrow": "Comment ça marche",
+      "title": "De l'inscription au premier virement, en trois étapes",
+      "subtitle": "On a conçu le programme pour qu'il tienne dans un après-midi de mise en place, et qu'il continue à produire sans vous demander d'énergie ensuite."
+    },
+    "steps": [
+      {
+        "step": "01",
+        "title": "Créez votre espace partenaire",
+        "body": "Renseignez l'URL de votre site, la typologie d'audience, et le pays où vous émettez vos factures. Validation manuelle par notre équipe sous 24h ouvrées, pour garantir la qualité du réseau.",
+        "details": [
+          "Inscription 100 % en ligne",
+          "Pas de frais d'entrée, pas d'engagement",
+          "Accès immédiat à l'espace démo après validation"
+        ]
+      },
+      {
+        "step": "02",
+        "title": "Générez vos liens traqués",
+        "body": "Depuis le dashboard, choisissez la page de destination (assurance voyage générique, PVT, Schengen, longue durée, ski, etc.) et, en option, un Sub-ID pour isoler chaque article, newsletter ou story. Nous générons un identifiant unique du type ?ref=hs-partner-8c4f2a.",
+        "details": [
+          "Deep-links vers chaque page du comparateur",
+          "Sub-ID par article / campagne / créa",
+          "Paramètres UTM personnalisables",
+          "Cookie d'attribution de 90 jours, last-click"
+        ]
+      },
+      {
+        "step": "03",
+        "title": "Percevez vos commissions",
+        "body": "Clics, devis, ventes, commissions par Sub-ID, suivez tout en temps réel. Paiement le 15 de chaque mois pour les ventes du mois précédent. Virement SEPA, wire international, ou Wise.",
+        "details": [
+          "Reporting temps réel avec filtrage par Sub-ID",
+          "Export CSV, webhook vers votre BI, postback HTTP",
+          "Paiement mensuel sans seuil minimum"
+        ]
+      }
+    ],
+    "integrations": {
+      "title": "Toutes les façons de vous intégrer",
+      "items": [
+        { "title": "Lien simple", "body": "Copiez-collez une URL traquée dans un article, une newsletter, une bio." },
+        { "title": "Widget comparateur", "body": "Intégrez un iframe natif qui affiche les meilleures offres à vos couleurs." },
+        { "title": "API publique", "body": "Récupérez en temps réel les devis pour les afficher nativement sur vos pages." },
+        { "title": "Flux produit", "body": "Export quotidien des offres, taux et garanties pour vos tableaux comparatifs." }
+      ]
+    },
+    "assets": {
+      "title": "Le kit créatif prêt-à-poser",
+      "subtitle": "Tout ce dont vous avez besoin pour être en ligne en moins d'une heure, sans designer ni développeur.",
+      "items": [
+        {
+          "title": "Bannières adaptatives",
+          "body": "10 formats IAB standards (leaderboard 728×90, rectangle 300×250, skyscraper, mobile…) en 4 angles éditoriaux. Versions web + Retina fournies en PNG et WebP.",
+          "tag": "10 formats"
+        },
+        {
+          "title": "Widget comparateur embeddable",
+          "body": "3 lignes de code, se met aux couleurs de votre site (CSS variables), responsive, respecte votre design system. Pas d'iframe bloquée par les adblockers.",
+          "tag": "< 30 Ko"
+        },
+        {
+          "title": "Text links approuvés",
+          "body": "Phrases prêtes-à-copier dans un article, une newsletter ou un DM, conformes RGPD et compatibles avec les exigences Google pour le contenu sponsorisé.",
+          "tag": "45 modèles"
+        },
+        {
+          "title": "API REST & postback HTTP",
+          "body": "Endpoints pour devis, contrats, commissions. Postback S2S sur chaque conversion vers votre stack (Voluum, RedTrack, Everflow, ou votre BI maison).",
+          "tag": "OpenAPI"
+        }
+      ],
+      "snippetTitle": "Exemple d'intégration du widget",
+      "snippetLanguage": "html"
+    }
+  },
+  "networks": {
+    "title": "Déjà connecté à votre stack",
+    "subtitle": "Branchez HelloSafe via votre plateforme habituelle ou en direct — aucun workflow à changer.",
+    "items": [
+      "Tracking natif HelloSafe",
+      "Postback S2S",
+      "Impact.com",
+      "Partnerize",
+      "Awin",
+      "Voluum & RedTrack",
+      "Webhook + CSV"
+    ]
+  },
+  "faq": {
+    "hero": {
+      "eyebrow": "FAQ",
+      "title": "Questions fréquentes",
+      "subtitle": "Tout ce qu'il faut savoir avant de rejoindre le programme."
+    },
+    "items": [
+      {
+        "q": "Quels types de sites sont acceptés ?",
+        "a": "Blogs voyage, comparateurs visa, agences en ligne, créateurs de contenu, sites étudiants/expatriation, forums spécialisés. Nous refusons les sites de cashback pur, les extensions de navigateur non sollicitées et les sites ne respectant pas le RGPD."
+      },
+      {
+        "q": "Combien de temps prend la validation ?",
+        "a": "En moyenne 24 heures ouvrées. Nous vérifions le site, l'audience déclarée et l'éligibilité au marché cible. Vous recevez un e-mail avec l'accès au dashboard dès validation."
+      },
+      {
+        "q": "Quand suis-je payé ?",
+        "a": "Les ventes validées (après la période de rétractation de 14 jours) sont consolidées le 1er du mois suivant. Paiement effectué le 15. Virement SEPA, wire international ou Wise, au choix."
+      },
+      {
+        "q": "Puis-je cibler plusieurs pays ?",
+        "a": "Oui. C'est un des intérêts du programme : un seul lien bascule automatiquement le visiteur vers la page traduite et tarifée pour son pays. Vous pouvez aussi forcer une langue / un marché pour des campagnes spécifiques."
+      },
+      {
+        "q": "Quelle est la durée du cookie d'attribution ?",
+        "a": "90 jours, contre 30 à 45 jours chez la plupart des programmes concurrents. Last-click classique : si plusieurs partenaires interviennent, la commission va au dernier référent, conforme aux standards IAB."
+      },
+      {
+        "q": "Proposez-vous de vrais deep links ?",
+        "a": "Oui, sur toutes les pages du comparateur (assurance voyage, PVT, Schengen, ski, longue durée, etc.) et sur chaque fiche offre. C'est un différenciateur fort : plusieurs programmes US historiques ont supprimé le deep linking ces derniers mois, nous le maintenons parce que c'est ce qui fait la conversion."
+      },
+      {
+        "q": "Puis-je intégrer HelloSafe via Impact, Partnerize, Awin ou Voluum ?",
+        "a": "Oui. Nous exposons un postback S2S standard qui se connecte nativement à Impact.com, Partnerize, Awin, Voluum, RedTrack et Everflow. Nous pouvons aussi pousser les conversions directement dans votre BI via webhook. Le tracking natif HelloSafe reste disponible si vous voulez éviter une plateforme tierce."
+      },
+      {
+        "q": "Les commissions sont-elles récurrentes ?",
+        "a": "Oui sur les renouvellements : si un voyageur souscrit un contrat annuel puis le renouvelle, vous touchez à nouveau la commission. C'est ce qui transforme l'affiliation assurance voyage en revenu cumulatif plutôt qu'en one-shot."
+      },
+      {
+        "q": "Existe-t-il une API ?",
+        "a": "Oui. API REST avec authentification par clé, endpoints pour devis, offres, garanties et commissions. Documentation OpenAPI accessible depuis le dashboard. Webhooks sur conversion disponibles."
+      },
+      {
+        "q": "Puis-je utiliser la marque HelloSafe sur mon site ?",
+        "a": "Oui, dans le cadre du kit de marque partenaire (logos, badges, mentions) que vous trouvez dans votre dashboard. Interdiction d'acheter de la SEA sur la marque HelloSafe, clause standard du contrat."
+      }
+    ]
+  },
+  "auth": {
+    "signup": {
+      "title": "Créez votre espace partenaire",
+      "subtitle": "Inscription gratuite, validation sous 24h. Aucun engagement.",
+      "fields": {
+        "companyName": "Nom de société / média",
+        "contactName": "Nom du contact principal",
+        "email": "E-mail professionnel",
+        "website": "URL du site principal",
+        "audience": "Description de l'audience",
+        "country": "Pays de facturation",
+        "monthlyVisitors": "Visiteurs uniques mensuels",
+        "password": "Mot de passe"
+      },
+      "audiencePlaceholder": "Ex : blog voyage femmes 25-45 ans, francophone, 120k visites/mois, forte saison été.",
+      "submit": "Créer mon compte partenaire",
+      "haveAccount": "Déjà partenaire ?",
+      "loginLink": "Se connecter",
+      "terms": "En créant un compte, j'accepte les conditions du programme et la politique de confidentialité HelloSafe.",
+      "demoNotice": "Démo interne, aucun compte n'est réellement créé, les données restent dans votre navigateur."
+    },
+    "login": {
+      "title": "Connexion partenaire",
+      "subtitle": "Accédez à vos liens, stats et commissions.",
+      "fields": {
+        "email": "E-mail",
+        "password": "Mot de passe"
+      },
+      "submit": "Se connecter",
+      "noAccount": "Pas encore partenaire ?",
+      "signupLink": "Créer un compte",
+      "forgot": "Mot de passe oublié ?",
+      "demoNotice": "Démo, utilisez n'importe quel e-mail / mot de passe."
+    }
+  },
+  "dashboard": {
+    "welcome": "Bonjour, {name}",
+    "subtitle": "Voici ce que votre audience a généré ces 30 derniers jours.",
+    "nav": {
+      "overview": "Vue d'ensemble",
+      "links": "Mes liens",
+      "payouts": "Paiements"
+    },
+    "kpis": {
+      "clicks": "Clics",
+      "quotes": "Devis générés",
+      "sales": "Ventes",
+      "commissions": "Commissions",
+      "conversion": "Taux de conversion",
+      "epc": "Gain par clic"
+    },
+    "trend": {
+      "title": "Évolution sur 30 jours",
+      "clicks": "Clics",
+      "sales": "Ventes"
+    },
+    "topLinks": {
+      "title": "Vos liens les plus performants",
+      "columns": {
+        "label": "Libellé",
+        "language": "Langue",
+        "clicks": "Clics",
+        "sales": "Ventes",
+        "commissions": "Commissions"
+      }
+    },
+    "links": {
+      "title": "Générateur de liens traqués",
+      "subtitle": "Sélectionnez une page de destination, ajoutez un Sub-ID pour isoler chaque article ou campagne, et nous générons un lien unique rattaché à votre compte.",
+      "form": {
+        "label": "Libellé interne (optionnel)",
+        "labelPlaceholder": "Ex : Newsletter mars, Article PVT Canada…",
+        "destination": "Page de destination",
+        "language": "Langue d'atterrissage",
+        "campaign": "Paramètre de campagne (utm_campaign)",
+        "subid": "Sub-ID (optionnel)",
+        "subidPlaceholder": "article-pvt-canada, ig-story-juin…",
+        "submit": "Générer le lien"
+      },
+      "destinations": {
+        "home": "Accueil comparateur",
+        "travel": "Assurance voyage générique",
+        "schengen": "Visa Schengen",
+        "pvt": "PVT / Working Holiday",
+        "longterm": "Expatriation / longue durée",
+        "ski": "Assurance ski & sports d'hiver",
+        "student": "Étudiants à l'étranger"
+      },
+      "history": {
+        "title": "Vos liens actifs",
+        "columns": {
+          "label": "Libellé",
+          "destination": "Destination",
+          "language": "Langue",
+          "subid": "Sub-ID",
+          "created": "Créé le",
+          "clicks": "Clics",
+          "sales": "Ventes",
+          "url": "URL traquée"
+        },
+        "copy": "Copier",
+        "copied": "Copié !"
+      }
+    },
+    "payouts": {
+      "title": "Paiements & commissions",
+      "subtitle": "Historique des virements et détail des commissions en cours.",
+      "nextPayout": "Prochain paiement",
+      "pending": "En attente de validation",
+      "paid": "Payé",
+      "processing": "En cours",
+      "columns": {
+        "period": "Période",
+        "sales": "Ventes",
+        "gross": "Commissions brutes",
+        "status": "Statut",
+        "date": "Date de paiement",
+        "invoice": "Facture"
+      },
+      "downloadInvoice": "Télécharger"
+    }
+  }
+}

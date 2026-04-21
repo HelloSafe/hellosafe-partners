@@ -1,37 +1,108 @@
 @import "tailwindcss";
 
+/* HelloSafe Design System — fonts */
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Variable.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-VariableItalic.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat Brush";
+  src: url("/fonts/CaveatBrush-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --color-brand-50: #eeecff;
-  --color-brand-100: #dcd8ff;
-  --color-brand-200: #b8b0ff;
-  --color-brand-300: #8c80ff;
-  --color-brand-400: #6a5aff;
+  /* HelloSafe brand — violet (DS: #140B7A · #563BFF · #BEB0FF · #DFD7FF · #F6F2FF) */
+  --color-brand-50: #f6f2ff;
+  --color-brand-100: #dfd7ff;
+  --color-brand-200: #beb0ff;
+  --color-brand-300: #beb0ff; /* alias */
+  --color-brand-400: #563bff; /* alias */
   --color-brand-500: #563bff;
-  --color-brand-600: #4125e0;
-  --color-brand-700: #2d22b3;
-  --color-brand-800: #221a85;
-  --color-brand-900: #0b1031;
+  --color-brand-600: #140b7a; /* alias — dark hover */
+  --color-brand-700: #140b7a; /* alias */
+  --color-brand-800: #140b7a; /* alias */
+  --color-brand-900: #140b7a;
 
-  --color-ink-900: #0b1031;
-  --color-ink-700: #2b3557;
-  --color-ink-500: #5a6277;
-  --color-ink-300: #a0a6b8;
+  /* Orange (DS: #B72E24 · #FF7049 · #FFB991 · #FFEDDA · #FFF5EC) */
+  --color-accent-50: #fff5ec;
+  --color-accent-100: #ffedda;
+  --color-accent-200: #ffb991;
+  --color-accent-500: #ff7049;
+  --color-accent-900: #b72e24;
 
-  --color-surface-50: #fbfbff;
-  --color-surface-100: #f6f7fb;
-  --color-surface-200: #eef0f6;
-  --color-surface-300: #e3e6f0;
+  /* Green (DS: #0A7474 · #20C997 · #A5F9C8 · #CFFCDE) */
+  --color-success-50: #cffcde;
+  --color-success-100: #cffcde; /* alias */
+  --color-success-200: #a5f9c8;
+  --color-success-500: #20c997;
+  --color-success-600: #0a7474; /* alias */
+  --color-success-900: #0a7474;
 
-  --color-success-50: #e4f6ec;
-  --color-success-600: #0e6b3b;
-  --color-warning-50: #fff7e6;
-  --color-warning-500: #f2a73a;
-  --color-warning-600: #8a5a00;
-  --color-danger-50: #fdecec;
-  --color-danger-600: #b32323;
+  /* Warning — mapped to DS orange */
+  --color-warning-50: #ffedda;
+  --color-warning-500: #ff7049;
+  --color-warning-600: #b72e24;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Danger — mapped to DS orange darkest */
+  --color-danger-50: #ffedda;
+  --color-danger-500: #ff7049;
+  --color-danger-600: #b72e24;
+
+  /* Gray / Ink (DS: #0C2543 · #21325A · #576A88 · #F1F3F5 · #F7F8FB) */
+  --color-ink-900: #0c2543;
+  --color-ink-700: #21325a;
+  --color-ink-500: #576a88;
+  --color-ink-300: #576a88; /* alias */
+  --color-surface-50: #f7f8fb; /* alias */
+  --color-surface-100: #f7f8fb;
+  --color-surface-200: #f1f3f5;
+  --color-surface-300: #f1f3f5; /* alias */
+
+  /* Fonts */
+  --font-display: "Mont", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Switzer", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-accent: "Caveat Brush", "Mont", cursive;
 }
 
 html,
@@ -46,18 +117,82 @@ body {
   min-height: 100dvh;
 }
 
+/* Apply DS display font + tracking to every heading by default */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+h1 { letter-spacing: -0.04em; }
+
+/* DS type scale — desktop first, mobile via clamp */
+.ds-h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 2rem + 2vw, 3rem); /* 32 → 48 */
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+.ds-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 1.5rem + 1.5vw, 2.5rem); /* 24 → 40 */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.ds-h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.25rem + 1vw, 2rem); /* 20 → 32 */
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.ds-h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.125rem, 1.125rem + 0.5vw, 1.5rem); /* 18 → 24 */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.ds-subtitle {
+  font-size: 1.125rem; /* 18 */
+  line-height: 1.5;
+}
+.ds-body {
+  font-size: 1rem; /* 16 */
+  line-height: 1.5;
+}
+.ds-corpo {
+  font-family: var(--font-accent);
+  font-size: clamp(1.25rem, 1.25rem + 0.5vw, 1.625rem); /* 20 → 26 */
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--color-brand-500);
+}
+
+/* DS section padding (72 desktop / 56 mobile) */
+.ds-section {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+@media (min-width: 1024px) {
+  .ds-section {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(11, 16, 49, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(11, 16, 49, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(12, 37, 67, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(12, 37, 67, 0.06) 1px, transparent 1px);
   background-size: 36px 36px;
 }
 
 .bg-brand-gradient {
   background:
     radial-gradient(1200px 600px at 10% -10%, rgba(86, 59, 255, 0.18), transparent 60%),
-    radial-gradient(900px 500px at 110% 10%, rgba(140, 128, 255, 0.18), transparent 60%),
-    linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+    radial-gradient(900px 500px at 110% 10%, rgba(255, 112, 73, 0.15), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f6f2ff 100%);
 }
 
 .focus-ring:focus-visible {

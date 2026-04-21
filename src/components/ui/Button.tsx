@@ -10,15 +10,15 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-colors focus-ring disabled:opacity-50 disabled:cursor-not-allowed";
+  "inline-flex items-center justify-center gap-2 rounded-full font-display font-semibold tracking-tight transition-colors focus-ring disabled:opacity-50 disabled:cursor-not-allowed";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-brand-500 text-white hover:bg-brand-600 shadow-sm",
+  primary: "bg-brand-500 text-white hover:bg-brand-900 shadow-sm",
   secondary:
-    "bg-brand-50 text-brand-700 hover:bg-brand-100 border border-brand-100",
+    "bg-brand-50 text-brand-900 hover:bg-brand-100 border border-brand-100",
   ghost: "text-ink-700 hover:bg-surface-100",
   outline:
-    "border border-surface-300 bg-white text-ink-900 hover:border-brand-300 hover:text-brand-700",
+    "border border-surface-200 bg-white text-ink-900 hover:border-brand-500 hover:text-brand-500",
 };
 
 const sizes: Record<Size, string> = {

@@ -22,7 +22,7 @@ export function Logo({
         className="h-7 w-auto"
       />
       {withSuffix && (
-        <span className="rounded-md bg-brand-50 px-1.5 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wider text-brand-700 leading-none">
+        <span className="rounded-md bg-brand-50 px-1.5 py-0.5 text-[0.68rem] font-display font-bold uppercase tracking-wider text-brand-500 leading-none">
           {t("brandSuffix")}
         </span>
       )}

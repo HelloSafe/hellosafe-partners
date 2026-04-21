@@ -44,10 +44,10 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-3 h-9 inline-flex items-center rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 h-9 inline-flex items-center rounded-full text-sm font-medium transition-colors ${
                   active
-                    ? "text-brand-700 bg-brand-50"
-                    : "text-ink-700 hover:text-brand-700 hover:bg-surface-100"
+                    ? "text-brand-500 bg-brand-50"
+                    : "text-ink-700 hover:text-brand-500 hover:bg-surface-100"
                 }`}
               >
                 {item.label}

@@ -20,6 +20,7 @@
       "tagline": "Le programme d'affiliation de la meilleure offre d'assurance voyage du marché.",
       "columns": {
         "program": "Programme",
+        "forWho": "Pour qui",
         "resources": "Ressources",
         "legal": "Légal"
       },
@@ -29,7 +30,14 @@
         "faq": "Questions fréquentes",
         "terms": "Conditions du programme",
         "privacy": "Confidentialité",
-        "contact": "Nous contacter"
+        "contact": "Nous contacter",
+        "blog": "Blogs voyage",
+        "agency": "Agences",
+        "visa": "Spécialistes visa",
+        "creator": "Créateurs",
+        "expat": "Conseillers expat",
+        "student": "Mobilité étudiante",
+        "cruise": "Croisière & luxe"
       },
       "copyright": "© {year} HelloSafe. Tous droits réservés.",
       "internal": "Démo interne, données simulées."
@@ -83,6 +91,20 @@
         { "label": "Agences de voyage en ligne", "count": "140+ OTAs" },
         { "label": "Créateurs & médias voyage", "count": "180+ créateurs" }
       ]
+    },
+    "forWho": {
+      "title": "Pour qui c'est fait",
+      "subtitle": "Chaque profil a son propre parcours, son propre argumentaire, son propre potentiel. Choisissez le vôtre.",
+      "items": [
+        { "slug": "blog", "label": "Blogs voyage", "tag": "Revenus récurrents", "blurb": "Vos articles evergreen deviennent des machines à commission, mois après mois." },
+        { "slug": "agency", "label": "Agences de voyage", "tag": "Coach de vente intégré", "blurb": "Le commercial sort le Coach en RDV, le client signe l'assurance dans la foulée." },
+        { "slug": "visa", "label": "Spécialistes visa", "tag": "Attestation 90 sec", "blurb": "L'API et le widget qui délivrent un certificat conforme avant la fin du formulaire." },
+        { "slug": "creator", "label": "Créateurs voyage", "tag": "Sub-ID par story", "blurb": "Un lien, une story, un Sub-ID. Vous voyez ce qui marche et vous le doublez." },
+        { "slug": "expat", "label": "Conseillers expat", "tag": "Panier 1 200 €", "blurb": "Les contrats long-stay payent une commission cumulée à chaque renouvellement." },
+        { "slug": "student", "label": "Mobilité étudiante", "tag": "Visa-ready", "blurb": "L'attestation conforme aux ambassades, du Canada à l'Australie." },
+        { "slug": "cruise", "label": "Croisière & luxe", "tag": "Annulation 100 %", "blurb": "Le panier le plus élevé du voyage protégé sans clause sournoise." }
+      ],
+      "linkLabel": "Voir le détail"
     },
     "testimonials": {
       "title": "Ce que disent les partenaires qui ont changé",

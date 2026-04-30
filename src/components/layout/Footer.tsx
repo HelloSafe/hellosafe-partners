@@ -14,7 +14,7 @@ export function Footer() {
             <p className="mt-4 max-w-sm text-sm text-ink-500">{t("tagline")}</p>
             <p className="mt-6 text-xs text-ink-500/60">{t("internal")}</p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
             <div>
               <h3 className="text-[0.75rem] font-bold uppercase tracking-wider text-ink-500">
                 {t("columns.program")}
@@ -22,6 +22,20 @@ export function Footer() {
               <ul className="mt-3 space-y-2 text-sm">
                 <li><Link className="text-ink-700 hover:text-brand-500" href="/why-partner">{t("links.why")}</Link></li>
                 <li><Link className="text-ink-700 hover:text-brand-500" href="/how-it-works">{t("links.how")}</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-[0.75rem] font-bold uppercase tracking-wider text-ink-500">
+                {t("columns.forWho")}
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/blog" as never}>{t("links.blog")}</Link></li>
+                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/agency" as never}>{t("links.agency")}</Link></li>
+                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/visa" as never}>{t("links.visa")}</Link></li>
+                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/creator" as never}>{t("links.creator")}</Link></li>
+                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/expat" as never}>{t("links.expat")}</Link></li>
+                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/student" as never}>{t("links.student")}</Link></li>
+                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/cruise" as never}>{t("links.cruise")}</Link></li>
               </ul>
             </div>
             <div>

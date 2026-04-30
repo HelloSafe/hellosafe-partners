@@ -20,6 +20,7 @@
       "tagline": "The affiliate program for the best travel insurance offering on the market.",
       "columns": {
         "program": "Program",
+        "forWho": "Who it's for",
         "resources": "Resources",
         "legal": "Legal"
       },
@@ -29,7 +30,14 @@
         "faq": "FAQ",
         "terms": "Program terms",
         "privacy": "Privacy",
-        "contact": "Contact us"
+        "contact": "Contact us",
+        "blog": "Travel blogs",
+        "agency": "Agencies",
+        "visa": "Visa specialists",
+        "creator": "Creators",
+        "expat": "Expat advisors",
+        "student": "Student mobility",
+        "cruise": "Cruise & luxury"
       },
       "copyright": "© {year} HelloSafe. All rights reserved.",
       "internal": "Internal demo, simulated data."
@@ -83,6 +91,20 @@
         { "label": "Online travel agencies", "count": "140+ OTAs" },
         { "label": "Creators & travel media", "count": "180+ creators" }
       ]
+    },
+    "forWho": {
+      "title": "Who it's for",
+      "subtitle": "Every profile has its own funnel, its own pitch, its own upside. Pick yours.",
+      "items": [
+        { "slug": "blog", "label": "Travel blogs", "tag": "Recurring revenue", "blurb": "Your evergreen articles turn into commission machines, month after month." },
+        { "slug": "agency", "label": "Travel agencies", "tag": "Built-in sales coach", "blurb": "Reps pull up the Coach in the meeting, client signs the insurance on the spot." },
+        { "slug": "visa", "label": "Visa specialists", "tag": "90-second certificate", "blurb": "API and widget that deliver a compliant certificate before the visa form is done." },
+        { "slug": "creator", "label": "Travel creators", "tag": "Sub-ID per story", "blurb": "One link, one story, one Sub-ID. You see what converts and double down." },
+        { "slug": "expat", "label": "Expat advisors", "tag": "€1,200 basket", "blurb": "Long-stay contracts pay a commission that compounds on every renewal." },
+        { "slug": "student", "label": "Student mobility", "tag": "Visa-ready", "blurb": "Embassy-compliant certificate, from Canada to Australia." },
+        { "slug": "cruise", "label": "Cruise & luxury", "tag": "100% cancellation", "blurb": "The highest basket in travel, protected without sneaky exclusions." }
+      ],
+      "linkLabel": "See more"
     },
     "testimonials": {
       "title": "What partners who switched are saying",

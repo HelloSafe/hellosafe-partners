@@ -8,6 +8,8 @@ import {
   uniqueIndex,
   index,
   bigint,
+  jsonb,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 // ---------- enums ----------
@@ -27,6 +29,18 @@ export const payoutStatus = pgEnum("payout_status", [
   "pending",
   "processing",
   "paid",
+]);
+export const coverageType = pgEnum("coverage_type", [
+  "card",
+  "mutuelle",
+  "social_security",
+  "partner_contract",
+]);
+export const coverageSource = pgEnum("coverage_source", [
+  "seed",
+  "payload",
+  "manual",
+  "imported",
 ]);
 
 // ---------- users ----------
@@ -73,6 +87,11 @@ export const partners = pgTable(
     monthlyVisitors: integer("monthly_visitors"),
     status: partnerStatus("status").notNull().default("pending"),
     approvedAt: timestamp("approved_at", { withTimezone: true }),
+    // Agency branding for the white-label coach output.
+    agencyName: text("agency_name"),
+    agencyLogoUrl: text("agency_logo_url"),
+    agencyBrandColor: text("agency_brand_color"),
+    agencyTagline: text("agency_tagline"),
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),
@@ -209,6 +228,66 @@ export const sessions = pgTable(
   (t) => [index("sessions_user_idx").on(t.userId)],
 );
 
+// ---------- coverage profiles (cards / mutuelles / social security / partner contracts) ----------
+
+export const coverageProfiles = pgTable(
+  "coverage_profiles",
+  {
+    id: text("id").primaryKey(),
+    // null partner_id = global baseline (cards, mutuelles, social_security)
+    // non-null = partner-specific contract (e.g. agency's own product)
+    partnerId: text("partner_id").references(() => partners.id, {
+      onDelete: "cascade",
+    }),
+    type: coverageType("type").notNull(),
+    source: coverageSource("source").notNull().default("manual"),
+    name: text("name").notNull(),
+    issuer: text("issuer"),
+    country: text("country"),
+    locale: text("locale").notNull().default("fr"),
+    data: jsonb("data").notNull().default(sql`'{}'::jsonb`),
+    active: boolean("active").notNull().default(true),
+    notes: text("notes"),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [
+    index("coverage_partner_idx").on(t.partnerId),
+    index("coverage_type_idx").on(t.type),
+    index("coverage_locale_idx").on(t.locale),
+  ],
+);
+
+// ---------- gap analyses (one per session of the coach wizard) ----------
+
+export const gapAnalyses = pgTable(
+  "gap_analyses",
+  {
+    id: text("id").primaryKey(),
+    partnerId: text("partner_id")
+      .notNull()
+      .references(() => partners.id, { onDelete: "cascade" }),
+    clientLabel: text("client_label").notNull(),
+    locale: text("locale").notNull().default("fr"),
+    inputs: jsonb("inputs").notNull(),
+    output: jsonb("output").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [
+    index("gap_partner_idx").on(t.partnerId),
+    index("gap_created_idx").on(t.createdAt),
+  ],
+);
+
 // ---------- oauth state (short-lived CSRF for Google auth) ----------
 
 export const oauthStates = pgTable("oauth_states", {
@@ -280,3 +359,7 @@ export type Click = typeof clicks.$inferSelect;
 export type Conversion = typeof conversions.$inferSelect;
 export type Payout = typeof payouts.$inferSelect;
 export type Session = typeof sessions.$inferSelect;
+export type CoverageProfile = typeof coverageProfiles.$inferSelect;
+export type NewCoverageProfile = typeof coverageProfiles.$inferInsert;
+export type GapAnalysis = typeof gapAnalyses.$inferSelect;
+export type NewGapAnalysis = typeof gapAnalyses.$inferInsert;

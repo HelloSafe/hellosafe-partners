@@ -131,11 +131,17 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
   const { session } = state;
 
+  const isEn = pathname.startsWith("/en");
   const nav = [
     { href: "/dashboard", label: t("overview"), exact: true },
     { href: "/dashboard/links", label: t("links") },
     { href: "/dashboard/payouts", label: t("payouts") },
-  ];
+    { href: "/dashboard/coach", label: isEn ? "Coach" : "Coach" },
+    {
+      href: "/dashboard/settings/branding",
+      label: isEn ? "Branding" : "Marque agence",
+    },
+  ] as const;
 
   return (
     <SessionContext.Provider value={session}>
@@ -148,13 +154,14 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           </div>
           <nav className="flex-1 p-4 space-y-1">
             {nav.map((item) => {
-              const active = item.exact
-                ? pathname === item.href
-                : pathname.startsWith(item.href);
+              const active =
+                "exact" in item && item.exact
+                  ? pathname === item.href
+                  : pathname.startsWith(item.href);
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={item.href as never}
                   className={`flex items-center px-3 h-10 rounded-lg text-sm font-medium transition-colors ${
                     active
                       ? "bg-brand-50 text-brand-700"

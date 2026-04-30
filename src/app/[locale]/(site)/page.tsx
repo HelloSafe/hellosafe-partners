@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { LinkButton } from "@/components/ui/LinkButton";
+import { Link } from "@/i18n/navigation";
 
 export default async function LandingPage({
   params,
@@ -15,11 +16,73 @@ export default async function LandingPage({
       <Hero />
       <Stats />
       <Value />
+      <ForWho />
       <Testimonials />
       <Personas />
       <Steps />
       <FinalCta />
     </>
+  );
+}
+
+function ForWho() {
+  const t = useTranslations("landing.forWho");
+  const items = t.raw("items") as {
+    slug: string;
+    label: string;
+    tag: string;
+    blurb: string;
+  }[];
+  return (
+    <section className="py-20 lg:py-24 border-t border-surface-200">
+      <Container>
+        <div className="max-w-3xl">
+          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
+            {t("title")}
+          </h2>
+          <p className="mt-3 text-ink-700">{t("subtitle")}</p>
+        </div>
+        <ul className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {items.map((item) => (
+            <li key={item.slug}>
+              <Link
+                href={`/for/${item.slug}` as never}
+                className="group flex flex-col h-full rounded-2xl border border-surface-200 bg-white p-6 transition-colors hover:border-brand-300 hover:bg-surface-50"
+              >
+                <span className="inline-flex self-start items-center rounded-full bg-brand-50 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-brand-700">
+                  {item.tag}
+                </span>
+                <h3 className="mt-4 text-lg font-semibold leading-snug">
+                  {item.label}
+                </h3>
+                <p className="mt-2 text-sm text-ink-700 leading-relaxed flex-1">
+                  {item.blurb}
+                </p>
+                <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
+                  {t("linkLabel")}
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    className="transition-transform group-hover:translate-x-0.5"
+                    aria-hidden
+                  >
+                    <path
+                      d="M3 7h8m-3-3l3 3-3 3"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </section>
   );
 }
 

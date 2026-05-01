@@ -155,16 +155,16 @@ export function ContractEditor({
         <h1 className="text-3xl font-bold tracking-tight">
           {mode === "create"
             ? isEn
-              ? "New agency contract"
-              : "Nouveau contrat agence"
+              ? "New distributed contract"
+              : "Nouveau contrat à distribuer"
             : isEn
             ? "Edit contract"
             : "Modifier le contrat"}
         </h1>
         <p className="mt-2 text-ink-700">
           {isEn
-            ? "Used by the Coach as the fourth coverage source. Numeric amounts in euros."
-            : "Utilisé par le Coach comme quatrième source de couverture. Montants en euros."}
+            ? "Used by the Coach as one of the coverage sources to compare against the traveler's existing protection. Numeric amounts in euros."
+            : "Utilisé par le Coach comme l'une des sources de couverture, comparée à la protection actuelle du voyageur. Montants en euros."}
         </p>
       </header>
 

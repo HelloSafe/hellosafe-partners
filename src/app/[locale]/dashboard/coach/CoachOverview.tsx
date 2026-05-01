@@ -50,8 +50,8 @@ export function CoachOverview() {
           </h1>
           <p className="mt-3 text-ink-700 max-w-2xl">
             {isEn
-              ? "Pick a card, a top-up, the home country social security, and (optionally) your own contract. The Coach lays out the gaps in red, with the HelloSafe answer on the right."
-              : "Sélectionnez une carte, une mutuelle, la sécu du pays de départ et (en option) votre propre contrat. Le Coach affiche les écarts en rouge, avec la réponse HelloSafe à droite."}
+              ? "Free for every Atlas partner. Pick a card, a top-up, the home country social security, and (optionally) your own distributed contract. The Coach lays out the gaps in red, with the HelloSafe answer on the right — branded to your colors."
+              : "Gratuit pour tous les partenaires Atlas. Sélectionnez une carte, une mutuelle, la sécu du pays de départ et (en option) votre propre contrat distribué. Le Coach affiche les écarts en rouge, avec la réponse HelloSafe à droite — aux couleurs de votre marque."}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">

@@ -33,12 +33,12 @@ export function ContractsList() {
             {isEn ? "Coach · contracts" : "Coach · contrats"}
           </p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight">
-            {isEn ? "Your agency contracts" : "Vos contrats d'agence"}
+            {isEn ? "Your distributed contracts" : "Vos contrats distribués"}
           </h1>
           <p className="mt-2 text-ink-700 max-w-2xl">
             {isEn
-              ? "Configure each contract you distribute. The Coach uses them as one of the four coverage sources when comparing the traveler's existing protection."
-              : "Configurez chaque contrat que vous distribuez. Le Coach les utilise comme l'une des quatre sources de couverture pour comparer la protection du voyageur."}
+              ? "Configure each contract you currently distribute. The Coach picks them up as one of the coverage sources to compare against the traveler's existing protection."
+              : "Configurez chaque contrat que vous distribuez aujourd'hui. Le Coach les utilise comme l'une des sources de couverture pour comparer avec la protection actuelle du voyageur."}
           </p>
         </div>
         <Link

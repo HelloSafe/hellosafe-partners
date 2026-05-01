@@ -92,6 +92,9 @@ export const partners = pgTable(
     agencyLogoUrl: text("agency_logo_url"),
     agencyBrandColor: text("agency_brand_color"),
     agencyTagline: text("agency_tagline"),
+    // Onboarding state.
+    persona: text("persona"),
+    onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),

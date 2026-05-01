@@ -6,8 +6,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "HelloSafe Partners · Programme d'affiliation assurance voyage",
-    template: "%s | HelloSafe Partners",
+    default: "HelloSafe Atlas · Programme d'affiliation assurance voyage",
+    template: "%s | HelloSafe Atlas",
   },
   description:
     "Rejoignez le programme d'affiliation HelloSafe. Jusqu'à 20 % de commission sur la meilleure offre d'assurance voyage du marché.",

@@ -19,6 +19,8 @@ export type DashboardSession = {
     companyName: string;
     contactName: string;
     status: "pending" | "approved" | "rejected";
+    persona: string | null;
+    onboardedAt: string | null;
   };
 };
 
@@ -71,6 +73,11 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             reason: "rejected",
             me: d as DashboardSession,
           });
+          return;
+        }
+        // Approved but not yet onboarded → walk them through onboarding first.
+        if (!d.partner.onboardedAt) {
+          router.replace("/onboarding" as never);
           return;
         }
         setState({ phase: "ready", session: d as DashboardSession });

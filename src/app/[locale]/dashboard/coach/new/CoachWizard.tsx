@@ -676,7 +676,7 @@ function Step3Coverage({
       </Field>
 
       <Field
-        label={isEn ? "Your agency contract" : "Votre contrat agence"}
+        label={isEn ? "Your distributed contract" : "Votre contrat distribué"}
         hint={
           isEn
             ? "Manage your contracts in My contracts. Pre-loaded: Club Med."
@@ -685,7 +685,7 @@ function Step3Coverage({
       >
         <SelectChips
           options={[
-            { id: "", label: isEn ? "No agency contract" : "Pas de contrat agence" },
+            { id: "", label: isEn ? "None" : "Aucun" },
             ...baseline.partnerContracts.map((c) => ({
               id: c.id,
               label: c.name,
@@ -783,7 +783,7 @@ function Step4Review({
             ) ?? "—",
           ],
           [
-            isEn ? "Agency contract" : "Contrat agence",
+            isEn ? "Distributed contract" : "Contrat distribué",
             lookup(
               data.coverage.partnerContractId,
               baseline?.partnerContracts ?? [],

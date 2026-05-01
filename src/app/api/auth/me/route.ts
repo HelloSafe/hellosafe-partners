@@ -18,6 +18,8 @@ export async function GET() {
           companyName: ctx.partner.companyName,
           contactName: ctx.partner.contactName,
           status: ctx.partner.status,
+          persona: ctx.partner.persona,
+          onboardedAt: ctx.partner.onboardedAt,
         }
       : null,
   });

@@ -11,22 +11,26 @@ export async function register() {
   const dsn = process.env.SENTRY_DSN;
   if (!dsn) return;
 
+  const common = {
+    dsn,
+    environment: process.env.VERCEL_ENV ?? process.env.NODE_ENV,
+    // 100% trace sampling in dev for fast feedback, 10% in production.
+    tracesSampleRate: process.env.NODE_ENV === "development" ? 1.0 : 0.1,
+    // Sentry Logs feature: opt-in, enables Sentry.logger.* + log search.
+    enableLogs: true,
+    // PII redaction. Better Auth + the postback handler can include
+    // tokens — opt out by default. Flip to true once you have a scrubber.
+    sendDefaultPii: false,
+  } as const;
+
   if (process.env.NEXT_RUNTIME === "nodejs") {
     Sentry.init({
-      dsn,
-      environment: process.env.VERCEL_ENV ?? process.env.NODE_ENV,
-      tracesSampleRate: 0.1,
-      // PII redaction. Better Auth + the postback handler can include
-      // tokens — opt out by default.
-      sendDefaultPii: false,
+      ...common,
+      // Attach local variable values to stack frames (Node-only).
+      includeLocalVariables: true,
     });
   } else if (process.env.NEXT_RUNTIME === "edge") {
-    Sentry.init({
-      dsn,
-      environment: process.env.VERCEL_ENV ?? process.env.NODE_ENV,
-      tracesSampleRate: 0.1,
-      sendDefaultPii: false,
-    });
+    Sentry.init(common);
   }
 }
 

@@ -17,12 +17,16 @@ const withWrappers = (cfg: NextConfig) => {
   const intl = withNextIntl(cfg);
   if (!sentryEnabled) return intl;
   return withSentryConfig(intl, {
-    org: process.env.SENTRY_ORG,
-    project: process.env.SENTRY_PROJECT,
-    silent: !process.env.CI,
+    org: process.env.SENTRY_ORG ?? "hellosafe",
+    project: process.env.SENTRY_PROJECT ?? "hellosafe-partners",
+    // Source maps are uploaded at build time; no token in dev means no
+    // upload — Sentry runtime still reports errors, just unminified.
+    authToken: process.env.SENTRY_AUTH_TOKEN,
     widenClientFileUpload: true,
-    disableLogger: true,
-    automaticVercelMonitors: false,
+    // Proxy errors through this app to bypass ad-blockers that block
+    // ingest.sentry.io. The middleware (proxy.ts) excludes /monitoring.
+    tunnelRoute: "/monitoring",
+    silent: !process.env.CI,
   });
 };
 

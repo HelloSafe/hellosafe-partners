@@ -14,10 +14,12 @@ if (dsn) {
     dsn,
     environment:
       process.env.NEXT_PUBLIC_VERCEL_ENV ?? process.env.NODE_ENV,
-    // Replay sampling: 10% of normal sessions, 100% of sessions with errors.
+    tracesSampleRate: process.env.NODE_ENV === "development" ? 1.0 : 0.1,
+    // Replay: 10% of normal sessions, 100% of sessions with errors.
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
-    tracesSampleRate: 0.1,
+    // Sentry Logs feature.
+    enableLogs: true,
     sendDefaultPii: false,
     integrations: [
       Sentry.replayIntegration({

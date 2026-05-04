@@ -8,6 +8,7 @@ export const config = {
   // - api routes
   // - Next.js internals (_next, _vercel)
   // - the tracked-link redirect /r/*
+  // - the Sentry tunnel route /monitoring
   // - any asset with a dot (images, .svg, favicon, etc.)
-  matcher: ["/((?!api|_next|_vercel|r/|.*\\..*).*)"],
+  matcher: ["/((?!api|_next|_vercel|r/|monitoring|.*\\..*).*)"],
 };

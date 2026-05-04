@@ -138,7 +138,7 @@ function LinkBuilderMockup() {
             </h2>
             <p className="ds-body mt-4 text-ink-700">
               Tu choisis la destination, on te sort le deep link traqué avec
-              Sub-ID. Pas de formulaire à remplir, pas de doc d'API à lire.
+              Sub-ID. Pas de formulaire à remplir, pas de doc d&apos;API à lire.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-ink-700">
               <li className="flex items-start gap-2">

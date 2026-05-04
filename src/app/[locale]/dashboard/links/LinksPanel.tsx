@@ -49,7 +49,10 @@ export function LinksPanel() {
     setLinks(d.links);
   }, []);
 
+  // Initial load. `reload` is stable (useCallback with empty deps) and
+  // sets state asynchronously after fetch.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     reload();
   }, [reload]);
 

@@ -59,7 +59,11 @@ export function AdminDashboard() {
     if (c.conversions) setConversions(c.conversions);
   }, []);
 
+  // Initial load. `reload` is stable (useCallback with empty deps) and
+  // updates state asynchronously after fetch — the cascading-render concern
+  // does not apply here.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     reload();
   }, [reload]);
 
@@ -288,7 +292,7 @@ export function AdminDashboard() {
               <h3 className="font-semibold">Simuler une conversion (démo)</h3>
               <p className="text-sm text-ink-500 mt-1">
                 Entre un <code>shortCode</code> de lien (visible dans le
-                dashboard d'un partenaire approuvé) pour déclencher une
+                dashboard d&apos;un partenaire approuvé) pour déclencher une
                 conversion validée comme si elle venait du postback HelloSafe.
               </p>
               <SimulateConversionForm onDone={reload} />

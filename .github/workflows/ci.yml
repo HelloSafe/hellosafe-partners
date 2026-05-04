@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel previous runs on the same ref to save Actions minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Build needs DATABASE_URL at module-load time (drizzle.config.ts throws
+  # otherwise). It's never queried during build, so a placeholder works.
+  DATABASE_URL: postgres://placeholder:placeholder@localhost:5432/placeholder
+  NEXT_PUBLIC_APP_URL: http://localhost:3000
+  SESSION_SECRET: ci_placeholder_secret_not_used_at_runtime
+  IP_HASH_SALT: ci_placeholder_salt
+  POSTBACK_SECRET: ci_placeholder_postback
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build

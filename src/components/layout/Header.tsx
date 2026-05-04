@@ -26,8 +26,10 @@ export function Header() {
     };
   }, [pathname]);
 
-  // Close mobile menu on navigation.
+  // Close mobile menu on navigation. The "reset transient UI state when URL
+  // changes" pattern; safe here because `open` is local UI state.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
   }, [pathname]);
 

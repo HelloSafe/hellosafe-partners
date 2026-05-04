@@ -4,11 +4,11 @@ import { db } from "@/db";
 import { coverageProfiles, gapAnalyses } from "@/db/schema";
 import { getSessionContext } from "@/lib/session";
 import { newId } from "@/lib/ids";
-import { runGapAnalysis } from "@/lib/gap-engine";
+import { runGapAnalysis } from "@/lib/coach/gap-engine";
 import type {
   CoverageData,
   WizardInputs,
-} from "@/lib/coverage-types";
+} from "@/lib/coach/coverage-types";
 
 export const dynamic = "force-dynamic";
 

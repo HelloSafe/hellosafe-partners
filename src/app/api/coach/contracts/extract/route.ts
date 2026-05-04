@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSessionContext } from "@/lib/session";
-import type { CoverageData } from "@/lib/coverage-types";
+import type { CoverageData } from "@/lib/coach/coverage-types";
 
 /**
  * Mock extraction endpoint.

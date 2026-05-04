@@ -3,7 +3,7 @@ import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { coverageProfiles } from "@/db/schema";
 import { getSessionContext } from "@/lib/session";
-import type { CoverageData } from "@/lib/coverage-types";
+import type { CoverageData } from "@/lib/coach/coverage-types";
 
 export async function GET(
   _req: NextRequest,

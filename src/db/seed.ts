@@ -12,7 +12,7 @@ import {
   coverageProfiles,
 } from "./schema";
 import { newId, newPartnerCode, newShortCode } from "../lib/ids";
-import type { CoverageData } from "../lib/coverage-types";
+import type { CoverageData } from "../lib/coach/coverage-types";
 
 async function upsertUser(opts: {
   email: string;

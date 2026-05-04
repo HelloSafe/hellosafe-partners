@@ -4,7 +4,7 @@ import { db } from "@/db";
 import { coverageProfiles } from "@/db/schema";
 import { getSessionContext } from "@/lib/session";
 import { newId } from "@/lib/ids";
-import type { CoverageData } from "@/lib/coverage-types";
+import type { CoverageData } from "@/lib/coach/coverage-types";
 
 export const dynamic = "force-dynamic";
 

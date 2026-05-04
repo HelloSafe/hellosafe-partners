@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
-import type { CoverageData, RelativeKind } from "@/lib/coverage-types";
+import type { CoverageData, RelativeKind } from "@/lib/coach/coverage-types";
 
 const RELATIVE_OPTIONS: RelativeKind[] = [
   "self",

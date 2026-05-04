@@ -11,13 +11,13 @@ import type {
   TripActivity,
   TripPurpose,
   WizardInputs,
-} from "@/lib/coverage-types";
+} from "@/lib/coach/coverage-types";
 import {
   AGE_RANGE_LABEL_EN,
   AGE_RANGE_LABEL_FR,
   COMPANION_LABEL_EN,
   COMPANION_LABEL_FR,
-} from "@/lib/coverage-types";
+} from "@/lib/coach/coverage-types";
 
 type Baseline = {
   cards: { id: string; name: string; issuer: string | null; locale: string }[];

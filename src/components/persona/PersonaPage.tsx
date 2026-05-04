@@ -2,7 +2,13 @@ import { Container } from "@/components/ui/Container";
 import { LinkButton } from "@/components/ui/LinkButton";
 import type { PersonaContent } from "@/lib/personas";
 
-export function PersonaPage({ data, locale }: { data: PersonaContent; locale: string }) {
+export function PersonaPage({
+  data,
+  locale,
+}: {
+  data: PersonaContent;
+  locale: string;
+}) {
   return (
     <>
       <Hero data={data} locale={locale} />
@@ -15,20 +21,22 @@ export function PersonaPage({ data, locale }: { data: PersonaContent; locale: st
   );
 }
 
-function Hero({ data, locale }: { data: PersonaContent; locale: string }) {
+function Hero({
+  data,
+}: {
+  data: PersonaContent;
+  locale: string;
+}) {
   return (
     <section className="relative overflow-hidden bg-brand-gradient">
       <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-      <Container className="relative py-20 lg:py-24">
+      <div className="absolute -top-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-brand-200/40 blur-3xl" />
+      <div className="absolute -bottom-32 -left-32 h-[24rem] w-[24rem] rounded-full bg-accent-200/30 blur-3xl" />
+      <Container className="relative ds-section lg:py-24">
         <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700 ring-1 ring-brand-100">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-            {data.hero.eyebrow}
-          </span>
-          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-ink-900 leading-[1.05]">
-            {data.hero.title}
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-ink-700 max-w-2xl">
+          <span className="ds-corpo">{data.hero.eyebrow}</span>
+          <h1 className="ds-h1 mt-4 text-ink-900">{data.hero.title}</h1>
+          <p className="ds-subtitle mt-6 text-ink-700 max-w-2xl">
             {data.hero.subtitle}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -45,34 +53,36 @@ function Hero({ data, locale }: { data: PersonaContent; locale: string }) {
   );
 }
 
-function Pains({ data, locale }: { data: PersonaContent; locale: string }) {
+function Pains({
+  data,
+  locale,
+}: {
+  data: PersonaContent;
+  locale: string;
+}) {
   const isEn = locale === "en";
   return (
-    <section className="py-16 lg:py-20 border-b border-surface-200">
+    <section className="ds-section border-b border-surface-200">
       <Container>
-        <p className="text-xs font-semibold uppercase tracking-wider text-danger-600">
+        <span className="ds-corpo" style={{ color: "#B72E24" }}>
           {isEn ? "What hurts today" : "Ce qui coince aujourd'hui"}
-        </p>
-        <h2 className="mt-3 text-3xl lg:text-4xl font-bold tracking-tight max-w-3xl">
+        </span>
+        <h2 className="ds-h2 mt-3 text-ink-900 max-w-3xl">
           {isEn
             ? "You know these problems. Most of your peers do too."
-            : "Vous reconnaissez ces situations. La plupart de vos pairs aussi."}
+            : "Tu reconnais ces situations. La plupart de tes pairs aussi."}
         </h2>
         <ul className="mt-10 grid gap-5 md:grid-cols-3">
           {data.pains.map((p, i) => (
             <li
               key={i}
-              className="rounded-2xl border border-surface-200 bg-surface-50 p-6"
+              className="hs-card-hover rounded-2xl border border-surface-200 bg-surface-50 p-6"
             >
-              <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-danger-50 text-danger-600 font-bold text-sm">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent-100 text-accent-900 font-display font-bold tabular-nums">
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <h3 className="mt-4 text-lg font-semibold leading-snug">
-                {p.title}
-              </h3>
-              <p className="mt-3 text-ink-700 leading-relaxed text-sm">
-                {p.body}
-              </p>
+              <h3 className="ds-h4 mt-4 text-ink-900">{p.title}</h3>
+              <p className="ds-body mt-3 text-ink-700 text-sm">{p.body}</p>
             </li>
           ))}
         </ul>
@@ -82,22 +92,26 @@ function Pains({ data, locale }: { data: PersonaContent; locale: string }) {
 }
 
 function Benefits({ data }: { data: PersonaContent }) {
+  const accents = [
+    "hs-gain-money",
+    "hs-gain-time",
+    "hs-gain-trust",
+    "hs-gain-calm",
+  ];
   return (
-    <section className="py-20 lg:py-24">
+    <section className="ds-section">
       <Container>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2">
           {data.benefits.map((b, i) => (
             <article
               key={i}
-              className="rounded-2xl border border-surface-200 bg-white p-7 transition-colors hover:border-brand-200 hover:shadow-sm"
+              className={`hs-card-hover ${accents[i % accents.length]} rounded-3xl border border-surface-200 p-7 lg:p-8 flex flex-col`}
             >
-              <span className="inline-flex items-center rounded-full bg-brand-50 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-brand-700">
+              <span className="inline-flex self-start items-center rounded-full bg-white/80 backdrop-blur px-2.5 py-1 text-[0.68rem] font-display font-bold uppercase tracking-wider text-brand-700 border border-surface-200">
                 {b.badge}
               </span>
-              <h3 className="mt-4 text-xl font-semibold leading-snug">
-                {b.title}
-              </h3>
-              <p className="mt-3 text-ink-700 leading-relaxed">{b.body}</p>
+              <h3 className="ds-h4 mt-5 text-ink-900">{b.title}</h3>
+              <p className="ds-body mt-3 text-ink-700">{b.body}</p>
             </article>
           ))}
         </div>
@@ -106,16 +120,25 @@ function Benefits({ data }: { data: PersonaContent }) {
   );
 }
 
-function RevenueCalc({ data, locale }: { data: PersonaContent; locale: string }) {
+function RevenueCalc({
+  data,
+  locale,
+}: {
+  data: PersonaContent;
+  locale: string;
+}) {
   const isEn = locale === "en";
-  // Server-side simple calc.
   const v = data.calc.visitorsDefault;
   const clicks = (v * data.calc.ctrPct) / 100;
   const sales = (clicks * data.calc.convPct) / 100;
-  const monthly = Math.round((sales * data.calc.basketEur * data.calc.commissionPct) / 100);
+  const monthly = Math.round(
+    (sales * data.calc.basketEur * data.calc.commissionPct) / 100,
+  );
   const yearly = monthly * 12;
   const fmt = (n: number) =>
-    new Intl.NumberFormat(locale === "en" ? "en-US" : "fr-FR").format(Math.round(n));
+    new Intl.NumberFormat(locale === "en" ? "en-US" : "fr-FR").format(
+      Math.round(n),
+    );
   const eur = (n: number) =>
     new Intl.NumberFormat(locale === "en" ? "en-US" : "fr-FR", {
       style: "currency",
@@ -123,17 +146,15 @@ function RevenueCalc({ data, locale }: { data: PersonaContent; locale: string })
       maximumFractionDigits: 0,
     }).format(n);
   return (
-    <section className="py-16 bg-surface-50 border-y border-surface-200">
+    <section className="ds-section bg-surface-50 border-y border-surface-200">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] items-center">
           <div>
-            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
-              {data.calc.title}
-            </h2>
-            <p className="mt-4 text-ink-700 leading-relaxed">
+            <h2 className="ds-h2 text-ink-900">{data.calc.title}</h2>
+            <p className="ds-body mt-4 text-ink-700">
               {isEn
                 ? "Median assumptions across the HelloSafe network. Adjust to your reality with the calculator inside the dashboard."
-                : "Hypothèses médianes du réseau HelloSafe. Ajustez à votre réalité dans le simulateur du dashboard."}
+                : "Hypothèses médianes du réseau HelloSafe. Ajuste à ta réalité dans le simulateur du dashboard."}
             </p>
             <ul className="mt-6 space-y-2 text-sm text-ink-500">
               <li>
@@ -169,23 +190,25 @@ function RevenueCalc({ data, locale }: { data: PersonaContent; locale: string })
             </ul>
             <p className="mt-6 text-xs text-ink-500 italic">{data.calc.note}</p>
           </div>
-          <div className="rounded-2xl bg-ink-900 text-white p-8 lg:p-10 relative overflow-hidden">
-            <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-brand-500/30 blur-3xl" />
+          <div className="rounded-3xl bg-hero-violet text-white p-8 lg:p-10 relative overflow-hidden border border-brand-500/30">
+            <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-brand-500/40 blur-3xl" />
+            <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-accent-500/25 blur-3xl" />
+            <div className="absolute inset-0 bg-grid opacity-[0.07]" />
             <div className="relative">
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-300">
+              <p className="ds-corpo" style={{ color: "#FFB991" }}>
                 {isEn ? "Estimated commission" : "Commission estimée"}
               </p>
-              <p className="mt-2 text-5xl lg:text-6xl font-bold tabular-nums">
+              <p className="mt-2 font-display text-5xl lg:text-6xl font-extrabold tabular-nums leading-none">
                 {eur(monthly)}
               </p>
-              <p className="mt-1 text-sm text-white/60">
+              <p className="mt-2 text-sm text-white/60">
                 / {isEn ? "month" : "mois"}
               </p>
               <div className="mt-8 pt-6 border-t border-white/10 flex items-baseline justify-between">
                 <span className="text-sm text-white/60">
                   {isEn ? "Annual projection" : "Projection annuelle"}
                 </span>
-                <span className="text-2xl font-bold tabular-nums">
+                <span className="font-display text-2xl font-extrabold tabular-nums">
                   {eur(yearly)}
                 </span>
               </div>
@@ -199,17 +222,19 @@ function RevenueCalc({ data, locale }: { data: PersonaContent; locale: string })
 
 function Proof({ data }: { data: PersonaContent }) {
   return (
-    <section className="py-20 lg:py-24">
+    <section className="ds-section">
       <Container size="narrow">
-        <figure className="rounded-3xl border border-surface-200 bg-white p-8 lg:p-12 relative">
-          <span className="absolute -top-3 left-8 inline-flex items-center rounded-full bg-success-50 border border-success-600/30 px-3 py-1 text-xs font-bold uppercase tracking-wider text-success-600">
+        <figure className="hs-card-hover relative rounded-3xl border border-surface-200 bg-white p-8 lg:p-12 shadow-sm">
+          <span className="absolute -top-3 left-8 inline-flex items-center rounded-full bg-success-50 border border-success-600/30 px-3 py-1 text-[0.68rem] font-display font-bold uppercase tracking-wider text-success-900">
             {data.proof.metric}
           </span>
           <blockquote className="text-lg lg:text-xl text-ink-900 leading-relaxed">
             «&nbsp;{data.proof.quote}&nbsp;»
           </blockquote>
           <figcaption className="mt-6 pt-6 border-t border-surface-200">
-            <p className="font-semibold">{data.proof.author}</p>
+            <p className="font-display font-bold text-ink-900">
+              {data.proof.author}
+            </p>
             <p className="text-sm text-ink-500 mt-0.5">{data.proof.role}</p>
           </figcaption>
         </figure>
@@ -218,21 +243,28 @@ function Proof({ data }: { data: PersonaContent }) {
   );
 }
 
-function FinalCta({ data, locale }: { data: PersonaContent; locale: string }) {
+function FinalCta({
+  data,
+  locale,
+}: {
+  data: PersonaContent;
+  locale: string;
+}) {
   const isEn = locale === "en";
   return (
-    <section className="py-20">
+    <section className="ds-section">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl bg-ink-900 text-white p-10 lg:p-16">
-          <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full bg-brand-500/30 blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-brand-400/20 blur-3xl" />
+        <div className="relative overflow-hidden rounded-[2rem] bg-hero-violet text-white p-10 lg:p-16">
+          <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-brand-500/40 blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-accent-500/30 blur-3xl" />
+          <div className="absolute inset-0 bg-grid opacity-[0.07]" />
           <div className="relative max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-wider text-brand-300">
+            <span className="ds-corpo" style={{ color: "#FFB991" }}>
               {data.category}
-            </p>
-            <h2 className="mt-3 text-3xl lg:text-4xl font-bold tracking-tight">
+            </span>
+            <h2 className="ds-h2 mt-3 text-white">
               {isEn
-                ? "Free to join, no commitment, manual validation in 24h."
+                ? "Free to join, no commitment, manual approval in 24h."
                 : "Gratuit, sans engagement, validation manuelle sous 24h."}
             </h2>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -242,7 +274,7 @@ function FinalCta({ data, locale }: { data: PersonaContent; locale: string }) {
               <LinkButton
                 href="/faq"
                 size="lg"
-                className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+                className="bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/40 hover:text-white"
               >
                 FAQ
               </LinkButton>

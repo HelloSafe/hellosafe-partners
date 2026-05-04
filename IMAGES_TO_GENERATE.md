@@ -1,6 +1,8 @@
 # Images à générer pour la home (HelloSafe Atlas)
 
-> But : remplacer les visuels CSS / SVG par des vraies images générées via Gemini (ou banque d'images), puis les déposer dans `public/landing/` et brancher dans `src/app/[locale]/(site)/page.tsx`.
+> **STATUT — 2026-05 : ARCHIVÉ.** Décision produit : **on reste sur les mockups CSS pur** (hero dashboard, link builder, calculateur revenu, glyphs personas, etc.). Pas d'image bitmap, pas de Gemini, pas de stock. Cohérence DS et perfs Lighthouse garanties. Document conservé pour référence si la décision change.
+
+> But initial : remplacer les visuels CSS / SVG par des vraies images générées via Gemini (ou banque d'images), puis les déposer dans `public/landing/` et brancher dans `src/app/[locale]/(site)/page.tsx`.
 >
 > **DS HelloSafe à respecter dans tous les prompts** :
 > - Violet brand `#563BFF`

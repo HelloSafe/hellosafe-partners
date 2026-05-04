@@ -46,11 +46,16 @@
   "landing": {
     "hero": {
       "eyebrow": "HelloSafe Affiliate Program",
-      "title": "Turn your travel audience into recurring revenue with the market's best travel insurance",
-      "subtitle": "A travel insurance marketplace: your readers compare top contracts and subscribe online in one place, at negotiated rates. Up to 20% recurring commission for you.",
+      "title": "Your travel audience. Your recurring revenue.",
+      "subtitle": "HelloSafe compares and distributes the best travel insurance. Your readers compare, subscribe and download their certificate in one place. You earn up to 20%. On every sale. And every renewal.",
       "primaryCta": "Join the program",
       "secondaryCta": "See how it works",
-      "social": "Already trusted by 800+ travel publishers",
+      "social": "Already 800+ travel publishers earning with us",
+      "highlights": [
+        "Sign up in 2 min",
+        "Approved in 24h",
+        "No commitment"
+      ],
       "stats": {
         "commission": "up to 20%",
         "commissionLabel": "commission",
@@ -62,29 +67,52 @@
         "recurringLabel": "recurring commissions on renewals"
       }
     },
-    "value": {
-      "title": "Why serious publishers work with HelloSafe",
+    "logos": {
+      "title": "They're already earning with us",
+      "items": [
+        "Le Routard Pro",
+        "Carnets de Route",
+        "Voyage Forever",
+        "GlobePass",
+        "Wanderlust FR",
+        "Backpacker Mag",
+        "Tripzy",
+        "Voyage Voyage"
+      ]
+    },
+    "gains": {
+      "eyebrow": "Why HelloSafe",
+      "title": "Four wins. Right away.",
+      "subtitle": "We spent two years benchmarking every program out there. Here's what we fixed.",
       "items": [
         {
-          "title": "A real marketplace, not a reseller",
-          "body": "HelloSafe compares offers from multiple insurers in real time AND lets your reader subscribe directly online, in one place. No redirection to the insurer, no quote to reclaim 48h later. Conversion rates single-product programs can't match."
-        },
-        {
+          "key": "money",
+          "tag": "Earn more",
           "title": "Up to 20% commission",
-          "body": "Among the highest payouts in the travel insurance vertical. Progressive tiers based on volume, renewal bonuses, monthly payout with no minimum threshold."
+          "body": "The highest payout in the travel-insurance vertical. Progressive tiers, renewal bonuses, monthly payout with no minimum threshold."
         },
         {
-          "title": "Built-in subscription flow",
-          "body": "Visitors compare, subscribe and download their visa certificate in under 2 minutes, without leaving your brand (white-label available). Less friction, more sales."
+          "key": "time",
+          "tag": "Save time",
+          "title": "2 minutes to generate a link",
+          "body": "Pick the destination, get the tracked deep link with Sub-ID. No training to attend, no dev to brief."
         },
         {
-          "title": "Negotiated rates and expert customer service",
-          "body": "Thanks to HelloSafe's volume, your readers get rates often below what they'd pay buying directly from the insurer. And if something goes wrong mid-trip, an expert travel-insurance support team picks up in under 2 minutes, 7 days a week. Two levers that convert and retain."
+          "key": "trust",
+          "tag": "Build trust",
+          "title": "Negotiated rates. 7-day support.",
+          "body": "Your readers pay less than buying direct from the insurer. And they reach a real human in under 2 minutes if anything goes wrong. You retain without effort."
+        },
+        {
+          "key": "calm",
+          "tag": "Stay calm",
+          "title": "A marketplace, not a reseller",
+          "body": "Compare AND subscribe in one place. No redirect, no quote to chase 48h later. The conversion rate no single-insurer program can match."
         }
       ]
     },
     "personas": {
-      "title": "Who's already a partner?",
+      "title": "Who's already earning",
       "items": [
         { "label": "Travel blogs", "count": "420+ blogs" },
         { "label": "Visa comparison sites", "count": "60+ sites" },
@@ -93,25 +121,26 @@
       ]
     },
     "forWho": {
-      "title": "Who it's for",
-      "subtitle": "Every profile has its own funnel, its own pitch, its own upside. Pick yours.",
+      "eyebrow": "You are...",
+      "title": "Pick your profile. We'll show you the upside.",
+      "subtitle": "Every travel audience has its own angle, funnel and lever. We've already optimized them for the seven profiles below.",
       "items": [
-        { "slug": "blog", "label": "Travel blogs", "tag": "Recurring revenue", "blurb": "Your evergreen articles turn into commission machines, month after month." },
-        { "slug": "agency", "label": "Travel agencies", "tag": "Built-in sales coach", "blurb": "Reps pull up the Coach in the meeting, client signs the insurance on the spot." },
-        { "slug": "visa", "label": "Visa specialists", "tag": "90-second certificate", "blurb": "API and widget that deliver a compliant certificate before the visa form is done." },
-        { "slug": "creator", "label": "Travel creators", "tag": "Sub-ID per story", "blurb": "One link, one story, one Sub-ID. You see what converts and double down." },
-        { "slug": "expat", "label": "Expat advisors", "tag": "€1,200 basket", "blurb": "Long-stay contracts pay a commission that compounds on every renewal." },
+        { "slug": "blog", "label": "Travel blogger", "tag": "Recurring revenue", "blurb": "Your evergreen articles turn into commission machines, month after month." },
+        { "slug": "agency", "label": "Travel agency", "tag": "Built-in sales coach", "blurb": "Reps pull up the Coach in the meeting, client signs the insurance on the spot." },
+        { "slug": "visa", "label": "Visa specialist", "tag": "90-second certificate", "blurb": "API and widget that deliver a compliant certificate before the visa form is done." },
+        { "slug": "creator", "label": "Travel creator", "tag": "Sub-ID per story", "blurb": "One link, one story, one Sub-ID. You see what converts and double down." },
+        { "slug": "expat", "label": "Expat advisor", "tag": "€1,200 basket", "blurb": "Long-stay contracts pay a commission that compounds on every renewal." },
         { "slug": "student", "label": "Student mobility", "tag": "Visa-ready", "blurb": "Embassy-compliant certificate, from Canada to Australia." },
         { "slug": "cruise", "label": "Cruise & luxury", "tag": "100% cancellation", "blurb": "The highest basket in travel, protected without sneaky exclusions." }
       ],
       "linkLabel": "See more"
     },
     "testimonials": {
-      "title": "What partners who switched are saying",
-      "subtitle": "Before HelloSafe, they were on a single-insurer program or an English-speaking comparator. Here's what they see now.",
+      "title": "They switched. They're not going back.",
+      "subtitle": "Before HelloSafe: a single-insurer program or an English-speaking comparator. After, here's what they see.",
       "items": [
         {
-          "quote": "HelloSafe converts as well on my working-holiday articles as on my generic travel guides. Compared to my previous program: +18% revenue per visitor from the first month, and a support team that actually responds.",
+          "quote": "HelloSafe converts as well on my working-holiday articles as on my generic travel guides. vs. my previous program: +18% revenue per visitor from the first month, and a support team that actually responds.",
           "author": "Sarah L.",
           "role": "Travel blog, 45k visits/month",
           "metric": "+18% RPV"
@@ -123,7 +152,7 @@
           "metric": "< 4h to integrate"
         },
         {
-          "quote": "The negotiated rates make a real difference for my community: followers thank me for finding cheaper than buying direct. That's what trust is, and that's what keeps them coming back.",
+          "quote": "Negotiated rates make a real difference for my community: followers thank me for finding cheaper than buying direct. That's what trust is, and that's what keeps them coming back.",
           "author": "Camille M.",
           "role": "Travel Instagram creator, 120k followers",
           "metric": "3.1× click-through rate"
@@ -131,28 +160,31 @@
       ]
     },
     "steps": {
-      "title": "Three steps, zero friction",
+      "eyebrow": "How it works",
+      "title": "Three steps. Zero friction.",
+      "subtitle": "From signup to first payout, the whole thing fits in an afternoon.",
       "items": [
         {
           "step": "01",
           "title": "Sign up in 2 minutes",
-          "body": "Create your partner space, describe your audience, we validate within 24 business hours."
+          "body": "Create your partner space, describe your audience, we approve within 24 business hours."
         },
         {
           "step": "02",
           "title": "Generate tracked links",
-          "body": "For each piece of content, generate a deep link to the right HelloSafe page with a Sub-ID to track article by article."
+          "body": "For each piece of content, a deep link to the right HelloSafe page with a Sub-ID to track article by article."
         },
         {
           "step": "03",
-          "title": "Real-time commissions & reporting",
-          "body": "Track clicks, quotes, sales and commissions in a clear dashboard. Monthly payout via SEPA or wire."
+          "title": "Get paid",
+          "body": "Clicks, quotes, sales, commissions, all in real time. Monthly payout, SEPA or wire."
         }
       ]
     },
     "finalCta": {
-      "title": "Ready to turn your travel audience into recurring revenue?",
-      "body": "Signup is free and non-binding. You keep ownership of the experience, we handle the rest.",
+      "eyebrow": "Ready?",
+      "title": "Your travel audience is waiting. Not the program.",
+      "body": "Free signup, no commitment. You keep ownership of the experience. We handle the rest.",
       "primary": "Create my partner account",
       "secondary": "Talk to an account manager"
     }

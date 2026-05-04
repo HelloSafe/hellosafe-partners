@@ -235,6 +235,83 @@ h1 { letter-spacing: -0.04em; }
   box-shadow: var(--shadow-md);
 }
 
+/* Marquee — infinite logos scroll on landing page. */
+@keyframes hs-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.hs-marquee {
+  animation: hs-marquee 38s linear infinite;
+  width: max-content;
+}
+.hs-marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* Hero mockup — fake dashboard frame. */
+.hs-mockup {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f6f2ff 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 30px 80px -20px rgba(20, 11, 122, 0.35),
+    0 12px 32px -8px rgba(86, 59, 255, 0.18);
+}
+.hs-mockup-bar {
+  background: linear-gradient(180deg, #faf8ff 0%, #ece5ff 100%);
+}
+
+/* Bento gain card — soft gradients per gain type. */
+.hs-gain-money {
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(86,59,255,0.15), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f6f2ff 100%);
+}
+.hs-gain-time {
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(255,112,73,0.18), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #fff5ec 100%);
+}
+.hs-gain-trust {
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(32,201,151,0.18), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #cffcde 100%);
+}
+.hs-gain-calm {
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(20,11,122,0.18), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #ece5ff 100%);
+}
+
+/* Numeric counter style for stats blocks. */
+.hs-stat-number {
+  background: linear-gradient(135deg, #140B7A 0%, #563BFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glow ring for accent CTAs / hero badge. */
+.hs-glow-ring::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(86,59,255,0.55), rgba(255,112,73,0.55));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Step connector line (3-step row). */
+.hs-step-row { counter-reset: step; }
+.hs-step-row > * { counter-increment: step; }
+
 /* Print: clean output for the Coach analysis sheet. */
 @media print {
   body { background: #ffffff !important; }

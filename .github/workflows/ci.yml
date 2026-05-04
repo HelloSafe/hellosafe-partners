@@ -33,7 +33,10 @@ jobs:
           cache: npm
 
       - name: Install
-        run: npm ci
+        # We use `npm install` instead of `npm ci` because npm 10's strict
+        # treatment of optionalDependencies trips on cross-platform esbuild
+        # variants (vitest pulls @esbuild/aix-ppc64 etc.).
+        run: npm install --no-audit --no-fund
 
       - name: Lint
         run: npm run lint

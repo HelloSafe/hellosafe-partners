@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { useRouter, Link, usePathname } from "@/i18n/navigation";
+import { useRouter, Link } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { GoogleButton } from "@/components/auth/GoogleButton";
+import { authClient } from "@/lib/auth-client";
 
 export function LoginForm() {
   const t = useTranslations("auth.login");
   const router = useRouter();
-  const pathname = usePathname();
   const params = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,26 +23,20 @@ export function LoginForm() {
     e.preventDefault();
     setErr(null);
     setLoading(true);
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setErr("E-mail ou mot de passe invalide.");
-        setLoading(false);
-        return;
-      }
-      if (data.role === "admin") {
-        router.push("/admin");
-      } else {
-        router.push("/dashboard");
-      }
-    } catch {
-      setErr("Connexion au serveur impossible.");
+    const { data, error } = await authClient.signIn.email({ email, password });
+    if (error || !data) {
+      setErr("E-mail ou mot de passe invalide.");
       setLoading(false);
+      return;
+    }
+    // Read role from /api/auth/me (Better Auth session has user but no partner).
+    const me = await fetch("/api/auth/me", { cache: "no-store" })
+      .then((r) => r.json())
+      .catch(() => null);
+    if (me?.user?.role === "admin") {
+      router.push("/admin");
+    } else {
+      router.push("/dashboard");
     }
   };
 

@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
 // Run with: npm run db:seed  (picks up .env.local via tsx --env-file)
-import bcrypt from "bcryptjs";
 import { eq, and, isNull } from "drizzle-orm";
+import { hashPassword } from "better-auth/crypto";
 import { db } from "./index";
 import {
   users,
+  accounts,
   partners,
   trackedLinks,
   conversions,
@@ -26,14 +27,21 @@ async function upsertUser(opts: {
     .limit(1);
   if (existing[0]) return existing[0];
 
+  // Create user + Better Auth credentials account in the same flow.
   const id = newId();
   await db.insert(users).values({
     id,
     email: opts.email,
-    passwordHash: await bcrypt.hash(opts.password, 10),
     name: opts.name,
     role: opts.role,
-    emailVerifiedAt: new Date(),
+    emailVerified: true,
+  });
+  await db.insert(accounts).values({
+    id: newId(),
+    accountId: id,
+    providerId: "credential",
+    userId: id,
+    password: await hashPassword(opts.password),
   });
   console.log(`  + user ${opts.email} (${opts.role})`);
   return (await db.select().from(users).where(eq(users.id, id)).limit(1))[0];
@@ -496,12 +504,33 @@ async function seedClubMedContract(partnerId: string) {
 async function main() {
   console.log("Seeding HelloSafe Partners database…\n");
 
-  console.log("1. Admin");
+  console.log("1. Admin (legacy test account)");
   await upsertUser({
     email: "admin@hellosafe.test",
     password: "changeme",
     name: "HelloSafe Admin",
     role: "admin",
+  });
+
+  console.log("\n1bis. Antoine — persistent demo admin");
+  const antoineUser = await upsertUser({
+    email: "antoine@hellosafe.fr",
+    password: "demo1234",
+    name: "Antoine Fruchard",
+    role: "admin",
+  });
+  // Antoine also has an approved partner record so he can browse the
+  // partner dashboard without going through onboarding each time.
+  await upsertApprovedPartner(antoineUser.id, {
+    companyName: "HelloSafe (demo)",
+    contactName: "Antoine Fruchard",
+    website: "https://hellosafe.com",
+    audience: "Compte demo persistent pour le pilotage produit.",
+    country: "FR",
+    monthlyVisitors: 100_000,
+    agencyName: "HelloSafe",
+    agencyTagline: "Le coach assurance des voyageurs",
+    agencyBrandColor: "#563bff",
   });
 
   console.log("\n2. Demo blog partner (for affiliate tracking demo)");
@@ -554,6 +583,7 @@ async function main() {
 
   console.log("\nDone.\n");
   console.log("--- Credentials ---");
+  console.log("  Antoine  antoine@hellosafe.fr  / demo1234    → /fr/admin (persistent demo)");
   console.log("  Admin    admin@hellosafe.test  / changeme    → /fr/admin");
   console.log("  Blog     demo@partner.fr       / partner123  → /fr/dashboard");
   console.log("  Agency   agency@hellosafe.test / agency123   → /fr/dashboard/coach");

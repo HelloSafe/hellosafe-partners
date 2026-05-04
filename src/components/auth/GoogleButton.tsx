@@ -1,10 +1,28 @@
 "use client";
 
+import { useState } from "react";
+import { authClient } from "@/lib/auth-client";
+
 export function GoogleButton({ label = "Continuer avec Google" }: { label?: string }) {
+  const [loading, setLoading] = useState(false);
+
+  const onClick = async () => {
+    setLoading(true);
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/dashboard",
+      errorCallbackURL: "/login?oauth_error=1",
+    });
+    // Better Auth redirects the browser; if we land back here, reset.
+    setLoading(false);
+  };
+
   return (
-    <a
-      href="/api/auth/google"
-      className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-surface-300 bg-white px-5 h-11 text-sm font-semibold text-ink-900 hover:border-brand-300 hover:bg-surface-50 transition-colors focus-ring"
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={loading}
+      className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-surface-300 bg-white px-5 h-11 text-sm font-semibold text-ink-900 hover:border-brand-300 hover:bg-surface-50 transition-colors focus-ring disabled:opacity-60"
     >
       <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden>
         <path
@@ -25,6 +43,6 @@ export function GoogleButton({ label = "Continuer avec Google" }: { label?: stri
         />
       </svg>
       {label}
-    </a>
+    </button>
   );
 }

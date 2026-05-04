@@ -1,66 +1,96 @@
 import { NextRequest, NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
+import { APIError } from "better-auth/api";
+import { z } from "zod";
+import { auth } from "@/lib/auth";
 import { db } from "@/db";
 import { users, partners } from "@/db/schema";
 import { newId, newPartnerCode } from "@/lib/ids";
 
-type Body = {
-  email?: string;
-  password?: string;
-  companyName?: string;
-  contactName?: string;
-  website?: string;
-  audience?: string;
-  country?: string;
-  monthlyVisitors?: string | number;
-};
+// Wrapper around Better Auth signUpEmail that ALSO creates the partner record
+// in the same call, preserving the existing single-form UX.
+const Body = z.object({
+  email: z.string().trim().toLowerCase().email(),
+  password: z.string().min(8, "PASSWORD_TOO_SHORT"),
+  companyName: z.string().trim().min(1, "MISSING_FIELDS"),
+  contactName: z.string().trim().min(1, "MISSING_FIELDS"),
+  website: z.string().trim().optional().nullable(),
+  audience: z.string().trim().optional().nullable(),
+  country: z.string().trim().optional().nullable(),
+  monthlyVisitors: z
+    .union([z.string(), z.number()])
+    .optional()
+    .nullable(),
+});
 
 export async function POST(req: NextRequest) {
-  let body: Body;
+  let raw: unknown;
   try {
-    body = await req.json();
+    raw = await req.json();
   } catch {
     return NextResponse.json({ error: "INVALID_JSON" }, { status: 400 });
   }
 
-  const email = body.email?.trim().toLowerCase();
-  const password = body.password?.trim();
-  const companyName = body.companyName?.trim();
-  const contactName = body.contactName?.trim();
-
-  if (!email || !password || !companyName || !contactName) {
-    return NextResponse.json(
-      { error: "MISSING_FIELDS" },
-      { status: 400 },
-    );
-  }
-  if (password.length < 8) {
-    return NextResponse.json({ error: "PASSWORD_TOO_SHORT" }, { status: 400 });
-  }
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    return NextResponse.json({ error: "INVALID_EMAIL" }, { status: 400 });
+  const parsed = Body.safeParse(raw);
+  if (!parsed.success) {
+    const issue = parsed.error.issues[0];
+    const code =
+      issue?.message === "PASSWORD_TOO_SHORT"
+        ? "PASSWORD_TOO_SHORT"
+        : issue?.path[0] === "email"
+          ? "INVALID_EMAIL"
+          : "MISSING_FIELDS";
+    return NextResponse.json({ error: code }, { status: 400 });
   }
 
-  const existing = await db
+  const {
+    email,
+    password,
+    companyName,
+    contactName,
+    website,
+    audience,
+    country,
+    monthlyVisitors,
+  } = parsed.data;
+
+  // Better Auth handles: hashing, duplicate detection, session creation,
+  // cookie setting (via nextCookies plugin).
+  let userId: string;
+  try {
+    const result = await auth.api.signUpEmail({
+      body: { email, password, name: contactName },
+      headers: req.headers,
+    });
+    userId = result.user.id;
+  } catch (err) {
+    if (err instanceof APIError) {
+      // Map Better Auth error codes to the existing UI taxonomy.
+      const code =
+        err.body?.code === "USER_ALREADY_EXISTS" ||
+        err.body?.message?.toLowerCase().includes("already")
+          ? "EMAIL_ALREADY_USED"
+          : err.body?.code ?? "SIGNUP_FAILED";
+      const status = err.statusCode ?? 400;
+      return NextResponse.json({ error: code }, { status });
+    }
+    return NextResponse.json({ error: "SIGNUP_FAILED" }, { status: 500 });
+  }
+
+  // Check that the user was created (defense in depth: avoid orphaned partner).
+  const userRow = await db
     .select({ id: users.id })
     .from(users)
-    .where(eq(users.email, email))
+    .where(eq(users.id, userId))
     .limit(1);
-  if (existing.length) {
-    return NextResponse.json({ error: "EMAIL_ALREADY_USED" }, { status: 409 });
+  if (!userRow.length) {
+    return NextResponse.json({ error: "SIGNUP_FAILED" }, { status: 500 });
   }
 
-  const passwordHash = await bcrypt.hash(password, 10);
-  const userId = newId();
-
-  await db.insert(users).values({
-    id: userId,
-    email,
-    passwordHash,
-    name: contactName,
-    role: "partner",
-  });
+  const visitors =
+    typeof monthlyVisitors === "string"
+      ? parseInt(monthlyVisitors, 10) || null
+      : monthlyVisitors ?? null;
 
   await db.insert(partners).values({
     id: newId(),
@@ -68,13 +98,10 @@ export async function POST(req: NextRequest) {
     partnerCode: newPartnerCode(),
     companyName,
     contactName,
-    website: body.website?.trim() || null,
-    audience: body.audience?.trim() || null,
-    country: body.country?.trim() || null,
-    monthlyVisitors:
-      typeof body.monthlyVisitors === "string"
-        ? parseInt(body.monthlyVisitors, 10) || null
-        : body.monthlyVisitors ?? null,
+    website: website || null,
+    audience: audience || null,
+    country: country || null,
+    monthlyVisitors: visitors,
     status: "pending",
   });
 

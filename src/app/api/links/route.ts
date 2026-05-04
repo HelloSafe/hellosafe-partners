@@ -5,7 +5,7 @@ import { trackedLinks, clicks, conversions } from "@/db/schema";
 import { getSessionContext } from "@/lib/session";
 import { newId, newShortCode } from "@/lib/ids";
 import { isDestination, DESTINATIONS, type DestinationKey } from "@/lib/destinations";
-import { appUrl } from "@/lib/google-oauth";
+import { appUrl } from "@/lib/app-url";
 
 function shortUrl(code: string) {
   return `${appUrl()}/r/${code}`;

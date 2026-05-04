@@ -89,7 +89,8 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   }, [router, pathname]);
 
   const logout = async () => {
-    await fetch("/api/auth/logout", { method: "POST" });
+    const { authClient } = await import("@/lib/auth-client");
+    await authClient.signOut();
     router.replace("/");
   };
 

@@ -1,43 +1,17 @@
 import "server-only";
-import { cookies } from "next/headers";
-import { and, eq, gt } from "drizzle-orm";
+import { headers as nextHeaders } from "next/headers";
+import { eq } from "drizzle-orm";
 import { db } from "@/db";
-import { sessions, users, partners } from "@/db/schema";
-import { newId, newSessionToken } from "./ids";
+import { partners, users } from "@/db/schema";
+import { auth } from "@/lib/auth";
 import type { User, Partner } from "@/db/schema";
 
-const COOKIE_NAME = "hsp_session";
-const SESSION_TTL_DAYS = 30;
-
-export async function createSession(userId: string) {
-  const token = newSessionToken();
-  const expiresAt = new Date(
-    Date.now() + SESSION_TTL_DAYS * 24 * 60 * 60 * 1000,
-  );
-  await db.insert(sessions).values({
-    id: token,
-    userId,
-    expiresAt,
-  });
-  const jar = await cookies();
-  jar.set(COOKIE_NAME, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    expires: expiresAt,
-  });
-  return token;
-}
-
-export async function destroyCurrentSession() {
-  const jar = await cookies();
-  const token = jar.get(COOKIE_NAME)?.value;
-  if (token) {
-    await db.delete(sessions).where(eq(sessions.id, token));
-    jar.delete(COOKIE_NAME);
-  }
-}
+/**
+ * Thin app-level session façade that wraps Better Auth.
+ *
+ * Better Auth owns: cookies, session lifetime, hashing, OAuth, password reset.
+ * We own: the app's "partner approval" + "admin role" gates.
+ */
 
 export type SessionContext = {
   user: User;
@@ -45,38 +19,29 @@ export type SessionContext = {
 };
 
 export async function getSessionContext(): Promise<SessionContext | null> {
-  const jar = await cookies();
-  const token = jar.get(COOKIE_NAME)?.value;
-  if (!token) return null;
+  const h = await nextHeaders();
+  const session = await auth.api.getSession({ headers: h });
+  if (!session) return null;
 
-  const now = new Date();
+  // We need the full DB user (Better Auth's session.user is shaped by its
+  // own returned schema; we want the row including app-specific columns).
   const rows = await db
-    .select({
-      user: users,
-      partner: partners,
-    })
-    .from(sessions)
-    .innerJoin(users, eq(sessions.userId, users.id))
+    .select({ user: users, partner: partners })
+    .from(users)
     .leftJoin(partners, eq(partners.userId, users.id))
-    .where(and(eq(sessions.id, token), gt(sessions.expiresAt, now)))
+    .where(eq(users.id, session.user.id))
     .limit(1);
 
-  if (rows.length === 0) return null;
-
-  return {
-    user: rows[0].user,
-    partner: rows[0].partner,
-  };
+  if (!rows.length) return null;
+  return { user: rows[0].user, partner: rows[0].partner };
 }
 
-export async function requireApprovedPartner(): Promise<SessionContext & { partner: Partner }> {
+export async function requireApprovedPartner(): Promise<
+  SessionContext & { partner: Partner }
+> {
   const ctx = await getSessionContext();
-  if (!ctx) {
-    throw new AuthError("UNAUTHENTICATED");
-  }
-  if (!ctx.partner) {
-    throw new AuthError("NO_PARTNER");
-  }
+  if (!ctx) throw new AuthError("UNAUTHENTICATED");
+  if (!ctx.partner) throw new AuthError("NO_PARTNER");
   if (ctx.partner.status !== "approved") {
     throw new AuthError("PARTNER_NOT_APPROVED");
   }
@@ -95,11 +60,3 @@ export class AuthError extends Error {
     super(code);
   }
 }
-
-/** id used by caller to set session during signup or login */
-export async function startSessionFor(userId: string) {
-  return createSession(userId);
-}
-
-/** for server-side userId creation helper */
-export { newId as newUserId };

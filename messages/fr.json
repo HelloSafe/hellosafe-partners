@@ -1,4 +1,35 @@
 {
+  "seo": {
+    "siteName": "HelloSafe Atlas",
+    "siteTitle": "HelloSafe Atlas · Programme d'affiliation assurance voyage",
+    "siteDescription": "Rejoins le programme d'affiliation HelloSafe. Jusqu'à 20 % de commission récurrente sur la meilleure offre d'assurance voyage du marché. Cookie 90 jours, paiement mensuel sans seuil.",
+    "pages": {
+      "home": {
+        "title": "Programme d'affiliation assurance voyage",
+        "description": "Ton audience voyage. Tes revenus récurrents. Marketplace assurance voyage HelloSafe : tes lecteurs comparent et souscrivent au même endroit. Jusqu'à 20 % de commission, cookie 90 jours, paiement mensuel."
+      },
+      "whyPartner": {
+        "title": "Pourquoi rejoindre HelloSafe Atlas",
+        "description": "Le programme d'affiliation assurance voyage le plus rémunérateur du marché. Jusqu'à 20 %, cookie 90 jours, commissions récurrentes, support 7j/7. Comparatif détaillé face aux programmes mono-assureur et anglo-saxons."
+      },
+      "howItWorks": {
+        "title": "Comment fonctionne le programme HelloSafe Atlas",
+        "description": "De l'inscription au premier virement en trois étapes. Validation sous 24h, deep links traqués avec Sub-ID, reporting temps réel, paiement mensuel SEPA ou wire. Kit créatif et API publique inclus."
+      },
+      "faq": {
+        "title": "Questions fréquentes sur le programme d'affiliation",
+        "description": "Inscription, validation, deep links, attribution, commissions, paiement, intégrations. Toutes les réponses sur le programme partenaire HelloSafe Atlas."
+      },
+      "signup": {
+        "title": "Créer mon espace partenaire",
+        "description": "Inscription gratuite et sans engagement au programme d'affiliation HelloSafe. Validation manuelle sous 24h ouvrées."
+      },
+      "login": {
+        "title": "Se connecter à mon espace partenaire",
+        "description": "Accès au dashboard HelloSafe Atlas : reporting, génération de liens, commissions et paiements."
+      }
+    }
+  },
   "common": {
     "brand": "HelloSafe",
     "brandSuffix": "Atlas",

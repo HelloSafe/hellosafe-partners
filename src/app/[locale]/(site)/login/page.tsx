@@ -1,6 +1,17 @@
 import { setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { LoginForm } from "./LoginForm";
+import { pageMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({ locale, path: "/login", titleKey: "login" });
+}
 
 export default async function LoginPage({
   params,

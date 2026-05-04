@@ -1,4 +1,35 @@
 {
+  "seo": {
+    "siteName": "HelloSafe Atlas",
+    "siteTitle": "HelloSafe Atlas · Travel insurance affiliate program",
+    "siteDescription": "Join the HelloSafe affiliate program. Up to 20% recurring commission on the market's best travel-insurance offering. 90-day cookie, monthly payout with no minimum threshold.",
+    "pages": {
+      "home": {
+        "title": "Travel insurance affiliate program",
+        "description": "Your travel audience. Your recurring revenue. HelloSafe travel-insurance marketplace: your readers compare and subscribe in one place. Up to 20% commission, 90-day cookie, monthly payouts."
+      },
+      "whyPartner": {
+        "title": "Why partner with HelloSafe Atlas",
+        "description": "The highest-paying travel-insurance affiliate program on the market. Up to 20%, 90-day cookie, recurring commissions, 7-day support. Detailed comparison vs single-insurer and English-speaking programs."
+      },
+      "howItWorks": {
+        "title": "How the HelloSafe Atlas program works",
+        "description": "From signup to first payout in three steps. 24-hour approval, tracked deep links with Sub-ID, real-time reporting, monthly SEPA or wire payouts. Creative kit and public API included."
+      },
+      "faq": {
+        "title": "Affiliate program FAQ",
+        "description": "Signup, approval, deep links, attribution, commissions, payouts, integrations. Every answer about the HelloSafe Atlas partner program."
+      },
+      "signup": {
+        "title": "Create my partner account",
+        "description": "Free, no-commitment signup to the HelloSafe affiliate program. Manual approval within 24 business hours."
+      },
+      "login": {
+        "title": "Sign in to my partner account",
+        "description": "Access the HelloSafe Atlas dashboard: reporting, link generation, commissions and payouts."
+      }
+    }
+  },
   "common": {
     "brand": "HelloSafe",
     "brandSuffix": "Atlas",

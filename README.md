@@ -6,8 +6,8 @@ links with click logging, conversion postback from HelloSafe, and a real
 reporting dashboard.
 
 Built with **Next.js 16** (App Router), **React 19**, **Drizzle + Postgres
-(Neon)**, **next-intl** (FR + EN), and **Tailwind v4**. Auth is handled
-in-house: email + password with bcrypt, and Google OAuth 2.0 with PKCE.
+(Neon)**, **next-intl** (FR + EN), **Tailwind v4**, and **Better Auth** for
+email + password and Google OAuth.
 
 ## Prerequisites
 
@@ -28,15 +28,18 @@ cp .env.example .env.local
 | Var | Required | Purpose |
 |---|---|---|
 | `DATABASE_URL` | ✅ | Postgres connection string (Neon pooled URL recommended) |
-| `SESSION_SECRET` | ✅ | Random 32+ chars. `openssl rand -base64 48` |
+| `BETTER_AUTH_SECRET` | ✅ | Random 32+ chars. `openssl rand -base64 48`. Falls back to `SESSION_SECRET` for backward compat. |
 | `POSTBACK_SECRET` | ✅ | Bearer token HelloSafe uses to hit `/api/postback/conversion` |
 | `IP_HASH_SALT` | ✅ | Random string — we never store raw visitor IPs |
 | `NEXT_PUBLIC_APP_URL` | ✅ | Public URL of the app, e.g. `http://localhost:3000` or `https://partners.hellosafe.com` |
-| `GOOGLE_CLIENT_ID` | ⬜ | Google OAuth Web Client ID. If unset, the "Sign in with Google" button returns 503. |
+| `GOOGLE_CLIENT_ID` | ⬜ | Google OAuth Web Client ID. Optional — Better Auth's social signin only enables when both Google vars are set. |
 | `GOOGLE_CLIENT_SECRET` | ⬜ | Google OAuth client secret |
+| `SENTRY_DSN` | ⬜ | Server-side Sentry DSN. Optional — Sentry runs as a no-op when unset. |
+| `NEXT_PUBLIC_SENTRY_DSN` | ⬜ | Client-side Sentry DSN |
+| `SENTRY_ORG` / `SENTRY_PROJECT` / `SENTRY_AUTH_TOKEN` | ⬜ | Required only for sourcemap upload at build time |
 
 For Google OAuth, your authorized redirect URI must be
-`${NEXT_PUBLIC_APP_URL}/api/auth/google/callback`.
+`${NEXT_PUBLIC_APP_URL}/api/auth/callback/google` (Better Auth convention).
 
 ## 3. Create the schema and seed demo data
 
@@ -49,8 +52,10 @@ Seed credentials:
 
 | Role | Email | Password | Entry point |
 |---|---|---|---|
+| **Demo (persistent, 1y session)** | `antoine@hellosafe.fr` | `demo1234` | `/fr/admin` |
 | Admin | `admin@hellosafe.test` | `changeme` | `/fr/admin` |
-| Partner | `demo@partner.fr` | `partner123` | `/fr/dashboard` |
+| Blog partner | `demo@partner.fr` | `partner123` | `/fr/dashboard` |
+| Agency partner | `agency@hellosafe.test` | `agency123` | `/fr/dashboard/coach` |
 
 ## 4. Run
 

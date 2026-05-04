@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { and, eq } from "drizzle-orm";
-import { db } from "@/db";
-import { gapAnalyses } from "@/db/schema";
 import { getSessionContext } from "@/lib/session";
+import { deleteAnalysis, getAnalysis } from "@/lib/coach/service";
 
 export async function GET(
   _req: NextRequest,
@@ -13,17 +11,11 @@ export async function GET(
     return NextResponse.json({ error: "UNAUTHENTICATED" }, { status: 401 });
   }
   const { id } = await ctx.params;
-  const rows = await db
-    .select()
-    .from(gapAnalyses)
-    .where(
-      and(eq(gapAnalyses.id, id), eq(gapAnalyses.partnerId, session.partner.id)),
-    )
-    .limit(1);
-  if (!rows[0]) {
+  const analysis = await getAnalysis(session.partner.id, id);
+  if (!analysis) {
     return NextResponse.json({ error: "NOT_FOUND" }, { status: 404 });
   }
-  return NextResponse.json({ analysis: rows[0] });
+  return NextResponse.json({ analysis });
 }
 
 export async function DELETE(
@@ -35,10 +27,6 @@ export async function DELETE(
     return NextResponse.json({ error: "UNAUTHENTICATED" }, { status: 401 });
   }
   const { id } = await ctx.params;
-  await db
-    .delete(gapAnalyses)
-    .where(
-      and(eq(gapAnalyses.id, id), eq(gapAnalyses.partnerId, session.partner.id)),
-    );
+  await deleteAnalysis(session.partner.id, id);
   return NextResponse.json({ ok: true });
 }

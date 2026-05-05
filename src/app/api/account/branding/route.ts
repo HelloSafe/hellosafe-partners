@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { eq } from "drizzle-orm";
-import { db } from "@/db";
-import { partners } from "@/db/schema";
 import { getSessionContext } from "@/lib/session";
+import { updateBranding } from "@/lib/partners/service";
+import { BrandingSchema } from "@/lib/partners/validators";
 
 export const dynamic = "force-dynamic";
 
@@ -26,32 +25,11 @@ export async function PUT(req: NextRequest) {
   if (!ctx?.partner) {
     return NextResponse.json({ error: "UNAUTHENTICATED" }, { status: 401 });
   }
-  const body = (await req.json().catch(() => null)) as
-    | {
-        agencyName?: string;
-        agencyLogoUrl?: string | null;
-        agencyBrandColor?: string;
-        agencyTagline?: string | null;
-      }
-    | null;
-  if (!body) {
+  const raw = await req.json().catch(() => null);
+  const parsed = BrandingSchema.safeParse(raw);
+  if (!parsed.success) {
     return NextResponse.json({ error: "MISSING_BODY" }, { status: 400 });
   }
-  // Light validation on the brand color: must look like a hex.
-  const color =
-    body.agencyBrandColor && /^#[0-9a-fA-F]{6}$/.test(body.agencyBrandColor)
-      ? body.agencyBrandColor
-      : ctx.partner.agencyBrandColor ?? "#563bff";
-
-  await db
-    .update(partners)
-    .set({
-      agencyName: body.agencyName?.trim() || ctx.partner.companyName,
-      agencyLogoUrl: body.agencyLogoUrl?.trim() || null,
-      agencyBrandColor: color,
-      agencyTagline: body.agencyTagline?.trim() || null,
-    })
-    .where(eq(partners.id, ctx.partner.id));
-
+  await updateBranding(ctx.partner.id, ctx.partner, parsed.data);
   return NextResponse.json({ ok: true });
 }

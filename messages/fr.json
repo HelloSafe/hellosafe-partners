@@ -2,11 +2,11 @@
   "seo": {
     "siteName": "HelloSafe Atlas",
     "siteTitle": "HelloSafe Atlas · Programme d'affiliation assurance voyage",
-    "siteDescription": "Rejoins le programme d'affiliation HelloSafe. Jusqu'à 20 % de commission récurrente sur la meilleure offre d'assurance voyage du marché. Cookie 90 jours, paiement mensuel sans seuil.",
+    "siteDescription": "Programme partenaires HelloSafe. Distribuez les meilleures assurances voyage du marché à vos clients, vérifiez leur couverture existante et percevez une commission sur chaque souscription. Sans engagement, paiement mensuel.",
     "pages": {
       "home": {
-        "title": "Programme d'affiliation assurance voyage",
-        "description": "Ton audience voyage. Tes revenus récurrents. Marketplace assurance voyage HelloSafe : tes lecteurs comparent et souscrivent au même endroit. Jusqu'à 20 % de commission, cookie 90 jours, paiement mensuel."
+        "title": "Programme partenaires assurance voyage",
+        "description": "L'assurance voyage qui sert vos clients et votre activité. HelloSafe agrège les meilleurs contrats du marché, vous les distribuez à vos clients et percevez une commission sur chaque souscription. Inscription en 2 minutes, validation sous 24 heures."
       },
       "whyPartner": {
         "title": "Pourquoi rejoindre HelloSafe Atlas",
@@ -77,30 +77,30 @@
   },
   "landing": {
     "hero": {
-      "eyebrow": "Programme d'affiliation HelloSafe",
-      "title": "Ton audience voyage. Tes revenus récurrents.",
-      "subtitle": "HelloSafe compare et distribue les meilleures assurances voyage. Tes lecteurs comparent, souscrivent et téléchargent leur attestation au même endroit. Toi, tu touches jusqu'à 20 %. À chaque vente. Et à chaque renouvellement.",
+      "eyebrow": "Programme partenaires HelloSafe",
+      "title": "L'assurance voyage qui sert vos clients et votre activité",
+      "subtitle": "Donnez à vos clients accès aux meilleurs contrats d'assurance voyage du marché, vérifiez s'ils sont déjà correctement couverts, et percevez une commission sur chaque souscription. Sans engagement, sans intégration technique.",
       "primaryCta": "Rejoindre le programme",
-      "secondaryCta": "Voir le fonctionnement",
-      "social": "Plus de 800 éditeurs voyage francophones en vivent déjà",
+      "secondaryCta": "Découvrir le fonctionnement",
+      "social": "Plus de 800 partenaires distribuent déjà HelloSafe en Europe",
       "highlights": [
-        "Inscription en 2 min",
-        "Validation sous 24h",
-        "Sans engagement"
+        "Inscription en 2 minutes",
+        "Validation sous 24 heures",
+        "Aucun engagement"
       ],
       "stats": {
-        "commission": "jusqu'à 20 %",
+        "commission": "Jusqu'à 20 %",
         "commissionLabel": "de commission",
         "conversion": "10,8 %",
         "conversionLabel": "taux de conversion moyen",
         "cookie": "90 jours",
         "cookieLabel": "de cookie d'attribution",
-        "recurring": "Oui",
-        "recurringLabel": "commissions récurrentes sur renouvellements"
+        "recurring": "Mensuelle",
+        "recurringLabel": "rémunération versée"
       }
     },
     "logos": {
-      "title": "Ils en vivent déjà",
+      "title": "Ils distribuent déjà HelloSafe",
       "items": [
         "Le Routard Pro",
         "Carnets de Route",
@@ -113,38 +113,38 @@
       ]
     },
     "gains": {
-      "eyebrow": "Pourquoi HelloSafe",
-      "title": "Quatre gains. Tout de suite.",
-      "subtitle": "On a passé deux ans à benchmarker tous les programmes du marché. Voilà ce qu'on a corrigé.",
+      "eyebrow": "Le programme",
+      "title": "Trois bénéfices, pour vos clients et pour vous",
+      "subtitle": "HelloSafe agrège les meilleures assurances voyage du marché et les rend accessibles à vos clients à des conditions négociées. Vous distribuez. Eux comparent, souscrivent et obtiennent leur attestation au même endroit.",
       "items": [
         {
           "key": "money",
-          "tag": "Gain d'argent",
-          "title": "Jusqu'à 20 % de commission",
-          "body": "Le taux le plus élevé du marché de l'assurance voyage. Paliers progressifs, bonus sur renouvellements, paiement mensuel sans seuil minimum."
+          "tag": "Couverture",
+          "title": "Les meilleurs contrats du marché",
+          "body": "HelloSafe sélectionne les contrats d'assurance voyage les plus solides : frais médicaux jusqu'à 4,5 M €, rapatriement aux frais réels, annulation toutes causes justifiées. Vos clients accèdent à une offre que peu d'acteurs égalent."
         },
         {
           "key": "time",
-          "tag": "Gain de temps",
-          "title": "2 minutes pour générer un lien",
-          "body": "Tu choisis la destination, on te sort le deep link traqué avec Sub-ID. Aucune formation à suivre, aucun dev à briefer."
+          "tag": "Diagnostic",
+          "title": "Un outil pour vérifier ce qu'ils ont déjà",
+          "body": "Le Coach intégré analyse en quelques minutes ce que la carte bancaire, la mutuelle et la sécurité sociale couvrent réellement. Vous identifiez les vrais besoins, vous conseillez juste."
         },
         {
           "key": "trust",
-          "tag": "Gain de confiance",
-          "title": "Tarifs négociés. Support 7j/7.",
-          "body": "Tes lecteurs paient moins cher qu'en direct chez l'assureur. Et ils ont un humain qui décroche en moins de 2 minutes en cas de pépin. Tu fidélises sans efforts."
+          "tag": "Rémunération",
+          "title": "Un revenu complémentaire à chaque vente",
+          "body": "Une commission sur chaque souscription, des paliers progressifs, un paiement mensuel. Vous transformez une recommandation utile en revenu récurrent."
         },
         {
           "key": "calm",
-          "tag": "Gain de sérénité",
-          "title": "Une marketplace, pas un revendeur",
-          "body": "Comparer ET souscrire au même endroit, sans redirection, sans devis à rappeler 48h plus tard. Le taux de conversion qu'aucun mono-assureur n'égale."
+          "tag": "Simplicité",
+          "title": "Aucune intégration technique requise",
+          "body": "Liens de tracking en deux minutes, tableau de bord en temps réel, support direct. Vous n'avez ni à développer, ni à former vos équipes."
         }
       ]
     },
     "personas": {
-      "title": "Qui en vit déjà",
+      "title": "Une communauté diverse de partenaires",
       "items": [
         { "label": "Blogs voyage", "count": "420+ blogs" },
         { "label": "Comparateurs visa", "count": "60+ sites" },
@@ -153,38 +153,38 @@
       ]
     },
     "forWho": {
-      "eyebrow": "Tu es...",
-      "title": "Choisis ton profil. On te montre le potentiel.",
-      "subtitle": "Chaque audience voyage a son angle, son tunnel et son levier. On les a déjà optimisés pour les sept profils ci-dessous.",
+      "eyebrow": "À qui s'adresse HelloSafe",
+      "title": "Une plateforme adaptée à chaque type de partenaire",
+      "subtitle": "Agences de voyage, blogs, créateurs, comparateurs visa, conseillers expatriation : HelloSafe s'intègre à votre activité existante sans contrainte technique. Sélectionnez votre profil pour découvrir les bénéfices spécifiques.",
       "items": [
-        { "slug": "blog", "label": "Blogueur voyage", "tag": "Revenus récurrents", "blurb": "Tes articles evergreen deviennent des machines à commission, mois après mois." },
-        { "slug": "agency", "label": "Agence de voyage", "tag": "Coach de vente intégré", "blurb": "Le commercial sort le Coach en RDV, le client signe l'assurance dans la foulée." },
-        { "slug": "visa", "label": "Spécialiste visa", "tag": "Attestation 90 sec", "blurb": "L'API et le widget qui délivrent un certificat conforme avant la fin du formulaire." },
-        { "slug": "creator", "label": "Créateur voyage", "tag": "Sub-ID par story", "blurb": "Un lien, une story, un Sub-ID. Tu vois ce qui marche, tu le doubles." },
-        { "slug": "expat", "label": "Conseiller expat", "tag": "Panier 1 200 €", "blurb": "Les contrats long-stay payent une commission cumulée à chaque renouvellement." },
-        { "slug": "student", "label": "Mobilité étudiante", "tag": "Visa-ready", "blurb": "L'attestation conforme aux ambassades, du Canada à l'Australie." },
-        { "slug": "cruise", "label": "Croisière & luxe", "tag": "Annulation 100 %", "blurb": "Le panier le plus élevé du voyage protégé sans clause sournoise." }
+        { "slug": "blog", "label": "Blogueur voyage", "tag": "Revenus récurrents", "blurb": "Vos contenus pérennes deviennent une source de revenus récurrente, mois après mois." },
+        { "slug": "agency", "label": "Agence de voyage", "tag": "Coach intégré", "blurb": "Le Coach d'analyse de couverture s'intègre dans vos rendez-vous client. La souscription se fait dans la foulée." },
+        { "slug": "visa", "label": "Spécialiste visa", "tag": "Attestation conforme", "blurb": "Vos visiteurs obtiennent une attestation conforme avant la fin du formulaire visa." },
+        { "slug": "creator", "label": "Créateur voyage", "tag": "Sub-ID par publication", "blurb": "Un Sub-ID par publication, un suivi précis de ce qui convertit, des décisions éditoriales fondées sur la donnée." },
+        { "slug": "expat", "label": "Conseiller expat", "tag": "Long séjour", "blurb": "Les contrats long séjour offrent une commission cumulative à chaque renouvellement." },
+        { "slug": "student", "label": "Mobilité étudiante", "tag": "Visa-ready", "blurb": "L'attestation est reconnue par les ambassades, du Canada à l'Australie." },
+        { "slug": "cruise", "label": "Croisière & luxe", "tag": "Annulation 100 %", "blurb": "Annulation jusqu'à 100 % du voyage, sans clause restrictive sur les paniers élevés." }
       ],
       "linkLabel": "Voir le détail"
     },
     "testimonials": {
-      "title": "Ils ont switché. Ils ne reviennent pas.",
-      "subtitle": "Avant HelloSafe : un programme mono-assureur ou un comparateur anglo-saxon. Après, voilà ce qu'ils constatent.",
+      "title": "Ils distribuent HelloSafe",
+      "subtitle": "Trois retours de partenaires actuels après 3 à 6 mois sur le programme.",
       "items": [
         {
-          "quote": "HelloSafe convertit aussi bien sur mes articles PVT que sur mes guides voyage génériques. Versus mon ancien programme : +18 % de revenu par visiteur dès le premier mois, et un support qui répond vraiment.",
+          "quote": "HelloSafe convertit aussi bien sur mes articles PVT que sur mes guides voyage génériques. Comparé à mon ancien programme : +18 % de revenu par visiteur dès le premier mois, et un support qui répond rapidement.",
           "author": "Sarah L.",
           "role": "Blog voyage FR, 45k visites/mois",
           "metric": "+18 % RPV"
         },
         {
-          "quote": "On a testé trois programmes concurrents avant. Ici l'API est propre, le reporting est en temps réel, et l'équipe répond en moins d'une heure sur une question technique. Jamais vu ça ailleurs.",
+          "quote": "Nous avons testé trois programmes concurrents avant. Ici l'API est propre, le reporting est en temps réel, et l'équipe technique répond en moins d'une heure sur les questions d'intégration.",
           "author": "Romain D.",
           "role": "Comparateur visa, CTO",
           "metric": "Intégration < 4h"
         },
         {
-          "quote": "Les tarifs négociés font la différence pour ma communauté : mes followers me remercient d'avoir trouvé moins cher qu'en direct. C'est ça aussi, la confiance. Et c'est ce qui fidélise.",
+          "quote": "Les conditions négociées font la différence pour ma communauté : mes followers me confirment avoir trouvé moins cher que sur le site de l'assureur. La fidélisation s'en ressent directement.",
           "author": "Camille M.",
           "role": "Créatrice Instagram voyage, 120k followers",
           "metric": "3,1× taux de clic"
@@ -192,33 +192,33 @@
       ]
     },
     "steps": {
-      "eyebrow": "Comment ça marche",
-      "title": "Trois étapes. Zéro friction.",
-      "subtitle": "De l'inscription au premier virement, tout tient dans un après-midi.",
+      "eyebrow": "Mise en route",
+      "title": "Trois étapes pour démarrer",
+      "subtitle": "De l'inscription au premier paiement, le parcours tient dans un après-midi.",
       "items": [
         {
           "step": "01",
-          "title": "Tu t'inscris en 2 minutes",
-          "body": "Tu crées ton espace partenaire, tu décris ton audience, on valide sous 24h ouvrées."
+          "title": "Vous vous inscrivez",
+          "body": "Création de votre espace partenaire, présentation de votre activité, validation sous 24 heures ouvrées."
         },
         {
           "step": "02",
-          "title": "Tu génères tes liens traqués",
-          "body": "Pour chaque contenu, un deep link vers la bonne page HelloSafe, avec Sub-ID pour traquer article par article."
+          "title": "Vous générez vos liens",
+          "body": "Un lien traqué par contenu, avec Sub-ID si vous souhaitez mesurer chaque article ou story individuellement."
         },
         {
           "step": "03",
-          "title": "Tu encaisses",
-          "body": "Clics, devis, ventes, commissions, tu suis tout en temps réel. Paiement mensuel, virement SEPA ou wire."
+          "title": "Vous percevez vos commissions",
+          "body": "Suivi des clics, devis et ventes en temps réel. Paiement mensuel par virement SEPA."
         }
       ]
     },
     "finalCta": {
-      "eyebrow": "On y va ?",
-      "title": "Ton audience voyage attend. Pas le programme.",
-      "body": "Inscription gratuite, sans engagement. Tu gardes la main sur ton expérience. On s'occupe du reste.",
+      "eyebrow": "Prêt à démarrer ?",
+      "title": "Rejoignez le programme partenaires HelloSafe",
+      "body": "Inscription gratuite, validation sous 24 heures. Vous gardez la main sur votre expérience client, nous prenons en charge la distribution, le paiement et le support.",
       "primary": "Créer mon espace partenaire",
-      "secondary": "Parler à un account manager"
+      "secondary": "Échanger avec un responsable"
     }
   },
   "why": {

@@ -6,6 +6,8 @@ import { auth } from "@/lib/auth";
 import { db } from "@/db";
 import { users, partners } from "@/db/schema";
 import { newId, newPartnerCode } from "@/lib/ids";
+import { send } from "@/lib/mail";
+import { appUrl } from "@/lib/app-url";
 
 // Wrapper around Better Auth signUpEmail that ALSO creates the partner record
 // in the same call, preserving the existing single-form UX.
@@ -104,6 +106,15 @@ export async function POST(req: NextRequest) {
     monthlyVisitors: visitors,
     status: "pending",
   });
+
+  // Welcome email — best-effort. Inngest will replace this with a queued
+  // event in the next iteration so retries are automatic.
+  send({
+    to: email,
+    template: "welcome",
+    data: { name: contactName, loginUrl: `${appUrl()}/login` },
+    locale: "fr",
+  }).catch((e) => console.error("[mail] welcome failed", e));
 
   return NextResponse.json({ ok: true, status: "pending" }, { status: 201 });
 }

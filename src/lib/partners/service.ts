@@ -19,6 +19,42 @@ export async function getById(id: string): Promise<Partner | null> {
 }
 
 /**
+ * Partner + the email of its linked user. Used by the admin route when it
+ * needs to email the partner after a status change.
+ */
+export async function getByIdWithEmail(
+  id: string,
+): Promise<(Partner & { email: string }) | null> {
+  const rows = await db
+    .select({
+      id: partners.id,
+      userId: partners.userId,
+      partnerCode: partners.partnerCode,
+      companyName: partners.companyName,
+      contactName: partners.contactName,
+      website: partners.website,
+      audience: partners.audience,
+      country: partners.country,
+      monthlyVisitors: partners.monthlyVisitors,
+      status: partners.status,
+      approvedAt: partners.approvedAt,
+      agencyName: partners.agencyName,
+      agencyLogoUrl: partners.agencyLogoUrl,
+      agencyBrandColor: partners.agencyBrandColor,
+      agencyTagline: partners.agencyTagline,
+      persona: partners.persona,
+      onboardedAt: partners.onboardedAt,
+      createdAt: partners.createdAt,
+      email: users.email,
+    })
+    .from(partners)
+    .innerJoin(users, eq(users.id, partners.userId))
+    .where(eq(partners.id, id))
+    .limit(1);
+  return rows[0] ?? null;
+}
+
+/**
  * List all partners with their click / sales / commission aggregates and
  * the linked user email. Used by the admin dashboard.
  */

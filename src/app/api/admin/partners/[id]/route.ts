@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSessionContext } from "@/lib/session";
-import { updateStatus } from "@/lib/partners/service";
+import { getByIdWithEmail, updateStatus } from "@/lib/partners/service";
 import { AdminStatusSchema } from "@/lib/partners/validators";
+import { send } from "@/lib/mail";
+import { appUrl } from "@/lib/app-url";
+
+const SUPPORT_EMAIL =
+  process.env.SUPPORT_EMAIL ?? "support@hellosafe.com";
 
 export async function PATCH(
   req: NextRequest,
@@ -20,5 +25,37 @@ export async function PATCH(
   }
 
   await updateStatus(id, parsed.data);
+
+  // Notify the partner via email — only when the status is a final
+  // decision (approved / rejected). "pending" is a manual rollback and
+  // doesn't deserve an email.
+  if (parsed.data.status === "approved" || parsed.data.status === "rejected") {
+    const partner = await getByIdWithEmail(id);
+    if (partner) {
+      const template =
+        parsed.data.status === "approved"
+          ? "partner-approved"
+          : "partner-rejected";
+      const data =
+        parsed.data.status === "approved"
+          ? {
+              name: partner.contactName,
+              dashboardUrl: `${appUrl()}/dashboard`,
+            }
+          : {
+              name: partner.contactName,
+              reason: null,
+              contactEmail: SUPPORT_EMAIL,
+            };
+      send({
+        to: partner.email,
+        // Discriminated union: TS picks the right shape from `template`.
+        template: template as never,
+        data: data as never,
+        locale: "fr",
+      }).catch((e) => console.error(`[mail] ${template} failed`, e));
+    }
+  }
+
   return NextResponse.json({ ok: true, status: parsed.data.status });
 }

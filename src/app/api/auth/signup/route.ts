@@ -8,6 +8,11 @@ import { users, partners } from "@/db/schema";
 import { newId, newPartnerCode } from "@/lib/ids";
 import { send } from "@/lib/mail";
 import { appUrl } from "@/lib/app-url";
+import {
+  clientIp,
+  rateLimitResponse,
+  signupLimiter,
+} from "@/lib/ratelimit";
 
 // Wrapper around Better Auth signUpEmail that ALSO creates the partner record
 // in the same call, preserving the existing single-form UX.
@@ -26,6 +31,10 @@ const Body = z.object({
 });
 
 export async function POST(req: NextRequest) {
+  // Rate limit signups per IP to absorb scripted account-creation floods.
+  const verdict = await signupLimiter(clientIp(req));
+  if (!verdict.success) return rateLimitResponse(verdict);
+
   let raw: unknown;
   try {
     raw = await req.json();

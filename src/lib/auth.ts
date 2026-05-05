@@ -68,6 +68,22 @@ export const auth = betterAuth({
       secure: process.env.NODE_ENV === "production",
     },
   },
+  rateLimit: {
+    // Production-only by default — keeps `npm run dev` snappy when poking
+    // the auth surface manually.
+    enabled: process.env.NODE_ENV === "production",
+    storage: "memory",
+    customRules: {
+      // Brute-force protection on email login. 5 attempts per 5 minutes
+      // per IP is the OWASP-ish floor.
+      "/sign-in/email": { window: 300, max: 5 },
+      // Cap social signin churn to absorb popup loops.
+      "/sign-in/social": { window: 60, max: 10 },
+      // Forgot-password / verification email floods.
+      "/forget-password": { window: 600, max: 3 },
+      "/send-verification-email": { window: 600, max: 3 },
+    },
+  },
   // nextCookies must be the LAST plugin: it intercepts api calls in route
   // handlers / server actions and writes the session cookies to the outgoing
   // Next.js Response automatically.

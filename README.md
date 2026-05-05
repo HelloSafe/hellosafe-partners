@@ -64,6 +64,36 @@ npm run dev
 # open http://localhost:3000
 ```
 
+## 5. Optional production services
+
+All of these are no-op when their env vars are missing, so dev / preview
+deploys work without them.
+
+| Service | Purpose | Env vars |
+|---|---|---|
+| Sentry | Error monitoring + performance | `SENTRY_DSN`, `NEXT_PUBLIC_SENTRY_DSN`, `SENTRY_ORG`, `SENTRY_PROJECT`, `SENTRY_AUTH_TOKEN` |
+| Resend | Transactional emails | `RESEND_API_KEY`, `MAIL_FROM` |
+| Inngest | Async jobs / queue | `INNGEST_EVENT_KEY`, `INNGEST_SIGNING_KEY` |
+| Upstash Redis | Rate limiting | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` |
+| PostHog | Product analytics (cookieless) | `NEXT_PUBLIC_POSTHOG_KEY`, `POSTHOG_KEY` (server) |
+| Axiom | Structured log search | Install via Vercel integration; no env var needed in code |
+| Better Stack | Uptime monitoring | Configured externally (web UI), no env var |
+
+### Better Stack uptime monitoring
+
+1. Sign up at [betterstack.com/uptime](https://betterstack.com/uptime) (free tier covers 10 monitors).
+2. Create monitors:
+   - `https://partners.hellosafe.com/` (HTTP 200, every 1 min)
+   - `https://partners.hellosafe.com/api/auth/me` (expect 200 with `{"user":null}` payload)
+   - `https://partners.hellosafe.com/r/__no_match__` (expect 307 redirect to fallback)
+3. Connect a Slack / email / SMS escalation chain.
+
+### Axiom log search
+
+1. Install the [Axiom Vercel integration](https://vercel.com/integrations/axiom).
+2. It automatically pipes Vercel function logs (every `console.log` JSON line emitted by `src/lib/log/index.ts`) into a queryable Axiom dataset.
+3. Useful queries: `event = "conversion.created"`, `event = "postback.ref_mismatch"`, `level = "error"`.
+
 ## Architecture
 
 ```

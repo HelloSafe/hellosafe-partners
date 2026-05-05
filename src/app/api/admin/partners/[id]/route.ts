@@ -5,6 +5,7 @@ import { AdminStatusSchema } from "@/lib/partners/validators";
 import { send } from "@/lib/mail";
 import { appUrl } from "@/lib/app-url";
 import { captureServer } from "@/lib/analytics/server";
+import { log } from "@/lib/log";
 
 const SUPPORT_EMAIL =
   process.env.SUPPORT_EMAIL ?? "support@hellosafe.com";
@@ -26,6 +27,11 @@ export async function PATCH(
   }
 
   await updateStatus(id, parsed.data);
+  log.event("admin.partner_status_changed", {
+    adminUserId: session.user.id,
+    partnerId: id,
+    newStatus: parsed.data.status,
+  });
 
   // Notify the partner via email — only when the status is a final
   // decision (approved / rejected). "pending" is a manual rollback and

@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { conversions, partners, trackedLinks } from "@/db/schema";
 import { newId } from "@/lib/ids";
 import { inngest } from "@/lib/inngest/client";
+import { log } from "@/lib/log";
 import type { PostbackPayload, SimulateConversionInput } from "./validators";
 
 /**
@@ -125,6 +126,15 @@ async function recordOrUpdateConversion(params: RecordParams) {
     subIdOverride: params.subIdOverride,
     validatedAt: params.status === "validated" ? new Date() : null,
   });
+  log.event("conversion.created", {
+    conversionId: id,
+    partnerId: params.partnerId,
+    linkId: params.linkId,
+    amountCents: params.amountCents,
+    commissionCents: params.commissionCents,
+    currency: params.currency,
+    status: params.status,
+  });
   inngest
     .send({
       name: "conversion/created",
@@ -151,13 +161,27 @@ async function recordOrUpdateConversion(params: RecordParams) {
  */
 export async function postbackFromHelloSafe(payload: PostbackPayload) {
   const ref = splitRef(payload.ref);
-  if (!ref) throw new PostbackError("INVALID_REF", 400);
+  if (!ref) {
+    log.warn("postback.invalid_ref", { ref: payload.ref });
+    throw new PostbackError("INVALID_REF", 400);
+  }
 
   const link = await findLinkByShortCode(ref.shortCode);
-  if (!link) throw new PostbackError("LINK_NOT_FOUND", 404);
+  if (!link) {
+    log.warn("postback.link_not_found", {
+      shortCode: ref.shortCode,
+      externalOrderId: payload.externalOrderId,
+    });
+    throw new PostbackError("LINK_NOT_FOUND", 404);
+  }
 
   const ownerCode = await getPartnerCode(link.partnerId);
   if (ownerCode !== ref.partnerCode) {
+    log.warn("postback.ref_mismatch", {
+      claimedPartnerCode: ref.partnerCode,
+      actualPartnerCode: ownerCode,
+      shortCode: ref.shortCode,
+    });
     throw new PostbackError("REF_MISMATCH", 400);
   }
 

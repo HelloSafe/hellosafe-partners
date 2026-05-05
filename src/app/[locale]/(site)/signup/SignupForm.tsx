@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useRouter, Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { GoogleButton } from "@/components/auth/GoogleButton";
+import { track } from "@/lib/analytics";
 
 type Msg = {
   type: "error" | "info";
@@ -57,6 +58,10 @@ export function SignupForm() {
         setLoading(false);
         return;
       }
+      // Best-effort: PostHog will only fire if the visitor has consented.
+      // We don't have the partner id at this point (the wrapper returned
+      // ok but no body); we'll re-identify on next page load via /api/auth/me.
+      track("signup_completed", { partnerId: "pending" });
       router.push("/signup/pending");
     } catch {
       setMsg({ type: "error", text: "Connexion au serveur impossible." });

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
+import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import type { Metadata } from "next";
 
 export function generateStaticParams() {
@@ -56,7 +57,10 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body className="min-h-dvh flex flex-col bg-white text-ink-900 antialiased">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <AnalyticsProvider />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

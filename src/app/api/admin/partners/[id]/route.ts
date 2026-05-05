@@ -4,6 +4,7 @@ import { getByIdWithEmail, updateStatus } from "@/lib/partners/service";
 import { AdminStatusSchema } from "@/lib/partners/validators";
 import { send } from "@/lib/mail";
 import { appUrl } from "@/lib/app-url";
+import { captureServer } from "@/lib/analytics/server";
 
 const SUPPORT_EMAIL =
   process.env.SUPPORT_EMAIL ?? "support@hellosafe.com";
@@ -54,6 +55,11 @@ export async function PATCH(
         data: data as never,
         locale: "fr",
       }).catch((e) => console.error(`[mail] ${template} failed`, e));
+
+      captureServer(partner.id, "partner_status_changed", {
+        partnerId: partner.id,
+        status: parsed.data.status,
+      });
     }
   }
 

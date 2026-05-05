@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { GoogleButton } from "@/components/auth/GoogleButton";
 import { authClient } from "@/lib/auth-client";
+import { identify, track } from "@/lib/analytics";
 
 export function LoginForm() {
   const t = useTranslations("auth.login");
@@ -33,6 +34,10 @@ export function LoginForm() {
     const me = await fetch("/api/auth/me", { cache: "no-store" })
       .then((r) => r.json())
       .catch(() => null);
+    if (me?.user?.id) {
+      identify(me.user.id, { email: me.user.email, role: me.user.role });
+    }
+    track("login_completed", { method: "email" });
     if (me?.user?.role === "admin") {
       router.push("/admin");
     } else {

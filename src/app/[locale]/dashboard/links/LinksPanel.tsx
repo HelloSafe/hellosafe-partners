@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { DESTINATIONS, type DestinationKey } from "@/lib/links/destinations";
+import { track } from "@/lib/analytics";
 
 type LinkRow = {
   id: string;
@@ -72,6 +73,11 @@ export function LinksPanel() {
         return;
       }
       setLinks((prev) => (prev ? [data.link, ...prev] : [data.link]));
+      track("link_created", {
+        destination: data.link.destination,
+        partnerId: "self",
+        campaign: data.link.campaign || undefined,
+      });
       setForm({ ...form, label: "", campaign: "", subId: "" });
     } finally {
       setSubmitting(false);

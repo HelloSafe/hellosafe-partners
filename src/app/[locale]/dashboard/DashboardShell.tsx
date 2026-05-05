@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Logo } from "@/components/ui/Logo";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { identify, reset, track } from "@/lib/analytics";
 
 export type DashboardSession = {
   user: {
@@ -80,7 +81,14 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           router.replace("/onboarding" as never);
           return;
         }
-        setState({ phase: "ready", session: d as DashboardSession });
+        const session = d as DashboardSession;
+        identify(session.user.id, {
+          email: session.user.email,
+          role: session.user.role,
+          partnerId: session.partner.id,
+          companyName: session.partner.companyName,
+        });
+        setState({ phase: "ready", session });
       })
       .catch(() => router.replace("/login"));
     return () => {
@@ -89,6 +97,8 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   }, [router, pathname]);
 
   const logout = async () => {
+    track("logout", {});
+    reset();
     const { authClient } = await import("@/lib/auth-client");
     await authClient.signOut();
     router.replace("/");

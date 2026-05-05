@@ -129,12 +129,9 @@ export function PayoutsPanel() {
                     <Td className="text-ink-500">{fmtDate(p.date)}</Td>
                     <Td>
                       {p.status === "paid" ? (
-                        <a
-                          href="#"
-                          className="text-brand-700 text-xs font-semibold hover:underline"
-                        >
-                          {t("downloadInvoice")} ↓
-                        </a>
+                        <span className="text-ink-300 text-xs italic">
+                          {t("downloadInvoice")} (bientôt)
+                        </span>
                       ) : (
                         <span className="text-ink-300 text-xs">·</span>
                       )}

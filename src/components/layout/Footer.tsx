@@ -44,7 +44,7 @@ export function Footer() {
               </h3>
               <ul className="mt-3 space-y-2 text-sm">
                 <li><Link className="text-ink-700 hover:text-brand-500" href="/faq">{t("links.faq")}</Link></li>
-                <li><a className="text-ink-700 hover:text-brand-500" href="#">{t("links.contact")}</a></li>
+                <li><a className="text-ink-700 hover:text-brand-500" href="mailto:contact@hellosafe.com">{t("links.contact")}</a></li>
               </ul>
             </div>
             <div>

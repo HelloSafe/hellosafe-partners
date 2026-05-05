@@ -12,7 +12,6 @@ if (!DATABASE_URL) {
 
 // Reuse the same client across hot reloads in dev.
 declare global {
-  // eslint-disable-next-line no-var
   var __hspDbClient: ReturnType<typeof postgres> | undefined;
 }
 

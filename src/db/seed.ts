@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 // Run with: npm run db:seed  (picks up .env.local via tsx --env-file)
 import { eq, and, isNull } from "drizzle-orm";
 import { hashPassword } from "better-auth/crypto";

@@ -98,9 +98,9 @@ export default async function TermsPage({
       </p>
       <p>
         Le paiement des Commissions intervient mensuellement, à compter
-        d&apos;un seuil minimum de [À COMPLÉTER] € accumulé. Les modalités
-        précises (Stripe Connect, RIB, justificatifs) sont communiquées au
-        moment de l&apos;activation du module de paiement.
+        d&apos;un seuil minimum de 50 € accumulés. Les modalités précises
+        (Stripe Connect, RIB, justificatifs) sont communiquées au moment de
+        l&apos;activation du module de paiement.
       </p>
 
       <h2>5. Suspension et résiliation</h2>
@@ -143,8 +143,8 @@ export default async function TermsPage({
       <h2>9. Loi applicable et juridiction</h2>
       <p>
         Les présentes CGU sont régies par le droit français. Tout litige
-        relève de la compétence exclusive des tribunaux du ressort du siège
-        social de HelloSafe SAS, sauf disposition légale contraire.
+        relève de la compétence exclusive des tribunaux du ressort du
+        Tribunal de commerce de Rennes, sauf disposition légale contraire.
       </p>
     </LegalLayout>
   );

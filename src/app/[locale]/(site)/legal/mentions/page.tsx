@@ -14,8 +14,8 @@ export async function generateMetadata({
 
 /**
  * Mentions légales — obligatoire en France (LCEN art. 6 III).
- * À adapter par Antoine avec les vraies infos juridiques (RCS, SIREN,
- * directeur de publication, hébergeur).
+ * Données société récupérées depuis Pappers (SIREN 883 069 593) le
+ * 5 mai 2026.
  */
 export default async function MentionsPage({
   params,
@@ -29,18 +29,29 @@ export default async function MentionsPage({
     <LegalLayout title="Mentions légales" updated="5 mai 2026">
       <h2>Éditeur du site</h2>
       <p>
-        Le site <strong>partners.hellosafe.com</strong> (ci-après « le Site ») est édité par :
+        Le site <strong>partners.hellosafe.com</strong> (ci-après « le Site »)
+        est édité par :
       </p>
       <ul>
-        <li>Raison sociale : HelloSafe SAS</li>
-        <li>Forme juridique : Société par actions simplifiée</li>
-        <li>Capital social : [À compléter]</li>
-        <li>Siège social : [À compléter]</li>
-        <li>RCS : [À compléter]</li>
-        <li>SIREN : [À compléter]</li>
-        <li>TVA intracommunautaire : [À compléter]</li>
+        <li>Raison sociale : HELLO SAFE</li>
+        <li>Forme juridique : Société par actions simplifiée (SAS)</li>
+        <li>Capital social : 1 588,36 €</li>
+        <li>
+          Siège social : 5 allée de la Grande Treille, 35200 Rennes, France
+        </li>
+        <li>RCS : 883 069 593 R.C.S. Rennes</li>
+        <li>SIREN : 883 069 593</li>
+        <li>TVA intracommunautaire : FR81883069593</li>
+        <li>Code NAF : 62.01Z (Programmation informatique)</li>
         <li>Email de contact : contact@hellosafe.com</li>
-        <li>Directeur de la publication : [À compléter]</li>
+        <li>
+          Président : société BLUE, SAS (SIREN 880 981 808), représentée par
+          son représentant légal
+        </li>
+        <li>
+          Directeur de la publication : le représentant légal de la société
+          BLUE, en sa qualité de président de HELLO SAFE
+        </li>
       </ul>
 
       <h2>Hébergement</h2>
@@ -57,19 +68,22 @@ export default async function MentionsPage({
 
       <h2>Statut d&apos;intermédiaire en assurance</h2>
       <p>
-        HelloSafe agit en qualité d&apos;intermédiaire en assurance, immatriculé
-        à l&apos;ORIAS sous le numéro [À compléter] (vérifiable sur{" "}
+        HELLO SAFE est immatriculée à l&apos;ORIAS sous le numéro{" "}
+        <strong>21 008 038</strong> en qualité de courtier en assurance
+        (catégorie COA), inscription en date du 1<sup>er</sup> septembre
+        2023, autorisée à encaisser des fonds. Le statut est vérifiable sur{" "}
         <a href="https://www.orias.fr" target="_blank" rel="noopener">
           orias.fr
         </a>
-        ). HelloSafe est soumis au contrôle de l&apos;Autorité de contrôle
-        prudentiel et de résolution (ACPR), 4 place de Budapest, 75436 Paris.
+        . HELLO SAFE est soumise au contrôle de l&apos;Autorité de contrôle
+        prudentiel et de résolution (ACPR), 4 place de Budapest, CS 92459,
+        75436 Paris Cedex 09.
       </p>
 
       <h2>Propriété intellectuelle</h2>
       <p>
         L&apos;ensemble des contenus présents sur le Site (textes, images,
-        logos, code) est la propriété exclusive de HelloSafe SAS ou de ses
+        logos, code) est la propriété exclusive de HELLO SAFE ou de ses
         partenaires. Toute reproduction, représentation, modification ou
         adaptation, totale ou partielle, sans autorisation écrite préalable
         est interdite.

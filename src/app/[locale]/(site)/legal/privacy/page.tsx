@@ -29,7 +29,7 @@ export default async function PrivacyPage({
   return (
     <LegalLayout title="Politique de confidentialité" updated="5 mai 2026">
       <p>
-        HelloSafe SAS (ci-après « HelloSafe », « nous ») accorde une
+        HELLO SAFE (ci-après « HelloSafe », « nous ») accorde une
         importance particulière à la protection de vos données personnelles.
         Cette politique décrit les traitements que nous opérons sur vos
         données dans le cadre du programme partenaires HelloSafe.
@@ -37,7 +37,7 @@ export default async function PrivacyPage({
 
       <h2>1. Responsable du traitement</h2>
       <p>
-        Le responsable du traitement est <strong>HelloSafe SAS</strong>, dont
+        Le responsable du traitement est <strong>HELLO SAFE</strong>, dont
         les coordonnées sont disponibles dans nos{" "}
         <Link href={"/legal/mentions" as never}>mentions légales</Link>.
       </p>

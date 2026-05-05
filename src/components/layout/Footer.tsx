@@ -52,8 +52,30 @@ export function Footer() {
                 {t("columns.legal")}
               </h3>
               <ul className="mt-3 space-y-2 text-sm">
-                <li><a className="text-ink-700 hover:text-brand-500" href="#">{t("links.terms")}</a></li>
-                <li><a className="text-ink-700 hover:text-brand-500" href="#">{t("links.privacy")}</a></li>
+                <li>
+                  <Link
+                    className="text-ink-700 hover:text-brand-500"
+                    href={"/legal/terms" as never}
+                  >
+                    {t("links.terms")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-ink-700 hover:text-brand-500"
+                    href={"/legal/privacy" as never}
+                  >
+                    {t("links.privacy")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-ink-700 hover:text-brand-500"
+                    href={"/legal/mentions" as never}
+                  >
+                    Mentions légales
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

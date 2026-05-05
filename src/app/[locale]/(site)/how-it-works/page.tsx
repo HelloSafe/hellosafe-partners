@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { LinkButton } from "@/components/ui/LinkButton";
+import { HeroIllustration } from "@/components/landing/HeroIllustration";
 import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -47,20 +48,23 @@ function Hero() {
       <div className="absolute -top-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-brand-200/40 blur-3xl" />
       <div className="absolute -bottom-32 -left-32 h-[24rem] w-[24rem] rounded-full bg-accent-200/30 blur-3xl" />
       <Container className="relative ds-section lg:py-24">
-        <div className="max-w-3xl">
-          <span className="ds-corpo">{t("eyebrow")}</span>
-          <h1 className="ds-h1 mt-4 text-ink-900">{t("title")}</h1>
-          <p className="ds-subtitle mt-6 text-ink-700 max-w-2xl">
-            {t("subtitle")}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <LinkButton href="/signup" size="lg">
-              {tc("joinNow")} →
-            </LinkButton>
-            <LinkButton href="/why-partner" variant="outline" size="lg">
-              {tc("getStarted")}
-            </LinkButton>
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="max-w-2xl">
+            <span className="ds-corpo">{t("eyebrow")}</span>
+            <h1 className="ds-h1 mt-4 text-ink-900">{t("title")}</h1>
+            <p className="ds-subtitle mt-6 text-ink-700 max-w-xl">
+              {t("subtitle")}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <LinkButton href="/signup" size="lg">
+                {tc("joinNow")} →
+              </LinkButton>
+              <LinkButton href="/why-partner" variant="outline" size="lg">
+                {tc("getStarted")}
+              </LinkButton>
+            </div>
           </div>
+          <HeroIllustration kind="process" />
         </div>
       </Container>
     </section>
@@ -134,24 +138,26 @@ function LinkBuilderMockup() {
           <div className="max-w-xl">
             <span className="ds-corpo">Aperçu</span>
             <h2 className="ds-h2 mt-3 text-ink-900">
-              Le générateur de liens en 30 secondes.
+              Le générateur de liens en 30 secondes
             </h2>
             <p className="ds-body mt-4 text-ink-700">
-              Tu choisis la destination, on te sort le deep link traqué avec
-              Sub-ID. Pas de formulaire à remplir, pas de doc d&apos;API à lire.
+              Vous choisissez la destination, nous générons le deep link traqué
+              avec son Sub-ID. Aucun formulaire complexe, aucune documentation
+              d&apos;API à parcourir.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-ink-700">
               <li className="flex items-start gap-2">
                 <Check />
-                Destinations pré-mappées (PVT, Schengen, longue durée…).
+                Destinations pré-mappées (PVT, Schengen, longue durée, etc.).
               </li>
               <li className="flex items-start gap-2">
                 <Check />
-                Sub-ID par article, par newsletter, par story.
+                Sub-ID par article, newsletter ou publication.
               </li>
               <li className="flex items-start gap-2">
                 <Check />
-                UTM personnalisables, cookie 90 jours.
+                Paramètres UTM personnalisables, cookie d&apos;attribution
+                90 jours.
               </li>
             </ul>
           </div>

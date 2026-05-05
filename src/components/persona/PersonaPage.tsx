@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { LinkButton } from "@/components/ui/LinkButton";
-import type { PersonaContent } from "@/lib/personas";
+import { HeroIllustration } from "@/components/landing/HeroIllustration";
+import type { PersonaContent, PersonaSlug } from "@/lib/personas";
 
 export function PersonaPage({
   data,
@@ -33,24 +34,34 @@ function Hero({
       <div className="absolute -top-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-brand-200/40 blur-3xl" />
       <div className="absolute -bottom-32 -left-32 h-[24rem] w-[24rem] rounded-full bg-accent-200/30 blur-3xl" />
       <Container className="relative ds-section lg:py-24">
-        <div className="max-w-3xl">
-          <span className="ds-corpo">{data.hero.eyebrow}</span>
-          <h1 className="ds-h1 mt-4 text-ink-900">{data.hero.title}</h1>
-          <p className="ds-subtitle mt-6 text-ink-700 max-w-2xl">
-            {data.hero.subtitle}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <LinkButton href="/signup" size="lg">
-              {data.cta.primary} →
-            </LinkButton>
-            <LinkButton href="/how-it-works" variant="outline" size="lg">
-              {data.cta.secondary}
-            </LinkButton>
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="max-w-2xl">
+            <span className="ds-corpo">{data.hero.eyebrow}</span>
+            <h1 className="ds-h1 mt-4 text-ink-900">{data.hero.title}</h1>
+            <p className="ds-subtitle mt-6 text-ink-700 max-w-xl">
+              {data.hero.subtitle}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <LinkButton href="/signup" size="lg">
+                {data.cta.primary} →
+              </LinkButton>
+              <LinkButton href="/how-it-works" variant="outline" size="lg">
+                {data.cta.secondary}
+              </LinkButton>
+            </div>
           </div>
+          <HeroIllustration kind={illustrationKindFor(data.slug)} />
         </div>
       </Container>
     </section>
   );
+}
+
+function illustrationKindFor(
+  slug: PersonaSlug,
+): "blog" | "agency" | "visa" | "creator" | "student" {
+  // PersonaSlug is the same set as the matching illustration kinds.
+  return slug;
 }
 
 function Pains({
@@ -65,12 +76,12 @@ function Pains({
     <section className="ds-section border-b border-surface-200">
       <Container>
         <span className="ds-corpo" style={{ color: "#B72E24" }}>
-          {isEn ? "What hurts today" : "Ce qui coince aujourd'hui"}
+          {isEn ? "What hurts today" : "Les difficultés rencontrées"}
         </span>
         <h2 className="ds-h2 mt-3 text-ink-900 max-w-3xl">
           {isEn
             ? "You know these problems. Most of your peers do too."
-            : "Tu reconnais ces situations. La plupart de tes pairs aussi."}
+            : "Vous reconnaissez ces situations. La plupart de vos confrères également."}
         </h2>
         <ul className="mt-10 grid gap-5 md:grid-cols-3">
           {data.pains.map((p, i) => (
@@ -154,7 +165,7 @@ function RevenueCalc({
             <p className="ds-body mt-4 text-ink-700">
               {isEn
                 ? "Median assumptions across the HelloSafe network. Adjust to your reality with the calculator inside the dashboard."
-                : "Hypothèses médianes du réseau HelloSafe. Ajuste à ta réalité dans le simulateur du dashboard."}
+                : "Hypothèses médianes du réseau HelloSafe. Ajustez ces paramètres à votre réalité dans le simulateur du tableau de bord."}
             </p>
             <ul className="mt-6 space-y-2 text-sm text-ink-500">
               <li>

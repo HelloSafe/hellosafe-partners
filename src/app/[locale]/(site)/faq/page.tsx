@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { LinkButton } from "@/components/ui/LinkButton";
+import { HeroIllustration } from "@/components/landing/HeroIllustration";
 import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -36,13 +37,17 @@ function Hero() {
     <section className="relative overflow-hidden bg-brand-gradient">
       <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
       <div className="absolute -top-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-brand-200/40 blur-3xl" />
+      <div className="absolute -bottom-32 -left-32 h-[24rem] w-[24rem] rounded-full bg-accent-200/30 blur-3xl" />
       <Container className="relative ds-section lg:py-20">
-        <div className="max-w-3xl">
-          <span className="ds-corpo">{t("eyebrow")}</span>
-          <h1 className="ds-h1 mt-4 text-ink-900">{t("title")}</h1>
-          <p className="ds-subtitle mt-6 text-ink-700 max-w-2xl">
-            {t("subtitle")}
-          </p>
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="max-w-2xl">
+            <span className="ds-corpo">{t("eyebrow")}</span>
+            <h1 className="ds-h1 mt-4 text-ink-900">{t("title")}</h1>
+            <p className="ds-subtitle mt-6 text-ink-700 max-w-xl">
+              {t("subtitle")}
+            </p>
+          </div>
+          <HeroIllustration kind="support" />
         </div>
       </Container>
     </section>

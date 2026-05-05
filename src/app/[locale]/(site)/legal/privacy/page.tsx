@@ -1,4 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { LegalLayout } from "../_components/LegalLayout";
 import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -38,7 +39,7 @@ export default async function PrivacyPage({
       <p>
         Le responsable du traitement est <strong>HelloSafe SAS</strong>, dont
         les coordonnées sont disponibles dans nos{" "}
-        <a href="/legal/mentions">mentions légales</a>.
+        <Link href={"/legal/mentions" as never}>mentions légales</Link>.
       </p>
 
       <h2>2. Données collectées et finalités</h2>

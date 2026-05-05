@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/Button";
-import { DESTINATIONS, type DestinationKey } from "@/lib/destinations";
+import { DESTINATIONS, type DestinationKey } from "@/lib/links/destinations";
 
 type LinkRow = {
   id: string;

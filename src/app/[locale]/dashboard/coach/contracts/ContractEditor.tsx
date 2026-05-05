@@ -3,47 +3,23 @@
 import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
-import type { CoverageData, RelativeKind } from "@/lib/coach/coverage-types";
+import type { CoverageData } from "@/lib/coach/coverage-types";
+import { CompanionsSection } from "./_editor/CompanionsSection";
+import { ConstraintsSection } from "./_editor/ConstraintsSection";
+import { DEFAULT_DATA, inputCls } from "./_editor/constants";
+import { ImportFromText } from "./_editor/ImportFromText";
+import { LimitsSection } from "./_editor/LimitsSection";
+import { CheckboxField, Field } from "./_editor/ui";
 
-const RELATIVE_OPTIONS: RelativeKind[] = [
-  "self",
-  "spouse_legal",
-  "concubin",
-  "children_under_25",
-  "children_over_25",
-  "parents",
-  "friends",
-];
-
-const DEFAULT_DATA: CoverageData = {
-  limits: {
-    medical_expenses: {
-      unlimited: false,
-      amount: { cents: 250_000_00, currency: "EUR" },
-    },
-    repatriation: { covered: true, actualCosts: true },
-    trip_cancellation: {
-      cents: 8_000_00,
-      currency: "EUR",
-      perPerson: true,
-      allCauses: true,
-    },
-    baggage: { cents: 2_000_00, currency: "EUR" },
-    personal_liability: { cents: 4_500_000_00, currency: "EUR" },
-    trip_delay: { cents: 500_00, currency: "EUR", afterHours: 4 },
-    rental_car_excess: { cents: 0, currency: "EUR" },
-    winter_sports: { covered: true, cap: { cents: 5_000_00, currency: "EUR" } },
-  },
-  constraints: {
-    maxTripDurationDays: 60,
-    maxAgeYears: 80,
-    geographicalZone: "worldwide",
-  },
-  coveredRelatives: ["self", "spouse_legal", "children_under_25"],
-  excludedRelatives: ["concubin", "children_over_25", "parents", "friends"],
-  keyExclusions: [],
-};
-
+/**
+ * Editor for partner-distributed contracts that the Coach uses as one of
+ * the coverage sources. Two modes:
+ *   - "create": empty form starting from a sensible default.
+ *   - "edit": loads an existing contract by id.
+ *
+ * Sub-sections (limits / constraints / companions / import) live under
+ * _editor/ so the sections can grow independently.
+ */
 export function ContractEditor({
   mode,
   id,
@@ -94,9 +70,10 @@ export function ContractEditor({
   const submit = async () => {
     setBusy(true);
     try {
-      const url = mode === "create"
-        ? "/api/coach/contracts"
-        : `/api/coach/contracts/${id}`;
+      const url =
+        mode === "create"
+          ? "/api/coach/contracts"
+          : `/api/coach/contracts/${id}`;
       const method = mode === "create" ? "POST" : "PUT";
       const res = await fetch(url, {
         method,
@@ -168,39 +145,15 @@ export function ContractEditor({
         </p>
       </header>
 
-      {/* Quick import */}
-      <section className="rounded-2xl border border-surface-200 bg-surface-50 p-5">
-        <h2 className="font-semibold text-ink-900">
-          {isEn ? "Import from contract text (mock)" : "Importer depuis le texte du contrat (mock)"}
-        </h2>
-        <p className="mt-1 text-sm text-ink-500">
-          {isEn
-            ? "Paste the general conditions of your contract. We'll pre-fill the form. You'll review and validate every value."
-            : "Collez les conditions générales de votre contrat. On pré-remplit le formulaire. Vous vérifiez et validez chaque valeur."}
-        </p>
-        <textarea
-          value={importText}
-          onChange={(e) => setImportText(e.target.value)}
-          rows={4}
-          placeholder={isEn ? "Paste contract terms here…" : "Coller le texte du contrat ici…"}
-          className="mt-3 w-full rounded-lg border border-surface-300 px-3 py-2 text-sm font-mono"
-        />
-        <div className="mt-3 flex items-center gap-3">
-          <button
-            type="button"
-            disabled={importing || importText.trim().length < 30}
-            onClick={importFromText}
-            className="h-9 px-4 rounded-lg border border-brand-500 text-brand-700 text-sm font-semibold hover:bg-brand-50 disabled:opacity-50"
-          >
-            {importing ? (isEn ? "Extracting…" : "Extraction…") : isEn ? "Pre-fill from text" : "Pré-remplir depuis le texte"}
-          </button>
-          {importedNotice && (
-            <span className="text-xs text-warning-600">{importedNotice}</span>
-          )}
-        </div>
-      </section>
+      <ImportFromText
+        isEn={isEn}
+        importText={importText}
+        setImportText={setImportText}
+        importing={importing}
+        onImport={importFromText}
+        importedNotice={importedNotice}
+      />
 
-      {/* Form */}
       <section className="rounded-2xl border border-surface-200 bg-white p-6 lg:p-8 space-y-6">
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label={isEn ? "Contract name" : "Nom du contrat"}>
@@ -221,206 +174,9 @@ export function ContractEditor({
           </Field>
         </div>
 
-        <details className="rounded-xl border border-surface-200 p-4 group" open>
-          <summary className="font-semibold cursor-pointer">
-            {isEn ? "Coverage limits" : "Plafonds garanties"}
-          </summary>
-          <div className="mt-5 grid gap-5 sm:grid-cols-2">
-            <NumberField
-              label={isEn ? "Medical expenses (€)" : "Frais médicaux (€)"}
-              value={
-                data.limits.medical_expenses && !data.limits.medical_expenses.unlimited
-                  ? data.limits.medical_expenses.amount.cents / 100
-                  : 0
-              }
-              onChange={(v) =>
-                setData({
-                  ...data,
-                  limits: {
-                    ...data.limits,
-                    medical_expenses: {
-                      unlimited: false,
-                      amount: { cents: Math.round(v * 100), currency: "EUR" },
-                    },
-                  },
-                })
-              }
-            />
-            <NumberField
-              label={isEn ? "Trip cancellation (€)" : "Annulation (€)"}
-              value={(data.limits.trip_cancellation?.cents ?? 0) / 100}
-              onChange={(v) =>
-                setData({
-                  ...data,
-                  limits: {
-                    ...data.limits,
-                    trip_cancellation: {
-                      ...(data.limits.trip_cancellation ?? {
-                        currency: "EUR",
-                        cents: 0,
-                      }),
-                      cents: Math.round(v * 100),
-                      currency: "EUR",
-                    },
-                  },
-                })
-              }
-            />
-            <NumberField
-              label={isEn ? "Baggage (€)" : "Bagages (€)"}
-              value={(data.limits.baggage?.cents ?? 0) / 100}
-              onChange={(v) =>
-                setData({
-                  ...data,
-                  limits: {
-                    ...data.limits,
-                    baggage: { cents: Math.round(v * 100), currency: "EUR" },
-                  },
-                })
-              }
-            />
-            <NumberField
-              label={isEn ? "Personal liability (€)" : "Responsabilité civile (€)"}
-              value={(data.limits.personal_liability?.cents ?? 0) / 100}
-              onChange={(v) =>
-                setData({
-                  ...data,
-                  limits: {
-                    ...data.limits,
-                    personal_liability: {
-                      cents: Math.round(v * 100),
-                      currency: "EUR",
-                    },
-                  },
-                })
-              }
-            />
-            <CheckboxField
-              label={isEn ? "Repatriation covered" : "Rapatriement couvert"}
-              checked={data.limits.repatriation?.covered ?? false}
-              onChange={(c) =>
-                setData({
-                  ...data,
-                  limits: {
-                    ...data.limits,
-                    repatriation: { covered: c, actualCosts: c },
-                  },
-                })
-              }
-            />
-            <CheckboxField
-              label={isEn ? "Winter sports covered" : "Sports d'hiver couverts"}
-              checked={data.limits.winter_sports?.covered ?? false}
-              onChange={(c) =>
-                setData({
-                  ...data,
-                  limits: {
-                    ...data.limits,
-                    winter_sports: c
-                      ? { covered: true, cap: { cents: 5_000_00, currency: "EUR" } }
-                      : { covered: false },
-                  },
-                })
-              }
-            />
-          </div>
-        </details>
-
-        <details className="rounded-xl border border-surface-200 p-4">
-          <summary className="font-semibold cursor-pointer">
-            {isEn ? "Constraints" : "Contraintes"}
-          </summary>
-          <div className="mt-5 grid gap-5 sm:grid-cols-3">
-            <NumberField
-              label={isEn ? "Max trip duration (days)" : "Durée max (jours)"}
-              value={data.constraints.maxTripDurationDays ?? 0}
-              onChange={(v) =>
-                setData({
-                  ...data,
-                  constraints: { ...data.constraints, maxTripDurationDays: v },
-                })
-              }
-            />
-            <NumberField
-              label={isEn ? "Max traveler age" : "Âge max du voyageur"}
-              value={data.constraints.maxAgeYears ?? 0}
-              onChange={(v) =>
-                setData({
-                  ...data,
-                  constraints: { ...data.constraints, maxAgeYears: v },
-                })
-              }
-            />
-            <Field
-              label={
-                isEn
-                  ? "Geographical zone"
-                  : "Zone géographique"
-              }
-              hint={
-                isEn
-                  ? '"worldwide" or "worldwide_excluding_us_canada"'
-                  : '« worldwide » ou « worldwide_excluding_us_canada »'
-              }
-            >
-              <select
-                value={data.constraints.geographicalZone ?? "worldwide"}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    constraints: {
-                      ...data.constraints,
-                      geographicalZone: e.target.value,
-                    },
-                  })
-                }
-                className={inputCls}
-              >
-                <option value="worldwide">worldwide</option>
-                <option value="worldwide_excluding_us_canada">
-                  worldwide excl. US/Canada
-                </option>
-                <option value="EU+EHIC">EU + EHIC only</option>
-              </select>
-            </Field>
-          </div>
-        </details>
-
-        <details className="rounded-xl border border-surface-200 p-4">
-          <summary className="font-semibold cursor-pointer">
-            {isEn ? "Companions covered" : "Proches couverts"}
-          </summary>
-          <p className="mt-2 text-xs text-ink-500">
-            {isEn
-              ? "Pick everyone the contract explicitly covers. Anyone unchecked will be flagged as not covered when the agent runs an analysis."
-              : "Cochez chaque proche que le contrat couvre explicitement. Les non-cochés seront signalés non couverts dans l'analyse."}
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {RELATIVE_OPTIONS.map((r) => {
-              const on = data.coveredRelatives.includes(r);
-              return (
-                <button
-                  type="button"
-                  key={r}
-                  onClick={() => {
-                    const next = on
-                      ? data.coveredRelatives.filter((x) => x !== r)
-                      : [...data.coveredRelatives, r];
-                    setData({ ...data, coveredRelatives: next });
-                  }}
-                  className={`rounded-lg border px-3 h-9 text-sm font-medium transition-colors ${
-                    on
-                      ? "border-brand-500 bg-brand-50 text-brand-700"
-                      : "border-surface-300 text-ink-700"
-                  }`}
-                >
-                  {on ? "✓ " : ""}
-                  {r.replace(/_/g, " ")}
-                </button>
-              );
-            })}
-          </div>
-        </details>
+        <LimitsSection isEn={isEn} data={data} setData={setData} />
+        <ConstraintsSection isEn={isEn} data={data} setData={setData} />
+        <CompanionsSection isEn={isEn} data={data} setData={setData} />
 
         <Field label={isEn ? "Notes (internal)" : "Notes (interne)"}>
           <textarea
@@ -466,71 +222,3 @@ export function ContractEditor({
     </div>
   );
 }
-
-function Field({
-  label,
-  hint,
-  children,
-}: {
-  label: string;
-  hint?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className="block">
-      <span className="block text-sm font-semibold text-ink-900 mb-1">
-        {label}
-      </span>
-      {hint && <span className="block text-xs text-ink-500 mb-1.5">{hint}</span>}
-      {children}
-    </label>
-  );
-}
-
-function NumberField({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: number;
-  onChange: (v: number) => void;
-}) {
-  return (
-    <Field label={label}>
-      <input
-        type="number"
-        min={0}
-        step={1}
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value) || 0)}
-        className={inputCls}
-      />
-    </Field>
-  );
-}
-
-function CheckboxField({
-  label,
-  checked,
-  onChange,
-}: {
-  label: string;
-  checked: boolean;
-  onChange: (c: boolean) => void;
-}) {
-  return (
-    <label className="flex items-center gap-2.5 cursor-pointer">
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={(e) => onChange(e.target.checked)}
-        className="h-4 w-4 accent-brand-500"
-      />
-      <span className="text-sm font-medium text-ink-900">{label}</span>
-    </label>
-  );
-}
-
-const inputCls =
-  "w-full rounded-lg border border-surface-300 bg-white px-3.5 h-11 text-[0.95rem] focus-ring focus:border-brand-500";

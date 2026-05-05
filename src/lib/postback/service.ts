@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { conversions, partners, trackedLinks } from "@/db/schema";
 import { newId } from "@/lib/ids";
+import { inngest } from "@/lib/inngest/client";
 import type { PostbackPayload, SimulateConversionInput } from "./validators";
 
 /**
@@ -91,6 +92,23 @@ async function recordOrUpdateConversion(params: RecordParams) {
         subIdOverride: params.subIdOverride,
       })
       .where(eq(conversions.id, existing[0].id));
+    // Fire the event so handlers can react to status transitions (e.g.
+    // an upgrade from pending → validated should still email the
+    // partner). Best-effort.
+    inngest
+      .send({
+        name: "conversion/created",
+        data: {
+          conversionId: existing[0].id,
+          partnerId: params.partnerId,
+          linkId: params.linkId,
+          amountCents: params.amountCents,
+          commissionCents: params.commissionCents,
+          currency: params.currency as "EUR" | "GBP" | "USD",
+          status: params.status,
+        },
+      })
+      .catch((e) => console.error("[inngest] conversion/created failed", e));
     return { action: "updated" as const, id: existing[0].id };
   }
 
@@ -107,6 +125,20 @@ async function recordOrUpdateConversion(params: RecordParams) {
     subIdOverride: params.subIdOverride,
     validatedAt: params.status === "validated" ? new Date() : null,
   });
+  inngest
+    .send({
+      name: "conversion/created",
+      data: {
+        conversionId: id,
+        partnerId: params.partnerId,
+        linkId: params.linkId,
+        amountCents: params.amountCents,
+        commissionCents: params.commissionCents,
+        currency: params.currency as "EUR" | "GBP" | "USD",
+        status: params.status,
+      },
+    })
+    .catch((e) => console.error("[inngest] conversion/created failed", e));
   return { action: "created" as const, id };
 }
 

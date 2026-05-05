@@ -33,9 +33,7 @@ export function Footer() {
                 <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/agency" as never}>{t("links.agency")}</Link></li>
                 <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/visa" as never}>{t("links.visa")}</Link></li>
                 <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/creator" as never}>{t("links.creator")}</Link></li>
-                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/expat" as never}>{t("links.expat")}</Link></li>
                 <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/student" as never}>{t("links.student")}</Link></li>
-                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/cruise" as never}>{t("links.cruise")}</Link></li>
               </ul>
             </div>
             <div>

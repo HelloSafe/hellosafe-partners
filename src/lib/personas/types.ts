@@ -3,9 +3,7 @@ export type PersonaSlug =
   | "agency"
   | "visa"
   | "creator"
-  | "expat"
-  | "student"
-  | "cruise";
+  | "student";
 
 export type Locale = "fr" | "en";
 
@@ -34,7 +32,5 @@ export const PERSONA_SLUGS: PersonaSlug[] = [
   "agency",
   "visa",
   "creator",
-  "expat",
   "student",
-  "cruise",
 ];

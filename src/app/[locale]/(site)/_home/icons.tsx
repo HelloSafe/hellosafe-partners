@@ -238,29 +238,12 @@ export function PersonaGlyph({ slug }: { slug: string }) {
           <path d="M44 22l8-4v28l-8-4z" fill="#FF7049" />
         </svg>
       );
-    case "expat":
-      return (
-        <svg viewBox="0 0 64 64" className={common} aria-hidden>
-          <circle cx="32" cy="32" r="20" fill="#CFFCDE" />
-          <path d="M14 32h36M32 14c5 5 8 11 8 18s-3 13-8 18c-5-5-8-11-8-18s3-13 8-18z" stroke="#0A7474" strokeWidth="2" fill="none" />
-          <circle cx="44" cy="22" r="5" fill="#FF7049" />
-        </svg>
-      );
     case "student":
       return (
         <svg viewBox="0 0 64 64" className={common} aria-hidden>
           <path d="M8 28l24-12 24 12-24 12L8 28z" fill="#DFD7FF" />
           <path d="M20 32v10c0 4 5 7 12 7s12-3 12-7V32" stroke="#563BFF" strokeWidth="2.5" fill="none" />
           <path d="M52 28v14" stroke="#FF7049" strokeWidth="2.5" strokeLinecap="round" />
-        </svg>
-      );
-    case "cruise":
-      return (
-        <svg viewBox="0 0 64 64" className={common} aria-hidden>
-          <path d="M8 42c4 4 10 4 14 0s10-4 14 0 10 4 14 0" stroke="#0A7474" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-          <path d="M14 38h36L46 28H18l-4 10z" fill="#DFD7FF" />
-          <rect x="22" y="20" width="20" height="8" fill="#FF7049" />
-          <path d="M32 12v8" stroke="#140B7A" strokeWidth="2" />
         </svg>
       );
     default:

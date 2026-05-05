@@ -17,9 +17,7 @@ const PERSONA_SLUGS = [
   "agency",
   "visa",
   "creator",
-  "expat",
   "student",
-  "cruise",
 ] as const;
 
 const PERSONA_PATHS = PERSONA_SLUGS.map((s) => `/for/${s}`);

@@ -67,9 +67,7 @@
         "agency": "Agences",
         "visa": "Spécialistes visa",
         "creator": "Créateurs",
-        "expat": "Conseillers expat",
-        "student": "Mobilité étudiante",
-        "cruise": "Croisière & luxe"
+        "student": "Mobilité étudiante"
       },
       "copyright": "© {year} HelloSafe. Tous droits réservés.",
       "internal": "Démo interne, données simulées."
@@ -155,15 +153,13 @@
     "forWho": {
       "eyebrow": "À qui s'adresse HelloSafe",
       "title": "Une plateforme adaptée à chaque type de partenaire",
-      "subtitle": "Agences de voyage, blogs, créateurs, comparateurs visa, conseillers expatriation : HelloSafe s'intègre à votre activité existante sans contrainte technique. Sélectionnez votre profil pour découvrir les bénéfices spécifiques.",
+      "subtitle": "Agences de voyage, blogs voyage, créateurs, comparateurs visa, structures dédiées à la mobilité étudiante : HelloSafe s'intègre à votre activité existante sans contrainte technique. Sélectionnez votre profil pour découvrir les bénéfices spécifiques.",
       "items": [
         { "slug": "blog", "label": "Blogueur voyage", "tag": "Revenus récurrents", "blurb": "Vos contenus pérennes deviennent une source de revenus récurrente, mois après mois." },
         { "slug": "agency", "label": "Agence de voyage", "tag": "Coach intégré", "blurb": "Le Coach d'analyse de couverture s'intègre dans vos rendez-vous client. La souscription se fait dans la foulée." },
         { "slug": "visa", "label": "Spécialiste visa", "tag": "Attestation conforme", "blurb": "Vos visiteurs obtiennent une attestation conforme avant la fin du formulaire visa." },
         { "slug": "creator", "label": "Créateur voyage", "tag": "Sub-ID par publication", "blurb": "Un Sub-ID par publication, un suivi précis de ce qui convertit, des décisions éditoriales fondées sur la donnée." },
-        { "slug": "expat", "label": "Conseiller expat", "tag": "Long séjour", "blurb": "Les contrats long séjour offrent une commission cumulative à chaque renouvellement." },
-        { "slug": "student", "label": "Mobilité étudiante", "tag": "Visa-ready", "blurb": "L'attestation est reconnue par les ambassades, du Canada à l'Australie." },
-        { "slug": "cruise", "label": "Croisière & luxe", "tag": "Annulation 100 %", "blurb": "Annulation jusqu'à 100 % du voyage, sans clause restrictive sur les paniers élevés." }
+        { "slug": "student", "label": "Mobilité étudiante", "tag": "Visa-ready", "blurb": "L'attestation est reconnue par les ambassades, du Canada à l'Australie." }
       ],
       "linkLabel": "Voir le détail"
     },
@@ -390,7 +386,7 @@
     "items": [
       {
         "q": "Quels types de sites sont acceptés ?",
-        "a": "Blogs voyage, comparateurs visa, agences en ligne, créateurs de contenu, sites étudiants/expatriation, forums spécialisés. Nous refusons les sites de cashback pur, les extensions de navigateur non sollicitées et les sites ne respectant pas le RGPD."
+        "a": "Blogs voyage, comparateurs visa, agences en ligne, créateurs de contenu, sites dédiés à la mobilité étudiante, forums spécialisés. Nous refusons les sites de cashback pur, les extensions de navigateur non sollicitées et les sites ne respectant pas le RGPD."
       },
       {
         "q": "Combien de temps prend la validation ?",

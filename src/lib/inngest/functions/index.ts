@@ -3,6 +3,7 @@
  * here so /api/inngest/route.ts picks them up.
  */
 
+import { clickLoggedPersist } from "./click-logged";
 import { conversionCreatedNotify } from "./conversion-created";
 
-export const functions = [conversionCreatedNotify];
+export const functions = [clickLoggedPersist, conversionCreatedNotify];

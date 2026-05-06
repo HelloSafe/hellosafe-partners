@@ -4,7 +4,6 @@ export const VALID_PERSONAS = [
   "agency",
   "visa",
   "creator",
-  "student",
   "other",
 ] as const;
 

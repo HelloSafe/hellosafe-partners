@@ -66,8 +66,7 @@
         "blog": "Travel blogs",
         "agency": "Agencies",
         "visa": "Visa specialists",
-        "creator": "Creators",
-        "student": "Student mobility"
+        "creator": "Creators"
       },
       "copyright": "© {year} HelloSafe. All rights reserved.",
       "internal": "Internal demo, simulated data."
@@ -158,8 +157,7 @@
         { "slug": "blog", "label": "Travel blogger", "tag": "Recurring revenue", "blurb": "Your evergreen articles turn into commission machines, month after month." },
         { "slug": "agency", "label": "Travel agency", "tag": "Built-in sales coach", "blurb": "Reps pull up the Coach in the meeting, client signs the insurance on the spot." },
         { "slug": "visa", "label": "Visa specialist", "tag": "90-second certificate", "blurb": "API and widget that deliver a compliant certificate before the visa form is done." },
-        { "slug": "creator", "label": "Travel creator", "tag": "Sub-ID per story", "blurb": "One link, one story, one Sub-ID. You see what converts and double down." },
-        { "slug": "student", "label": "Student mobility", "tag": "Visa-ready", "blurb": "Embassy-compliant certificate, from Canada to Australia." }
+        { "slug": "creator", "label": "Travel creator", "tag": "Sub-ID per story", "blurb": "One link, one story, one Sub-ID. You see what converts and double down." }
       ],
       "linkLabel": "See more"
     },
@@ -386,7 +384,7 @@
     "items": [
       {
         "q": "Which types of sites are accepted?",
-        "a": "Travel blogs, visa comparators, online agencies, content creators, student mobility sites, specialized forums. We don't accept pure cashback sites, unsolicited browser extensions, or GDPR-non-compliant sites."
+        "a": "Travel blogs, visa comparators, online agencies, content creators, specialized forums. We don't accept pure cashback sites, unsolicited browser extensions, or GDPR-non-compliant sites."
       },
       {
         "q": "How long does validation take?",

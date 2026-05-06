@@ -10,7 +10,6 @@ export type Persona =
   | "agency"
   | "visa"
   | "creator"
-  | "student"
   | "other";
 
 export type PersonaCard = {
@@ -25,7 +24,6 @@ export const PERSONAS_FR: PersonaCard[] = [
   { id: "agency", label: "Agence de voyage", sub: "Bureau, OTA, distribution", icon: "🏢" },
   { id: "visa", label: "Spécialiste visa", sub: "Comparateur, immigration", icon: "🛂" },
   { id: "creator", label: "Créateur·rice", sub: "Instagram, YouTube, TikTok", icon: "📸" },
-  { id: "student", label: "Mobilité étudiante", sub: "PVT, études, séjours", icon: "🎓" },
   { id: "other", label: "Autre", sub: "Vous nous direz", icon: "✨" },
 ];
 
@@ -34,7 +32,6 @@ export const PERSONAS_EN: PersonaCard[] = [
   { id: "agency", label: "Travel agency", sub: "Storefront, OTA, distribution", icon: "🏢" },
   { id: "visa", label: "Visa specialist", sub: "Comparator, immigration", icon: "🛂" },
   { id: "creator", label: "Creator", sub: "Instagram, YouTube, TikTok", icon: "📸" },
-  { id: "student", label: "Student mobility", sub: "Working holiday, study", icon: "🎓" },
   { id: "other", label: "Other", sub: "Tell us later", icon: "✨" },
 ];
 
@@ -43,7 +40,6 @@ export function personaFirstAction(p: Persona | null): string {
   if (!p) return "/dashboard";
   switch (p) {
     case "agency":
-    case "student":
       return "/dashboard/coach/new";
     case "blog":
     case "creator":
@@ -58,7 +54,6 @@ export function personaFirstAction(p: Persona | null): string {
 export function personaSuggestion(p: Persona | null, isEn: boolean) {
   switch (p) {
     case "agency":
-    case "student":
       return {
         title: isEn
           ? "Run your first Coach analysis in 90 seconds"
@@ -83,8 +78,8 @@ export function personaSuggestion(p: Persona | null, isEn: boolean) {
           ? "Plug Atlas into your visa funnel"
           : "Branchez Atlas sur votre funnel visa",
         body: isEn
-          ? "Generate a link to the right visa-ready page (Schengen, working holiday, student) and have your visitors leave with a compliant certificate within 90 seconds."
-          : "Générez un lien vers la bonne page visa-ready (Schengen, PVT, étudiant) et faites repartir vos visiteurs avec une attestation conforme en 90 secondes.",
+          ? "Generate a link to the right visa-ready page (Schengen, working holiday) and have your visitors leave with a compliant certificate within 90 seconds."
+          : "Générez un lien vers la bonne page visa-ready (Schengen, PVT) et faites repartir vos visiteurs avec une attestation conforme en 90 secondes.",
       };
     default:
       return {

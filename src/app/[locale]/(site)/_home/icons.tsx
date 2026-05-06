@@ -238,14 +238,6 @@ export function PersonaGlyph({ slug }: { slug: string }) {
           <path d="M44 22l8-4v28l-8-4z" fill="#FF7049" />
         </svg>
       );
-    case "student":
-      return (
-        <svg viewBox="0 0 64 64" className={common} aria-hidden>
-          <path d="M8 28l24-12 24 12-24 12L8 28z" fill="#DFD7FF" />
-          <path d="M20 32v10c0 4 5 7 12 7s12-3 12-7V32" stroke="#563BFF" strokeWidth="2.5" fill="none" />
-          <path d="M52 28v14" stroke="#FF7049" strokeWidth="2.5" strokeLinecap="round" />
-        </svg>
-      );
     default:
       return (
         <svg viewBox="0 0 64 64" className={common} aria-hidden>

@@ -59,7 +59,7 @@ function Hero({
 
 function illustrationKindFor(
   slug: PersonaSlug,
-): "blog" | "agency" | "visa" | "creator" | "student" {
+): "blog" | "agency" | "visa" | "creator" {
   // PersonaSlug is the same set as the matching illustration kinds.
   return slug;
 }

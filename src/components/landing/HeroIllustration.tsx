@@ -14,8 +14,7 @@ type IllustrationKind =
   | "blog"
   | "agency"
   | "visa"
-  | "creator"
-  | "student";
+  | "creator";
 
 export function HeroIllustration({ kind }: { kind: IllustrationKind }) {
   return (
@@ -62,8 +61,6 @@ function hostFor(kind: IllustrationKind): string {
       return "partners.hellosafe.com / certificate";
     case "creator":
       return "partners.hellosafe.com / links";
-    case "student":
-      return "partners.hellosafe.com / student";
   }
 }
 
@@ -85,8 +82,6 @@ function renderBody(kind: IllustrationKind) {
       return <VisaBody />;
     case "creator":
       return <CreatorBody />;
-    case "student":
-      return <StudentBody />;
   }
 }
 
@@ -99,7 +94,6 @@ function renderBadge(kind: IllustrationKind) {
     agency: { icon: "📄", label: "Récap client", value: "Aux couleurs de votre marque", tone: "brand" },
     visa: { icon: "✓", label: "Délai d'émission", value: "90 secondes", tone: "success" },
     creator: { icon: "↑", label: "Sub-ID", value: "Un par publication", tone: "accent" },
-    student: { icon: "🎓", label: "Reconnu par", value: "Ambassades CA, AU, US", tone: "brand" },
   };
   const b = badges[kind];
   const toneCls =
@@ -588,71 +582,6 @@ function CreatorBody() {
           </li>
         ))}
       </ul>
-    </>
-  );
-}
-
-/* ----- /for/student : Visa-ready certificate ----- */
-
-function StudentBody() {
-  return (
-    <>
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-xs uppercase tracking-wider text-ink-500">
-            Attestation étudiante
-          </p>
-          <p className="mt-1 font-display text-xl font-bold text-ink-900">
-            PVT Canada · 12 mois
-          </p>
-        </div>
-        <span className="inline-flex items-center gap-1 rounded-full bg-success-50 px-2.5 py-1 text-[0.7rem] font-display font-bold uppercase text-success-900 border border-success-600/20">
-          ✓ Conforme
-        </span>
-      </div>
-      <div className="mt-5 rounded-2xl border-2 border-dashed border-brand-200 bg-gradient-to-br from-brand-50 to-white p-5">
-        <div className="flex items-center justify-between">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 text-white font-display font-bold">
-            HS
-          </span>
-          <span className="text-[0.65rem] uppercase tracking-wider text-ink-500 font-display font-bold">
-            Réf. HS-2026-12784
-          </span>
-        </div>
-        <p className="mt-4 font-display font-bold text-ink-900 text-base">
-          Mlle Léa Dubois
-        </p>
-        <p className="text-xs text-ink-500 mt-0.5">
-          Étudiante · née le 21/06/2003
-        </p>
-        <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-          <div>
-            <dt className="text-ink-500">Couverture</dt>
-            <dd className="font-semibold text-ink-900">2 000 000 CAD</dd>
-          </div>
-          <div>
-            <dt className="text-ink-500">Maternité</dt>
-            <dd className="font-semibold text-ink-900">Incluse</dd>
-          </div>
-          <div>
-            <dt className="text-ink-500">Zone</dt>
-            <dd className="font-semibold text-ink-900">Canada (10 prov.)</dd>
-          </div>
-          <div>
-            <dt className="text-ink-500">Durée</dt>
-            <dd className="font-semibold text-ink-900">12 mois</dd>
-          </div>
-        </dl>
-      </div>
-      <div className="mt-4 flex items-center justify-center gap-3 text-[0.65rem] uppercase tracking-wider font-display font-bold text-ink-500">
-        <span>🇨🇦 IEC</span>
-        <span className="text-ink-300">·</span>
-        <span>🇦🇺 WHV</span>
-        <span className="text-ink-300">·</span>
-        <span>🇺🇸 J-1</span>
-        <span className="text-ink-300">·</span>
-        <span>🇳🇿 WHS</span>
-      </div>
     </>
   );
 }

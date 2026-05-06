@@ -39,6 +39,9 @@ yarn-error.log*
 # local editor config
 .claude/
 
+# drizzle-kit generated migrations (we use db:push, not migrations)
+/drizzle/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

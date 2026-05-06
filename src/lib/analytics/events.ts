@@ -39,7 +39,9 @@ export type AnalyticsEvent =
   | {
       name: "partner_status_changed";
       props: { partnerId: string; status: "approved" | "rejected" };
-    };
+    }
+  | { name: "perk_code_copied"; props: { brand: string } }
+  | { name: "perk_offer_opened"; props: { brand: string } };
 
 export type EventName = AnalyticsEvent["name"];
 

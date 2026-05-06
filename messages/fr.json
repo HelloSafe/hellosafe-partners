@@ -467,7 +467,84 @@
     "nav": {
       "overview": "Vue d'ensemble",
       "links": "Mes liens",
-      "payouts": "Paiements"
+      "payouts": "Paiements",
+      "perks": "Avantages"
+    },
+    "perks": {
+      "title": "Avantages partenaires",
+      "subtitle": "Des codes promo et services exclusifs à transmettre à vos clients en complément de l'assurance HelloSafe. Pas des liens d'affiliation : ce sont de vraies réductions ou services gratuits pour vos voyageurs.",
+      "footnote": "Les codes sont nominatifs et révisés chaque trimestre. Conditions complètes disponibles sur l'espace partenaire.",
+      "howItWorks": {
+        "eyebrow": "Comment ça marche",
+        "title": "Trois étapes pour activer ces avantages",
+        "subtitle": "Chaque code est prêt à l'emploi. Pas d'intégration, pas de validation supplémentaire — vous partagez, votre audience profite.",
+        "items": [
+          {
+            "step": "1",
+            "title": "Activez l'avantage",
+            "body": "Cliquez sur 'Copier le code' pour récupérer le code promo ou ouvrir le lien dédié."
+          },
+          {
+            "step": "2",
+            "title": "Partagez le code",
+            "body": "Article, newsletter, message direct — collez le code à côté de votre lien HelloSafe."
+          },
+          {
+            "step": "3",
+            "title": "Vos clients économisent",
+            "body": "Vos voyageurs profitent d'un service gratuit ou d'une réduction. Vous renforcez la valeur de votre conseil."
+          }
+        ]
+      },
+      "cardCopyCode": "Copier le code",
+      "cardCopied": "Copié !",
+      "cardSeeOffer": "Voir l'offre",
+      "items": [
+        {
+          "brand": "AirHelp",
+          "category": "Indemnisation vol",
+          "headline": "Jusqu'à 600 € d'indemnisation, sans frais avancés",
+          "body": "Service entièrement gratuit pour le voyageur. AirHelp se rémunère uniquement si la réclamation aboutit. Couvre retards >3 h, annulations et surbooking selon le règlement EU261.",
+          "badge": "100% gratuit",
+          "badgeTone": "success",
+          "code": null,
+          "ctaUrl": "https://www.airhelp.com/fr/?utm_source=hellosafe-atlas",
+          "ctaCopy": "Voir l'offre"
+        },
+        {
+          "brand": "Saily",
+          "category": "eSIM voyage",
+          "headline": "−10 % sur tous les data packs",
+          "body": "Code promo exclusif HelloSafe. eSIM Saily de NordVPN, 200+ destinations, activation en 1 minute, plus besoin de carte SIM physique ni de roaming hors de prix.",
+          "badge": "Code promo −10%",
+          "badgeTone": "accent",
+          "code": "HELLOSAFE10",
+          "ctaUrl": "https://saily.com/?ref=hellosafe-atlas",
+          "ctaCopy": "Copier le code"
+        },
+        {
+          "brand": "Bientôt disponible",
+          "category": "Nouveau partenaire",
+          "headline": "Un avantage exclusif arrive ici sous peu",
+          "body": "L'équipe HelloSafe finalise une 3ᵉ offre dédiée aux partenaires Atlas. Restez connecté — elle apparaîtra automatiquement dans cet espace.",
+          "badge": "Bientôt",
+          "badgeTone": "muted",
+          "code": null,
+          "ctaUrl": null,
+          "ctaCopy": "Bientôt disponible"
+        },
+        {
+          "brand": "Atlys",
+          "category": "Visa en ligne",
+          "headline": "Première demande de visa offerte",
+          "body": "Atlys gère la demande de visa de bout en bout — formulaires pré-remplis, documents requis, suivi en temps réel. Le premier visa est offert pour les clients HelloSafe.",
+          "badge": "1ᵉʳ visa offert",
+          "badgeTone": "accent",
+          "code": "ATLAS1FREE",
+          "ctaUrl": "https://www.atlys.com/?ref=hellosafe-atlas",
+          "ctaCopy": "Copier le code"
+        }
+      ]
     },
     "kpis": {
       "clicks": "Clics",

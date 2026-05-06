@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 type DailyPoint = { date: string; clicks: number; sales: number };
 type TopLink = {
@@ -50,6 +51,8 @@ export function Overview() {
     totals.clicks === 0 ? 0 : (totals.sales / totals.clicks) * 100;
   const epc = totals.clicks === 0 ? 0 : commissions / totals.clicks;
   const quotes = Math.round(totals.clicks * 0.18);
+  const isEmpty = totals.clicks === 0 && totals.sales === 0;
+  const isEn = locale === "en";
 
   const fmt = (n: number) => new Intl.NumberFormat(locale).format(n);
   const eur = (n: number) =>
@@ -58,6 +61,107 @@ export function Overview() {
       currency: "EUR",
       maximumFractionDigits: 0,
     }).format(n);
+
+  if (isEmpty) {
+    return (
+      <div className="space-y-10 max-w-5xl">
+        <header>
+          <h1 className="text-3xl font-bold tracking-tight">
+            {t("welcome", { name: partner.name || partner.companyName })}
+          </h1>
+          <p className="mt-2 text-ink-700">{t("subtitle")}</p>
+        </header>
+
+        <section className="rounded-3xl border border-surface-200 bg-gradient-to-br from-brand-50 via-white to-white p-8 lg:p-12">
+          <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr] items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-brand-500/10 text-brand-700 px-3 h-7 text-xs font-bold uppercase tracking-wider">
+                {isEn ? "Welcome aboard" : "Bienvenue"}
+              </span>
+              <h2 className="mt-4 text-3xl lg:text-4xl font-bold tracking-tight">
+                {isEn
+                  ? "Your dashboard is ready. Time to ship your first link."
+                  : "Votre dashboard est prêt. À vous de générer votre premier lien."}
+              </h2>
+              <p className="mt-3 text-ink-700 leading-relaxed">
+                {isEn
+                  ? "Once your readers click and convert, this page fills up with real-time stats — clicks, conversions, top links, EPC. Generate one link in 30 seconds and you're live."
+                  : "Dès que vos lecteurs cliquent et convertissent, cet écran se remplit en temps réel — clics, conversions, top liens, EPC. Générez un lien en 30 secondes et c'est parti."}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/dashboard/links"
+                  className="inline-flex items-center h-12 px-6 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors"
+                >
+                  {isEn ? "Create my first link" : "Créer mon premier lien"} →
+                </Link>
+                <Link
+                  href={"/dashboard/widget" as never}
+                  className="inline-flex items-center h-12 px-6 rounded-xl border border-surface-300 bg-white text-sm font-semibold text-ink-900 hover:border-brand-300 hover:text-brand-700 transition-colors"
+                >
+                  {isEn ? "Or embed the Coach widget" : "Ou intégrer le Coach"}
+                </Link>
+              </div>
+            </div>
+            <div className="hidden lg:flex justify-center">
+              <div className="relative w-full max-w-xs aspect-square">
+                <div className="absolute inset-0 rounded-3xl bg-brand-500/10" />
+                <div className="absolute inset-6 rounded-2xl bg-white shadow-xl border border-surface-200 p-5 flex flex-col gap-3">
+                  <div className="flex items-center gap-2 text-xs text-ink-500">
+                    <span className="w-2 h-2 rounded-full bg-success-500" />
+                    {isEn ? "Live tracking" : "Tracking en direct"}
+                  </div>
+                  <div className="rounded-xl bg-surface-50 p-3">
+                    <p className="text-[0.65rem] uppercase font-bold tracking-wider text-ink-500">
+                      {isEn ? "Clicks · 30 d" : "Clics · 30 j"}
+                    </p>
+                    <p className="text-xl font-bold mt-1">—</p>
+                  </div>
+                  <div className="rounded-xl bg-surface-50 p-3">
+                    <p className="text-[0.65rem] uppercase font-bold tracking-wider text-ink-500">
+                      {isEn ? "Commissions" : "Commissions"}
+                    </p>
+                    <p className="text-xl font-bold mt-1">—</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              n: 1,
+              t: isEn ? "Generate a tracked link" : "Générer un lien tracké",
+              d: isEn ? "Pick a destination, label it, copy the URL." : "Choisissez une destination, donnez-lui un nom, copiez l'URL.",
+            },
+            {
+              n: 2,
+              t: isEn ? "Share with your audience" : "Partagez à votre audience",
+              d: isEn ? "Article, newsletter, social — any channel works." : "Article, newsletter, réseaux — tous les canaux marchent.",
+            },
+            {
+              n: 3,
+              t: isEn ? "Get paid monthly" : "Soyez payé chaque mois",
+              d: isEn ? "Up to 20% commission, SEPA / wire / Wise." : "Jusqu'à 20% de commission, SEPA / virement / Wise.",
+            },
+          ].map((s) => (
+            <div
+              key={s.n}
+              className="rounded-2xl border border-surface-200 bg-white p-5"
+            >
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-500/10 text-brand-700 font-bold">
+                {s.n}
+              </span>
+              <p className="mt-3 font-bold">{s.t}</p>
+              <p className="mt-1 text-sm text-ink-700">{s.d}</p>
+            </div>
+          ))}
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-10 max-w-7xl">

@@ -156,6 +156,16 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     { href: "/dashboard/payouts", label: t("payouts") },
     { href: "/dashboard/coach", label: isEn ? "Coach" : "Coach" },
     {
+      href: "/dashboard/widget",
+      label: isEn ? "Embed widget" : "Widget à intégrer",
+      badge: "NEW",
+    },
+    {
+      href: "/dashboard/perks",
+      label: t("perks"),
+      badge: "NEW",
+    },
+    {
       href: "/dashboard/settings/branding",
       label: isEn ? "Branding" : "Marque agence",
     },
@@ -176,6 +186,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                 "exact" in item && item.exact
                   ? pathname === item.href
                   : pathname.startsWith(item.href);
+              const badge = "badge" in item ? item.badge : undefined;
               return (
                 <Link
                   key={item.href}
@@ -186,7 +197,12 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                       : "text-ink-700 hover:bg-surface-100"
                   }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  {badge && (
+                    <span className="ml-auto text-[0.6rem] font-bold uppercase tracking-wider rounded-full bg-brand-500 text-white px-1.5 py-0.5">
+                      {badge}
+                    </span>
+                  )}
                 </Link>
               );
             })}

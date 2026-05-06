@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 type Payout = {
   id: string;
@@ -61,6 +62,73 @@ export function PayoutsPanel() {
 
   const pending = data.current;
   const totalPaid = Math.round(data.totalPaidCents / 100);
+  const isEmpty =
+    !pending && data.payouts.length === 0 && data.totalPaidCents === 0;
+  const isEn = locale === "en";
+
+  if (isEmpty) {
+    return (
+      <div className="space-y-10 max-w-5xl">
+        <header>
+          <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
+          <p className="mt-2 text-ink-700 max-w-2xl">{t("subtitle")}</p>
+        </header>
+        <section className="rounded-3xl border border-surface-200 bg-gradient-to-br from-success-50 via-white to-white p-8 lg:p-12 text-center">
+          <div className="mx-auto w-16 h-16 rounded-2xl bg-success-500/15 text-success-600 flex items-center justify-center text-3xl">
+            💸
+          </div>
+          <h2 className="mt-5 text-2xl lg:text-3xl font-bold tracking-tight">
+            {isEn
+              ? "Your first payout is closer than you think"
+              : "Votre premier virement n'est pas si loin"}
+          </h2>
+          <p className="mt-3 text-ink-700 max-w-xl mx-auto leading-relaxed">
+            {isEn
+              ? "Payouts are aggregated monthly and pushed to your bank account once they cross 50 €. Your first commission appears here as soon as a HelloSafe sale is attributed to one of your links."
+              : "Les commissions sont agrégées mensuellement et virées dès qu'elles atteignent 50 €. Votre première commission apparaît ici dès qu'une vente HelloSafe est attribuée à l'un de vos liens."}
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3 justify-center">
+            <Link
+              href="/dashboard/links"
+              className="inline-flex items-center h-12 px-6 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors"
+            >
+              {isEn ? "Generate a tracked link" : "Générer un lien tracké"} →
+            </Link>
+            <Link
+              href={"/dashboard/widget" as never}
+              className="inline-flex items-center h-12 px-6 rounded-xl border border-surface-300 bg-white text-sm font-semibold text-ink-900 hover:border-brand-300 hover:text-brand-700 transition-colors"
+            >
+              {isEn ? "Embed the Coach widget" : "Intégrer le Coach"}
+            </Link>
+          </div>
+        </section>
+        <section className="grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              t: isEn ? "Up to 20%" : "Jusqu'à 20 %",
+              d: isEn ? "commission on each sale" : "de commission par vente",
+            },
+            {
+              t: isEn ? "90 days" : "90 jours",
+              d: isEn ? "attribution cookie" : "de cookie d'attribution",
+            },
+            {
+              t: isEn ? "Monthly" : "Mensuel",
+              d: isEn ? "SEPA / wire / Wise" : "SEPA / virement / Wise",
+            },
+          ].map((s, i) => (
+            <div
+              key={i}
+              className="rounded-2xl border border-surface-200 bg-white p-5"
+            >
+              <p className="text-2xl font-bold tracking-tight">{s.t}</p>
+              <p className="mt-1 text-sm text-ink-700">{s.d}</p>
+            </div>
+          ))}
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-10 max-w-7xl">

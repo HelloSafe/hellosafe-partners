@@ -467,7 +467,84 @@
     "nav": {
       "overview": "Overview",
       "links": "My links",
-      "payouts": "Payouts"
+      "payouts": "Payouts",
+      "perks": "Perks"
+    },
+    "perks": {
+      "title": "Partner perks",
+      "subtitle": "Exclusive promo codes and free services to share with your travellers alongside HelloSafe insurance. Not affiliate links — these are real discounts and free services for your audience.",
+      "footnote": "Codes are nominative and refreshed every quarter. Full conditions available in the partner space.",
+      "howItWorks": {
+        "eyebrow": "How it works",
+        "title": "Three steps to activate these perks",
+        "subtitle": "Each code is ready to use. No integration, no extra approval — you share, your audience benefits.",
+        "items": [
+          {
+            "step": "1",
+            "title": "Activate the perk",
+            "body": "Click 'Copy code' to grab the promo code or open the dedicated link."
+          },
+          {
+            "step": "2",
+            "title": "Share the code",
+            "body": "Article, newsletter, DM — paste the code next to your HelloSafe link."
+          },
+          {
+            "step": "3",
+            "title": "Your travellers save",
+            "body": "Your audience enjoys a free service or a discount. You add weight to your advice."
+          }
+        ]
+      },
+      "cardCopyCode": "Copy code",
+      "cardCopied": "Copied!",
+      "cardSeeOffer": "See the offer",
+      "items": [
+        {
+          "brand": "AirHelp",
+          "category": "Flight compensation",
+          "headline": "Up to €600 in compensation, no upfront fees",
+          "body": "Fully free for the traveller. AirHelp is paid only if the claim succeeds. Covers delays >3 h, cancellations and overbooking under EU261 regulation.",
+          "badge": "100% free",
+          "badgeTone": "success",
+          "code": null,
+          "ctaUrl": "https://www.airhelp.com/en/?utm_source=hellosafe-atlas",
+          "ctaCopy": "See the offer"
+        },
+        {
+          "brand": "Saily",
+          "category": "Travel eSIM",
+          "headline": "−10% on every data pack",
+          "body": "Exclusive HelloSafe promo code. Saily eSIM by NordVPN, 200+ destinations, activated in 1 minute, no more physical SIM swap or expensive roaming.",
+          "badge": "Promo code −10%",
+          "badgeTone": "accent",
+          "code": "HELLOSAFE10",
+          "ctaUrl": "https://saily.com/?ref=hellosafe-atlas",
+          "ctaCopy": "Copy code"
+        },
+        {
+          "brand": "Coming soon",
+          "category": "New partner",
+          "headline": "An exclusive perk is landing here shortly",
+          "body": "The HelloSafe team is finalising a third offer dedicated to Atlas partners. Stay tuned — it will appear here automatically.",
+          "badge": "Soon",
+          "badgeTone": "muted",
+          "code": null,
+          "ctaUrl": null,
+          "ctaCopy": "Coming soon"
+        },
+        {
+          "brand": "Atlys",
+          "category": "Online visa",
+          "headline": "First visa application on the house",
+          "body": "Atlys handles the visa application end-to-end — pre-filled forms, required documents, real-time tracking. The first visa is free for HelloSafe customers.",
+          "badge": "1st visa free",
+          "badgeTone": "accent",
+          "code": "ATLAS1FREE",
+          "ctaUrl": "https://www.atlys.com/?ref=hellosafe-atlas",
+          "ctaCopy": "Copy code"
+        }
+      ]
     },
     "kpis": {
       "clicks": "Clicks",

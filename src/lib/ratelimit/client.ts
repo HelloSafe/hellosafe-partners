@@ -93,3 +93,13 @@ export const postbackLimiter = makeLimiter("postback", (redis) =>
     prefix: "ratelimit",
   }),
 );
+
+/** 20 widget analyses / minute per IP. Public, unauth'd endpoint. */
+export const widgetLimiter = makeLimiter("widget", (redis) =>
+  new Ratelimit({
+    redis,
+    limiter: Ratelimit.slidingWindow(20, "1 m"),
+    analytics: true,
+    prefix: "ratelimit",
+  }),
+);

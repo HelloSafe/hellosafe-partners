@@ -213,12 +213,22 @@ export function LinksPanel() {
                 ))}
                 {links && links.length === 0 && (
                   <tr>
-                    <td
-                      colSpan={7}
-                      className="px-4 py-10 text-center text-sm text-ink-500"
-                    >
-                      Aucun lien pour le moment. Générez votre premier lien
-                      ci-dessus.
+                    <td colSpan={7} className="px-6 py-12">
+                      <div className="max-w-md mx-auto text-center">
+                        <div className="mx-auto w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-700 flex items-center justify-center text-2xl">
+                          🔗
+                        </div>
+                        <p className="mt-4 font-bold text-ink-900">
+                          {locale === "en"
+                            ? "No tracked link yet"
+                            : "Pas encore de lien tracké"}
+                        </p>
+                        <p className="mt-2 text-sm text-ink-700 leading-relaxed">
+                          {locale === "en"
+                            ? "Use the form above to generate your first one — pick a label, a destination, and copy the URL. Each link tracks clicks, conversions and commission separately."
+                            : "Utilisez le formulaire ci-dessus pour générer votre premier lien — choisissez un nom, une destination, copiez l'URL. Chaque lien track ses clics, conversions et commissions séparément."}
+                        </p>
+                      </div>
                     </td>
                   </tr>
                 )}

@@ -11,6 +11,7 @@ export {
   signupLimiter,
   redirectLimiter,
   postbackLimiter,
+  widgetLimiter,
 } from "./client";
 export type { LimitVerdict } from "./client";
 export { clientIp, rateLimitResponse } from "./helpers";

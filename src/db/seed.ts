@@ -7,6 +7,7 @@ import {
   accounts,
   partners,
   trackedLinks,
+  clicks,
   conversions,
   coverageProfiles,
 } from "./schema";
@@ -92,6 +93,13 @@ async function upsertApprovedPartner(
   )[0];
 }
 
+/**
+ * Seeds 6 tracked links + ~2000 clicks + ~80 conversions on the blog partner,
+ * spread over 30 days with a clear growth curve and weekend uplift, and a
+ * Pareto distribution where the top 3 links concentrate ~60% of conversions.
+ *
+ * Idempotent: skips if any tracked link already exists for the partner.
+ */
 async function seedLinksAndConversions(partnerId: string) {
   const hasLinks = await db
     .select({ id: trackedLinks.id })
@@ -100,52 +108,149 @@ async function seedLinksAndConversions(partnerId: string) {
     .limit(1);
   if (hasLinks.length) return;
 
+  // 6 links with realistic French labels — mid-2026 timeframe.
+  // Weight = relative share of clicks/conversions. Top 3 = 60% (28+22+12),
+  // remaining 3 split 40% (16+12+10).
   const specs = [
-    { label: "Article PVT Canada", destination: "pvt", subId: "article-pvt-canada", campaign: "pvt-canada" },
-    { label: "Newsletter mars", destination: "travel", subId: "newsletter-03", campaign: "newsletter-march" },
-    { label: "Guide Schengen", destination: "schengen", subId: "guide-schengen", campaign: "schengen-guide" },
-    { label: "Bannière ski saison", destination: "ski", subId: "home-hero", campaign: "ski-hero" },
-    { label: "Widget homepage", destination: "home", subId: "widget-home", campaign: "home-widget" },
+    { label: "Article PVT Canada 2026", destination: "pvt",       subId: "blog-pvt-canada-2026",  campaign: "pvt-canada-evergreen", weight: 28 },
+    { label: "Guide assurance étudiant Erasmus", destination: "student", subId: "blog-erasmus-guide", campaign: "erasmus-back-to-school", weight: 22 },
+    { label: "Top 5 voyages août",       destination: "travel",   subId: "blog-top-5-aout",       campaign: "summer-roundup",       weight: 12 },
+    { label: "Guide Schengen visa",      destination: "schengen", subId: "blog-schengen-visa",    campaign: "schengen-evergreen",   weight: 16 },
+    { label: "Newsletter avril",         destination: "travel",   subId: "newsletter-04",         campaign: "newsletter-april",     weight: 12 },
+    { label: "Bannière ski Pâques",      destination: "ski",      subId: "ski-easter-banner",     campaign: "ski-easter",           weight: 10 },
   ] as const;
 
-  for (const spec of specs) {
-    const linkId = newId();
-    await db.insert(trackedLinks).values({
-      id: linkId,
-      partnerId,
-      shortCode: newShortCode(8),
-      label: spec.label,
-      destination: spec.destination,
-      language: "fr",
-      campaign: spec.campaign,
-      subId: spec.subId,
-    });
-    const buckets = [
-      { daysAgo: 3, count: 4 },
-      { daysAgo: 12, count: 6 },
-      { daysAgo: 40, count: 9 },
-      { daysAgo: 72, count: 7 },
-    ];
-    for (const b of buckets) {
-      for (let i = 0; i < b.count; i++) {
-        const d = new Date();
-        d.setUTCDate(d.getUTCDate() - b.daysAgo - i);
-        await db.insert(conversions).values({
-          id: newId(),
-          linkId,
-          partnerId,
-          externalOrderId: `SEED-${linkId.slice(0, 6)}-${b.daysAgo}-${i}`,
-          amountCents: 7900,
-          commissionCents: Math.round(7900 * 0.15),
-          currency: "EUR",
-          status: b.daysAgo > 14 ? "validated" : "pending",
-          validatedAt: b.daysAgo > 14 ? d : null,
-          createdAt: d,
-        });
+  // Step 1 — create the links and remember their ids.
+  const linkRows = await Promise.all(
+    specs.map(async (spec) => {
+      const id = newId();
+      await db.insert(trackedLinks).values({
+        id,
+        partnerId,
+        shortCode: newShortCode(8),
+        label: spec.label,
+        destination: spec.destination,
+        language: "fr",
+        campaign: spec.campaign,
+        subId: spec.subId,
+      });
+      return { id, ...spec };
+    }),
+  );
+
+  // Step 2 — generate a 30-day click curve with growth + weekend boost.
+  const TOTAL_DAYS = 30;
+  const today = new Date();
+  today.setUTCHours(12, 0, 0, 0);
+  const totalWeight = specs.reduce((acc, s) => acc + s.weight, 0);
+
+  // Daily click target: starts at ~50, grows linearly to ~85 by day 30, +25% weekend.
+  const dailyClickPlan: number[] = [];
+  for (let i = 0; i < TOTAL_DAYS; i++) {
+    const daysAgo = TOTAL_DAYS - 1 - i; // i=0 oldest → i=29 today
+    const base = 50 + (i / (TOTAL_DAYS - 1)) * 35; // 50 → 85
+    const day = new Date(today);
+    day.setUTCDate(today.getUTCDate() - daysAgo);
+    const isWeekend = day.getUTCDay() === 0 || day.getUTCDay() === 6;
+    dailyClickPlan.push(Math.round(base * (isWeekend ? 1.25 : 1)));
+  }
+
+  // Step 3 — emit click rows.
+  const clickRowsToInsert: typeof clicks.$inferInsert[] = [];
+  for (let i = 0; i < TOTAL_DAYS; i++) {
+    const daysAgo = TOTAL_DAYS - 1 - i;
+    const targetForDay = dailyClickPlan[i];
+    for (let c = 0; c < targetForDay; c++) {
+      // Pick a link weighted by spec.weight.
+      let pick = Math.random() * totalWeight;
+      let chosen = linkRows[0];
+      for (const lr of linkRows) {
+        pick -= lr.weight;
+        if (pick <= 0) {
+          chosen = lr;
+          break;
+        }
+      }
+      const ts = new Date(today);
+      ts.setUTCDate(today.getUTCDate() - daysAgo);
+      ts.setUTCHours(8 + Math.floor(Math.random() * 14));
+      ts.setUTCMinutes(Math.floor(Math.random() * 60));
+      clickRowsToInsert.push({
+        id: newId(),
+        linkId: chosen.id,
+        partnerId,
+        ipHash: null,
+        userAgent: "Mozilla/5.0 (seed)",
+        referer: chosen.subId.startsWith("blog-")
+          ? "https://blogvoyage.example"
+          : "https://blogvoyage.example/newsletter",
+        country: "FR",
+        subIdOverride: null,
+        createdAt: ts,
+      });
+    }
+  }
+  // Bulk insert in batches of 500.
+  for (let i = 0; i < clickRowsToInsert.length; i += 500) {
+    await db.insert(clicks).values(clickRowsToInsert.slice(i, i + 500));
+  }
+
+  // Step 4 — conversions. ~80 total over the same window.
+  // Distribution: 70% validated, 20% pending, 10% cancelled. Older first.
+  // Amount per conversion: gaussian-ish around €89 (commission ~15%).
+  const TOTAL_CONVERSIONS = 80;
+  const conversionRowsToInsert: typeof conversions.$inferInsert[] = [];
+  for (let n = 0; n < TOTAL_CONVERSIONS; n++) {
+    // Day distribution leans late so the curve is convincing.
+    const dayWeighted = Math.floor(Math.pow(Math.random(), 0.7) * TOTAL_DAYS);
+    const daysAgo = TOTAL_DAYS - 1 - dayWeighted;
+
+    let pick = Math.random() * totalWeight;
+    let chosen = linkRows[0];
+    for (const lr of linkRows) {
+      pick -= lr.weight;
+      if (pick <= 0) {
+        chosen = lr;
+        break;
       }
     }
-    console.log(`  + link ${spec.label} (${spec.subId}) with seed conversions`);
+
+    const ts = new Date(today);
+    ts.setUTCDate(today.getUTCDate() - daysAgo);
+    ts.setUTCHours(9 + Math.floor(Math.random() * 12));
+    ts.setUTCMinutes(Math.floor(Math.random() * 60));
+
+    // Order amount: 39 / 79 / 99 / 119 / 159 — weighted around 89.
+    const tier = Math.random();
+    const amountCents =
+      tier < 0.1 ? 3900 : tier < 0.4 ? 7900 : tier < 0.75 ? 9900 : tier < 0.93 ? 11900 : 15900;
+    const commissionCents = Math.round(amountCents * 0.15);
+
+    // Status: 70/20/10.
+    const r = Math.random();
+    const status: "validated" | "pending" | "cancelled" =
+      r < 0.7 ? "validated" : r < 0.9 ? "pending" : "cancelled";
+
+    conversionRowsToInsert.push({
+      id: newId(),
+      linkId: chosen.id,
+      partnerId,
+      externalOrderId: `SEED-${chosen.id.slice(0, 6)}-${n}`,
+      amountCents,
+      commissionCents,
+      currency: "EUR",
+      status,
+      validatedAt: status === "validated" ? new Date(ts.getTime() + 86_400_000 * 7) : null,
+      createdAt: ts,
+    });
   }
+  for (let i = 0; i < conversionRowsToInsert.length; i += 500) {
+    await db.insert(conversions).values(conversionRowsToInsert.slice(i, i + 500));
+  }
+
+  console.log(
+    `  + ${linkRows.length} links, ${clickRowsToInsert.length} clicks, ${conversionRowsToInsert.length} conversions (Pareto top 3 ≈ 60%)`,
+  );
 }
 
 // ---------- Baseline coverage profiles ----------

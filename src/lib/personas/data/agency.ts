@@ -19,8 +19,8 @@ export const AGENCY_FR: PersonaContent = {
       body: "Visa Premier, World Elite, Revolut Metal — chaque carte a 18 garanties différentes, des plafonds différents, des exclusions cachées. Personne ne lit les CGV en RDV.",
     },
     {
-      title: "Votre contrat agence est moins bien présenté que celui d'un comparateur en ligne",
-      body: "Vos clients voient des slides PDF qui datent. Les comparateurs leur servent une UX 2026. Le déséquilibre est commercial, pas qualitatif.",
+      title: "Une attestation refusée à l'aéroport ou au consulat = un dossier qui revient sur votre bureau",
+      body: "Les services consulaires et les compagnies aériennes contrôlent désormais les attestations en détail (montants, zone, validité). Une attestation non conforme et c'est un voyage repoussé, parfois un client mécontent un dimanche soir.",
     },
   ],
   benefits: [
@@ -40,9 +40,9 @@ export const AGENCY_FR: PersonaContent = {
       body: "Sur les agences de notre réseau, le panier moyen monte de 79 € à 110 € quand le commercial utilise le Coach. Le client comprend ce qu'il achète.",
     },
     {
-      badge: "Commission jusqu'à 20 %",
-      title: "Et c'est récurrent",
-      body: "Le client part en croisière chaque année ? Vous touchez à chaque renouvellement. Sans rien faire de plus.",
+      badge: "Conformité consulaire",
+      title: "Attestations reconnues par les consulats et les compagnies aériennes",
+      body: "Nos certificats sont pré-validés par les consulats Schengen, Canada, Australie, États-Unis, Inde et Thaïlande, et alignés sur les exigences IATA. Vos clients partent sereinement, vos commerciaux ne reçoivent plus de coups de fil le dimanche soir.",
     },
   ],
   proof: {

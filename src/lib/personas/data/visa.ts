@@ -15,19 +15,19 @@ export const VISA_FR: PersonaContent = {
       body: "Cette panique convertit. Mais elle convertit ailleurs si vous n'avez pas un parcours vraiment fluide.",
     },
     {
-      title: "Les programmes mono-assureur ne couvrent pas tous les types de visa",
-      body: "Schengen, PVT, étudiant, longue durée, working holiday — les exigences changent. Un seul contrat ne suffit pas.",
+      title: "Une attestation refusée par le consulat = un dossier repoussé d'un mois",
+      body: "Les services consulaires contrôlent les montants, la formulation, la zone géographique, la validité. Une attestation imprécise et le rendez-vous suivant tombe parfois un mois plus tard. Le visiteur revient vers vous, déçu et pressé.",
     },
     {
-      title: "Une intégration custom prend 2 mois",
-      body: "Vous voulez aller vite. Embarquer un dev pour brancher un comparateur ne rentre pas dans votre roadmap.",
+      title: "La distribution d'assurance est verrouillée par un cadre réglementaire lourd",
+      body: "Inscription à un registre national, formation continue, licences pays par pays au Royaume-Uni, en Australie ou aux États-Unis : un comparateur visa indépendant ne peut pas porter cette charge seul.",
     },
   ],
   benefits: [
     {
-      badge: "Visa-ready",
-      title: "Conforme à toutes les ambassades",
-      body: "Schengen, USA J-1, Canada IEC, Australie WHV, Inde, Thaïlande — un seul parcours, un seul lien, l'attestation est acceptée partout.",
+      badge: "Conformité consulaire",
+      title: "Attestations en lien direct avec les consulats",
+      body: "HelloSafe maintient une relation suivie avec les consulats qui imposent une attestation d'assurance. Nos formats sont pré-validés (Schengen, Canada IEC, Australie WHV, États-Unis J-1, Inde, Thaïlande, Russie) et mis à jour à chaque évolution réglementaire.",
     },
     {
       badge: "Délai 90 secondes",
@@ -37,12 +37,12 @@ export const VISA_FR: PersonaContent = {
     {
       badge: "API + widget",
       title: "Intégration en moins d'une heure",
-      body: "API REST claire, widget natif aux couleurs de votre site. Pas d'iframe bloquée, pas de redirection brutale.",
+      body: "API REST claire, widget natif aux couleurs de votre site. Pas d'iframe bloquée, pas de redirection brutale. Postback S2S compatible Voluum, RedTrack, Impact, Partnerize.",
     },
     {
-      badge: "Postback",
-      title: "Compatible avec votre stack tracking",
-      body: "S2S vers Voluum, RedTrack, Everflow, Impact, Partnerize. Vous gardez votre attribution end-to-end.",
+      badge: "Conformité distribuée",
+      title: "Vous distribuez sous notre cadre réglementaire",
+      body: "HelloSafe porte la conformité de la distribution d'assurance en France, Royaume-Uni, Australie, États-Unis et Canada. Vous concentrez votre énergie sur l'éditorial et la conversion, sans démarches administratives à mener de votre côté.",
     },
   ],
   proof: {

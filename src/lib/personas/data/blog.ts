@@ -19,8 +19,8 @@ export const BLOG_FR: PersonaContent = {
       body: "Vos lecteurs comparent avant d'acheter. Quand vous ne leur proposez qu'un contrat, ils ouvrent un onglet, comparent ailleurs, et la vente se fait sans vous.",
     },
     {
-      title: "Pas le temps de gérer 5 plateformes d'affiliation",
-      body: "Vous voulez écrire, pas jongler entre Impact, CJ et 3 dashboards qui ne se parlent pas.",
+      title: "Distribuer une assurance demande un cadre légal lourd",
+      body: "En France comme à l'étranger, distribuer une assurance impose registres, formations continues et licences pays par pays. Hors d'atteinte pour un blogueur indépendant qui veut simplement orienter ses lecteurs.",
     },
   ],
   benefits: [
@@ -37,12 +37,12 @@ export const BLOG_FR: PersonaContent = {
     {
       badge: "Sub-ID par article",
       title: "Vous savez quel article fait quoi",
-      body: "Un Sub-ID par contenu, granularité totale dans le dashboard. Ce qui marche, vous le doublez.",
+      body: "Un Sub-ID par contenu, granularité totale dans le dashboard. Ce qui marche, vous le doublez. Paiement chaque mois, sans seuil minimum.",
     },
     {
-      badge: "Sans seuil",
-      title: "Payé chaque mois, sans minimum",
-      body: "10 €, 1 000 € ou 50 000 € : virement le 15 du mois. Pas de seuil de 250 $ comme chez les programmes US.",
+      badge: "Conformité distribuée",
+      title: "Vous distribuez sous notre cadre réglementaire",
+      body: "HelloSafe porte la conformité de la distribution d'assurance en France, Royaume-Uni, Australie, États-Unis et Canada. Vous concentrez votre énergie sur l'éditorial, pas sur les démarches administratives.",
     },
   ],
   proof: {

@@ -15,12 +15,12 @@ export const CREATOR_FR: PersonaContent = {
       body: "Vos abonnés vous écrivent en DM \"tu prends quelle assurance pour Bali ?\". Vous renvoyez vers un comparateur générique. La vente passe sans vous.",
     },
     {
-      title: "Vous ne savez pas ce qui marche",
-      body: "Story du lundi, post du jeudi, série de Reels — tout part dans le même lien. Impossible de savoir quel format convertit le mieux.",
+      title: "Vos liens partagés en story disparaissent dans le navigateur d'Instagram",
+      body: "Quand un abonné clique depuis Instagram, TikTok ou Facebook, il atterrit dans un navigateur embarqué qui bloque les cookies tiers. Une bonne partie de vos ventes ne vous est jamais attribuée. Sur certains comptes, c'est 30 à 50 % de revenu invisible.",
     },
     {
-      title: "Les programmes mono-assureur ne payent pas",
-      body: "10 % flat, panier 60 €, cookie 30 jours. Pour un créateur dont l'audience compare avant d'acheter, c'est dérisoire.",
+      title: "Distribuer une assurance demande un cadre légal lourd",
+      body: "En France comme à l'étranger, distribuer une assurance impose registres, formations continues et licences pays par pays. Hors d'atteinte pour un créateur ou un freelance qui veut juste recommander une assurance utile à ses abonnés.",
     },
   ],
   benefits: [
@@ -30,19 +30,19 @@ export const CREATOR_FR: PersonaContent = {
       body: "Un Sub-ID par publication. Vous voyez en temps réel quelle story a converti, quelle destination a vendu.",
     },
     {
-      badge: "Panier × 1,3",
-      title: "Vos abonnés payent moins cher qu'en direct",
-      body: "Tarifs négociés grâce au volume HelloSafe. Vos abonnés vous remercient d'avoir trouvé moins cher. C'est ça, la confiance qui dure.",
+      badge: "Mobile-first",
+      title: "Tracking préservé même depuis Instagram et TikTok",
+      body: "Notre redirecteur détecte les navigateurs embarqués des réseaux sociaux, propose à l'abonné de poursuivre dans Safari ou Chrome, et conserve l'attribution côté serveur. Plusieurs partenaires nous remontent jusqu'à 30 à 50 % de conversions récupérées sur ces sources.",
     },
     {
       badge: "Cookie 90 jours",
       title: "Si l'achat se fait 2 mois après la story, c'est toujours vous",
-      body: "Le voyage se prépare longtemps. Le cookie aussi.",
+      body: "Le voyage se prépare longtemps. La fenêtre d'attribution aussi.",
     },
     {
-      badge: "Kit créatif",
-      title: "Bannières, text-links, templates Reels prêts",
-      body: "10 formats IAB + 45 templates de phrase + assets vidéo aux couleurs HelloSafe. Vous gagnez l'heure de création.",
+      badge: "Conformité distribuée",
+      title: "Vous distribuez sous notre cadre réglementaire",
+      body: "HelloSafe porte la conformité de la distribution d'assurance en France, Royaume-Uni, Australie, États-Unis et Canada. Vous concentrez votre énergie sur l'audience et le contenu, pas sur les démarches administratives.",
     },
   ],
   proof: {

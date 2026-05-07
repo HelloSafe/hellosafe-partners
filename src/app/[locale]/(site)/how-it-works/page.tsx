@@ -131,34 +131,24 @@ function Steps() {
 
 /* Mockup CSS reproducing the link generator inside the partner dashboard. */
 function LinkBuilderMockup() {
+  const t = useTranslations("how.linkMockup");
+  const bullets = t.raw("bullets") as string[];
+  const subid = t("demo.subidValue");
   return (
     <section className="ds-section bg-surface-50 border-y border-surface-200">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] items-center">
           <div className="max-w-xl">
-            <span className="ds-corpo">Aperçu</span>
-            <h2 className="ds-h2 mt-3 text-ink-900">
-              Le générateur de liens en 30 secondes
-            </h2>
-            <p className="ds-body mt-4 text-ink-700">
-              Vous choisissez la destination, nous générons le deep link traqué
-              avec son Sub-ID. Aucun formulaire complexe, aucune documentation
-              d&apos;API à parcourir.
-            </p>
+            <span className="ds-corpo">{t("eyebrow")}</span>
+            <h2 className="ds-h2 mt-3 text-ink-900">{t("title")}</h2>
+            <p className="ds-body mt-4 text-ink-700">{t("body")}</p>
             <ul className="mt-6 space-y-2 text-sm text-ink-700">
-              <li className="flex items-start gap-2">
-                <Check />
-                Destinations pré-mappées (PVT, Schengen, longue durée, etc.).
-              </li>
-              <li className="flex items-start gap-2">
-                <Check />
-                Sub-ID par article, newsletter ou publication.
-              </li>
-              <li className="flex items-start gap-2">
-                <Check />
-                Paramètres UTM personnalisables, cookie d&apos;attribution
-                90 jours.
-              </li>
+              {bullets.map((b) => (
+                <li key={b} className="flex items-start gap-2">
+                  <Check />
+                  {b}
+                </li>
+              ))}
             </ul>
           </div>
           <div className="relative">
@@ -169,17 +159,17 @@ function LinkBuilderMockup() {
                 <span className="h-2.5 w-2.5 rounded-full bg-warning-500/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-success-500" />
                 <span className="ml-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs text-ink-500 border border-surface-200">
-                  partners.hellosafe.com / links / new
+                  {t("demo.url")}
                 </span>
               </div>
               <div className="rounded-b-2xl bg-white p-5 lg:p-6 space-y-4">
                 <div>
                   <label className="text-[0.7rem] uppercase tracking-wider text-ink-500 font-display font-bold">
-                    Destination
+                    {t("demo.destinationLabel")}
                   </label>
                   <div className="mt-2 flex items-center justify-between rounded-xl border border-surface-200 bg-surface-50 px-4 py-3">
                     <span className="text-sm font-medium text-ink-900">
-                      PVT Canada · French·visa-friendly
+                      {t("demo.destinationValue")}
                     </span>
                     <span className="text-xs text-ink-500">▾</span>
                   </div>
@@ -187,43 +177,43 @@ function LinkBuilderMockup() {
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="text-[0.7rem] uppercase tracking-wider text-ink-500 font-display font-bold">
-                      Sub-ID
+                      {t("demo.subidLabel")}
                     </label>
                     <div className="mt-2 rounded-xl border border-surface-200 bg-surface-50 px-3 py-2.5 text-sm font-mono text-ink-900">
-                      article-pvt-2026
+                      {subid}
                     </div>
                   </div>
                   <div>
                     <label className="text-[0.7rem] uppercase tracking-wider text-ink-500 font-display font-bold">
-                      Campagne
+                      {t("demo.campaignLabel")}
                     </label>
                     <div className="mt-2 rounded-xl border border-surface-200 bg-surface-50 px-3 py-2.5 text-sm text-ink-900">
-                      newsletter-mai
+                      {t("demo.campaignValue")}
                     </div>
                   </div>
                 </div>
                 <div className="rounded-xl bg-brand-50 border border-brand-100 px-4 py-3">
                   <p className="text-[0.7rem] uppercase tracking-wider text-brand-700 font-display font-bold">
-                    Lien généré
+                    {t("demo.linkGenerated")}
                   </p>
                   <p className="mt-1 font-mono text-sm text-ink-900 break-all">
-                    https://hellosafe.com/r/hs-v9bavm-abc12345?subid=article-pvt-2026
+                    {`https://hellosafe.com/r/hs-v9bavm-abc12345?subid=${subid}`}
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     <button
                       type="button"
                       className="inline-flex items-center gap-1.5 rounded-full bg-brand-500 text-white text-xs font-semibold px-3 py-1.5"
                     >
-                      <Copy /> Copier
+                      <Copy /> {t("demo.copyBtn")}
                     </button>
                     <button
                       type="button"
                       className="inline-flex items-center gap-1.5 rounded-full bg-white border border-surface-200 text-ink-900 text-xs font-semibold px-3 py-1.5"
                     >
-                      <QR /> QR
+                      <QR /> {t("demo.qrBtn")}
                     </button>
                     <span className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-success-50 text-success-900 text-xs font-display font-bold px-2.5 py-1 uppercase tracking-wider">
-                      ● Live
+                      {t("demo.liveBadge")}
                     </span>
                   </div>
                 </div>
@@ -235,10 +225,10 @@ function LinkBuilderMockup() {
               </span>
               <div>
                 <p className="text-[0.7rem] uppercase tracking-wider text-ink-500">
-                  Temps moyen
+                  {t("demo.avgTimeLabel")}
                 </p>
                 <p className="font-display font-bold text-ink-900">
-                  28 secondes
+                  {t("demo.avgTimeValue")}
                 </p>
               </div>
             </div>
@@ -340,10 +330,11 @@ function Assets() {
 }
 
 function BannerMockups() {
+  const t = useTranslations("how.linkMockup");
   return (
     <div className="space-y-2">
       <p className="text-[0.68rem] uppercase tracking-wider text-white/40 font-display font-bold">
-        Aperçu bannières
+        {t("bannerPreview")}
       </p>
       <div className="flex flex-wrap gap-2">
         <div className="rounded-md bg-brand-500 text-white text-xs font-semibold px-3 py-2 flex items-center gap-2">

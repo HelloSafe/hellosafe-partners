@@ -269,44 +269,44 @@
   "why": {
     "hero": {
       "eyebrow": "Partner benefits",
-      "title": "A program built for publishers who want to maximize value per visitor",
-      "subtitle": "HelloSafe isn't just another comparison site. It's the partner your travel readers deserve, and the highest-paying you can plug in."
+      "title": "The highest-paying travel-insurance partner program on the market",
+      "subtitle": "Agency, comparator, blog, creator, visa specialist — HelloSafe gives you the tools, the contracts and the commission you need to turn your audience or clients into recurring revenue."
     },
     "pillars": [
       {
         "badge": "Revenue",
         "title": "Up to 20% commission",
-        "body": "Double-digit payout on an average €79 basket, with volume tiers that reward growth. No clawback on long-duration policies."
+        "body": "Double-digit commission on an average basket of €79, with volume tiers that reward growth. No clawback on long-stay contracts."
       },
       {
-        "badge": "Conversion",
-        "title": "10.8% average conversion rate",
-        "body": "Ultra-optimized funnel, visa certificate issued in 90 seconds, expert advisors reachable 7 days a week. Partners see 3× the conversions of single-insurer programs on average."
+        "badge": "Tools",
+        "title": "Coach Atlas + tracked links + widget",
+        "body": "A 30-second coverage gap analyzer, affiliate links for your content, an embeddable comparison widget. Your reps, your writers or your visitors — each gets the right tool for their context."
       },
       {
-        "badge": "Offering",
-        "title": "Marketplace: compare AND subscribe in one place",
-        "body": "HelloSafe compares offers from multiple insurers and distributes the contracts directly. Your reader sees the best option for their profile and can subscribe on the spot, without leaving HelloSafe. Trust anchor, less friction, fewer abandoned carts."
+        "badge": "Marketplace",
+        "title": "Compare AND subscribe in one place",
+        "body": "HelloSafe aggregates the best travel insurers and distributes contracts directly. Your audience or client sees the best option for their profile and subscribes in 90 seconds — no bounce, no friction, fewer abandoned carts."
       },
       {
         "badge": "Attribution",
         "title": "90-day cookie and recurring commissions",
-        "body": "90-day attribution window (vs 30 to 45 days with most English-speaking competitors) and commissions that repeat on every policy renewal. You build cumulative revenue, not one-shot income."
+        "body": "90-day attribution window (vs. 30 – 45 days on most of the market) and commissions that recur on every renewal. You build cumulative revenue, not a one-shot."
       },
       {
         "badge": "Product",
-        "title": "Online subscription & visa certificate",
-        "body": "Everything happens online, from quote to PDF certificate. Accepted by embassies for Schengen, US, Canada, India, Thailand and more."
+        "title": "Online subscription and visa certificate",
+        "body": "Everything happens online, from quote to PDF certificate. Accepted by embassies for Schengen, USA, Canada, India, Thailand, Australia visas, etc."
       },
       {
         "badge": "Support",
         "title": "A dedicated account manager",
-        "body": "Above 50 conversions per month: a single point of contact, bespoke assets, API integration and co-ops on your high-traffic pages."
+        "body": "Past 50 sales per month, a single point of contact, custom assets, API integrations and co-ops on your high-traffic pages or stores."
       },
       {
-        "badge": "Experience",
-        "title": "Expert customer service and negotiated prices",
-        "body": "For your readers: a travel-insurance-specialist support team, reachable 7 days a week, picking up in under 2 minutes. And thanks to HelloSafe's volume, rates negotiated with insurers, often lower than buying directly. Two levers that push conversion up and cancellation down."
+        "badge": "Client experience",
+        "title": "Expert service and negotiated rates",
+        "body": "For your clients: a travel-insurance specialist team reachable 7 days a week, picking up in under 2 minutes. And thanks to HelloSafe's volume, rates negotiated with insurers, often below direct purchase. Two levers that lift conversion and cut cancellations."
       }
     ],
     "tiers": {
@@ -336,13 +336,13 @@
       ]
     },
     "comparison": {
-      "title": "How HelloSafe compares to the rest of the market",
-      "subtitle": "The numbers that matter for a serious travel publisher.",
-      "legend": "Comparison based on publicly available terms of major programs as of April 2026.",
+      "title": "How HelloSafe stacks up against the rest of the market",
+      "subtitle": "The numbers that matter to anyone distributing travel insurance.",
+      "legend": "Comparison based on the public terms of the main programs in April 2026.",
       "columns": [
         "HelloSafe",
         "Single-insurer programs",
-        "English-speaking comparators"
+        "Traditional distributors"
       ],
       "rows": [
         {
@@ -366,15 +366,15 @@
           "values": [
             "Yes, on renewals",
             "No",
-            "Rarely"
+            "Rare"
           ]
         },
         {
-          "label": "Dynamic deep links",
+          "label": "Client gap-analysis tool",
           "values": [
-            "Yes, every page",
-            "Limited",
-            "Increasingly removed"
+            "Yes — Coach Atlas included",
+            "No",
+            "Rare"
           ]
         },
         {
@@ -394,11 +394,11 @@
           ]
         },
         {
-          "label": "7-day support in your language",
+          "label": "7/7 client support",
           "values": [
             "Yes, < 2 min",
             "Often EN only",
-            "EN only"
+            "Varies"
           ]
         },
         {
@@ -406,7 +406,7 @@
           "values": [
             "Yes",
             "€50 – 100 threshold",
-            "$250 threshold"
+            "€250 threshold"
           ]
         }
       ]
@@ -415,103 +415,130 @@
   "how": {
     "hero": {
       "eyebrow": "How it works",
-      "title": "From signup to first payout, in three steps",
-      "subtitle": "The program is built to be set up in an afternoon, and to keep producing without demanding your attention afterwards."
+      "title": "From signup to first sale, in three steps",
+      "subtitle": "A program designed to fit in an afternoon of setup — agency, blog, creator, visa specialist — and keep producing without further effort."
     },
     "steps": [
       {
         "step": "01",
-        "title": "Create your partner space",
-        "body": "Provide your site URL, audience type, and billing country. Manual validation by our team within 24 business hours to preserve network quality.",
+        "title": "Create your partner account",
+        "body": "Tell us about your activity (agency, site, creator, visa specialist), your URL or store, and the country where you invoice. Manual approval by our team within 24 business hours to keep the network clean.",
         "details": [
           "100% online signup",
-          "No entry fee, no commitment",
-          "Immediate sandbox access after validation"
+          "No setup fee, no commitment",
+          "Immediate access to the demo workspace after approval"
         ]
       },
       {
         "step": "02",
-        "title": "Generate tracked links",
-        "body": "From the dashboard, pick the destination page (generic travel insurance, working holiday, Schengen, long stay, ski, etc.) and optionally a Sub-ID to isolate each article, newsletter or story. We generate a unique identifier like ?ref=hs-partner-8c4f2a.",
+        "title": "Activate your tools",
+        "body": "Pick the right tools in the dashboard: a Coach diagnosis for your client meetings, tracked links to drop in your content, a comparison widget to embed on your site. Everything is pre-configured, branded with your colors.",
         "details": [
-          "Deep links to every comparator page",
-          "Sub-ID per article / campaign / creative",
-          "Custom UTM parameters",
-          "90-day attribution cookie, last-click"
+          "Coach Atlas for client meetings",
+          "Deep-links + Sub-ID for content and campaigns",
+          "Embeddable comparison widget",
+          "90-day last-click attribution cookie"
         ]
       },
       {
         "step": "03",
-        "title": "Collect your commissions",
-        "body": "Clicks, quotes, sales, commissions per Sub-ID: track everything in real time. Payout on the 15th of each month for the prior month's sales. SEPA, international wire or Wise.",
+        "title": "Get paid",
+        "body": "Clicks, quotes, sales, commissions per channel and per campaign — track everything in real time. Paid on the 15th of each month for the previous month's sales. SEPA, international wire or Wise.",
         "details": [
-          "Real-time reporting with Sub-ID filtering",
+          "Real-time reporting filterable by channel",
           "CSV export, webhook to your BI, HTTP postback",
           "Monthly payout, no minimum threshold"
         ]
       }
     ],
     "integrations": {
-      "title": "Every way to integrate",
+      "title": "Several ways to integrate",
       "items": [
         {
-          "title": "Simple link",
-          "body": "Drop a tracked URL in an article, a newsletter, a bio."
+          "title": "Client Coach",
+          "body": "30-second coverage diagnosis during a meeting or self-service. PDF recap branded to your colors."
+        },
+        {
+          "title": "Direct link",
+          "body": "A tracked URL to drop in an article, newsletter, DM or bio. The simplest of integrations."
         },
         {
           "title": "Comparison widget",
-          "body": "Embed a native iframe showing top offers in your brand colors."
+          "body": "Three lines of code to display the best offers branded to your site. Responsive, GDPR, no iframe blocked."
         },
         {
           "title": "Public API",
-          "body": "Pull real-time quotes and render them natively on your pages."
-        },
-        {
-          "title": "Product feed",
-          "body": "Daily export of offers, rates and coverage for your comparison tables."
+          "body": "Pull quotes, contracts and commissions in real time to power your pages, sales dashboard or BI."
         }
       ]
     },
     "assets": {
-      "title": "A ready-to-embed creative kit",
-      "subtitle": "Everything you need to go live in under an hour, no designer or developer required.",
+      "title": "The plug-and-play kit",
+      "subtitle": "Everything you need to be live — or in a meeting — in under an hour, without a designer or developer.",
       "items": [
         {
-          "title": "Responsive banners",
-          "body": "10 IAB-standard formats (leaderboard 728×90, rectangle 300×250, skyscraper, mobile…) in 4 editorial angles. Web + Retina versions in PNG and WebP.",
+          "title": "Brandable Coach Atlas",
+          "body": "The coverage diagnosis with your brand (logo, colors, signature). Shareable PDF recap at the end of a meeting or by email.",
+          "tag": "Included"
+        },
+        {
+          "title": "Adaptive banners",
+          "body": "10 IAB standard formats (728×90 leaderboard, 300×250 rectangle, mobile…) in 4 editorial angles. PNG, WebP and Retina.",
           "tag": "10 formats"
         },
         {
           "title": "Embeddable comparison widget",
-          "body": "3 lines of code, adopts your site's colors (CSS variables), responsive, respects your design system. No iframe blocked by adblockers.",
-          "tag": "< 30 kB"
-        },
-        {
-          "title": "Approved text links",
-          "body": "Ready-to-copy phrases for articles, newsletters or DMs, GDPR-compliant and compatible with Google's sponsored-content requirements.",
-          "tag": "45 templates"
+          "body": "3 lines of code, branded to your site colors (CSS variables), responsive, respects your design system. Not blocked by adblockers.",
+          "tag": "< 30 KB"
         },
         {
           "title": "REST API & HTTP postback",
-          "body": "Endpoints for quotes, contracts, commissions. S2S postback on every conversion to your stack (Voluum, RedTrack, Everflow, or your own BI).",
+          "body": "Endpoints for quotes, contracts, commissions. S2S postback on each conversion to your stack or in-house BI.",
           "tag": "OpenAPI"
         }
       ],
-      "snippetTitle": "Widget embed example",
+      "snippetTitle": "Widget integration example",
       "snippetLanguage": "html"
+    },
+    "linkMockup": {
+      "eyebrow": "Preview",
+      "title": "The partner dashboard at a glance",
+      "body": "Tracked links, Coach Atlas, embeddable comparator, real-time reporting — all in one place. No API doc to read.",
+      "bullets": [
+        "Pre-mapped destinations (working holiday, Schengen, long-stay, etc.)",
+        "Sub-ID per campaign, content or store",
+        "Custom UTM parameters, 90-day attribution cookie"
+      ],
+      "demo": {
+        "url": "partners.hellosafe.com / links / new",
+        "destinationLabel": "Destination",
+        "destinationValue": "Working Holiday Canada · visa-friendly",
+        "subidLabel": "Sub-ID",
+        "subidValue": "campaign-whp-2026",
+        "campaignLabel": "Campaign",
+        "campaignValue": "network-paris-store",
+        "linkGenerated": "Generated link",
+        "copyBtn": "Copy",
+        "qrBtn": "QR",
+        "liveBadge": "● Live",
+        "avgTimeLabel": "Average time",
+        "avgTimeValue": "28 seconds"
+      },
+      "bannerPreview": "Banner previews"
     }
   },
   "networks": {
-    "title": "Already connected to your stack",
-    "subtitle": "Plug HelloSafe in via your usual platform or direct, no workflow to change.",
+    "title": "Plug HelloSafe into your stack",
+    "subtitle": "Direct tracking, affiliate platforms, agency software or simple export — pick what fits your day-to-day.",
     "items": [
       "Native HelloSafe tracking",
       "S2S postback",
+      "Agency software (Amadeus, Sabre)",
       "Impact.com",
       "Partnerize",
       "Awin",
       "Voluum & RedTrack",
-      "Webhook + CSV"
+      "Webhook + CSV export"
     ]
   },
   "coach": {

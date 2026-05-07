@@ -16,13 +16,13 @@ export function Logo({
       <Image
         src="/hellosafe-logo.svg"
         alt={t("brand")}
-        width={121}
-        height={28}
+        width={156}
+        height={36}
         priority
-        className="h-7 w-auto"
+        className="h-9 w-auto"
       />
       {withSuffix && (
-        <span className="rounded-md bg-brand-50 px-1.5 py-0.5 text-[0.68rem] font-display font-bold uppercase tracking-wider text-brand-500 leading-none">
+        <span className="rounded-md bg-brand-50 px-2 py-1 text-[0.8rem] font-display font-bold uppercase tracking-wider text-brand-500 leading-none">
           {t("brandSuffix")}
         </span>
       )}

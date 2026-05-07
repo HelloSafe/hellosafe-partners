@@ -44,10 +44,9 @@ export function Header() {
   }, [open]);
 
   const nav = [
+    { href: "/coach", label: t("nav.coach"), highlight: true },
     { href: "/why-partner", label: t("nav.why") },
     { href: "/how-it-works", label: t("nav.how") },
-    { href: "/coach", label: t("nav.coach"), highlight: true },
-    { href: "/faq", label: t("nav.faq") },
   ] as const;
 
   return (

@@ -269,8 +269,8 @@
   "why": {
     "hero": {
       "eyebrow": "Avantages partenaires",
-      "title": "Un programme pensé pour les éditeurs qui veulent maximiser la valeur par visiteur",
-      "subtitle": "HelloSafe n'est pas un comparateur de plus. C'est le partenaire que vos lecteurs voyage méritent, et le plus rémunérateur que vous puissiez brancher."
+      "title": "Le programme partenaires le plus rémunérateur du marché de l'assurance voyage",
+      "subtitle": "Agence, comparateur, blog, créateur, service visa — HelloSafe vous donne les outils, les contrats et la commission qu'il faut pour transformer votre audience ou vos clients en revenu récurrent."
     },
     "pillars": [
       {
@@ -279,34 +279,34 @@
         "body": "Rémunération à deux chiffres sur un panier moyen de 79 €, avec des paliers de volume qui récompensent la croissance. Pas de clawback sur les contrats longue durée."
       },
       {
-        "badge": "Conversion",
-        "title": "10,8 % de taux de conversion moyen",
-        "body": "Parcours ultra-optimisé, attestation visa envoyée en 90 secondes, conseillers experts joignables 7j/7. Les partenaires constatent en moyenne 3× plus de conversions qu'avec un programme mono-assureur."
+        "badge": "Outils",
+        "title": "Coach Atlas + liens traqués + widget",
+        "body": "Un diagnostic de couverture en 30 secondes, des liens d'affiliation pour vos contenus, un widget de comparaison embeddable. Vos commerciaux, vos rédacteurs ou vos visiteurs : chacun a l'outil qui correspond à son contexte."
       },
       {
-        "badge": "Offre",
-        "title": "Marketplace : comparer ET souscrire au même endroit",
-        "body": "HelloSafe compare les offres de plusieurs assureurs et distribue les contrats directement. Votre lecteur voit la meilleure option pour son profil et peut la souscrire dans la foulée, sans quitter HelloSafe. Ancrage de confiance, moins de friction, moins de paniers abandonnés."
+        "badge": "Marketplace",
+        "title": "Comparer ET souscrire au même endroit",
+        "body": "HelloSafe agrège les meilleurs assureurs voyage et distribue les contrats directement. Votre audience ou votre client voit la meilleure option pour son profil et la souscrit en 90 secondes, sans rebond ni quitter l'expérience. Ancrage de confiance, moins de friction, moins de paniers abandonnés."
       },
       {
         "badge": "Attribution",
         "title": "Cookie 90 jours et commissions récurrentes",
-        "body": "Fenêtre d'attribution de 90 jours (contre 30 – 45 jours chez la plupart des concurrents anglo-saxons) et commissions qui se répètent à chaque renouvellement de contrat. Vous construisez un revenu cumulatif, pas un one-shot."
+        "body": "Fenêtre d'attribution de 90 jours (contre 30 – 45 jours sur la majorité du marché) et commissions qui se répètent à chaque renouvellement de contrat. Vous construisez un revenu cumulatif, pas un one-shot."
       },
       {
         "badge": "Produit",
-        "title": "Souscription & attestation visa en ligne",
-        "body": "Tout se passe sur le web, du devis au certificat PDF. Valable auprès des ambassades pour les visas Schengen, USA, Canada, Inde, Thaïlande, etc."
+        "title": "Souscription et attestation visa en ligne",
+        "body": "Tout se passe sur le web, du devis au certificat PDF. Valable auprès des ambassades pour les visas Schengen, USA, Canada, Inde, Thaïlande, Australie, etc."
       },
       {
         "badge": "Support",
         "title": "Un account manager dédié",
-        "body": "Au-delà de 50 conversions par mois, un interlocuteur unique, des assets sur mesure, des intégrations API et des co-ops sur vos pages à fort trafic."
+        "body": "Au-delà de 50 ventes par mois, un interlocuteur unique, des assets sur mesure, des intégrations API et des co-ops sur vos pages ou points de vente à fort trafic."
       },
       {
-        "badge": "Expérience",
-        "title": "Service client expert et prix négociés",
-        "body": "Pour vos lecteurs : un service client spécialisé assurance voyage, joignable 7j/7 en français, qui décroche en moins de 2 minutes. Et grâce au volume HelloSafe, des tarifs négociés avec les assureurs, souvent inférieurs à la souscription en direct. Deux leviers qui font monter le taux de conversion et baisser le taux d'annulation."
+        "badge": "Expérience client",
+        "title": "Service expert et tarifs négociés",
+        "body": "Pour vos clients : un service spécialisé assurance voyage, joignable 7j/7 en français, qui décroche en moins de 2 minutes. Et grâce au volume HelloSafe, des tarifs négociés avec les assureurs, souvent inférieurs à la souscription en direct. Deux leviers qui font monter la conversion et baisser les annulations."
       }
     ],
     "tiers": {
@@ -337,12 +337,12 @@
     },
     "comparison": {
       "title": "Comment HelloSafe se positionne face au reste du marché",
-      "subtitle": "Les chiffres qui comptent pour un éditeur voyage qui sait compter.",
+      "subtitle": "Les chiffres qui comptent pour quiconque distribue de l'assurance voyage.",
       "legend": "Comparaison faite à partir des conditions publiques des principaux programmes en avril 2026.",
       "columns": [
         "HelloSafe",
         "Programmes mono-assureur",
-        "Comparateurs anglo-saxons"
+        "Distributeurs traditionnels"
       ],
       "rows": [
         {
@@ -370,11 +370,11 @@
           ]
         },
         {
-          "label": "Deep links dynamiques",
+          "label": "Outil de diagnostic client",
           "values": [
-            "Oui, sur toutes les pages",
-            "Limités",
-            "De plus en plus retirés"
+            "Oui — Coach Atlas inclus",
+            "Non",
+            "Rarement"
           ]
         },
         {
@@ -398,7 +398,7 @@
           "values": [
             "Oui, < 2 min",
             "Souvent EN only",
-            "EN only"
+            "Variable"
           ]
         },
         {
@@ -406,7 +406,7 @@
           "values": [
             "Oui",
             "Seuil 50 – 100 €",
-            "Seuil 250 $"
+            "Seuil 250 €"
           ]
         }
       ]
@@ -415,14 +415,14 @@
   "how": {
     "hero": {
       "eyebrow": "Comment ça marche",
-      "title": "De l'inscription au premier virement, en trois étapes",
-      "subtitle": "On a conçu le programme pour qu'il tienne dans un après-midi de mise en place, et qu'il continue à produire sans vous demander d'énergie ensuite."
+      "title": "De l'inscription à la première vente, en trois étapes",
+      "subtitle": "Un programme pensé pour tenir dans un après-midi de mise en place — agence, blog, créateur, service visa — et continuer à produire sans demander d'énergie ensuite."
     },
     "steps": [
       {
         "step": "01",
         "title": "Créez votre espace partenaire",
-        "body": "Renseignez l'URL de votre site, la typologie d'audience, et le pays où vous émettez vos factures. Validation manuelle par notre équipe sous 24h ouvrées, pour garantir la qualité du réseau.",
+        "body": "Renseignez votre activité (agence, site, créateur, service visa), votre URL ou votre point de vente, et le pays où vous émettez vos factures. Validation manuelle par notre équipe sous 24 heures ouvrées, pour garantir la qualité du réseau.",
         "details": [
           "Inscription 100 % en ligne",
           "Pas de frais d'entrée, pas d'engagement",
@@ -431,54 +431,59 @@
       },
       {
         "step": "02",
-        "title": "Générez vos liens traqués",
-        "body": "Depuis le dashboard, choisissez la page de destination (assurance voyage générique, PVT, Schengen, longue durée, ski, etc.) et, en option, un Sub-ID pour isoler chaque article, newsletter ou story. Nous générons un identifiant unique du type ?ref=hs-partner-8c4f2a.",
+        "title": "Activez vos outils",
+        "body": "Selon votre contexte, choisissez les bons outils dans le dashboard : un diagnostic Coach pour vos rendez-vous, des liens traqués à coller dans vos contenus, un widget de comparaison à intégrer sur votre site. Tout est pré-configuré, à votre marque.",
         "details": [
-          "Deep-links vers chaque page du comparateur",
-          "Sub-ID par article / campagne / créa",
-          "Paramètres UTM personnalisables",
+          "Coach Atlas pour les rendez-vous client",
+          "Deep-links + Sub-ID pour les contenus et campagnes",
+          "Widget de comparaison embeddable",
           "Cookie d'attribution de 90 jours, last-click"
         ]
       },
       {
         "step": "03",
         "title": "Percevez vos commissions",
-        "body": "Clics, devis, ventes, commissions par Sub-ID, suivez tout en temps réel. Paiement le 15 de chaque mois pour les ventes du mois précédent. Virement SEPA, wire international, ou Wise.",
+        "body": "Clics, devis, ventes, commissions par canal et par campagne — suivez tout en temps réel depuis le dashboard. Paiement le 15 de chaque mois pour les ventes du mois précédent. Virement SEPA, wire international, ou Wise.",
         "details": [
-          "Reporting temps réel avec filtrage par Sub-ID",
+          "Reporting temps réel filtrable par canal",
           "Export CSV, webhook vers votre BI, postback HTTP",
           "Paiement mensuel sans seuil minimum"
         ]
       }
     ],
     "integrations": {
-      "title": "Toutes les façons de vous intégrer",
+      "title": "Plusieurs façons de vous intégrer",
       "items": [
         {
-          "title": "Lien simple",
-          "body": "Copiez-collez une URL traquée dans un article, une newsletter, une bio."
+          "title": "Coach client",
+          "body": "Diagnostic de couverture en 30 secondes pendant un rendez-vous ou en self-service. Récap PDF à votre marque."
+        },
+        {
+          "title": "Lien direct",
+          "body": "Une URL traquée à coller dans un article, une newsletter, un DM ou une bio. La plus simple des intégrations."
         },
         {
           "title": "Widget comparateur",
-          "body": "Intégrez un iframe natif qui affiche les meilleures offres à vos couleurs."
+          "body": "Trois lignes de code pour afficher les meilleures offres aux couleurs de votre site. Responsive, RGPD, pas d'iframe bloquée."
         },
         {
           "title": "API publique",
-          "body": "Récupérez en temps réel les devis pour les afficher nativement sur vos pages."
-        },
-        {
-          "title": "Flux produit",
-          "body": "Export quotidien des offres, taux et garanties pour vos tableaux comparatifs."
+          "body": "Récupérez en temps réel devis, contrats et commissions pour nourrir vos pages, votre tableau commercial ou votre BI."
         }
       ]
     },
     "assets": {
-      "title": "Le kit créatif prêt-à-poser",
-      "subtitle": "Tout ce dont vous avez besoin pour être en ligne en moins d'une heure, sans designer ni développeur.",
+      "title": "Le kit prêt-à-poser",
+      "subtitle": "Tout ce qu'il faut pour être en ligne — ou en rendez-vous — en moins d'une heure, sans designer ni développeur.",
       "items": [
         {
+          "title": "Coach Atlas brandable",
+          "body": "Le diagnostic de couverture à votre marque (logo, couleurs, signature). Récap PDF transmissible en fin de RDV ou par e-mail.",
+          "tag": "Inclus"
+        },
+        {
           "title": "Bannières adaptatives",
-          "body": "10 formats IAB standards (leaderboard 728×90, rectangle 300×250, skyscraper, mobile…) en 4 angles éditoriaux. Versions web + Retina fournies en PNG et WebP.",
+          "body": "10 formats IAB standards (leaderboard 728×90, rectangle 300×250, mobile…) en 4 angles éditoriaux. PNG, WebP et Retina.",
           "tag": "10 formats"
         },
         {
@@ -487,31 +492,53 @@
           "tag": "< 30 Ko"
         },
         {
-          "title": "Text links approuvés",
-          "body": "Phrases prêtes-à-copier dans un article, une newsletter ou un DM, conformes RGPD et compatibles avec les exigences Google pour le contenu sponsorisé.",
-          "tag": "45 modèles"
-        },
-        {
           "title": "API REST & postback HTTP",
-          "body": "Endpoints pour devis, contrats, commissions. Postback S2S sur chaque conversion vers votre stack (Voluum, RedTrack, Everflow, ou votre BI maison).",
+          "body": "Endpoints pour devis, contrats, commissions. Postback S2S sur chaque conversion vers votre stack ou votre BI maison.",
           "tag": "OpenAPI"
         }
       ],
       "snippetTitle": "Exemple d'intégration du widget",
       "snippetLanguage": "html"
+    },
+    "linkMockup": {
+      "eyebrow": "Aperçu",
+      "title": "Le dashboard partenaire en un coup d'œil",
+      "body": "Liens traqués, Coach Atlas, comparateur embeddable, reporting temps réel — tout est centralisé au même endroit. Aucune documentation d'API à parcourir.",
+      "bullets": [
+        "Destinations pré-mappées (PVT, Schengen, longue durée, etc.)",
+        "Sub-ID par campagne, contenu ou point de vente",
+        "Paramètres UTM personnalisables, cookie d'attribution 90 jours"
+      ],
+      "demo": {
+        "url": "partners.hellosafe.com / links / new",
+        "destinationLabel": "Destination",
+        "destinationValue": "PVT Canada · French·visa-friendly",
+        "subidLabel": "Sub-ID",
+        "subidValue": "campagne-pvt-2026",
+        "campaignLabel": "Campagne",
+        "campaignValue": "reseau-bureau-marais",
+        "linkGenerated": "Lien généré",
+        "copyBtn": "Copier",
+        "qrBtn": "QR",
+        "liveBadge": "● Live",
+        "avgTimeLabel": "Temps moyen",
+        "avgTimeValue": "28 secondes"
+      },
+      "bannerPreview": "Aperçu bannières"
     }
   },
   "networks": {
-    "title": "Déjà connecté à votre stack",
-    "subtitle": "Branchez HelloSafe via votre plateforme habituelle ou en direct — aucun workflow à changer.",
+    "title": "Branchez HelloSafe à votre stack",
+    "subtitle": "Tracking direct, plateformes d'affiliation, outils agence ou export simple — choisissez ce qui correspond à votre quotidien.",
     "items": [
       "Tracking natif HelloSafe",
       "Postback S2S",
+      "Outils agence (Amadeus, Sabre)",
       "Impact.com",
       "Partnerize",
       "Awin",
       "Voluum & RedTrack",
-      "Webhook + CSV"
+      "Webhook + export CSV"
     ]
   },
   "coach": {

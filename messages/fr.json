@@ -149,10 +149,22 @@
     "personas": {
       "title": "Une communauté diverse de partenaires",
       "items": [
-        { "label": "Blogs voyage", "count": "420+ blogs" },
-        { "label": "Comparateurs visa", "count": "60+ sites" },
-        { "label": "Agences de voyage en ligne", "count": "140+ OTAs" },
-        { "label": "Créateurs & médias voyage", "count": "180+ créateurs" }
+        {
+          "label": "Blogs voyage",
+          "count": "420+ blogs"
+        },
+        {
+          "label": "Comparateurs visa",
+          "count": "60+ sites"
+        },
+        {
+          "label": "Agences de voyage en ligne",
+          "count": "140+ OTAs"
+        },
+        {
+          "label": "Créateurs & médias voyage",
+          "count": "180+ créateurs"
+        }
       ]
     },
     "forWho": {
@@ -160,10 +172,30 @@
       "title": "Une plateforme adaptée à chaque type de partenaire",
       "subtitle": "Agences de voyage, blogs voyage, créateurs et comparateurs visa : HelloSafe s'intègre à votre activité existante sans contrainte technique. Sélectionnez votre profil pour découvrir les bénéfices spécifiques.",
       "items": [
-        { "slug": "blog", "label": "Blogueur voyage", "tag": "Revenus récurrents", "blurb": "Vos contenus pérennes deviennent une source de revenus récurrente, mois après mois." },
-        { "slug": "agency", "label": "Agence de voyage", "tag": "Coach intégré", "blurb": "Le Coach d'analyse de couverture s'intègre dans vos rendez-vous client. La souscription se fait dans la foulée." },
-        { "slug": "visa", "label": "Spécialiste visa", "tag": "Attestation conforme", "blurb": "Vos visiteurs obtiennent une attestation conforme avant la fin du formulaire visa." },
-        { "slug": "creator", "label": "Créateur voyage", "tag": "Sub-ID par publication", "blurb": "Un Sub-ID par publication, un suivi précis de ce qui convertit, des décisions éditoriales fondées sur la donnée." }
+        {
+          "slug": "blog",
+          "label": "Blogueur voyage",
+          "tag": "Revenus récurrents",
+          "blurb": "Vos contenus pérennes deviennent une source de revenus récurrente, mois après mois."
+        },
+        {
+          "slug": "agency",
+          "label": "Agence de voyage",
+          "tag": "Coach intégré",
+          "blurb": "Le Coach d'analyse de couverture s'intègre dans vos rendez-vous client. La souscription se fait dans la foulée."
+        },
+        {
+          "slug": "visa",
+          "label": "Spécialiste visa",
+          "tag": "Attestation conforme",
+          "blurb": "Vos visiteurs obtiennent une attestation conforme avant la fin du formulaire visa."
+        },
+        {
+          "slug": "creator",
+          "label": "Créateur voyage",
+          "tag": "Sub-ID par publication",
+          "blurb": "Un Sub-ID par publication, un suivi précis de ce qui convertit, des décisions éditoriales fondées sur la donnée."
+        }
       ],
       "linkLabel": "Voir le détail"
     },
@@ -281,26 +313,102 @@
       "title": "Des paliers de commission transparents",
       "subtitle": "Votre taux augmente mécaniquement avec le volume. Recalculé le 1er de chaque mois.",
       "items": [
-        { "name": "Starter", "range": "0 – 20 ventes / mois", "rate": "10 %" },
-        { "name": "Growth", "range": "21 – 100 ventes / mois", "rate": "15 %" },
-        { "name": "Scale", "range": "101 – 300 ventes / mois", "rate": "18 %" },
-        { "name": "Elite", "range": "300+ ventes / mois", "rate": "20 %" }
+        {
+          "name": "Starter",
+          "range": "0 – 20 ventes / mois",
+          "rate": "10 %"
+        },
+        {
+          "name": "Growth",
+          "range": "21 – 100 ventes / mois",
+          "rate": "15 %"
+        },
+        {
+          "name": "Scale",
+          "range": "101 – 300 ventes / mois",
+          "rate": "18 %"
+        },
+        {
+          "name": "Elite",
+          "range": "300+ ventes / mois",
+          "rate": "20 %"
+        }
       ]
     },
     "comparison": {
       "title": "Comment HelloSafe se positionne face au reste du marché",
       "subtitle": "Les chiffres qui comptent pour un éditeur voyage qui sait compter.",
       "legend": "Comparaison faite à partir des conditions publiques des principaux programmes en avril 2026.",
-      "columns": ["HelloSafe", "Programmes mono-assureur", "Comparateurs anglo-saxons"],
+      "columns": [
+        "HelloSafe",
+        "Programmes mono-assureur",
+        "Comparateurs anglo-saxons"
+      ],
       "rows": [
-        { "label": "Taux de commission", "values": ["Jusqu'à 20 %", "10 – 12 % flat", "≈ 10 %"] },
-        { "label": "Cookie d'attribution", "values": ["90 jours", "30 – 45 jours", "30 – 45 jours"] },
-        { "label": "Commissions récurrentes", "values": ["Oui, sur renouvellements", "Non", "Rarement"] },
-        { "label": "Deep links dynamiques", "values": ["Oui, sur toutes les pages", "Limités", "De plus en plus retirés"] },
-        { "label": "Comparaison + souscription", "values": ["Au même endroit", "Au même endroit", "Redirection vers l'assureur"] },
-        { "label": "Tarifs négociés vs direct", "values": ["Oui, jusqu'à -15 %", "Non", "Rares"] },
-        { "label": "Support client en français 7j/7", "values": ["Oui, < 2 min", "Souvent EN only", "EN only"] },
-        { "label": "Paiement mensuel sans seuil", "values": ["Oui", "Seuil 50 – 100 €", "Seuil 250 $"] }
+        {
+          "label": "Taux de commission",
+          "values": [
+            "Jusqu'à 20 %",
+            "10 – 12 % flat",
+            "≈ 10 %"
+          ]
+        },
+        {
+          "label": "Cookie d'attribution",
+          "values": [
+            "90 jours",
+            "30 – 45 jours",
+            "30 – 45 jours"
+          ]
+        },
+        {
+          "label": "Commissions récurrentes",
+          "values": [
+            "Oui, sur renouvellements",
+            "Non",
+            "Rarement"
+          ]
+        },
+        {
+          "label": "Deep links dynamiques",
+          "values": [
+            "Oui, sur toutes les pages",
+            "Limités",
+            "De plus en plus retirés"
+          ]
+        },
+        {
+          "label": "Comparaison + souscription",
+          "values": [
+            "Au même endroit",
+            "Au même endroit",
+            "Redirection vers l'assureur"
+          ]
+        },
+        {
+          "label": "Tarifs négociés vs direct",
+          "values": [
+            "Oui, jusqu'à -15 %",
+            "Non",
+            "Rares"
+          ]
+        },
+        {
+          "label": "Support client en français 7j/7",
+          "values": [
+            "Oui, < 2 min",
+            "Souvent EN only",
+            "EN only"
+          ]
+        },
+        {
+          "label": "Paiement mensuel sans seuil",
+          "values": [
+            "Oui",
+            "Seuil 50 – 100 €",
+            "Seuil 250 $"
+          ]
+        }
       ]
     }
   },
@@ -346,10 +454,22 @@
     "integrations": {
       "title": "Toutes les façons de vous intégrer",
       "items": [
-        { "title": "Lien simple", "body": "Copiez-collez une URL traquée dans un article, une newsletter, une bio." },
-        { "title": "Widget comparateur", "body": "Intégrez un iframe natif qui affiche les meilleures offres à vos couleurs." },
-        { "title": "API publique", "body": "Récupérez en temps réel les devis pour les afficher nativement sur vos pages." },
-        { "title": "Flux produit", "body": "Export quotidien des offres, taux et garanties pour vos tableaux comparatifs." }
+        {
+          "title": "Lien simple",
+          "body": "Copiez-collez une URL traquée dans un article, une newsletter, une bio."
+        },
+        {
+          "title": "Widget comparateur",
+          "body": "Intégrez un iframe natif qui affiche les meilleures offres à vos couleurs."
+        },
+        {
+          "title": "API publique",
+          "body": "Récupérez en temps réel les devis pour les afficher nativement sur vos pages."
+        },
+        {
+          "title": "Flux produit",
+          "body": "Export quotidien des offres, taux et garanties pour vos tableaux comparatifs."
+        }
       ]
     },
     "assets": {
@@ -412,9 +532,18 @@
       "title": "Vos clients se croient couverts. Ils ne le sont presque jamais.",
       "body": "Une carte Visa Premier couvre 155 000 € de frais médicaux à l'étranger, mais limite la durée à 90 jours et exclut le ski hors-piste. La sécurité sociale française rembourse les soins en zone Schengen, mais quasiment rien aux États-Unis ou en Asie. Une mutuelle haut de gamme couvre le rapatriement, mais pas l'annulation toutes causes. Le Coach Atlas démêle ce maillage en quelques secondes et le rend lisible pour votre client.",
       "stats": [
-        { "value": "8", "label": "garanties analysées par dossier" },
-        { "value": "120+", "label": "cartes et mutuelles dans le référentiel" },
-        { "value": "30 s", "label": "pour générer le récap client" }
+        {
+          "value": "8",
+          "label": "garanties analysées par dossier"
+        },
+        {
+          "value": "120+",
+          "label": "cartes et mutuelles dans le référentiel"
+        },
+        {
+          "value": "30 s",
+          "label": "pour générer le récap client"
+        }
       ]
     },
     "steps": {
@@ -780,6 +909,105 @@
         "invoice": "Facture"
       },
       "downloadInvoice": "Télécharger"
+    }
+  },
+  "onboarding": {
+    "header": {
+      "badge": "Bienvenue",
+      "skip": "Passer l'onboarding →"
+    },
+    "nav": {
+      "back": "Retour",
+      "continue": "Continuer →",
+      "openDashboard": "Ouvrir mon espace →",
+      "finishing": "Finalisation…"
+    },
+    "step1": {
+      "label": "Étape 1 / 3",
+      "title": "Quel type de partenaire êtes-vous ?",
+      "subtitle": "On adapte l'onboarding et votre première action. Tous les outils Atlas — générateur de liens, Coach, contrats, paiements — sont accessibles à tout le monde, peu importe votre profil."
+    },
+    "personas": {
+      "blog": {
+        "label": "Blog voyage",
+        "sub": "Articles, guides, SEO"
+      },
+      "agency": {
+        "label": "Agence de voyage",
+        "sub": "Bureau, OTA, distribution"
+      },
+      "visa": {
+        "label": "Spécialiste visa",
+        "sub": "Comparateur, immigration"
+      },
+      "creator": {
+        "label": "Créateur·rice",
+        "sub": "Instagram, YouTube, TikTok"
+      },
+      "other": {
+        "label": "Autre",
+        "sub": "Vous nous direz"
+      }
+    },
+    "step2": {
+      "label": "Étape 2 / 3",
+      "title": "Posez votre marque",
+      "subtitle": "Ces éléments apparaissent en haut du récap que vous remettez (ou envoyez) à votre client après une analyse Coach. Modifiables plus tard dans les paramètres.",
+      "fields": {
+        "name": "Nom commercial",
+        "namePlaceholder": "Ex : Voyages Évasion",
+        "tagline": "Baseline (optionnel)",
+        "taglinePlaceholder": "Ex : Conseil personnalisé depuis 2008",
+        "logo": "URL du logo (optionnel)",
+        "logoHint": "Lien direct vers un PNG/SVG, idéalement sur fond transparent.",
+        "color": "Couleur de marque"
+      },
+      "preview": {
+        "label": "Aperçu en direct",
+        "placeholder": "Votre marque"
+      }
+    },
+    "step3": {
+      "label": "Étape 3 / 3",
+      "title": "Votre premier pas",
+      "subtitle": "On vous emmène directement à l'action qui vous donnera un retour concret en moins de 60 secondes. Les autres outils restent accessibles depuis le dashboard.",
+      "recommendedFor": "Pour vous",
+      "features": {
+        "links": {
+          "title": "Liens traqués",
+          "body": "Deep-links + Sub-ID"
+        },
+        "coach": {
+          "title": "Coach",
+          "body": "Analyseur d'écarts pour n'importe quel client"
+        },
+        "contracts": {
+          "title": "Mes contrats",
+          "body": "Distribuez votre produit"
+        },
+        "payouts": {
+          "title": "Paiements",
+          "body": "Jusqu'à 20 % de commission récurrente"
+        }
+      },
+      "suggestions": {
+        "agency": {
+          "title": "Lancez votre première analyse Coach en 90 secondes",
+          "body": "Montrez à un client ce que sa carte, sa mutuelle et sa sécu couvrent vraiment, et où Atlas ferme le trou. Le récap est aux couleurs de votre marque."
+        },
+        "blogCreator": {
+          "title": "Générez votre premier lien traqué",
+          "body": "Choisissez une page de destination, ajoutez un Sub-ID pour votre article ou story, et nous vous remettons un lien avec attribution 90 jours et commission récurrente."
+        },
+        "visa": {
+          "title": "Branchez Atlas sur votre funnel visa",
+          "body": "Générez un lien vers la bonne page visa-ready (Schengen, PVT) et faites repartir vos visiteurs avec une attestation conforme en 90 secondes."
+        },
+        "other": {
+          "title": "Choisissez votre outil, Atlas s'adapte à votre flux",
+          "body": "Liens traqués, Coach, contrats, paiements : tous les outils sont débloqués dès le premier jour."
+        }
+      }
     }
   }
 }

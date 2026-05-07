@@ -149,10 +149,22 @@
     "personas": {
       "title": "Who's already earning",
       "items": [
-        { "label": "Travel blogs", "count": "420+ blogs" },
-        { "label": "Visa comparison sites", "count": "60+ sites" },
-        { "label": "Online travel agencies", "count": "140+ OTAs" },
-        { "label": "Creators & travel media", "count": "180+ creators" }
+        {
+          "label": "Travel blogs",
+          "count": "420+ blogs"
+        },
+        {
+          "label": "Visa comparison sites",
+          "count": "60+ sites"
+        },
+        {
+          "label": "Online travel agencies",
+          "count": "140+ OTAs"
+        },
+        {
+          "label": "Creators & travel media",
+          "count": "180+ creators"
+        }
       ]
     },
     "forWho": {
@@ -160,10 +172,30 @@
       "title": "Pick your profile. We'll show you the upside.",
       "subtitle": "Every travel audience has its own angle, funnel and lever. We've already optimized them for the seven profiles below.",
       "items": [
-        { "slug": "blog", "label": "Travel blogger", "tag": "Recurring revenue", "blurb": "Your evergreen articles turn into commission machines, month after month." },
-        { "slug": "agency", "label": "Travel agency", "tag": "Built-in sales coach", "blurb": "Reps pull up the Coach in the meeting, client signs the insurance on the spot." },
-        { "slug": "visa", "label": "Visa specialist", "tag": "90-second certificate", "blurb": "API and widget that deliver a compliant certificate before the visa form is done." },
-        { "slug": "creator", "label": "Travel creator", "tag": "Sub-ID per story", "blurb": "One link, one story, one Sub-ID. You see what converts and double down." }
+        {
+          "slug": "blog",
+          "label": "Travel blogger",
+          "tag": "Recurring revenue",
+          "blurb": "Your evergreen articles turn into commission machines, month after month."
+        },
+        {
+          "slug": "agency",
+          "label": "Travel agency",
+          "tag": "Built-in sales coach",
+          "blurb": "Reps pull up the Coach in the meeting, client signs the insurance on the spot."
+        },
+        {
+          "slug": "visa",
+          "label": "Visa specialist",
+          "tag": "90-second certificate",
+          "blurb": "API and widget that deliver a compliant certificate before the visa form is done."
+        },
+        {
+          "slug": "creator",
+          "label": "Travel creator",
+          "tag": "Sub-ID per story",
+          "blurb": "One link, one story, one Sub-ID. You see what converts and double down."
+        }
       ],
       "linkLabel": "See more"
     },
@@ -281,26 +313,102 @@
       "title": "Transparent commission tiers",
       "subtitle": "Your rate scales automatically with volume. Recalculated on the 1st of every month.",
       "items": [
-        { "name": "Starter", "range": "0 – 20 sales / month", "rate": "10%" },
-        { "name": "Growth", "range": "21 – 100 sales / month", "rate": "15%" },
-        { "name": "Scale", "range": "101 – 300 sales / month", "rate": "18%" },
-        { "name": "Elite", "range": "300+ sales / month", "rate": "20%" }
+        {
+          "name": "Starter",
+          "range": "0 – 20 sales / month",
+          "rate": "10%"
+        },
+        {
+          "name": "Growth",
+          "range": "21 – 100 sales / month",
+          "rate": "15%"
+        },
+        {
+          "name": "Scale",
+          "range": "101 – 300 sales / month",
+          "rate": "18%"
+        },
+        {
+          "name": "Elite",
+          "range": "300+ sales / month",
+          "rate": "20%"
+        }
       ]
     },
     "comparison": {
       "title": "How HelloSafe compares to the rest of the market",
       "subtitle": "The numbers that matter for a serious travel publisher.",
       "legend": "Comparison based on publicly available terms of major programs as of April 2026.",
-      "columns": ["HelloSafe", "Single-insurer programs", "English-speaking comparators"],
+      "columns": [
+        "HelloSafe",
+        "Single-insurer programs",
+        "English-speaking comparators"
+      ],
       "rows": [
-        { "label": "Commission rate", "values": ["Up to 20%", "10 – 12% flat", "≈ 10%"] },
-        { "label": "Attribution cookie", "values": ["90 days", "30 – 45 days", "30 – 45 days"] },
-        { "label": "Recurring commissions", "values": ["Yes, on renewals", "No", "Rarely"] },
-        { "label": "Dynamic deep links", "values": ["Yes, every page", "Limited", "Increasingly removed"] },
-        { "label": "Compare + subscribe", "values": ["Same place", "Same place", "Redirect to insurer"] },
-        { "label": "Negotiated rates vs direct", "values": ["Yes, up to -15%", "No", "Rare"] },
-        { "label": "7-day support in your language", "values": ["Yes, < 2 min", "Often EN only", "EN only"] },
-        { "label": "Monthly payout, no threshold", "values": ["Yes", "€50 – 100 threshold", "$250 threshold"] }
+        {
+          "label": "Commission rate",
+          "values": [
+            "Up to 20%",
+            "10 – 12% flat",
+            "≈ 10%"
+          ]
+        },
+        {
+          "label": "Attribution cookie",
+          "values": [
+            "90 days",
+            "30 – 45 days",
+            "30 – 45 days"
+          ]
+        },
+        {
+          "label": "Recurring commissions",
+          "values": [
+            "Yes, on renewals",
+            "No",
+            "Rarely"
+          ]
+        },
+        {
+          "label": "Dynamic deep links",
+          "values": [
+            "Yes, every page",
+            "Limited",
+            "Increasingly removed"
+          ]
+        },
+        {
+          "label": "Compare + subscribe",
+          "values": [
+            "Same place",
+            "Same place",
+            "Redirect to insurer"
+          ]
+        },
+        {
+          "label": "Negotiated rates vs direct",
+          "values": [
+            "Yes, up to -15%",
+            "No",
+            "Rare"
+          ]
+        },
+        {
+          "label": "7-day support in your language",
+          "values": [
+            "Yes, < 2 min",
+            "Often EN only",
+            "EN only"
+          ]
+        },
+        {
+          "label": "Monthly payout, no threshold",
+          "values": [
+            "Yes",
+            "€50 – 100 threshold",
+            "$250 threshold"
+          ]
+        }
       ]
     }
   },
@@ -346,10 +454,22 @@
     "integrations": {
       "title": "Every way to integrate",
       "items": [
-        { "title": "Simple link", "body": "Drop a tracked URL in an article, a newsletter, a bio." },
-        { "title": "Comparison widget", "body": "Embed a native iframe showing top offers in your brand colors." },
-        { "title": "Public API", "body": "Pull real-time quotes and render them natively on your pages." },
-        { "title": "Product feed", "body": "Daily export of offers, rates and coverage for your comparison tables." }
+        {
+          "title": "Simple link",
+          "body": "Drop a tracked URL in an article, a newsletter, a bio."
+        },
+        {
+          "title": "Comparison widget",
+          "body": "Embed a native iframe showing top offers in your brand colors."
+        },
+        {
+          "title": "Public API",
+          "body": "Pull real-time quotes and render them natively on your pages."
+        },
+        {
+          "title": "Product feed",
+          "body": "Daily export of offers, rates and coverage for your comparison tables."
+        }
       ]
     },
     "assets": {
@@ -412,9 +532,18 @@
       "title": "Your clients think they're covered. They almost never are.",
       "body": "A premium credit card covers €155,000 of medical expenses abroad, but caps duration at 90 days and excludes off-piste skiing. UK or French social security reimburses inside the EHIC zone, but barely anything in the US or Asia. A high-end top-up covers repatriation but not all-cause cancellation. Atlas Coach untangles this in seconds and makes it readable for your client.",
       "stats": [
-        { "value": "8", "label": "guarantees analyzed per file" },
-        { "value": "120+", "label": "cards and top-ups in the catalog" },
-        { "value": "30 s", "label": "to generate the client recap" }
+        {
+          "value": "8",
+          "label": "guarantees analyzed per file"
+        },
+        {
+          "value": "120+",
+          "label": "cards and top-ups in the catalog"
+        },
+        {
+          "value": "30 s",
+          "label": "to generate the client recap"
+        }
       ]
     },
     "steps": {
@@ -780,6 +909,105 @@
         "invoice": "Invoice"
       },
       "downloadInvoice": "Download"
+    }
+  },
+  "onboarding": {
+    "header": {
+      "badge": "Onboarding",
+      "skip": "Skip onboarding →"
+    },
+    "nav": {
+      "back": "Back",
+      "continue": "Continue →",
+      "openDashboard": "Open my dashboard →",
+      "finishing": "Finishing…"
+    },
+    "step1": {
+      "label": "Step 1 / 3",
+      "title": "Which kind of partner are you?",
+      "subtitle": "We'll tailor the onboarding and your first action. Every Atlas tool — link generator, Coach, contracts, payouts — is available to everyone, regardless of profile."
+    },
+    "personas": {
+      "blog": {
+        "label": "Travel blog",
+        "sub": "Articles, guides, SEO"
+      },
+      "agency": {
+        "label": "Travel agency",
+        "sub": "Storefront, OTA, distribution"
+      },
+      "visa": {
+        "label": "Visa specialist",
+        "sub": "Comparator, immigration"
+      },
+      "creator": {
+        "label": "Creator",
+        "sub": "Instagram, YouTube, TikTok"
+      },
+      "other": {
+        "label": "Other",
+        "sub": "Tell us later"
+      }
+    },
+    "step2": {
+      "label": "Step 2 / 3",
+      "title": "Set your brand",
+      "subtitle": "These details appear on the recap sheet you hand (or email) to your client at the end of a Coach analysis. Editable later in Settings.",
+      "fields": {
+        "name": "Brand / display name",
+        "namePlaceholder": "e.g. Voyages Évasion",
+        "tagline": "Tagline (optional)",
+        "taglinePlaceholder": "e.g. Tailored travel since 2008",
+        "logo": "Logo URL (optional)",
+        "logoHint": "Direct link to a PNG/SVG, ideally on transparent background.",
+        "color": "Brand color"
+      },
+      "preview": {
+        "label": "Live preview",
+        "placeholder": "Your brand"
+      }
+    },
+    "step3": {
+      "label": "Step 3 / 3",
+      "title": "Your first move",
+      "subtitle": "We'll drop you straight into the action that gives you a sense of value within 60 seconds. You can always come back to the others from your dashboard.",
+      "recommendedFor": "Recommended for you",
+      "features": {
+        "links": {
+          "title": "Tracked links",
+          "body": "Deep links + Sub-ID"
+        },
+        "coach": {
+          "title": "Coach",
+          "body": "Coverage gap analyzer for any client"
+        },
+        "contracts": {
+          "title": "My contracts",
+          "body": "Distribute your own product"
+        },
+        "payouts": {
+          "title": "Payouts",
+          "body": "Up to 20% recurring commission"
+        }
+      },
+      "suggestions": {
+        "agency": {
+          "title": "Run your first Coach analysis in 90 seconds",
+          "body": "Show a client what their card insurance, top-up and social security really cover, then where Atlas closes the gap. The output is brandable to your colors."
+        },
+        "blogCreator": {
+          "title": "Generate your first tracked link",
+          "body": "Pick a destination page, add a Sub-ID for your article or story, and we hand you a link with 90-day attribution and recurring commission baked in."
+        },
+        "visa": {
+          "title": "Plug Atlas into your visa funnel",
+          "body": "Generate a link to the right visa-ready page (Schengen, working holiday) and have your visitors leave with a compliant certificate within 90 seconds."
+        },
+        "other": {
+          "title": "Pick your tool — Atlas adapts to your workflow",
+          "body": "Tracked links, Coach, contracts, payouts: every tool is unlocked from day one."
+        }
+      }
     }
   }
 }

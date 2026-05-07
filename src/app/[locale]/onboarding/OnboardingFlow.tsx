@@ -1,15 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { Logo } from "@/components/ui/Logo";
-import {
-  type Persona,
-  PERSONAS_EN,
-  PERSONAS_FR,
-  personaFirstAction,
-} from "./_onboarding/personas";
+import { type Persona, personaFirstAction } from "./_onboarding/personas";
 import { ProgressBar } from "./_onboarding/ui";
 import { Step1Persona } from "./_onboarding/Step1Persona";
 import { Step2Brand, type BrandState } from "./_onboarding/Step2Brand";
@@ -23,9 +18,7 @@ type State = BrandState & { persona: Persona | null };
  * step is its own component under _onboarding/.
  */
 export function OnboardingFlow() {
-  const locale = useLocale();
-  const isEn = locale === "en";
-  const personas = isEn ? PERSONAS_EN : PERSONAS_FR;
+  const t = useTranslations("onboarding");
   const router = useRouter();
 
   const [step, setStep] = useState(1);
@@ -106,14 +99,14 @@ export function OnboardingFlow() {
           <Logo />
         </Link>
         <span className="ml-3 rounded-full bg-brand-50 px-2 py-0.5 text-[0.68rem] font-bold uppercase tracking-wider text-brand-700">
-          {isEn ? "Onboarding" : "Bienvenue"}
+          {t("header.badge")}
         </span>
         <button
           onClick={skip}
           disabled={busy}
           className="ml-auto text-sm text-ink-500 hover:text-ink-900"
         >
-          {isEn ? "Skip onboarding →" : "Passer l'onboarding →"}
+          {t("header.skip")}
         </button>
       </header>
 
@@ -123,8 +116,6 @@ export function OnboardingFlow() {
 
           {step === 1 && (
             <Step1Persona
-              isEn={isEn}
-              personas={personas}
               selected={state.persona}
               onSelect={(p) => setState({ ...state, persona: p })}
             />
@@ -132,7 +123,6 @@ export function OnboardingFlow() {
 
           {step === 2 && (
             <Step2Brand
-              isEn={isEn}
               state={state}
               setState={(patch) => setState({ ...state, ...patch })}
               accent={accent}
@@ -140,7 +130,7 @@ export function OnboardingFlow() {
           )}
 
           {step === 3 && (
-            <Step3FirstMove isEn={isEn} persona={state.persona} accent={accent} />
+            <Step3FirstMove persona={state.persona} accent={accent} />
           )}
 
           <div className="mt-8 flex items-center justify-between gap-3">
@@ -149,7 +139,7 @@ export function OnboardingFlow() {
               disabled={step === 1 || busy}
               className="h-11 px-5 rounded-full border border-surface-300 text-sm font-semibold disabled:opacity-30"
             >
-              ← {isEn ? "Back" : "Retour"}
+              ← {t("nav.back")}
             </button>
             {step < 3 ? (
               <button
@@ -163,7 +153,7 @@ export function OnboardingFlow() {
                 className="h-11 px-6 rounded-full text-sm font-semibold text-white shadow-sm disabled:opacity-50 transition-all hover:brightness-110"
                 style={{ background: accent }}
               >
-                {isEn ? "Continue" : "Continuer"} →
+                {t("nav.continue")}
               </button>
             ) : (
               <button
@@ -172,13 +162,7 @@ export function OnboardingFlow() {
                 className="h-11 px-6 rounded-full text-sm font-semibold text-white shadow-sm disabled:opacity-50 transition-all hover:brightness-110"
                 style={{ background: accent }}
               >
-                {busy
-                  ? isEn
-                    ? "Finishing…"
-                    : "Finalisation…"
-                  : isEn
-                  ? "Open my dashboard →"
-                  : "Ouvrir mon espace →"}
+                {busy ? t("nav.finishing") : t("nav.openDashboard")}
               </button>
             )}
           </div>

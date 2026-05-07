@@ -1,35 +1,28 @@
 "use client";
 
-import type { Persona, PersonaCard } from "./personas";
+import { useTranslations } from "next-intl";
+import { PERSONAS, type Persona } from "./personas";
 
 export function Step1Persona({
-  isEn,
-  personas,
   selected,
   onSelect,
 }: {
-  isEn: boolean;
-  personas: PersonaCard[];
   selected: Persona | null;
   onSelect: (p: Persona) => void;
 }) {
+  const t = useTranslations("onboarding");
+
   return (
     <div>
       <span className="inline-block text-xs font-semibold uppercase tracking-wider text-brand-700">
-        {isEn ? "Step 1 / 3" : "Étape 1 / 3"}
+        {t("step1.label")}
       </span>
       <h1 className="mt-3 text-3xl lg:text-4xl font-bold tracking-tight">
-        {isEn
-          ? "Which kind of partner are you?"
-          : "Quel type de partenaire êtes-vous ?"}
+        {t("step1.title")}
       </h1>
-      <p className="mt-3 text-ink-700 max-w-2xl">
-        {isEn
-          ? "We'll tailor the onboarding and your first action. Every Atlas tool — link generator, Coach, contracts, payouts — is available to everyone, regardless of profile."
-          : "On adapte l'onboarding et votre première action. Tous les outils Atlas — générateur de liens, Coach, contrats, paiements — sont accessibles à tout le monde, peu importe votre profil."}
-      </p>
+      <p className="mt-3 text-ink-700 max-w-2xl">{t("step1.subtitle")}</p>
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
-        {personas.map((p) => {
+        {PERSONAS.map((p) => {
           const on = selected === p.id;
           return (
             <button
@@ -45,9 +38,11 @@ export function Step1Persona({
               <span className="text-2xl">{p.icon}</span>
               <span className="flex-1">
                 <span className="block font-semibold text-ink-900">
-                  {p.label}
+                  {t(`personas.${p.id}.label`)}
                 </span>
-                <span className="block text-sm text-ink-500 mt-0.5">{p.sub}</span>
+                <span className="block text-sm text-ink-500 mt-0.5">
+                  {t(`personas.${p.id}.sub`)}
+                </span>
               </span>
               <span
                 className={`h-5 w-5 rounded-full border-2 transition-colors ${

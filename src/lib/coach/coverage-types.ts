@@ -3,7 +3,7 @@
  * and for gap-analysis inputs/outputs. All money amounts in cents to keep math integer-clean.
  */
 
-export type Currency = "EUR" | "GBP" | "USD";
+export type Currency = "EUR" | "GBP" | "USD" | "CAD";
 
 export type AmountCents = {
   cents: number;
@@ -75,7 +75,7 @@ export type Companion = {
   count: number; // 1 by default; e.g. "2 children under 25"
 };
 
-export type DepartureCountry = "FR" | "UK";
+export type DepartureCountry = "FR" | "CA";
 
 export type TripPurpose =
   | "leisure"

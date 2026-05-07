@@ -38,7 +38,8 @@ const AnswersSchema = z.object({
         "mutuelle_yes",
         "mutuelle_no",
         "ss_fr",
-        "ss_uk",
+        "ss_uk", // legacy — treated as CA
+        "ss_ca",
       ]),
     )
     .max(6),
@@ -92,7 +93,7 @@ export async function POST(req: NextRequest) {
 
   // Load coverage profiles needed by the wizard inputs.
   const departureCountry = inputs.client.departureCountry;
-  const baselineLocale = departureCountry === "UK" ? "en" : "fr";
+  const baselineLocale = departureCountry === "CA" ? "en" : "fr";
 
   const profiles = await db
     .select()
@@ -256,7 +257,9 @@ function mapAnswersToWizardInputs(
   }
 
   const departureCountry: WizardInputs["client"]["departureCountry"] =
-    answers.coverage.includes("ss_uk") || lang === "en" ? "UK" : "FR";
+    answers.coverage.includes("ss_ca") || answers.coverage.includes("ss_uk") || lang === "en"
+      ? "CA"
+      : "FR";
 
   const purpose: WizardInputs["trip"]["purpose"] =
     answers.specials.includes("cruise") ? "cruise" : "leisure";

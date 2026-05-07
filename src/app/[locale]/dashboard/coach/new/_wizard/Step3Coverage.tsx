@@ -68,8 +68,8 @@ export function Step3Coverage({
       <Field
         label={
           isEn
-            ? `Home country social security (${data.client.departureCountry === "FR" ? "Sécu FR" : "NHS / GHIC"})`
-            : `Sécurité sociale du pays de départ (${data.client.departureCountry === "FR" ? "Sécu FR" : "NHS / GHIC"})`
+            ? `Home country social security (${data.client.departureCountry === "FR" ? "Sécu FR" : "Assurance maladie CA"})`
+            : `Sécurité sociale du pays de départ (${data.client.departureCountry === "FR" ? "Sécu FR" : "Assurance maladie CA"})`
         }
         hint={
           isEn

@@ -9,6 +9,7 @@ import type {
   CreateContractInput,
   UpdateContractInput,
 } from "./validators";
+import { listCards, getCardCoverage, type HcCountry } from "./cards-catalog";
 
 /**
  * Service layer for the coach domain. Pure of Next/HTTP concerns: takes
@@ -62,27 +63,30 @@ export async function createAnalysis(
   inputs: WizardInputs,
   locale: "fr" | "en",
 ) {
-  const ids = [
+  // Separate Supabase card IDs ("hc:<id>") from Neon coverage profile UUIDs
+  const isHcId = (id: string | null): id is string => Boolean(id?.startsWith("hc:"));
+
+  const neonIds = [
     inputs.coverage.cardId,
     inputs.coverage.mutuelleId,
     inputs.coverage.socialSecurityId,
     inputs.coverage.partnerContractId,
-  ].filter((x): x is string => Boolean(x));
+  ].filter((x): x is string => Boolean(x) && !isHcId(x));
 
-  const rows = ids.length
+  const rows = neonIds.length
     ? await db
         .select()
         .from(coverageProfiles)
         .where(
           and(
             eq(coverageProfiles.active, true),
-            inArray(coverageProfiles.id, ids),
+            inArray(coverageProfiles.id, neonIds),
           ),
         )
     : [];
   const byId = new Map(rows.map((r) => [r.id, r]));
   const toRecord = (id: string | null) => {
-    if (!id) return null;
+    if (!id || isHcId(id)) return null;
     const r = byId.get(id);
     if (!r) return null;
     return {
@@ -93,9 +97,28 @@ export async function createAnalysis(
     };
   };
 
+  // Load Supabase card coverage if the selected card comes from HelloCard
+  let supabaseCard: { id: string; name: string; type: "card"; data: CoverageData } | null = null;
+  if (isHcId(inputs.coverage.cardId)) {
+    const hcCountry = (inputs.client.departureCountry === "CA" ? "CA" : "FR") as HcCountry;
+    const [coverage, catalog] = await Promise.all([
+      getCardCoverage(inputs.coverage.cardId, hcCountry),
+      listCards(hcCountry),
+    ]);
+    if (coverage) {
+      const entry = catalog.find((c) => c.id === inputs.coverage.cardId);
+      supabaseCard = {
+        id: inputs.coverage.cardId,
+        name: entry?.name ?? "Carte bancaire",
+        type: "card",
+        data: coverage,
+      };
+    }
+  }
+
   const output = runGapAnalysis({
     inputs,
-    card: toRecord(inputs.coverage.cardId),
+    card: supabaseCard ?? toRecord(inputs.coverage.cardId),
     mutuelle: toRecord(inputs.coverage.mutuelleId),
     socialSecurity: toRecord(inputs.coverage.socialSecurityId),
     partnerContract: toRecord(inputs.coverage.partnerContractId),

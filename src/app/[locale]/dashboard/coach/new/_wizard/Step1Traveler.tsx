@@ -83,12 +83,12 @@ export function Step1Traveler({
         label={isEn ? "Departure country" : "Pays de départ"}
         hint={
           isEn
-            ? "Drives the social security baseline (UK NHS or FR Sécu)."
-            : "Détermine la base sécurité sociale (Sécu FR ou NHS UK)."
+            ? "Drives the card catalog and social security baseline (FR Sécu or CA provincial health insurance)."
+            : "Détermine le catalogue de cartes et la base sécurité sociale (Sécu FR ou assurance maladie provinciale CA)."
         }
       >
         <div className="flex gap-2">
-          {(["FR", "UK"] as DepartureCountry[]).map((c) => (
+          {(["FR", "CA"] as DepartureCountry[]).map((c) => (
             <button
               key={c}
               type="button"
@@ -104,7 +104,7 @@ export function Step1Traveler({
                   : "border-surface-300 text-ink-700 hover:border-brand-300"
               }`}
             >
-              {c === "FR" ? "🇫🇷 France" : "🇬🇧 United Kingdom"}
+              {c === "FR" ? "🇫🇷 France" : "🇨🇦 Canada"}
             </button>
           ))}
         </div>

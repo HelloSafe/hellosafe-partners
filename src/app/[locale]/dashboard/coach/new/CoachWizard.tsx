@@ -40,7 +40,7 @@ export function CoachWizard() {
       label: "",
       ageRange: "36_50",
       companions: [],
-      departureCountry: isEn ? "UK" : "FR",
+      departureCountry: isEn ? "CA" : "FR",
     },
     trip: {
       destination: "",
@@ -59,11 +59,9 @@ export function CoachWizard() {
     },
   });
 
-  // Refresh baseline when departureCountry changes (drives locale of the catalog).
+  // Refresh baseline when departureCountry changes (drives country of the card catalog).
   useEffect(() => {
-    const baselineLocale =
-      data.client.departureCountry === "UK" ? "en" : "fr";
-    fetch(`/api/coach/baseline?locale=${baselineLocale}`, { cache: "no-store" })
+    fetch(`/api/coach/baseline?country=${data.client.departureCountry}`, { cache: "no-store" })
       .then((r) => r.json())
       .then((d: Baseline) => {
         setBaseline(d);

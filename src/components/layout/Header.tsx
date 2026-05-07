@@ -46,6 +46,7 @@ export function Header() {
   const nav = [
     { href: "/why-partner", label: t("nav.why") },
     { href: "/how-it-works", label: t("nav.how") },
+    { href: "/coach", label: t("nav.coach"), highlight: true },
     { href: "/faq", label: t("nav.faq") },
   ] as const;
 
@@ -65,16 +66,22 @@ export function Header() {
         <nav className="hidden lg:flex items-center gap-1 flex-1">
           {nav.map((item) => {
             const active = pathname.startsWith(item.href);
+            const highlight = "highlight" in item && item.highlight;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-3 h-9 inline-flex items-center rounded-full text-sm font-medium transition-colors ${
+                className={`px-3 h-9 inline-flex items-center gap-1.5 rounded-full text-sm font-medium transition-colors ${
                   active
                     ? "text-brand-500 bg-brand-50"
-                    : "text-ink-700 hover:text-brand-500 hover:bg-surface-100"
+                    : highlight
+                      ? "text-brand-700 bg-brand-50/60 hover:bg-brand-50"
+                      : "text-ink-700 hover:text-brand-500 hover:bg-surface-100"
                 }`}
               >
+                {highlight && (
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-500" />
+                )}
                 {item.label}
               </Link>
             );
@@ -137,16 +144,22 @@ export function Header() {
             <nav className="px-6 py-5 flex flex-col gap-1">
               {nav.map((item) => {
                 const active = pathname.startsWith(item.href);
+                const highlight = "highlight" in item && item.highlight;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-4 py-3 rounded-2xl text-base font-display font-semibold transition-colors ${
+                    className={`px-4 py-3 rounded-2xl text-base font-display font-semibold transition-colors flex items-center gap-2 ${
                       active
                         ? "text-brand-500 bg-brand-50"
-                        : "text-ink-900 hover:bg-surface-100"
+                        : highlight
+                          ? "text-brand-700 bg-brand-50/60"
+                          : "text-ink-900 hover:bg-surface-100"
                     }`}
                   >
+                    {highlight && (
+                      <span className="inline-block h-2 w-2 rounded-full bg-accent-500" />
+                    )}
                     {item.label}
                   </Link>
                 );

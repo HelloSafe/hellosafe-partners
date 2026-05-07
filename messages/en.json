@@ -27,6 +27,10 @@
       "login": {
         "title": "Sign in to my partner account",
         "description": "Access the HelloSafe Atlas dashboard: reporting, link generation, commissions and payouts."
+      },
+      "coach": {
+        "title": "Atlas Coach — the travel insurance gap analyzer",
+        "description": "Atlas Coach reveals coverage gaps in 30 seconds across credit card, top-up insurance, social security and the agency contract. Client-ready recap, branded to your colors. Free for every HelloSafe partner."
       }
     }
   },
@@ -45,6 +49,7 @@
     "nav": {
       "why": "Why partner",
       "how": "How it works",
+      "coach": "Atlas Coach",
       "faq": "FAQ",
       "lang": "Language"
     },
@@ -59,6 +64,7 @@
       "links": {
         "why": "Partner benefits",
         "how": "How it works",
+        "coach": "Atlas Coach",
         "faq": "FAQ",
         "terms": "Program terms",
         "privacy": "Privacy",
@@ -213,6 +219,19 @@
       "body": "Free signup, no commitment. You keep ownership of the experience. We handle the rest.",
       "primary": "Create my partner account",
       "secondary": "Talk to an account manager"
+    },
+    "coachFeature": {
+      "eyebrow": "Atlas Coach",
+      "title": "Your clients think they're covered. Prove it, or unprove it, in 30 seconds.",
+      "body": "Atlas Coach is our internal diagnostic tool, open to every partner. You enter the client's credit card, top-up insurance and agency contract; Coach renders a guarantee-by-guarantee recap, with gaps in red and the HelloSafe recommendation on the right. Branded to your colors, print-ready.",
+      "bullets": [
+        "Full diagnostic in under 30 seconds, across 8 weighted guarantees",
+        "Branded PDF recap with your logo and colors, transferable to the client",
+        "120+ credit cards and top-ups in the catalog, kept up to date",
+        "Included in the partner program, no extra fee, no minimum threshold"
+      ],
+      "primaryCta": "Discover Atlas Coach",
+      "secondaryCta": "Become a partner"
     }
   },
   "why": {
@@ -374,6 +393,146 @@
       "Voluum & RedTrack",
       "Webhook + CSV"
     ]
+  },
+  "coach": {
+    "hero": {
+      "eyebrow": "Atlas Coach",
+      "title": "The tool that exposes coverage gaps in 30 seconds",
+      "subtitle": "Atlas Coach is an automated diagnostic that combines your client's credit card, top-up insurance, social security and distributed contract into a client-ready recap, branded to your colors. Free for every HelloSafe partner.",
+      "primaryCta": "Run my first analysis",
+      "secondaryCta": "See an example",
+      "highlights": [
+        "Diagnostic in under 30 seconds",
+        "PDF recap branded to your colors",
+        "Free, unlimited, no commitment"
+      ]
+    },
+    "intro": {
+      "eyebrow": "Why this tool",
+      "title": "Your clients think they're covered. They almost never are.",
+      "body": "A premium credit card covers €155,000 of medical expenses abroad, but caps duration at 90 days and excludes off-piste skiing. UK or French social security reimburses inside the EHIC zone, but barely anything in the US or Asia. A high-end top-up covers repatriation but not all-cause cancellation. Atlas Coach untangles this in seconds and makes it readable for your client.",
+      "stats": [
+        { "value": "8", "label": "guarantees analyzed per file" },
+        { "value": "120+", "label": "cards and top-ups in the catalog" },
+        { "value": "30 s", "label": "to generate the client recap" }
+      ]
+    },
+    "steps": {
+      "title": "Four guided steps, two minutes",
+      "subtitle": "Coach is a structured wizard, designed to be launched during a client meeting or run independently from your dashboard.",
+      "items": [
+        {
+          "n": "01",
+          "title": "The traveler",
+          "body": "Profile, age range, companions, departure country. The profile drives what social security and top-up are supposed to cover."
+        },
+        {
+          "n": "02",
+          "title": "The trip",
+          "body": "Destination, dates, purpose (leisure, business, study, expat, cruise), at-risk activities (skiing, diving, trekking). Each combination triggers specific coverage rules."
+        },
+        {
+          "n": "03",
+          "title": "Existing coverage",
+          "body": "Credit card, top-up, departure-country social security and, optionally, the contract you distribute yourself. Pick from a 120+ reference catalog."
+        },
+        {
+          "n": "04",
+          "title": "The diagnostic",
+          "body": "Atlas Coach computes a coverage score out of 100, lists critical gaps and warnings guarantee by guarantee, and proposes the best HelloSafe recommendation."
+        }
+      ]
+    },
+    "demo": {
+      "eyebrow": "The recap handed to the client",
+      "title": "A clear, branded, transferable page",
+      "subtitle": "Each guarantee is laid out in three columns: what the client already has, the gap observed, the HelloSafe answer. Downloadable as PDF, in your colors and brand.",
+      "summaryLabel": "Summary",
+      "scoreLabel": "Coverage score",
+      "scoreHint": "Computed across 8 weighted guarantees",
+      "criticalLabel": "Critical gaps",
+      "warningLabel": "Warnings",
+      "rows": [
+        {
+          "label": "Medical expenses",
+          "current": "Premium card · €155,000 · 90 days",
+          "gap": "Insufficient cap for the United States",
+          "answer": "Atlas Premium · €4,500,000 with no deductible",
+          "severity": "critical"
+        },
+        {
+          "label": "Repatriation",
+          "current": "Top-up Generali · actual costs",
+          "gap": "Sufficient",
+          "answer": "Reinforced by Atlas as a secured fallback",
+          "severity": "ok"
+        },
+        {
+          "label": "All-cause cancellation",
+          "current": "No source",
+          "gap": "Missing — high-end trip exposed",
+          "answer": "Atlas Premium · up to 100% of the trip",
+          "severity": "critical"
+        },
+        {
+          "label": "Off-piste winter sports",
+          "current": "Premium card · excluded",
+          "gap": "Planned activity not covered",
+          "answer": "Atlas Sport+ · coverage included",
+          "severity": "warning"
+        }
+      ],
+      "footer": "Sales aid. Coverage decisions remain subject to the actual contract terms."
+    },
+    "benefits": {
+      "title": "What Coach changes for your business",
+      "items": [
+        {
+          "badge": "Conversion",
+          "title": "The argument that gets a yes",
+          "body": "The \"I'm already covered\" objection collapses when the client sees their own profile crossed with their card and top-up. Across our agency network, in-meeting conversion goes from 30% to 70%."
+        },
+        {
+          "badge": "Brandable",
+          "title": "Logo, colors, signature: your brand",
+          "body": "The recap handed to the client carries your colors and your identity. HelloSafe disappears visually. It's your advice, not our ad."
+        },
+        {
+          "badge": "Basket × 1.4",
+          "title": "An informed client picks the premium tier",
+          "body": "Average basket goes from €79 to €110 when the client has seen, in black and white, what's missing. Pedagogy replaces the price argument."
+        },
+        {
+          "badge": "Free",
+          "title": "Included in the partner program",
+          "body": "No extra fee, no minimum threshold. The tool is available the moment your account is approved, no paid tier."
+        }
+      ]
+    },
+    "useCases": {
+      "title": "A few ways to use it",
+      "items": [
+        {
+          "title": "In-agency, during a meeting",
+          "body": "The rep enters the client's card, top-up and the agency contract. The recap renders in 30 seconds and feeds the closing minutes of the meeting."
+        },
+        {
+          "title": "Self-service from your site",
+          "body": "Embed the Coach widget on your contact page or inside your quote funnel. Visitors enter their data and receive their diagnostic by email."
+        },
+        {
+          "title": "As editorial content",
+          "body": "Publish an article \"Are you covered for the Canada working holiday?\" that invites readers to run the diagnostic. Dedicated Sub-ID, 90-day attribution."
+        }
+      ]
+    },
+    "finalCta": {
+      "eyebrow": "Atlas Coach",
+      "title": "Run your first analysis in under 2 minutes",
+      "body": "The tool is available from the partner dashboard the moment your account is activated. Free signup, manual approval within 24 hours.",
+      "primary": "Become a partner",
+      "secondary": "See the program"
+    }
   },
   "faq": {
     "hero": {

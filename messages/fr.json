@@ -27,6 +27,10 @@
       "login": {
         "title": "Se connecter à mon espace partenaire",
         "description": "Accès au dashboard HelloSafe Atlas : reporting, génération de liens, commissions et paiements."
+      },
+      "coach": {
+        "title": "Coach Atlas — l'outil de diagnostic d'assurance voyage",
+        "description": "Coach Atlas révèle en 30 secondes les trous de couverture entre la carte bancaire, la mutuelle, la sécurité sociale et le contrat agence de votre client. Récap client-ready à vos couleurs, gratuit pour tous les partenaires HelloSafe."
       }
     }
   },
@@ -45,6 +49,7 @@
     "nav": {
       "why": "Pourquoi nous rejoindre",
       "how": "Comment ça marche",
+      "coach": "Coach Atlas",
       "faq": "FAQ",
       "lang": "Langue"
     },
@@ -59,6 +64,7 @@
       "links": {
         "why": "Avantages partenaires",
         "how": "Fonctionnement",
+        "coach": "Coach Atlas",
         "faq": "Questions fréquentes",
         "terms": "Conditions du programme",
         "privacy": "Confidentialité",
@@ -213,6 +219,19 @@
       "body": "Inscription gratuite, validation sous 24 heures. Vous gardez la main sur votre expérience client, nous prenons en charge la distribution, le paiement et le support.",
       "primary": "Créer mon espace partenaire",
       "secondary": "Échanger avec un responsable"
+    },
+    "coachFeature": {
+      "eyebrow": "Coach Atlas",
+      "title": "Vos clients se croient couverts. Démontrez-le, ou démontez-le, en 30 secondes.",
+      "body": "Coach Atlas est notre outil de diagnostic interne, ouvert à tous les partenaires. Vous saisissez la carte du client, sa mutuelle et son contrat agence ; le Coach sort un récap garantie par garantie, avec les écarts en rouge et la recommandation HelloSafe à droite. Aux couleurs de votre marque, prêt à imprimer.",
+      "bullets": [
+        "Diagnostic complet en moins de 30 secondes, sur 8 garanties pondérées",
+        "Récap PDF brandé avec votre logo et vos couleurs, transmissible au client",
+        "Plus de 120 cartes bancaires et mutuelles dans le référentiel, mises à jour en continu",
+        "Inclus dans le programme partenaire, sans coût additionnel ni seuil minimum"
+      ],
+      "primaryCta": "Découvrir Coach Atlas",
+      "secondaryCta": "Devenir partenaire"
     }
   },
   "why": {
@@ -374,6 +393,146 @@
       "Voluum & RedTrack",
       "Webhook + CSV"
     ]
+  },
+  "coach": {
+    "hero": {
+      "eyebrow": "Coach Atlas",
+      "title": "L'outil qui révèle les trous de couverture en 30 secondes",
+      "subtitle": "Coach Atlas est un diagnostic automatique qui croise la carte bancaire, la mutuelle, la sécurité sociale et le contrat distribué de votre client pour produire un récap client-ready aux couleurs de votre marque. Gratuit pour tous les partenaires HelloSafe.",
+      "primaryCta": "Lancer ma première analyse",
+      "secondaryCta": "Voir un exemple",
+      "highlights": [
+        "Diagnostic en moins de 30 secondes",
+        "Récap PDF aux couleurs de votre marque",
+        "Gratuit, illimité, sans engagement"
+      ]
+    },
+    "intro": {
+      "eyebrow": "Pourquoi cet outil",
+      "title": "Vos clients se croient couverts. Ils ne le sont presque jamais.",
+      "body": "Une carte Visa Premier couvre 155 000 € de frais médicaux à l'étranger, mais limite la durée à 90 jours et exclut le ski hors-piste. La sécurité sociale française rembourse les soins en zone Schengen, mais quasiment rien aux États-Unis ou en Asie. Une mutuelle haut de gamme couvre le rapatriement, mais pas l'annulation toutes causes. Le Coach Atlas démêle ce maillage en quelques secondes et le rend lisible pour votre client.",
+      "stats": [
+        { "value": "8", "label": "garanties analysées par dossier" },
+        { "value": "120+", "label": "cartes et mutuelles dans le référentiel" },
+        { "value": "30 s", "label": "pour générer le récap client" }
+      ]
+    },
+    "steps": {
+      "title": "Quatre étapes guidées, deux minutes",
+      "subtitle": "Le Coach est un wizard structuré, pensé pour être lancé pendant un rendez-vous client ou en autonomie depuis votre dashboard.",
+      "items": [
+        {
+          "n": "01",
+          "title": "Le voyageur",
+          "body": "Profil, tranche d'âge, accompagnants, pays de départ. Le profil détermine ce que la sécu et la mutuelle sont censées couvrir."
+        },
+        {
+          "n": "02",
+          "title": "Le voyage",
+          "body": "Destination, dates, motif (loisir, business, étude, expat, croisière), activités à risque (ski, plongée, trek). Chaque combinaison déclenche des règles de couverture spécifiques."
+        },
+        {
+          "n": "03",
+          "title": "La couverture existante",
+          "body": "Carte bancaire, mutuelle, sécurité sociale du pays de départ et, en option, le contrat que vous distribuez vous-même. Choix dans une liste de plus de 120 références."
+        },
+        {
+          "n": "04",
+          "title": "Le diagnostic",
+          "body": "Coach Atlas génère un score de couverture sur 100, recense les écarts critiques et les alertes garantie par garantie, puis propose la meilleure recommandation HelloSafe."
+        }
+      ]
+    },
+    "demo": {
+      "eyebrow": "Le récap remis au client",
+      "title": "Une page lisible, brandée, transmissible",
+      "subtitle": "Chaque garantie est présentée en trois colonnes : ce que le client a déjà, l'écart constaté, la réponse HelloSafe. Téléchargeable en PDF, à vos couleurs et à votre marque.",
+      "summaryLabel": "Synthèse",
+      "scoreLabel": "Score de couverture",
+      "scoreHint": "Calculé sur 8 garanties pondérées",
+      "criticalLabel": "Écarts critiques",
+      "warningLabel": "Alertes",
+      "rows": [
+        {
+          "label": "Frais médicaux",
+          "current": "Visa Premier · 155 000 € · 90 jours",
+          "gap": "Plafond insuffisant aux États-Unis",
+          "answer": "Atlas Premium · 4 500 000 € sans franchise",
+          "severity": "critical"
+        },
+        {
+          "label": "Rapatriement",
+          "current": "Mutuelle Generali · frais réels",
+          "gap": "Suffisant",
+          "answer": "Renforcé par Atlas en relais sécurisé",
+          "severity": "ok"
+        },
+        {
+          "label": "Annulation toutes causes",
+          "current": "Aucune source",
+          "gap": "Absente — voyage haut de gamme à risque",
+          "answer": "Atlas Premium · jusqu'à 100 % du voyage",
+          "severity": "critical"
+        },
+        {
+          "label": "Sports d'hiver hors-piste",
+          "current": "Visa Premier · exclu",
+          "gap": "Activité programmée non couverte",
+          "answer": "Atlas Sport+ · couverture incluse",
+          "severity": "warning"
+        }
+      ],
+      "footer": "Aide à la vente. Les décisions de couverture restent soumises aux conditions du contrat sélectionné."
+    },
+    "benefits": {
+      "title": "Ce que change le Coach pour votre activité",
+      "items": [
+        {
+          "badge": "Conversion",
+          "title": "L'argument qui fait dire oui",
+          "body": "L'objection \"je suis déjà couvert\" tombe quand le client voit son propre profil croisé avec sa carte et sa mutuelle. Sur les agences du réseau, le taux de conversion en RDV passe de 30 % à 70 %."
+        },
+        {
+          "badge": "Brandable",
+          "title": "Logo, couleurs, signature : votre marque",
+          "body": "Le récap remis au client porte vos couleurs et votre identité. HelloSafe disparaît visuellement. C'est votre conseil, pas notre publicité."
+        },
+        {
+          "badge": "Panier × 1,4",
+          "title": "Un client qui comprend prend la formule premium",
+          "body": "Le panier moyen monte de 79 € à 110 € quand le client a vu noir sur blanc ce qui lui manque. La pédagogie remplace l'argument tarifaire."
+        },
+        {
+          "badge": "Gratuit",
+          "title": "Inclus dans le programme partenaire",
+          "body": "Aucun coût supplémentaire, aucun seuil minimum. L'outil est accessible dès la validation du compte, sans option payante."
+        }
+      ]
+    },
+    "useCases": {
+      "title": "Plusieurs façons de l'utiliser",
+      "items": [
+        {
+          "title": "En agence, pendant un RDV",
+          "body": "Le commercial saisit la carte du client, sa mutuelle et le contrat agence. Le récap s'affiche en 30 secondes et vient nourrir la fin du rendez-vous."
+        },
+        {
+          "title": "En self-service depuis votre site",
+          "body": "Intégrez le widget Coach sur votre page contact ou dans votre tunnel devis. Vos visiteurs saisissent leurs données et reçoivent leur diagnostic par e-mail."
+        },
+        {
+          "title": "En contenu éditorial",
+          "body": "Publiez un article \"Êtes-vous bien couvert pour le PVT Canada ?\" qui invite vos lecteurs à lancer le diagnostic. Sub-ID dédié, attribution 90 jours."
+        }
+      ]
+    },
+    "finalCta": {
+      "eyebrow": "Coach Atlas",
+      "title": "Lancez votre première analyse en moins de 2 minutes",
+      "body": "L'outil est accessible depuis le dashboard partenaire dès l'activation de votre compte. Inscription gratuite, validation manuelle sous 24 heures.",
+      "primary": "Devenir partenaire",
+      "secondary": "Voir le programme"
+    }
   },
   "faq": {
     "hero": {

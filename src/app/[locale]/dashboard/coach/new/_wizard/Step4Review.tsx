@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type {
   AgeRange,
   CompanionKind,
@@ -13,55 +14,49 @@ export function Step4Review({
   baseline,
   ageLabels,
   compLabels,
-  isEn,
 }: {
   data: WizardInputs;
   baseline: Baseline | null;
   ageLabels: Record<AgeRange, string>;
   compLabels: Record<CompanionKind, string>;
-  isEn: boolean;
 }) {
+  const t = useTranslations("coachWizard.step4");
   const lookup = (id: string | null, list: { id: string; name: string }[]) =>
     id ? list.find((c) => c.id === id)?.name : null;
+
   return (
     <div className="rounded-2xl border border-surface-200 bg-white p-7 lg:p-9 space-y-6">
-      <p className="text-sm text-ink-500">
-        {isEn
-          ? "Quick review before we run the analysis."
-          : "Vérification rapide avant de lancer l'analyse."}
-      </p>
+      <p className="text-sm text-ink-500">{t("intro")}</p>
       <ReviewBlock
-        title={isEn ? "Traveler" : "Voyageur"}
+        title={t("blocks.traveler")}
         rows={[
-          [isEn ? "Reference" : "Référence", data.client.label],
-          [isEn ? "Age range" : "Tranche d'âge", ageLabels[data.client.ageRange]],
-          [isEn ? "Departure" : "Départ", data.client.departureCountry],
+          [t("rows.reference"), data.client.label],
+          [t("rows.ageRange"), ageLabels[data.client.ageRange]],
+          [t("rows.departure"), data.client.departureCountry],
           [
-            isEn ? "Companions" : "Accompagnants",
+            t("rows.companions"),
             data.client.companions.length === 0
-              ? isEn
-                ? "Solo"
-                : "Seul"
+              ? t("rows.solo")
               : data.client.companions.map((c) => compLabels[c.kind]).join(", "),
           ],
         ]}
       />
       <ReviewBlock
-        title={isEn ? "Trip" : "Voyage"}
+        title={t("blocks.trip")}
         rows={[
-          [isEn ? "Destination" : "Destination", data.trip.destinationLabel],
+          [t("rows.destination"), data.trip.destinationLabel],
           [
-            isEn ? "Dates" : "Dates",
+            t("rows.dates"),
             `${data.trip.startDate} → ${data.trip.endDate}`,
           ],
           [
-            isEn ? "Trip value" : "Valeur",
+            t("rows.tripValue"),
             data.trip.estimatedTripValueEur > 0
               ? `${data.trip.estimatedTripValueEur} €`
               : "—",
           ],
           [
-            isEn ? "Activities" : "Activités",
+            t("rows.activities"),
             data.trip.activities.length === 0
               ? "—"
               : data.trip.activities.join(", "),
@@ -69,25 +64,25 @@ export function Step4Review({
         ]}
       />
       <ReviewBlock
-        title={isEn ? "Coverage stack" : "Couvertures"}
+        title={t("blocks.coverage")}
         rows={[
           [
-            isEn ? "Card" : "Carte",
+            t("rows.card"),
             lookup(data.coverage.cardId, baseline?.cards ?? []) ?? "—",
           ],
           [
-            isEn ? "Mutuelle" : "Mutuelle",
+            t("rows.mutuelle"),
             lookup(data.coverage.mutuelleId, baseline?.mutuelles ?? []) ?? "—",
           ],
           [
-            isEn ? "Social security" : "Sécu",
+            t("rows.socialSecurity"),
             lookup(
               data.coverage.socialSecurityId,
               baseline?.socialSecurity ?? [],
             ) ?? "—",
           ],
           [
-            isEn ? "Distributed contract" : "Contrat distribué",
+            t("rows.partnerContract"),
             lookup(
               data.coverage.partnerContractId,
               baseline?.partnerContracts ?? [],

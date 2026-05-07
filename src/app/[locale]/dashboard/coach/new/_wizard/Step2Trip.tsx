@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type {
   TripActivity,
   TripPurpose,
@@ -10,12 +11,12 @@ import { Field, inputCls } from "./ui";
 export function Step2Trip({
   data,
   setData,
-  isEn,
 }: {
   data: WizardInputs;
   setData: (s: WizardInputs) => void;
-  isEn: boolean;
 }) {
+  const t = useTranslations("coachWizard.step2");
+
   const purposes: TripPurpose[] = [
     "leisure",
     "business",
@@ -24,25 +25,6 @@ export function Step2Trip({
     "visa_required",
     "cruise",
   ];
-  const purposeLabel = (p: TripPurpose) =>
-    isEn
-      ? {
-          leisure: "Leisure",
-          business: "Business",
-          study: "Study",
-          expat: "Expat / long stay",
-          visa_required: "Visa-required",
-          cruise: "Cruise",
-        }[p]
-      : {
-          leisure: "Loisirs",
-          business: "Professionnel",
-          study: "Études",
-          expat: "Expatriation",
-          visa_required: "Visa requis",
-          cruise: "Croisière",
-        }[p];
-
   const activities: TripActivity[] = [
     "winter_sports",
     "diving",
@@ -50,35 +32,10 @@ export function Step2Trip({
     "extreme_sports",
     "motorbike",
   ];
-  const actLabel = (a: TripActivity) =>
-    isEn
-      ? {
-          winter_sports: "Skiing / winter sports",
-          diving: "Diving",
-          trekking: "Trekking / hiking",
-          extreme_sports: "Extreme sports",
-          motorbike: "Motorbike",
-          none: "None",
-        }[a]
-      : {
-          winter_sports: "Ski / sports d'hiver",
-          diving: "Plongée",
-          trekking: "Trek / randonnée",
-          extreme_sports: "Sports extrêmes",
-          motorbike: "Moto",
-          none: "Aucune",
-        }[a];
 
   return (
     <div className="rounded-2xl border border-surface-200 bg-white p-7 lg:p-9 space-y-7">
-      <Field
-        label={isEn ? "Destination" : "Destination"}
-        hint={
-          isEn
-            ? "Country and (if helpful) city or region. Mention US/Canada or Asia explicitly when relevant."
-            : "Pays et (si pertinent) ville ou région. Précisez USA/Canada ou Asie quand c'est pertinent."
-        }
-      >
+      <Field label={t("destination.label")} hint={t("destination.hint")}>
         <input
           value={data.trip.destinationLabel}
           onChange={(e) =>
@@ -91,15 +48,13 @@ export function Step2Trip({
               },
             })
           }
-          placeholder={
-            isEn ? "e.g. Indonesia (Bali)" : "Ex : Indonésie (Bali)"
-          }
+          placeholder={t("destination.placeholder")}
           className={inputCls}
         />
       </Field>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label={isEn ? "Start date" : "Date de départ"}>
+        <Field label={t("startDate")}>
           <input
             type="date"
             value={data.trip.startDate}
@@ -112,7 +67,7 @@ export function Step2Trip({
             className={inputCls}
           />
         </Field>
-        <Field label={isEn ? "End date" : "Date de retour"}>
+        <Field label={t("endDate")}>
           <input
             type="date"
             value={data.trip.endDate}
@@ -127,18 +82,7 @@ export function Step2Trip({
         </Field>
       </div>
 
-      <Field
-        label={
-          isEn
-            ? "Estimated trip value (per person, in €)"
-            : "Valeur estimée du voyage (par personne, en €)"
-        }
-        hint={
-          isEn
-            ? "Used to size the cancellation cap recommendation."
-            : "Sert à dimensionner la recommandation d'annulation."
-        }
-      >
+      <Field label={t("tripValue.label")} hint={t("tripValue.hint")}>
         <input
           type="number"
           min={0}
@@ -157,7 +101,7 @@ export function Step2Trip({
         />
       </Field>
 
-      <Field label={isEn ? "Trip purpose" : "Type de voyage"}>
+      <Field label={t("purpose.label")}>
         <div className="flex flex-wrap gap-2">
           {purposes.map((p) => (
             <button
@@ -172,13 +116,13 @@ export function Step2Trip({
                   : "border-surface-300 text-ink-700 hover:border-brand-300"
               }`}
             >
-              {purposeLabel(p)}
+              {t(`purpose.options.${p}`)}
             </button>
           ))}
         </div>
       </Field>
 
-      <Field label={isEn ? "Risk activities" : "Activités à risque"}>
+      <Field label={t("activities.label")}>
         <div className="flex flex-wrap gap-2">
           {activities.map((a) => {
             const on = data.trip.activities.includes(a);
@@ -199,7 +143,7 @@ export function Step2Trip({
                 }`}
               >
                 {on ? "✓ " : ""}
-                {actLabel(a)}
+                {t(`activities.options.${a}`)}
               </button>
             );
           })}

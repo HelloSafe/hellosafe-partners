@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type {
   AgeRange,
   Companion,
@@ -15,14 +16,14 @@ export function Step1Traveler({
   setData,
   ageLabels,
   compLabels,
-  isEn,
 }: {
   data: WizardInputs;
   setData: (s: WizardInputs) => void;
   ageLabels: Record<AgeRange, string>;
   compLabels: Record<CompanionKind, string>;
-  isEn: boolean;
 }) {
+  const t = useTranslations("coachWizard.step1");
+
   const toggleCompanion = (kind: CompanionKind) => {
     const exists = data.client.companions.find((c) => c.kind === kind);
     let next: Companion[];
@@ -36,26 +37,19 @@ export function Step1Traveler({
 
   return (
     <div className="rounded-2xl border border-surface-200 bg-white p-7 lg:p-9 space-y-7">
-      <Field
-        label={isEn ? "Client reference" : "Référence dossier client"}
-        hint={
-          isEn
-            ? 'Free text, only visible inside your dashboard. e.g. "Mr Smith — Bali May".'
-            : "Texte libre, visible uniquement dans votre dashboard. Ex : « M. Martin — Bali mai »."
-        }
-      >
+      <Field label={t("ref.label")} hint={t("ref.hint")}>
         <input
           autoFocus
           value={data.client.label}
           onChange={(e) =>
             setData({ ...data, client: { ...data.client, label: e.target.value } })
           }
-          placeholder={isEn ? "e.g. Mr Smith — Bali May" : "Ex : Mme Martin — Bali mai"}
+          placeholder={t("ref.placeholder")}
           className={inputCls}
         />
       </Field>
 
-      <Field label={isEn ? "Age range" : "Tranche d'âge du voyageur"}>
+      <Field label={t("ageRange.label")}>
         <div className="flex flex-wrap gap-2">
           {AGE_RANGES.map((r) => (
             <button
@@ -79,14 +73,7 @@ export function Step1Traveler({
         </div>
       </Field>
 
-      <Field
-        label={isEn ? "Departure country" : "Pays de départ"}
-        hint={
-          isEn
-            ? "Drives the card catalog and social security baseline (FR Sécu or CA provincial health insurance)."
-            : "Détermine le catalogue de cartes et la base sécurité sociale (Sécu FR ou assurance maladie provinciale CA)."
-        }
-      >
+      <Field label={t("country.label")} hint={t("country.hint")}>
         <div className="flex gap-2">
           {(["FR", "CA"] as DepartureCountry[]).map((c) => (
             <button
@@ -104,20 +91,13 @@ export function Step1Traveler({
                   : "border-surface-300 text-ink-700 hover:border-brand-300"
               }`}
             >
-              {c === "FR" ? "🇫🇷 France" : "🇨🇦 Canada"}
+              {c === "FR" ? t("country.fr") : t("country.ca")}
             </button>
           ))}
         </div>
       </Field>
 
-      <Field
-        label={isEn ? "Traveling with…" : "Voyage avec…"}
-        hint={
-          isEn
-            ? "Tap each kind of companion. The Coach will flag who isn't covered by the card insurance."
-            : "Cochez chaque type d'accompagnant. Le Coach signalera qui n'est pas couvert par la carte."
-        }
-      >
+      <Field label={t("companions.label")} hint={t("companions.hint")}>
         <div className="flex flex-wrap gap-2">
           {COMPANION_KINDS.map((k) => {
             const checked = data.client.companions.find((c) => c.kind === k);

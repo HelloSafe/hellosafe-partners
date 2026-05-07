@@ -745,6 +745,12 @@
       "signupLink": "Créer un compte",
       "forgot": "Mot de passe oublié ?",
       "demoNotice": "Démo, utilisez n'importe quel e-mail / mot de passe."
+    },
+    "pending": {
+      "title": "Votre compte est en cours de validation",
+      "body": "Merci pour votre inscription. Notre équipe valide chaque nouveau partenaire sous 24 heures ouvrées pour garder le réseau propre. Vous recevrez un e-mail dès que votre compte sera approuvé et que votre dashboard sera accessible.",
+      "goLogin": "Aller à la connexion",
+      "backHome": "Retour au site"
     }
   },
   "dashboard": {
@@ -1008,6 +1014,127 @@
           "body": "Liens traqués, Coach, contrats, paiements : tous les outils sont débloqués dès le premier jour."
         }
       }
+    }
+  },
+  "coachWizard": {
+    "header": {
+      "newAnalysis": "Nouvelle analyse",
+      "steps": {
+        "traveler": "Voyageur",
+        "trip": "Voyage",
+        "coverage": "Couvertures",
+        "review": "Récapitulatif"
+      }
+    },
+    "nav": {
+      "back": "Retour",
+      "continue": "Continuer →",
+      "computing": "Analyse en cours…",
+      "generate": "Générer l'analyse →"
+    },
+    "step1": {
+      "ref": {
+        "label": "Référence dossier client",
+        "hint": "Texte libre, visible uniquement dans votre dashboard. Ex : « M. Martin — Bali mai ».",
+        "placeholder": "Ex : Mme Martin — Bali mai"
+      },
+      "ageRange": {
+        "label": "Tranche d'âge du voyageur"
+      },
+      "country": {
+        "label": "Pays de départ",
+        "hint": "Détermine le catalogue de cartes et la base sécurité sociale (Sécu FR ou assurance maladie provinciale CA).",
+        "fr": "🇫🇷 France",
+        "ca": "🇨🇦 Canada"
+      },
+      "companions": {
+        "label": "Voyage avec…",
+        "hint": "Cochez chaque type d'accompagnant. Le Coach signalera qui n'est pas couvert par la carte."
+      }
+    },
+    "step2": {
+      "destination": {
+        "label": "Destination",
+        "hint": "Pays et (si pertinent) ville ou région. Précisez USA/Canada ou Asie quand c'est pertinent.",
+        "placeholder": "Ex : Indonésie (Bali)"
+      },
+      "startDate": "Date de départ",
+      "endDate": "Date de retour",
+      "tripValue": {
+        "label": "Valeur estimée du voyage (par personne, en €)",
+        "hint": "Sert à dimensionner la recommandation d'annulation."
+      },
+      "purpose": {
+        "label": "Type de voyage",
+        "options": {
+          "leisure": "Loisirs",
+          "business": "Professionnel",
+          "study": "Études",
+          "expat": "Expatriation",
+          "visa_required": "Visa requis",
+          "cruise": "Croisière"
+        }
+      },
+      "activities": {
+        "label": "Activités à risque",
+        "options": {
+          "winter_sports": "Ski / sports d'hiver",
+          "diving": "Plongée",
+          "trekking": "Trek / randonnée",
+          "extreme_sports": "Sports extrêmes",
+          "motorbike": "Moto",
+          "none": "Aucune"
+        }
+      }
+    },
+    "step3": {
+      "card": {
+        "label": "Carte bancaire",
+        "hint": "Sélectionnez la plus proche. La bibliothèque s'enrichira.",
+        "noCard": "Pas de carte / je ne sais pas"
+      },
+      "mutuelle": {
+        "label": "Mutuelle santé",
+        "none": "Aucune"
+      },
+      "socialSecurity": {
+        "labelFr": "Sécurité sociale du pays de départ (Sécu FR)",
+        "labelCa": "Sécurité sociale du pays de départ (Assurance maladie CA)",
+        "hint": "Sélectionnée automatiquement selon le pays de départ.",
+        "skip": "Ignorer"
+      },
+      "partnerContract": {
+        "label": "Votre contrat distribué",
+        "hint": "Gérez vos contrats depuis Mes contrats. Pré-chargé : Club Med.",
+        "none": "Aucun"
+      }
+    },
+    "step4": {
+      "intro": "Vérification rapide avant de lancer l'analyse.",
+      "blocks": {
+        "traveler": "Voyageur",
+        "trip": "Voyage",
+        "coverage": "Couvertures"
+      },
+      "rows": {
+        "reference": "Référence",
+        "ageRange": "Tranche d'âge",
+        "departure": "Départ",
+        "companions": "Accompagnants",
+        "solo": "Seul",
+        "destination": "Destination",
+        "dates": "Dates",
+        "tripValue": "Valeur",
+        "activities": "Activités",
+        "card": "Carte",
+        "mutuelle": "Mutuelle",
+        "socialSecurity": "Sécu",
+        "partnerContract": "Contrat distribué"
+      }
+    },
+    "errors": {
+      "generic": "Erreur",
+      "connection": "Erreur de connexion au serveur."
     }
   }
 }

@@ -1,24 +1,26 @@
+"use client";
+
 /** Shared presentational primitives for the CoachWizard steps. */
+import { useTranslations } from "next-intl";
 
 export const inputCls =
   "w-full rounded-lg border border-surface-300 bg-white px-3.5 h-11 text-[0.95rem] text-ink-900 focus-ring transition-colors focus:border-brand-500";
 
-export function Header({ step, isEn }: { step: number; isEn: boolean }) {
-  const labels = isEn
-    ? ["Traveler", "Trip", "Coverage", "Review"]
-    : ["Voyageur", "Voyage", "Couvertures", "Récapitulatif"];
+export function Header({ step }: { step: number }) {
+  const t = useTranslations("coachWizard.header");
+  const stepKeys = ["traveler", "trip", "coverage", "review"] as const;
   return (
     <div>
       <p className="text-xs font-semibold uppercase tracking-wider text-brand-700">
-        {isEn ? "New analysis" : "Nouvelle analyse"} · {step}/4
+        {t("newAnalysis")} · {step}/4
       </p>
       <h1 className="mt-2 text-2xl lg:text-3xl font-bold tracking-tight">
-        {labels[step - 1]}
+        {t(`steps.${stepKeys[step - 1]}`)}
       </h1>
       <ol className="mt-5 flex items-center gap-2">
-        {labels.map((l, i) => (
+        {stepKeys.map((key, i) => (
           <li
-            key={l}
+            key={key}
             className={`flex-1 h-1 rounded-full ${
               i + 1 <= step ? "bg-brand-500" : "bg-surface-200"
             }`}

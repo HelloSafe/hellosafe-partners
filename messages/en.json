@@ -745,6 +745,12 @@
       "signupLink": "Create an account",
       "forgot": "Forgot password?",
       "demoNotice": "Demo, use any email / password."
+    },
+    "pending": {
+      "title": "Your account is under review",
+      "body": "Thanks for signing up. Our team reviews every new partner within 24 business hours to keep the network clean. You'll receive an email as soon as your account is approved and you can access your dashboard.",
+      "goLogin": "Go to login",
+      "backHome": "Back to site"
     }
   },
   "dashboard": {
@@ -1008,6 +1014,127 @@
           "body": "Tracked links, Coach, contracts, payouts: every tool is unlocked from day one."
         }
       }
+    }
+  },
+  "coachWizard": {
+    "header": {
+      "newAnalysis": "New analysis",
+      "steps": {
+        "traveler": "Traveler",
+        "trip": "Trip",
+        "coverage": "Coverage",
+        "review": "Review"
+      }
+    },
+    "nav": {
+      "back": "Back",
+      "continue": "Continue →",
+      "computing": "Computing…",
+      "generate": "Generate analysis →"
+    },
+    "step1": {
+      "ref": {
+        "label": "Client reference",
+        "hint": "Free text, only visible inside your dashboard. e.g. \"Mr Smith — Bali May\".",
+        "placeholder": "e.g. Mr Smith — Bali May"
+      },
+      "ageRange": {
+        "label": "Age range"
+      },
+      "country": {
+        "label": "Departure country",
+        "hint": "Drives the card catalog and social security baseline (FR Sécu or CA provincial health insurance).",
+        "fr": "🇫🇷 France",
+        "ca": "🇨🇦 Canada"
+      },
+      "companions": {
+        "label": "Traveling with…",
+        "hint": "Tap each kind of companion. The Coach will flag who isn't covered by the card insurance."
+      }
+    },
+    "step2": {
+      "destination": {
+        "label": "Destination",
+        "hint": "Country and (if helpful) city or region. Mention US/Canada or Asia explicitly when relevant.",
+        "placeholder": "e.g. Indonesia (Bali)"
+      },
+      "startDate": "Start date",
+      "endDate": "End date",
+      "tripValue": {
+        "label": "Estimated trip value (per person, in €)",
+        "hint": "Used to size the cancellation cap recommendation."
+      },
+      "purpose": {
+        "label": "Trip purpose",
+        "options": {
+          "leisure": "Leisure",
+          "business": "Business",
+          "study": "Study",
+          "expat": "Expat / long stay",
+          "visa_required": "Visa-required",
+          "cruise": "Cruise"
+        }
+      },
+      "activities": {
+        "label": "Risk activities",
+        "options": {
+          "winter_sports": "Skiing / winter sports",
+          "diving": "Diving",
+          "trekking": "Trekking / hiking",
+          "extreme_sports": "Extreme sports",
+          "motorbike": "Motorbike",
+          "none": "None"
+        }
+      }
+    },
+    "step3": {
+      "card": {
+        "label": "Bank card",
+        "hint": "Pick the closest match. We'll add more cards over time.",
+        "noCard": "No card / unsure"
+      },
+      "mutuelle": {
+        "label": "Top-up health insurance (mutuelle)",
+        "none": "None"
+      },
+      "socialSecurity": {
+        "labelFr": "Home country social security (Sécu FR)",
+        "labelCa": "Home country social security (CA health insurance)",
+        "hint": "Auto-selected based on departure country.",
+        "skip": "Skip"
+      },
+      "partnerContract": {
+        "label": "Your distributed contract",
+        "hint": "Manage your contracts in My contracts. Pre-loaded: Club Med.",
+        "none": "None"
+      }
+    },
+    "step4": {
+      "intro": "Quick review before we run the analysis.",
+      "blocks": {
+        "traveler": "Traveler",
+        "trip": "Trip",
+        "coverage": "Coverage stack"
+      },
+      "rows": {
+        "reference": "Reference",
+        "ageRange": "Age range",
+        "departure": "Departure",
+        "companions": "Companions",
+        "solo": "Solo",
+        "destination": "Destination",
+        "dates": "Dates",
+        "tripValue": "Trip value",
+        "activities": "Activities",
+        "card": "Card",
+        "mutuelle": "Mutuelle",
+        "socialSecurity": "Social security",
+        "partnerContract": "Distributed contract"
+      }
+    },
+    "errors": {
+      "generic": "Error",
+      "connection": "Could not connect to the server."
     }
   }
 }

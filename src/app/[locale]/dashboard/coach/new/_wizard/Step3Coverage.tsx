@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { WizardInputs } from "@/lib/coach/coverage-types";
 import type { Baseline } from "./constants";
 import { Field, SelectChips } from "./ui";
@@ -8,13 +9,13 @@ export function Step3Coverage({
   data,
   setData,
   baseline,
-  isEn,
 }: {
   data: WizardInputs;
   setData: (s: WizardInputs) => void;
   baseline: Baseline | null;
-  isEn: boolean;
 }) {
+  const t = useTranslations("coachWizard.step3");
+
   if (!baseline) {
     return (
       <div className="flex items-center justify-center py-16">
@@ -22,19 +23,17 @@ export function Step3Coverage({
       </div>
     );
   }
+  const ssLabel =
+    data.client.departureCountry === "FR"
+      ? t("socialSecurity.labelFr")
+      : t("socialSecurity.labelCa");
+
   return (
     <div className="rounded-2xl border border-surface-200 bg-white p-7 lg:p-9 space-y-7">
-      <Field
-        label={isEn ? "Bank card" : "Carte bancaire"}
-        hint={
-          isEn
-            ? "Pick the closest match. We'll add more cards over time."
-            : "Sélectionnez la plus proche. La bibliothèque s'enrichira."
-        }
-      >
+      <Field label={t("card.label")} hint={t("card.hint")}>
         <SelectChips
           options={[
-            { id: "", label: isEn ? "No card / unsure" : "Pas de carte / je ne sais pas" },
+            { id: "", label: t("card.noCard") },
             ...baseline.cards.map((c) => ({ id: c.id, label: c.name })),
           ]}
           value={data.coverage.cardId ?? ""}
@@ -47,12 +46,10 @@ export function Step3Coverage({
         />
       </Field>
 
-      <Field
-        label={isEn ? "Top-up health insurance (mutuelle)" : "Mutuelle santé"}
-      >
+      <Field label={t("mutuelle.label")}>
         <SelectChips
           options={[
-            { id: "", label: isEn ? "None" : "Aucune" },
+            { id: "", label: t("mutuelle.none") },
             ...baseline.mutuelles.map((c) => ({ id: c.id, label: c.name })),
           ]}
           value={data.coverage.mutuelleId ?? ""}
@@ -65,21 +62,10 @@ export function Step3Coverage({
         />
       </Field>
 
-      <Field
-        label={
-          isEn
-            ? `Home country social security (${data.client.departureCountry === "FR" ? "Sécu FR" : "Assurance maladie CA"})`
-            : `Sécurité sociale du pays de départ (${data.client.departureCountry === "FR" ? "Sécu FR" : "Assurance maladie CA"})`
-        }
-        hint={
-          isEn
-            ? "Auto-selected based on departure country."
-            : "Sélectionnée automatiquement selon le pays de départ."
-        }
-      >
+      <Field label={ssLabel} hint={t("socialSecurity.hint")}>
         <SelectChips
           options={[
-            { id: "", label: isEn ? "Skip" : "Ignorer" },
+            { id: "", label: t("socialSecurity.skip") },
             ...baseline.socialSecurity.map((c) => ({ id: c.id, label: c.name })),
           ]}
           value={data.coverage.socialSecurityId ?? ""}
@@ -92,17 +78,10 @@ export function Step3Coverage({
         />
       </Field>
 
-      <Field
-        label={isEn ? "Your distributed contract" : "Votre contrat distribué"}
-        hint={
-          isEn
-            ? "Manage your contracts in My contracts. Pre-loaded: Club Med."
-            : "Gérez vos contrats depuis Mes contrats. Pré-chargé : Club Med."
-        }
-      >
+      <Field label={t("partnerContract.label")} hint={t("partnerContract.hint")}>
         <SelectChips
           options={[
-            { id: "", label: isEn ? "None" : "Aucun" },
+            { id: "", label: t("partnerContract.none") },
             ...baseline.partnerContracts.map((c) => ({
               id: c.id,
               label: c.name,

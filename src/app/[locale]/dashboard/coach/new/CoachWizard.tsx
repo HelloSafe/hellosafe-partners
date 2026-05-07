@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import type { WizardInputs } from "@/lib/coach/coverage-types";
 import {
@@ -25,9 +25,12 @@ import { type Baseline, nextMonthISO } from "./_wizard/constants";
  */
 export function CoachWizard() {
   const locale = useLocale();
-  const isEn = locale === "en";
-  const ageLabels = isEn ? AGE_RANGE_LABEL_EN : AGE_RANGE_LABEL_FR;
-  const compLabels = isEn ? COMPANION_LABEL_EN : COMPANION_LABEL_FR;
+  const t = useTranslations("coachWizard");
+  // The age/companion enum labels still live in coverage-types as typed
+  // Records so the gap-engine can consume them too. We pick the right one
+  // based on the active locale.
+  const ageLabels = locale === "en" ? AGE_RANGE_LABEL_EN : AGE_RANGE_LABEL_FR;
+  const compLabels = locale === "en" ? COMPANION_LABEL_EN : COMPANION_LABEL_FR;
   const router = useRouter();
 
   const [step, setStep] = useState(1);
@@ -40,7 +43,7 @@ export function CoachWizard() {
       label: "",
       ageRange: "36_50",
       companions: [],
-      departureCountry: isEn ? "CA" : "FR",
+      departureCountry: "FR",
     },
     trip: {
       destination: "",
@@ -105,20 +108,20 @@ export function CoachWizard() {
       });
       const out = await res.json();
       if (!res.ok) {
-        setErr(out.error ?? "Erreur");
+        setErr(out.error ?? t("errors.generic"));
         setSubmitting(false);
         return;
       }
       router.push(`/dashboard/coach/${out.id}` as never);
     } catch {
-      setErr("Erreur de connexion au serveur.");
+      setErr(t("errors.connection"));
       setSubmitting(false);
     }
   };
 
   return (
     <div className="max-w-4xl space-y-8">
-      <Header step={step} isEn={isEn} />
+      <Header step={step} />
 
       {step === 1 && (
         <Step1Traveler
@@ -126,17 +129,11 @@ export function CoachWizard() {
           setData={setData}
           ageLabels={ageLabels}
           compLabels={compLabels}
-          isEn={isEn}
         />
       )}
-      {step === 2 && <Step2Trip data={data} setData={setData} isEn={isEn} />}
+      {step === 2 && <Step2Trip data={data} setData={setData} />}
       {step === 3 && (
-        <Step3Coverage
-          data={data}
-          setData={setData}
-          baseline={baseline}
-          isEn={isEn}
-        />
+        <Step3Coverage data={data} setData={setData} baseline={baseline} />
       )}
       {step === 4 && (
         <Step4Review
@@ -144,7 +141,6 @@ export function CoachWizard() {
           baseline={baseline}
           ageLabels={ageLabels}
           compLabels={compLabels}
-          isEn={isEn}
         />
       )}
 
@@ -161,7 +157,7 @@ export function CoachWizard() {
           onClick={() => setStep((s) => Math.max(1, s - 1))}
           className="h-11 px-5 rounded-xl border border-surface-300 text-sm font-semibold disabled:opacity-30"
         >
-          ← {isEn ? "Back" : "Retour"}
+          ← {t("nav.back")}
         </button>
         {step < 4 && (
           <button
@@ -170,7 +166,7 @@ export function CoachWizard() {
             onClick={() => setStep((s) => s + 1)}
             className="h-11 px-6 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 disabled:opacity-50 transition-colors"
           >
-            {isEn ? "Continue" : "Continuer"} →
+            {t("nav.continue")}
           </button>
         )}
         {step === 4 && (
@@ -180,13 +176,7 @@ export function CoachWizard() {
             onClick={submit}
             className="h-11 px-6 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 disabled:opacity-50 transition-colors"
           >
-            {submitting
-              ? isEn
-                ? "Computing…"
-                : "Analyse en cours…"
-              : isEn
-              ? "Generate analysis →"
-              : "Générer l'analyse →"}
+            {submitting ? t("nav.computing") : t("nav.generate")}
           </button>
         )}
       </div>

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { TripForm, type TripFormState } from "./TripForm";
-import { OfferGrid, type DisplayOffer } from "./OfferGrid";
+import { OffersResults } from "./OffersResults";
+import type { DisplayOffer } from "./types";
 
 type Phase = "form" | "loading" | "results" | "error";
 
@@ -26,38 +27,28 @@ export function CompareWizard() {
   const [phase, setPhase] = useState<Phase>("form");
   const [state, setState] = useState<TripFormState>(initial);
   const [offers, setOffers] = useState<DisplayOffer[]>([]);
+  const [includeCancellation, setIncludeCancellation] = useState(false);
   const [errorKey, setErrorKey] = useState<string | null>(null);
 
-  const submit = async () => {
-    // Validate
-    if (state.travellers.length === 0) {
-      setErrorKey("noTravelers");
-      setPhase("error");
-      return;
-    }
-    if (state.arrivalCountries.length === 0) {
-      setErrorKey("noDestination");
-      setPhase("error");
-      return;
-    }
-    if (new Date(state.endDate) <= new Date(state.startDate)) {
-      setErrorKey("invalidDates");
-      setPhase("error");
-      return;
-    }
-
-    setPhase("loading");
-    setErrorKey(null);
+  const fetchOffers = async (
+    trip: TripFormState,
+    cancellation: boolean,
+  ): Promise<{ ok: true; offers: DisplayOffer[] } | { ok: false; key: string }> => {
+    if (trip.travellers.length === 0) return { ok: false, key: "noTravelers" };
+    if (trip.arrivalCountries.length === 0)
+      return { ok: false, key: "noDestination" };
+    if (new Date(trip.endDate) <= new Date(trip.startDate))
+      return { ok: false, key: "invalidDates" };
 
     const tripInfo = {
       intent: "forTourism" as const,
       countryResidence: "FR",
-      arrivalCountries: state.arrivalCountries.map((s) => s.toUpperCase()),
-      startDate: new Date(state.startDate + "T00:00:00.000Z").toISOString(),
-      endDate: new Date(state.endDate + "T00:00:00.000Z").toISOString(),
+      arrivalCountries: trip.arrivalCountries.map((s) => s.toUpperCase()),
+      startDate: new Date(trip.startDate + "T00:00:00.000Z").toISOString(),
+      endDate: new Date(trip.endDate + "T00:00:00.000Z").toISOString(),
       currency: "EUR" as const,
-      travellers: state.travellers,
-      shouldCoverCancellation: false,
+      travellers: trip.travellers,
+      shouldCoverCancellation: cancellation,
       isAnnual: false,
       tripPrice: -1,
     };
@@ -72,93 +63,102 @@ export function CompareWizard() {
         },
         body: JSON.stringify({ tripInfo }),
       });
-      if (!res.ok) {
-        setErrorKey("fetchFailed");
-        setPhase("error");
-        return;
-      }
+      if (!res.ok) return { ok: false, key: "fetchFailed" };
       const data = await res.json();
-      setOffers(data.displayOffers ?? []);
-      setPhase("results");
+      return { ok: true, offers: data.displayOffers ?? [] };
     } catch {
-      setErrorKey("fetchFailed");
-      setPhase("error");
+      return { ok: false, key: "fetchFailed" };
     }
   };
 
-  const sortedOffers = useMemo(
-    () =>
-      [...offers].sort(
-        (a, b) =>
-          (a.priceData?.priceInCent ?? Infinity) -
-          (b.priceData?.priceInCent ?? Infinity),
-      ),
-    [offers],
-  );
+  const submit = async () => {
+    setPhase("loading");
+    setErrorKey(null);
+    const r = await fetchOffers(state, includeCancellation);
+    if (!r.ok) {
+      setErrorKey(r.key);
+      setPhase("error");
+      return;
+    }
+    setOffers(r.offers);
+    setPhase("results");
+  };
 
-  return (
-    <div className="max-w-6xl space-y-8">
-      <header className="flex items-baseline gap-3">
-        <Link
-          href="/dashboard/products"
-          className="text-sm text-ink-500 hover:text-ink-900"
+  const refetchWith = async (nextCancellation: boolean) => {
+    setIncludeCancellation(nextCancellation);
+    setPhase("loading");
+    const r = await fetchOffers(state, nextCancellation);
+    if (!r.ok) {
+      setErrorKey(r.key);
+      setPhase("error");
+      return;
+    }
+    setOffers(r.offers);
+    setPhase("results");
+  };
+
+  // Form phase
+  if (phase === "form" || phase === "error") {
+    return (
+      <div className="max-w-3xl space-y-8">
+        <Breadcrumb />
+        <TripForm state={state} setState={setState} />
+        {phase === "error" && errorKey && (
+          <div className="rounded-lg bg-danger-50 text-danger-600 px-4 py-3 text-sm">
+            {t(`errors.${errorKey}` as `errors.fetchFailed`)}
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={submit}
+          className="h-11 px-6 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors"
         >
-          ← {t("title")}
-        </Link>
-        <span className="text-ink-300">/</span>
-        <h1 className="text-2xl font-bold text-ink-900">
-          {t("intents.tourism.label")}
-        </h1>
-      </header>
+          {t("form.submit")}
+        </button>
+      </div>
+    );
+  }
 
-      {(phase === "form" || phase === "error") && (
-        <>
-          <TripForm state={state} setState={setState} />
-          {phase === "error" && errorKey && (
-            <div className="rounded-lg bg-danger-50 text-danger-600 px-4 py-3 text-sm">
-              {t(`errors.${errorKey}` as `errors.fetchFailed`)}
-            </div>
-          )}
-          <button
-            type="button"
-            onClick={submit}
-            className="h-11 px-6 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors"
-          >
-            {t("form.submit")}
-          </button>
-        </>
-      )}
-
-      {phase === "loading" && (
+  // Loading phase
+  if (phase === "loading" && offers.length === 0) {
+    return (
+      <div className="max-w-3xl space-y-8">
+        <Breadcrumb />
         <div className="flex flex-col items-center justify-center py-20">
           <div className="h-8 w-8 rounded-full border-2 border-brand-500 border-t-transparent animate-spin" />
           <p className="mt-4 text-sm text-ink-500">{t("form.submitting")}</p>
         </div>
-      )}
+      </div>
+    );
+  }
 
-      {phase === "results" && (
-        <div className="space-y-6">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-xl font-bold text-ink-900">
-              {t("results.title", { count: sortedOffers.length })}
-            </h2>
-            <button
-              type="button"
-              onClick={() => setPhase("form")}
-              className="text-sm font-medium text-ink-700 hover:text-brand-700"
-            >
-              {t("results.back")}
-            </button>
-          </div>
-          {sortedOffers.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-surface-300 bg-white p-10 text-center text-sm text-ink-500">
-              {t("results.noResults")}
-            </div>
-          ) : (
-            <OfferGrid offers={sortedOffers} trip={state} />
-          )}
-        </div>
-      )}
-    </div>
+  // Results phase
+  return (
+    <OffersResults
+      trip={state}
+      offers={offers}
+      includeCancellation={includeCancellation}
+      onToggleCancellation={(v) => refetchWith(v)}
+      onEditTrip={() => setPhase("form")}
+      isRefetching={phase === "loading"}
+    />
+  );
+}
+
+function Breadcrumb() {
+  const t = useTranslations("dashboard.products");
+  return (
+    <header className="flex items-baseline gap-3">
+      <Link
+        href="/dashboard/products"
+        className="text-sm text-ink-500 hover:text-ink-900"
+      >
+        ← {t("title")}
+      </Link>
+      <span className="text-ink-300">/</span>
+      <h1 className="text-2xl font-bold text-ink-900">
+        {t("intents.tourism.label")}
+      </h1>
+    </header>
   );
 }

@@ -1128,7 +1128,22 @@
         "guaranteeSports": "Sports extrêmes",
         "shareCta": "Envoyer au client",
         "modalDetailsTitle": "Détail des garanties",
-        "modalDetailsClose": "Fermer"
+        "modalDetailsClose": "Fermer",
+        "offersFound": "{count} offres pour ce voyage",
+        "personalize": "Personnalisez la couverture",
+        "filtersTitle": "Filtres garanties",
+        "filterRequired": "Doit inclure :",
+        "showAllGuarantees": "Toutes les garanties",
+        "hideGuarantees": "Masquer",
+        "scoreCoverage": "Couverture",
+        "compareMode": "Mode comparaison",
+        "compareCount": "{count} sélectionnées",
+        "compareLaunch": "Comparer côte à côte",
+        "compareLimit": "3 offres maximum",
+        "modifyTrip": "Modifier le voyage",
+        "stepperTrip": "Voyage",
+        "stepperQuote": "Devis",
+        "stepperShare": "Envoyer au client"
       },
       "errors": {
         "invalidDates": "La date de retour doit être après la date de départ.",

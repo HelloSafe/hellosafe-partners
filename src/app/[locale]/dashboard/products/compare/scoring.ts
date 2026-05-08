@@ -1,4 +1,4 @@
-import type { DisplayOffer } from "./OfferGrid";
+import type { DisplayOffer } from "./types";
 
 /**
  * Coverage score on 0–100 — agency-side heuristic to help compare offers

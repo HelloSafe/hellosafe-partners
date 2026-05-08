@@ -6,9 +6,14 @@ import type { TripFormState } from "./TripForm";
 
 export function ShareModal({
   trip,
+  offerId,
+  offerName,
   onClose,
 }: {
   trip: TripFormState;
+  /** When set, the share message mentions this specific offer to the client. */
+  offerId?: number | null;
+  offerName?: string | null;
   onClose: () => void;
 }) {
   const t = useTranslations("dashboard.products.share");
@@ -27,6 +32,8 @@ export function ShareModal({
       document.body.style.overflow = "";
     };
   }, [onClose]);
+
+  void offerId; // tracking the highlighted offer in the share payload is a future enhancement
 
   // Create the shareable subscription on open
   useEffect(() => {
@@ -93,7 +100,12 @@ export function ShareModal({
         <header className="flex items-start justify-between px-6 py-5 border-b border-surface-200">
           <div className="pr-4">
             <h3 className="text-lg font-bold text-ink-900">{t("title")}</h3>
-            <p className="mt-1 text-sm text-ink-500 leading-relaxed">
+            {offerName && (
+              <p className="mt-1 inline-flex items-center rounded-full bg-brand-50 text-brand-700 px-2.5 py-1 text-xs font-semibold">
+                {offerName}
+              </p>
+            )}
+            <p className="mt-2 text-sm text-ink-500 leading-relaxed">
               {t("subtitle")}
             </p>
           </div>

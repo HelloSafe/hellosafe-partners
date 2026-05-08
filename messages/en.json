@@ -1128,7 +1128,22 @@
         "guaranteeSports": "Extreme sports",
         "shareCta": "Send to client",
         "modalDetailsTitle": "Guarantee details",
-        "modalDetailsClose": "Close"
+        "modalDetailsClose": "Close",
+        "offersFound": "{count} offers for this trip",
+        "personalize": "Personalize the coverage",
+        "filtersTitle": "Guarantee filters",
+        "filterRequired": "Must include:",
+        "showAllGuarantees": "All guarantees",
+        "hideGuarantees": "Hide",
+        "scoreCoverage": "Coverage",
+        "compareMode": "Compare mode",
+        "compareCount": "{count} selected",
+        "compareLaunch": "Compare side-by-side",
+        "compareLimit": "3 offers max",
+        "modifyTrip": "Edit trip",
+        "stepperTrip": "Trip",
+        "stepperQuote": "Quote",
+        "stepperShare": "Send to client"
       },
       "errors": {
         "invalidDates": "The return date must be after the departure date.",

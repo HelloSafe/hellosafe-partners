@@ -784,10 +784,23 @@
     "welcome": "Hello, {name}",
     "subtitle": "Here's what your audience produced in the last 30 days.",
     "nav": {
+      "sections": {
+        "tools": "Tools",
+        "admin": "Administration",
+        "affiliation": "Affiliate",
+        "products": "Products"
+      },
       "overview": "Overview",
+      "coach": "Coach Atlas",
       "links": "My links",
+      "widget": "Widget",
+      "productsCatalog": "HelloSafe catalog",
+      "perks": "Perks",
+      "profile": "My profile",
+      "team": "Team",
+      "reporting": "Reporting",
       "payouts": "Payouts",
-      "perks": "Perks"
+      "api": "API & integrations"
     },
     "perks": {
       "title": "Partner perks",
@@ -942,6 +955,11 @@
         "invoice": "Invoice"
       },
       "downloadInvoice": "Download"
+    },
+    "soon": {
+      "title": "This section is coming soon",
+      "body": "We're building this page. If you'd like early access, drop us a line at partners@hellosafe.com.",
+      "requestAccess": "Request access"
     }
   },
   "onboarding": {

@@ -149,27 +149,73 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
   const { session } = state;
 
-  const isEn = pathname.startsWith("/en");
-  const nav = [
-    { href: "/dashboard", label: t("overview"), exact: true },
-    { href: "/dashboard/links", label: t("links") },
-    { href: "/dashboard/payouts", label: t("payouts") },
-    { href: "/dashboard/coach", label: isEn ? "Coach" : "Coach" },
+  // Tools (top) + Admin (bottom, collapsible). Persona-gated rubrics
+  // (currently only "Produits") are filtered out for personas that can't act
+  // on them. Coach Atlas stays for everyone — it's information.
+  const showProducts =
+    session.partner.persona === "agency" || session.partner.persona === "visa";
+
+  type Leaf = {
+    kind: "leaf";
+    href: string;
+    label: string;
+    badge?: string;
+    exact?: boolean;
+  };
+  type Group = { kind: "group"; label: string; items: Leaf[] };
+  const tools: Array<Leaf | Group> = [
     {
-      href: "/dashboard/widget",
-      label: isEn ? "Embed widget" : "Widget à intégrer",
-      badge: "NEW",
+      kind: "leaf",
+      href: "/dashboard",
+      label: t("overview"),
+      exact: true,
     },
+    { kind: "leaf", href: "/dashboard/coach", label: t("coach") },
     {
+      kind: "group",
+      label: t("sections.affiliation"),
+      items: [
+        { kind: "leaf", href: "/dashboard/links", label: t("links") },
+        {
+          kind: "leaf",
+          href: "/dashboard/widget",
+          label: t("widget"),
+          badge: "NEW",
+        },
+      ],
+    },
+    ...(showProducts
+      ? [
+          {
+            kind: "group" as const,
+            label: t("sections.products"),
+            items: [
+              {
+                kind: "leaf" as const,
+                href: "/dashboard/products",
+                label: t("productsCatalog"),
+                badge: "BIENTÔT",
+              },
+            ],
+          },
+        ]
+      : []),
+    {
+      kind: "leaf",
       href: "/dashboard/perks",
       label: t("perks"),
       badge: "NEW",
     },
-    {
-      href: "/dashboard/settings/branding",
-      label: isEn ? "Branding" : "Marque agence",
-    },
-  ] as const;
+  ];
+  const admin: Leaf[] = [
+    { kind: "leaf", href: "/dashboard/admin/profile", label: t("profile") },
+    { kind: "leaf", href: "/dashboard/admin/team", label: t("team") },
+    { kind: "leaf", href: "/dashboard/admin/reporting", label: t("reporting") },
+    { kind: "leaf", href: "/dashboard/payouts", label: t("payouts") },
+    { kind: "leaf", href: "/dashboard/admin/api", label: t("api") },
+  ];
+
+  const adminActive = admin.some((i) => pathname.startsWith(i.href));
 
   return (
     <SessionContext.Provider value={session}>
@@ -180,36 +226,30 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               <Logo />
             </Link>
           </div>
-          <nav className="flex-1 p-4 space-y-1">
-            {nav.map((item) => {
-              const active =
-                "exact" in item && item.exact
-                  ? pathname === item.href
-                  : pathname.startsWith(item.href);
-              const badge = "badge" in item ? item.badge : undefined;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href as never}
-                  className={`flex items-center px-3 h-10 rounded-lg text-sm font-medium transition-colors ${
-                    active
-                      ? "bg-brand-50 text-brand-700"
-                      : "text-ink-700 hover:bg-surface-100"
-                  }`}
-                >
-                  <span>{item.label}</span>
-                  {badge && (
-                    <span className="ml-auto text-[0.6rem] font-bold uppercase tracking-wider rounded-full bg-brand-500 text-white px-1.5 py-0.5">
-                      {badge}
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
+          <nav className="flex-1 p-4 overflow-y-auto">
+            {/* Tools block */}
+            <div className="space-y-0.5">
+              {tools.map((item, idx) =>
+                item.kind === "leaf" ? (
+                  <NavLeafLink key={item.href} item={item} pathname={pathname} />
+                ) : (
+                  <NavGroupBlock key={`g-${idx}`} group={item} pathname={pathname} />
+                ),
+              )}
+            </div>
+
+            {/* Admin block — collapsible */}
+            <AdminBlock
+              label={t("sections.admin")}
+              items={admin}
+              pathname={pathname}
+              defaultOpen={adminActive}
+            />
+
             {session.user.role === "admin" && (
               <Link
                 href={"/admin" as never}
-                className="flex items-center px-3 h-10 rounded-lg text-sm font-medium text-ink-700 hover:bg-surface-100"
+                className="mt-4 flex items-center px-3 h-9 rounded-lg text-xs font-semibold uppercase tracking-wider text-ink-500 hover:bg-surface-100"
               >
                 Admin
               </Link>
@@ -252,5 +292,136 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         </div>
       </div>
     </SessionContext.Provider>
+  );
+}
+
+// ─── Sidebar building blocks ─────────────────────────────────────────────────
+
+type LeafItem = {
+  kind: "leaf";
+  href: string;
+  label: string;
+  badge?: string;
+  exact?: boolean;
+};
+
+type GroupItem = { kind: "group"; label: string; items: LeafItem[] };
+
+function NavLeafLink({
+  item,
+  pathname,
+  indent = false,
+}: {
+  item: LeafItem;
+  pathname: string;
+  indent?: boolean;
+}) {
+  const active = item.exact
+    ? pathname === item.href
+    : pathname.startsWith(item.href);
+  return (
+    <Link
+      href={item.href as never}
+      className={`flex items-center px-3 h-10 rounded-lg text-sm font-medium transition-colors ${
+        indent ? "ml-3" : ""
+      } ${
+        active
+          ? "bg-brand-50 text-brand-700"
+          : "text-ink-700 hover:bg-surface-100"
+      }`}
+    >
+      <span className="truncate">{item.label}</span>
+      {item.badge && (
+        <span
+          className={`ml-auto text-[0.6rem] font-bold uppercase tracking-wider rounded-full px-1.5 py-0.5 ${
+            item.badge === "BIENTÔT"
+              ? "bg-surface-200 text-ink-700"
+              : "bg-brand-500 text-white"
+          }`}
+        >
+          {item.badge}
+        </span>
+      )}
+    </Link>
+  );
+}
+
+function NavGroupBlock({
+  group,
+  pathname,
+}: {
+  group: GroupItem;
+  pathname: string;
+}) {
+  return (
+    <div className="mt-3">
+      <p className="px-3 mb-1 text-[0.68rem] font-semibold uppercase tracking-wider text-ink-500">
+        {group.label}
+      </p>
+      <div className="space-y-0.5">
+        {group.items.map((item) => (
+          <NavLeafLink
+            key={item.href}
+            item={item}
+            pathname={pathname}
+            indent
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AdminBlock({
+  label,
+  items,
+  pathname,
+  defaultOpen,
+}: {
+  label: string;
+  items: LeafItem[];
+  pathname: string;
+  defaultOpen: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  // Reopen automatically when navigation lands inside admin
+  useEffect(() => {
+    if (defaultOpen) setOpen(true);
+  }, [defaultOpen]);
+
+  return (
+    <div className="mt-6 pt-4 border-t border-surface-200">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className="w-full flex items-center px-3 h-9 rounded-lg text-[0.68rem] font-semibold uppercase tracking-wider text-ink-500 hover:bg-surface-100 transition-colors"
+        aria-expanded={open}
+      >
+        <span>{label}</span>
+        <svg
+          className={`ml-auto transition-transform ${open ? "rotate-180" : ""}`}
+          width="10"
+          height="6"
+          viewBox="0 0 10 6"
+          aria-hidden
+        >
+          <path
+            d="M1 1l4 4 4-4"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+      {open && (
+        <div className="mt-1 space-y-0.5">
+          {items.map((item) => (
+            <NavLeafLink key={item.href} item={item} pathname={pathname} indent />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

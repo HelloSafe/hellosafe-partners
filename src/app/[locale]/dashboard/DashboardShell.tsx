@@ -149,12 +149,6 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
   const { session } = state;
 
-  // Tools (top) + Admin (bottom, collapsible). Persona-gated rubrics
-  // (currently only "Produits") are filtered out for personas that can't act
-  // on them. Coach Atlas stays for everyone — it's information.
-  const showProducts =
-    session.partner.persona === "agency" || session.partner.persona === "visa";
-
   type Leaf = {
     kind: "leaf";
     href: string;
@@ -184,28 +178,24 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         },
       ],
     },
-    ...(showProducts
-      ? [
-          {
-            kind: "group" as const,
-            label: t("sections.brokerage"),
-            items: [
-              {
-                kind: "leaf" as const,
-                href: "/dashboard/products",
-                label: t("productsCatalog"),
-                badge: "NEW",
-              },
-              {
-                kind: "leaf" as const,
-                href: "/dashboard/courtage/formations",
-                label: t("training"),
-                badge: "BIENTÔT",
-              },
-            ],
-          },
-        ]
-      : []),
+    {
+      kind: "group" as const,
+      label: t("sections.marketplace"),
+      items: [
+        {
+          kind: "leaf" as const,
+          href: "/dashboard/products",
+          label: t("productsCatalog"),
+          badge: "NEW",
+        },
+        {
+          kind: "leaf" as const,
+          href: "/dashboard/courtage/formations",
+          label: t("training"),
+          badge: "BIENTÔT",
+        },
+      ],
+    },
     {
       kind: "leaf",
       href: "/dashboard/perks",

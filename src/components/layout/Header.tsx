@@ -47,6 +47,7 @@ export function Header() {
     { href: "/coach", label: t("nav.coach"), highlight: true },
     { href: "/why-partner", label: t("nav.why") },
     { href: "/how-it-works", label: t("nav.how") },
+    { href: "/products", label: t("nav.products") },
   ] as const;
 
   return (

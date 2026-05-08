@@ -31,6 +31,10 @@
       "coach": {
         "title": "Coach Atlas — l'outil de diagnostic d'assurance voyage",
         "description": "Coach Atlas révèle en 30 secondes les trous de couverture entre la carte bancaire, la mutuelle, la sécurité sociale et le contrat agence de votre client. Récap client-ready à vos couleurs, gratuit pour tous les partenaires HelloSafe."
+      },
+      "products": {
+        "title": "Produits HelloSafe — comparateur partenaire",
+        "description": "Tarifez en direct les produits d'assurance voyage HelloSafe pour vos clients. Comparateur multi-assureur, devis en 30 secondes, envoi par email ou WhatsApp."
       }
     }
   },
@@ -51,7 +55,8 @@
       "how": "Comment ça marche",
       "coach": "Coach Atlas",
       "faq": "FAQ",
-      "lang": "Langue"
+      "lang": "Langue",
+      "products": "Produits"
     },
     "footer": {
       "tagline": "Le programme d'affiliation de la meilleure offre d'assurance voyage du marché.",
@@ -1107,13 +1112,43 @@
         "moreDetails": "Voir toutes les garanties",
         "seeIpid": "IPID",
         "seeCgv": "CGV",
-        "viewProduct": "Voir le produit"
+        "viewProduct": "Voir le produit",
+        "sortBy": "Trier par",
+        "sortPrice": "Prix",
+        "sortCoverage": "Couverture",
+        "filterTitle": "Filtres",
+        "filterCancellation": "Inclure annulation voyage",
+        "badgeBest": "Meilleur prix",
+        "badgeTopCoverage": "Meilleure couverture",
+        "score": "Score",
+        "scoreOf": "/ 100",
+        "guaranteeLiability": "Resp. civile",
+        "guaranteeDelay": "Retard transport",
+        "guaranteeAssistance": "Assistance 24/7",
+        "guaranteeSports": "Sports extrêmes",
+        "shareCta": "Envoyer au client",
+        "modalDetailsTitle": "Détail des garanties",
+        "modalDetailsClose": "Fermer"
       },
       "errors": {
         "invalidDates": "La date de retour doit être après la date de départ.",
         "noTravelers": "Ajoutez au moins un voyageur.",
         "noDestination": "Saisissez au moins une destination.",
         "fetchFailed": "Impossible de récupérer les offres. Réessayez."
+      },
+      "share": {
+        "title": "Envoyer le devis à votre client",
+        "subtitle": "Le client reçoit un lien sécurisé qui ouvre le comparateur HelloSafe avec son voyage déjà saisi. Il n'a plus qu'à finaliser sa souscription.",
+        "linkLabel": "Lien à partager",
+        "copy": "Copier",
+        "copied": "Copié !",
+        "channelEmail": "Envoyer par email",
+        "channelWhatsapp": "Envoyer par WhatsApp",
+        "emailSubject": "Votre devis assurance voyage",
+        "emailBody": "Bonjour,\n\nVoici le lien pour finaliser votre souscription d'assurance voyage HelloSafe. Le devis est déjà préparé en fonction de votre voyage.\n\n{url}\n\nÀ très vite,",
+        "whatsappBody": "Bonjour, voici votre devis HelloSafe : {url}",
+        "close": "Fermer",
+        "errorCreating": "Impossible de générer le lien. Réessayez."
       }
     }
   },
@@ -1335,6 +1370,36 @@
     "errors": {
       "generic": "Erreur",
       "connection": "Erreur de connexion au serveur."
+    }
+  },
+  "productsLp": {
+    "hero": {
+      "eyebrow": "Comparateur partenaire",
+      "title": "Tarifez les produits HelloSafe en direct, devant votre client",
+      "subtitle": "Saisissez le voyage, comparez 6 offres avec leurs garanties et leurs prix réels, envoyez le lien de souscription par email ou WhatsApp. Inclus dans le programme partenaire.",
+      "primaryCta": "Lancer une simulation",
+      "secondaryCta": "Voir le programme"
+    },
+    "features": {
+      "title": "Ce que ça change pour votre activité",
+      "items": [
+        {
+          "title": "Devis en 30 secondes",
+          "body": "Le tarif réel s'affiche en live, calculé par chaque assureur. Plus besoin de jongler entre plusieurs extranets."
+        },
+        {
+          "title": "Comparaison côte à côte",
+          "body": "6 offres affichées simultanément, avec score de couverture, prix et garanties principales. Le client voit, comprend, choisit."
+        },
+        {
+          "title": "Envoi par email ou WhatsApp",
+          "body": "Un clic, le client reçoit un lien sécurisé qui ouvre le comparateur avec son voyage déjà saisi. Il finalise sa souscription en quelques secondes."
+        },
+        {
+          "title": "Aux couleurs de votre marque",
+          "body": "Pour les agences, l'expérience est habillée à votre identité. HelloSafe disparaît visuellement, c'est votre conseil qui est mis en avant."
+        }
+      ]
     }
   }
 }

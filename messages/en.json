@@ -31,6 +31,10 @@
       "coach": {
         "title": "Atlas Coach — the travel insurance gap analyzer",
         "description": "Atlas Coach reveals coverage gaps in 30 seconds across credit card, top-up insurance, social security and the agency contract. Client-ready recap, branded to your colors. Free for every HelloSafe partner."
+      },
+      "products": {
+        "title": "HelloSafe products — partner comparator",
+        "description": "Get live travel-insurance quotes for your clients. Multi-insurer comparator, 30-second quotes, share by email or WhatsApp."
       }
     }
   },
@@ -51,7 +55,8 @@
       "how": "How it works",
       "coach": "Atlas Coach",
       "faq": "FAQ",
-      "lang": "Language"
+      "lang": "Language",
+      "products": "Products"
     },
     "footer": {
       "tagline": "The affiliate program for the best travel insurance offering on the market.",
@@ -1107,13 +1112,43 @@
         "moreDetails": "See all guarantees",
         "seeIpid": "IPID",
         "seeCgv": "T&Cs",
-        "viewProduct": "View product"
+        "viewProduct": "View product",
+        "sortBy": "Sort by",
+        "sortPrice": "Price",
+        "sortCoverage": "Coverage",
+        "filterTitle": "Filters",
+        "filterCancellation": "Include trip cancellation",
+        "badgeBest": "Best price",
+        "badgeTopCoverage": "Top coverage",
+        "score": "Score",
+        "scoreOf": "/ 100",
+        "guaranteeLiability": "Liability",
+        "guaranteeDelay": "Transport delay",
+        "guaranteeAssistance": "Assistance 24/7",
+        "guaranteeSports": "Extreme sports",
+        "shareCta": "Send to client",
+        "modalDetailsTitle": "Guarantee details",
+        "modalDetailsClose": "Close"
       },
       "errors": {
         "invalidDates": "The return date must be after the departure date.",
         "noTravelers": "Add at least one traveller.",
         "noDestination": "Enter at least one destination.",
         "fetchFailed": "Couldn't fetch offers. Try again."
+      },
+      "share": {
+        "title": "Send the quote to your client",
+        "subtitle": "Your client receives a secure link that opens the HelloSafe comparator with their trip pre-filled. They just finalize their subscription.",
+        "linkLabel": "Link to share",
+        "copy": "Copy",
+        "copied": "Copied!",
+        "channelEmail": "Send by email",
+        "channelWhatsapp": "Send by WhatsApp",
+        "emailSubject": "Your travel insurance quote",
+        "emailBody": "Hi,\n\nHere is the link to finalize your HelloSafe travel insurance subscription. The quote is already prepared based on your trip.\n\n{url}\n\nBest,",
+        "whatsappBody": "Hi, here is your HelloSafe quote: {url}",
+        "close": "Close",
+        "errorCreating": "Couldn't generate the link. Try again."
       }
     }
   },
@@ -1335,6 +1370,36 @@
     "errors": {
       "generic": "Error",
       "connection": "Could not connect to the server."
+    }
+  },
+  "productsLp": {
+    "hero": {
+      "eyebrow": "Partner comparator",
+      "title": "Quote HelloSafe products live, in front of your client",
+      "subtitle": "Enter the trip, compare 6 offers with their guarantees and real-time prices, then share the subscription link by email or WhatsApp. Included in the partner program.",
+      "primaryCta": "Run a simulation",
+      "secondaryCta": "See the program"
+    },
+    "features": {
+      "title": "What it changes for your activity",
+      "items": [
+        {
+          "title": "30-second quotes",
+          "body": "Real prices displayed live, computed by each insurer. No more jumping between extranets."
+        },
+        {
+          "title": "Side-by-side comparison",
+          "body": "6 offers shown simultaneously, with coverage score, price and headline guarantees. Your client sees, understands, picks."
+        },
+        {
+          "title": "Send by email or WhatsApp",
+          "body": "One click and the client gets a secure link that opens the comparator with their trip pre-filled. They finalize in seconds."
+        },
+        {
+          "title": "Your brand",
+          "body": "For agencies, the experience is dressed to your identity. HelloSafe disappears visually; your advice takes the spotlight."
+        }
+      ]
     }
   }
 }

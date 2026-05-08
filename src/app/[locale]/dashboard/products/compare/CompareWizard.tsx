@@ -155,7 +155,7 @@ export function CompareWizard() {
               {t("results.noResults")}
             </div>
           ) : (
-            <OfferGrid offers={sortedOffers} />
+            <OfferGrid offers={sortedOffers} trip={state} />
           )}
         </div>
       )}

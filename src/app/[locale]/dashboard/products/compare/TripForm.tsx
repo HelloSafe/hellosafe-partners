@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { CountryMultiSelect } from "./CountryMultiSelect";
 
 export type TripFormState = {
   arrivalCountries: string[];
@@ -17,12 +18,6 @@ export function TripForm({
   setState: (s: TripFormState) => void;
 }) {
   const t = useTranslations("dashboard.products.form");
-
-  const updateDest = (idx: number, value: string) => {
-    const next = [...state.arrivalCountries];
-    next[idx] = value;
-    setState({ ...state, arrivalCountries: next });
-  };
 
   const addTraveller = () =>
     setState({
@@ -52,28 +47,14 @@ export function TripForm({
         </div>
       </Field>
 
-      <Field label={t("destinations")} hint={t("destinationsHint")}>
-        <div className="flex flex-wrap gap-2">
-          {state.arrivalCountries.map((c, i) => (
-            <input
-              key={i}
-              maxLength={3}
-              value={c}
-              onChange={(e) => updateDest(i, e.target.value.toUpperCase())}
-              placeholder={t("destinationsPlaceholder")}
-              className="w-20 rounded-lg border border-surface-300 bg-white px-3 h-10 text-sm font-mono uppercase text-ink-900 focus-ring focus:border-brand-500"
-            />
-          ))}
-          <button
-            type="button"
-            onClick={() =>
-              setState({ ...state, arrivalCountries: [...state.arrivalCountries, ""] })
-            }
-            className="h-10 px-3 rounded-lg border border-dashed border-surface-300 text-sm text-ink-700 hover:border-brand-300 hover:text-brand-700"
-          >
-            +
-          </button>
-        </div>
+      <Field label={t("destinations")}>
+        <CountryMultiSelect
+          selected={state.arrivalCountries}
+          onChange={(codes) =>
+            setState({ ...state, arrivalCountries: codes })
+          }
+          placeholder="Tapez un nom de pays (ex : Espagne)…"
+        />
       </Field>
 
       <div className="grid gap-5 sm:grid-cols-2">

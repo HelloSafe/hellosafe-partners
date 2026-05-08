@@ -44,6 +44,13 @@ export async function getByIdWithEmail(
       agencyTagline: partners.agencyTagline,
       persona: partners.persona,
       onboardedAt: partners.onboardedAt,
+      legalForm: partners.legalForm,
+      siret: partners.siret,
+      vatNumber: partners.vatNumber,
+      billingStreet: partners.billingStreet,
+      billingPostalCode: partners.billingPostalCode,
+      billingCity: partners.billingCity,
+      billingCountry: partners.billingCountry,
       createdAt: partners.createdAt,
       email: users.email,
     })

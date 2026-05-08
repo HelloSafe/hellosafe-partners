@@ -960,6 +960,92 @@
       "title": "Cette section arrive bientôt",
       "body": "On construit cette page. Si tu veux qu'on l'ouvre tôt, écris-nous à partners@hellosafe.com.",
       "requestAccess": "Demander l'accès"
+    },
+    "account": {
+      "title": "Mon profil",
+      "subtitle": "Vos informations personnelles, votre marque agence et les coordonnées société utilisées pour la facturation.",
+      "tabs": {
+        "account": "Compte",
+        "brand": "Marque",
+        "company": "Société"
+      },
+      "accountForm": {
+        "sectionContact": "Vos informations",
+        "sectionContactBody": "Le nom et l'email utilisés pour les communications HelloSafe.",
+        "name": "Nom du contact",
+        "email": "E-mail",
+        "emailHint": "Changer d'e-mail enverra un lien de confirmation à la nouvelle adresse.",
+        "language": "Langue de l'interface",
+        "languageHint": "Le français est la seule langue active pendant la phase de validation.",
+        "save": "Enregistrer",
+        "saved": "Enregistré.",
+        "sectionPassword": "Mot de passe",
+        "sectionPasswordBody": "Changez votre mot de passe régulièrement. 8 caractères minimum.",
+        "currentPassword": "Mot de passe actuel",
+        "newPassword": "Nouveau mot de passe",
+        "changePassword": "Changer le mot de passe",
+        "passwordChanged": "Mot de passe mis à jour.",
+        "sectionMeta": "Identifiants partenaire",
+        "partnerCode": "Code partenaire",
+        "memberSince": "Membre depuis",
+        "errorGeneric": "Une erreur est survenue.",
+        "errorPasswordCurrent": "Le mot de passe actuel est incorrect.",
+        "errorEmailUsed": "Cet e-mail est déjà associé à un compte."
+      },
+      "companyForm": {
+        "sectionLegal": "Informations légales",
+        "sectionLegalBody": "Ces données apparaissent sur vos factures et nos relevés de commissions. Renseignez-les avant le premier paiement.",
+        "companyName": "Raison sociale",
+        "legalForm": "Forme juridique",
+        "legalFormPlaceholder": "Ex : SAS, SARL, EI, SASU…",
+        "siret": "SIRET ou numéro d'entreprise",
+        "vat": "TVA intracommunautaire",
+        "vatPlaceholder": "Ex : FR81883069593",
+        "sectionAddress": "Adresse de facturation",
+        "street": "Adresse",
+        "postalCode": "Code postal",
+        "city": "Ville",
+        "country": "Pays",
+        "save": "Enregistrer",
+        "saved": "Enregistré."
+      }
+    },
+    "reporting": {
+      "title": "Reporting financier",
+      "subtitle": "Suivi détaillé : clics, devis en cours, ventes confirmées et commissions par lien et par campagne.",
+      "filters": {
+        "period": "Période",
+        "last7": "7 derniers jours",
+        "last30": "30 derniers jours",
+        "last90": "90 derniers jours",
+        "subId": "Filtrer par Sub-ID",
+        "subIdPlaceholder": "Ex : campagne-pvt-2026",
+        "export": "Exporter en CSV"
+      },
+      "kpi": {
+        "clicks": "Clics",
+        "quotes": "Devis en cours",
+        "quotesHint": "Conversions en attente de validation",
+        "sales": "Ventes confirmées",
+        "salesHint": "Conversions validées",
+        "commissions": "Commissions",
+        "commissionsHint": "Sur ventes validées",
+        "revenue": "CA généré",
+        "revenueHint": "Volume des ventes validées"
+      },
+      "table": {
+        "title": "Détail par lien",
+        "empty": "Aucun lien actif sur la période. Créez votre premier lien depuis l'onglet « Mes liens ».",
+        "label": "Libellé",
+        "destination": "Destination",
+        "subId": "Sub-ID",
+        "campaign": "Campagne",
+        "clicks": "Clics",
+        "quotes": "Devis",
+        "sales": "Ventes",
+        "revenue": "CA",
+        "commission": "Commission"
+      }
     }
   },
   "onboarding": {

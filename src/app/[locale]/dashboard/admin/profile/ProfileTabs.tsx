@@ -1,88 +1,71 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { BrandingForm } from "../../settings/branding/BrandingForm";
-import { SoonPlaceholder } from "../../_shared/SoonPlaceholder";
+import { AccountTab } from "./AccountTab";
+import { CompanyTab } from "./CompanyTab";
 
-type Tab = "account" | "brand" | "company" | "notifications";
-
-const TABS: { id: Tab; label: string }[] = [
-  { id: "account", label: "Compte" },
-  { id: "brand", label: "Marque" },
-  { id: "company", label: "Société" },
-  { id: "notifications", label: "Notifications" },
-];
+type Tab = "account" | "brand" | "company";
 
 export function ProfileTabs() {
+  const t = useTranslations("dashboard.account");
+  const tabs: { id: Tab; label: string }[] = [
+    { id: "account", label: t("tabs.account") },
+    { id: "brand", label: t("tabs.brand") },
+    { id: "company", label: t("tabs.company") },
+  ];
+
   const [active, setActive] = useState<Tab>(() => {
     if (typeof window === "undefined") return "account";
     const url = new URL(window.location.href);
     const t = url.searchParams.get("tab") as Tab | null;
-    return TABS.some((x) => x.id === t) ? (t as Tab) : "account";
+    return tabs.some((x) => x.id === t) ? (t as Tab) : "account";
   });
 
-  const setTab = (t: Tab) => {
-    setActive(t);
+  const setTab = (next: Tab) => {
+    setActive(next);
     if (typeof window === "undefined") return;
     const url = new URL(window.location.href);
-    url.searchParams.set("tab", t);
+    url.searchParams.set("tab", next);
     window.history.replaceState({}, "", url.toString());
   };
 
   return (
     <div className="max-w-4xl">
       <h1 className="text-2xl lg:text-3xl font-bold tracking-tight text-ink-900">
-        Mon profil
+        {t("title")}
       </h1>
-      <p className="mt-2 text-ink-700">
-        Vos informations personnelles, votre marque agence et les coordonnées
-        société utilisées pour la facturation.
-      </p>
+      <p className="mt-2 text-ink-700 max-w-2xl">{t("subtitle")}</p>
 
       <nav
         className="mt-8 flex gap-1 border-b border-surface-200"
         role="tablist"
       >
-        {TABS.map((t) => {
-          const on = active === t.id;
+        {tabs.map((tab) => {
+          const on = active === tab.id;
           return (
             <button
-              key={t.id}
+              key={tab.id}
               role="tab"
               aria-selected={on}
-              onClick={() => setTab(t.id)}
+              onClick={() => setTab(tab.id)}
               className={`px-4 h-10 text-sm font-medium transition-colors border-b-2 -mb-[2px] ${
                 on
                   ? "border-brand-500 text-brand-700"
                   : "border-transparent text-ink-700 hover:text-brand-700"
               }`}
             >
-              {t.label}
+              {tab.label}
             </button>
           );
         })}
       </nav>
 
       <div className="mt-8">
-        {active === "account" && (
-          <SoonPlaceholder
-            title="Compte"
-            pitch="Modifier votre nom, e-mail, mot de passe et langue de l'interface. Pour l'instant, contactez-nous pour ces changements."
-          />
-        )}
+        {active === "account" && <AccountTab />}
         {active === "brand" && <BrandingForm />}
-        {active === "company" && (
-          <SoonPlaceholder
-            title="Société"
-            pitch="Raison sociale, SIREN/TVA, adresse de facturation. Ces informations apparaissent sur vos factures et nos relevés de commissions."
-          />
-        )}
-        {active === "notifications" && (
-          <SoonPlaceholder
-            title="Notifications"
-            pitch="Préférences e-mail : nouvelle conversion, paiement, nouveautés produit. Activez ou coupez chaque type de message."
-          />
-        )}
+        {active === "company" && <CompanyTab />}
       </div>
     </div>
   );

@@ -960,6 +960,92 @@
       "title": "This section is coming soon",
       "body": "We're building this page. If you'd like early access, drop us a line at partners@hellosafe.com.",
       "requestAccess": "Request access"
+    },
+    "account": {
+      "title": "My profile",
+      "subtitle": "Your personal information, agency brand, and company details used for billing.",
+      "tabs": {
+        "account": "Account",
+        "brand": "Brand",
+        "company": "Company"
+      },
+      "accountForm": {
+        "sectionContact": "Your information",
+        "sectionContactBody": "The name and email used for HelloSafe communications.",
+        "name": "Contact name",
+        "email": "Email",
+        "emailHint": "Changing your email sends a confirmation link to the new address.",
+        "language": "Interface language",
+        "languageHint": "French is the only active language during the validation phase.",
+        "save": "Save",
+        "saved": "Saved.",
+        "sectionPassword": "Password",
+        "sectionPasswordBody": "Change your password regularly. 8 characters minimum.",
+        "currentPassword": "Current password",
+        "newPassword": "New password",
+        "changePassword": "Change password",
+        "passwordChanged": "Password updated.",
+        "sectionMeta": "Partner identifiers",
+        "partnerCode": "Partner code",
+        "memberSince": "Member since",
+        "errorGeneric": "Something went wrong.",
+        "errorPasswordCurrent": "The current password is incorrect.",
+        "errorEmailUsed": "This email is already linked to an account."
+      },
+      "companyForm": {
+        "sectionLegal": "Legal information",
+        "sectionLegalBody": "These details appear on your invoices and our commission statements. Fill them before the first payout.",
+        "companyName": "Legal name",
+        "legalForm": "Legal form",
+        "legalFormPlaceholder": "e.g. SAS, SARL, Ltd, Inc.",
+        "siret": "SIRET or business number",
+        "vat": "VAT number",
+        "vatPlaceholder": "e.g. FR81883069593",
+        "sectionAddress": "Billing address",
+        "street": "Street",
+        "postalCode": "Postal code",
+        "city": "City",
+        "country": "Country",
+        "save": "Save",
+        "saved": "Saved."
+      }
+    },
+    "reporting": {
+      "title": "Financial reporting",
+      "subtitle": "Detailed tracking: clicks, pending quotes, confirmed sales and commissions per link and per campaign.",
+      "filters": {
+        "period": "Period",
+        "last7": "Last 7 days",
+        "last30": "Last 30 days",
+        "last90": "Last 90 days",
+        "subId": "Filter by Sub-ID",
+        "subIdPlaceholder": "e.g. campaign-whp-2026",
+        "export": "Export CSV"
+      },
+      "kpi": {
+        "clicks": "Clicks",
+        "quotes": "Pending quotes",
+        "quotesHint": "Conversions awaiting validation",
+        "sales": "Confirmed sales",
+        "salesHint": "Validated conversions",
+        "commissions": "Commissions",
+        "commissionsHint": "On validated sales",
+        "revenue": "Revenue",
+        "revenueHint": "Validated sales volume"
+      },
+      "table": {
+        "title": "Per-link breakdown",
+        "empty": "No active link in the period. Create your first link from the “My links” tab.",
+        "label": "Label",
+        "destination": "Destination",
+        "subId": "Sub-ID",
+        "campaign": "Campaign",
+        "clicks": "Clicks",
+        "quotes": "Quotes",
+        "sales": "Sales",
+        "revenue": "Revenue",
+        "commission": "Commission"
+      }
     }
   },
   "onboarding": {

@@ -92,6 +92,14 @@ export const partners = pgTable(
     // Onboarding state.
     persona: text("persona"),
     onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
+    // Legal / billing (used by the "Société" profile tab and invoice generation).
+    legalForm: text("legal_form"),
+    siret: text("siret"),
+    vatNumber: text("vat_number"),
+    billingStreet: text("billing_street"),
+    billingPostalCode: text("billing_postal_code"),
+    billingCity: text("billing_city"),
+    billingCountry: text("billing_country"),
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),

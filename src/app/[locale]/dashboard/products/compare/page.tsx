@@ -1,12 +1,12 @@
 import { setRequestLocale } from "next-intl/server";
-import { ProductsHome } from "./ProductsHome";
+import { CompareWizard } from "./CompareWizard";
 
-export default async function ProductsPage({
+export default async function ComparePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <ProductsHome />;
+  return <CompareWizard />;
 }

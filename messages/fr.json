@@ -1046,6 +1046,75 @@
         "revenue": "CA",
         "commission": "Commission"
       }
+    },
+    "products": {
+      "title": "Comparateur produits",
+      "subtitle": "Tarifez en direct les produits HelloSafe pour le voyage de votre client. Comparez 6 offres, partagez le détail des garanties.",
+      "intents": {
+        "title": "Choisissez le type de voyage",
+        "tourism": {
+          "label": "Tourisme",
+          "body": "Voyage classique, court à moyen séjour. La majorité des cas."
+        },
+        "schengen": {
+          "label": "Visa Schengen",
+          "body": "Couverture conforme aux exigences consulaires (≥ 30 000 €)."
+        },
+        "cancel": {
+          "label": "Annulation seule",
+          "body": "Pour les clients déjà couverts médicalement, ou voyage haut de gamme."
+        },
+        "annual": {
+          "label": "Annuelle multi-voyages",
+          "body": "Une seule cotisation pour tous les voyages de l'année."
+        },
+        "pvt": {
+          "label": "PVT — Working Holiday",
+          "body": "Couverture longue durée pour les visas working holiday."
+        },
+        "other": {
+          "label": "Autres motifs",
+          "body": "Études, expatriation, croisière, etc."
+        },
+        "soon": "Bientôt"
+      },
+      "form": {
+        "title": "Profil voyage",
+        "residence": "Pays de résidence",
+        "residenceFr": "🇫🇷 France",
+        "destinations": "Destination(s)",
+        "destinationsHint": "Saisissez le code ISO du pays (ES, IT, US, TH...). On améliorera l'autocomplete.",
+        "destinationsPlaceholder": "ES",
+        "startDate": "Date de départ",
+        "endDate": "Date de retour",
+        "travelers": "Voyageurs",
+        "travelerAge": "Âge",
+        "addTraveler": "+ Ajouter un voyageur",
+        "removeTraveler": "Retirer",
+        "submit": "Comparer les offres",
+        "submitting": "Calcul des tarifs en cours…"
+      },
+      "results": {
+        "title": "{count} offres pour votre client",
+        "noResults": "Aucune offre disponible pour ce profil. Essayez d'élargir les paramètres.",
+        "back": "← Modifier le voyage",
+        "perPerson": "par personne",
+        "perTrip": "pour le voyage",
+        "guaranteeMedical": "Frais médicaux",
+        "guaranteeRepatriation": "Rapatriement",
+        "guaranteeCancellation": "Annulation",
+        "guaranteeBaggage": "Bagages",
+        "moreDetails": "Voir toutes les garanties",
+        "seeIpid": "IPID",
+        "seeCgv": "CGV",
+        "viewProduct": "Voir le produit"
+      },
+      "errors": {
+        "invalidDates": "La date de retour doit être après la date de départ.",
+        "noTravelers": "Ajoutez au moins un voyageur.",
+        "noDestination": "Saisissez au moins une destination.",
+        "fetchFailed": "Impossible de récupérer les offres. Réessayez."
+      }
     }
   },
   "onboarding": {

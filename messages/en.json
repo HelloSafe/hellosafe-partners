@@ -1046,6 +1046,75 @@
         "revenue": "Revenue",
         "commission": "Commission"
       }
+    },
+    "products": {
+      "title": "Product comparator",
+      "subtitle": "Get live quotes for HelloSafe products tailored to your client's trip. Compare 6 offers, share guarantees details.",
+      "intents": {
+        "title": "Pick the trip type",
+        "tourism": {
+          "label": "Tourism",
+          "body": "Classic short-to-medium trip. The most common case."
+        },
+        "schengen": {
+          "label": "Schengen visa",
+          "body": "Coverage compliant with consular requirements (≥ €30,000)."
+        },
+        "cancel": {
+          "label": "Cancellation only",
+          "body": "For clients already covered medically, or premium trips."
+        },
+        "annual": {
+          "label": "Annual multi-trip",
+          "body": "One subscription, every trip of the year."
+        },
+        "pvt": {
+          "label": "Working Holiday",
+          "body": "Long-duration coverage for working holiday visas."
+        },
+        "other": {
+          "label": "Other",
+          "body": "Studies, expat, cruise, etc."
+        },
+        "soon": "Soon"
+      },
+      "form": {
+        "title": "Trip profile",
+        "residence": "Country of residence",
+        "residenceFr": "🇫🇷 France",
+        "destinations": "Destination(s)",
+        "destinationsHint": "Type the ISO country code (ES, IT, US, TH...). We'll add autocomplete soon.",
+        "destinationsPlaceholder": "ES",
+        "startDate": "Departure date",
+        "endDate": "Return date",
+        "travelers": "Travellers",
+        "travelerAge": "Age",
+        "addTraveler": "+ Add a traveller",
+        "removeTraveler": "Remove",
+        "submit": "Compare offers",
+        "submitting": "Computing quotes…"
+      },
+      "results": {
+        "title": "{count} offers for your client",
+        "noResults": "No offer available for this profile. Try broadening the parameters.",
+        "back": "← Change trip",
+        "perPerson": "per person",
+        "perTrip": "for the trip",
+        "guaranteeMedical": "Medical",
+        "guaranteeRepatriation": "Repatriation",
+        "guaranteeCancellation": "Cancellation",
+        "guaranteeBaggage": "Baggage",
+        "moreDetails": "See all guarantees",
+        "seeIpid": "IPID",
+        "seeCgv": "T&Cs",
+        "viewProduct": "View product"
+      },
+      "errors": {
+        "invalidDates": "The return date must be after the departure date.",
+        "noTravelers": "Add at least one traveller.",
+        "noDestination": "Enter at least one destination.",
+        "fetchFailed": "Couldn't fetch offers. Try again."
+      }
     }
   },
   "onboarding": {

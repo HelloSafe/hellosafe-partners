@@ -1,19 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
+import { eq } from "drizzle-orm";
 import { z } from "zod";
+import { db } from "@/db";
+import { trackedLinks } from "@/db/schema";
+import { newId, newShortCode } from "@/lib/ids";
+import { appUrl } from "@/lib/app-url";
 import { getSessionContext } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
 
 /**
- * Creates a shareable quote link for a partner-prepared trip.
+ * Creates a shareable, attribution-aware quote link for a partner-prepared
+ * trip.
  *
- * Phase 1: we hit hellosafe.com `create-or-update-subscription` to get a
- * stable subscription_id, then return the public URL with that id. The
- * client lands on hellosafe.com with their trip pre-filled and finishes
- * the subscription there.
- *
- * Partner attribution layer (cookie via /r/<short_code>) is the next
- * iteration — coordination needed with the HelloSafe core team.
+ * Flow
+ *   1. Create a HelloSafe subscription via /api/create-or-update-subscription
+ *      to get a stable subscription_id.
+ *   2. Persist a tracked_link row in Neon with `targetUrl` set to the
+ *      hellosafe.com quote URL — this lets the existing /r/<code> redirect
+ *      drop the partner cookie before sending the client to HelloSafe.
+ *   3. Return the partner-domain short URL. The client clicks it, the
+ *      router posts the cookie, then redirects them to HelloSafe with the
+ *      partner ref baked in for attribution.
  */
 
 const TripInfoSchema = z.object({
@@ -36,9 +44,7 @@ const TripInfoSchema = z.object({
   tripPrice: z.number().default(-1),
 });
 
-const Body = z.object({
-  tripInfo: TripInfoSchema,
-});
+const Body = z.object({ tripInfo: TripInfoSchema });
 
 export async function POST(req: NextRequest) {
   const ctx = await getSessionContext();
@@ -56,6 +62,7 @@ export async function POST(req: NextRequest) {
     Intl.DateTimeFormat().resolvedOptions().timeZone ||
     "Europe/Paris";
 
+  // 1) Create the HelloSafe subscription
   const upstream = await fetch(
     "https://hellosafe.com/api/create-or-update-subscription",
     {
@@ -86,9 +93,41 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "NO_SUBSCRIPTION_ID" }, { status: 502 });
   }
 
-  // For now, the share link points directly to hellosafe.com. Once we wire
-  // partner attribution we'll wrap this in a /r/<short_code> redirect.
-  const shareUrl = `https://hellosafe.com/fr/travel-insurance/app/quote?subscription_id=${encodeURIComponent(subscriptionId)}`;
+  // 2) Create a tracked link with targetUrl set to the HelloSafe quote URL
+  const targetUrl = `https://hellosafe.com/fr/travel-insurance/app/quote?subscription_id=${encodeURIComponent(subscriptionId)}`;
+
+  let shortCode = newShortCode(8);
+  for (let i = 0; i < 3; i++) {
+    const hit = await db
+      .select({ id: trackedLinks.id })
+      .from(trackedLinks)
+      .where(eq(trackedLinks.shortCode, shortCode))
+      .limit(1);
+    if (hit.length === 0) break;
+    shortCode = newShortCode(8);
+  }
+
+  const id = newId();
+  const dest = parsed.data.tripInfo.arrivalCountries.join("+");
+  const label = `Devis ${parsed.data.tripInfo.intent.replace(
+    "for",
+    "",
+  )} → ${dest} · ${parsed.data.tripInfo.startDate.slice(0, 10)}`;
+
+  await db.insert(trackedLinks).values({
+    id,
+    partnerId: ctx.partner.id,
+    shortCode,
+    label,
+    destination: "travel", // legacy column kept non-null; the targetUrl wins at redirect time
+    language: "fr",
+    campaign: "products-share",
+    subId: subscriptionId.slice(0, 8), // small prefix for log filtering
+    targetUrl,
+  });
+
+  // 3) Return the partner-domain short URL
+  const shareUrl = `${appUrl()}/r/${shortCode}`;
 
   return NextResponse.json({ subscriptionId, shareUrl });
 }

@@ -126,6 +126,14 @@ export const trackedLinks = pgTable(
     language: text("language").notNull().default("fr"),
     campaign: text("campaign").notNull().default(""),
     subId: text("sub_id").notNull().default(""),
+    /**
+     * When set, the redirect router uses this exact URL as the target
+     * (after appending the `ref` query param for HelloSafe attribution)
+     * instead of building one from the standardized destination key.
+     * Used by the products comparator to share quote URLs that include
+     * a `subscription_id`.
+     */
+    targetUrl: text("target_url"),
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),

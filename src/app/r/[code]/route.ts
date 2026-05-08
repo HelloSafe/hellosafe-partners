@@ -51,6 +51,7 @@ export async function GET(
       language: trackedLinks.language,
       campaign: trackedLinks.campaign,
       subId: trackedLinks.subId,
+      targetUrl: trackedLinks.targetUrl,
       partnerCode: partners.partnerCode,
     })
     .from(trackedLinks)
@@ -85,22 +86,41 @@ export async function GET(
     })
     .catch((e) => console.error("[click] event send failed", e));
 
-  const destination: DestinationKey = isDestination(row.destination)
-    ? row.destination
-    : "travel";
+  const ref = `${row.partnerCode}-${row.shortCode}`;
+  let target: string;
+  if (row.targetUrl) {
+    // Custom target — used by the products comparator (subscription_id
+    // baked into the URL). We append `ref` so HelloSafe's attribution
+    // still sees the partner.
+    const u = new URL(row.targetUrl);
+    if (!u.searchParams.has("ref")) u.searchParams.set("ref", ref);
+    if (!u.searchParams.has("utm_source"))
+      u.searchParams.set("utm_source", "hellosafe-partners");
+    if (!u.searchParams.has("utm_medium"))
+      u.searchParams.set("utm_medium", "affiliate");
+    if (!u.searchParams.has("utm_campaign"))
+      u.searchParams.set("utm_campaign", row.campaign || "direct");
+    if (subIdOverride && !u.searchParams.has("subid"))
+      u.searchParams.set("subid", subIdOverride);
+    target = u.toString();
+  } else {
+    const destination: DestinationKey = isDestination(row.destination)
+      ? row.destination
+      : "travel";
 
-  const target = buildHelloSafeUrl({
-    destination,
-    language: row.language || "fr",
-    partnerCode: row.partnerCode,
-    shortCode: row.shortCode,
-    campaign: row.campaign,
-    subId: row.subId,
-    subIdOverride: subIdOverride ?? undefined,
-  });
+    target = buildHelloSafeUrl({
+      destination,
+      language: row.language || "fr",
+      partnerCode: row.partnerCode,
+      shortCode: row.shortCode,
+      campaign: row.campaign,
+      subId: row.subId,
+      subIdOverride: subIdOverride ?? undefined,
+    });
+  }
 
   const res = NextResponse.redirect(target, { status: 302 });
-  res.cookies.set("hs_ref", `${row.partnerCode}-${row.shortCode}`, {
+  res.cookies.set("hs_ref", ref, {
     path: "/",
     maxAge: 60 * 60 * 24 * 90,
     sameSite: "lax",

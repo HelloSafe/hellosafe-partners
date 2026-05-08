@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { listCountries, flagUrl, type Country } from "@/lib/countries";
+import { listCountries, flagUrl } from "@/lib/countries";
 
 export function CountryMultiSelect({
   selected,

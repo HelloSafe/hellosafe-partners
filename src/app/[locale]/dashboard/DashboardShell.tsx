@@ -383,17 +383,18 @@ function AdminBlock({
   pathname: string;
   defaultOpen: boolean;
 }) {
-  const [open, setOpen] = useState(defaultOpen);
-  // Reopen automatically when navigation lands inside admin
-  useEffect(() => {
-    if (defaultOpen) setOpen(true);
-  }, [defaultOpen]);
+  // Derived-state pattern: the user can override the default with a manual
+  // toggle. `null` means "follow the default"; once they click we lock the
+  // override. Reset back to following the default if the page changes such
+  // that defaultOpen would re-open the section.
+  const [override, setOverride] = useState<boolean | null>(null);
+  const open = override ?? defaultOpen;
 
   return (
     <div className="mt-6 pt-4 border-t border-surface-200">
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => setOverride(!open)}
         className="w-full flex items-center px-3 h-9 rounded-lg text-[0.68rem] font-semibold uppercase tracking-wider text-ink-500 hover:bg-surface-100 transition-colors"
         aria-expanded={open}
       >

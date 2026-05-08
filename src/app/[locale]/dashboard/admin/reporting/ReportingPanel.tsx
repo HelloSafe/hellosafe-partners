@@ -51,8 +51,12 @@ export function ReportingPanel() {
   const locale = useLocale();
   const [period, setPeriod] = useState<Period>("30");
   const [subId, setSubId] = useState("");
-  const [data, setData] = useState<ReportingData | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Track which queryString the loaded `data` corresponds to. `loading` is
+  // simply derived as "the displayed data doesn't match the live filters yet".
+  const [result, setResult] = useState<{
+    data: ReportingData | null;
+    queryFor: string | null;
+  }>({ data: null, queryFor: null });
 
   // Apply Sub-ID filter only when the user explicitly hits Enter or blurs:
   // we don't want a network round-trip on every keystroke.
@@ -66,12 +70,22 @@ export function ReportingPanel() {
   }, [period, appliedSubId]);
 
   useEffect(() => {
-    setLoading(true);
+    let cancelled = false;
     fetch(`/api/account/reporting?${queryString}`, { cache: "no-store" })
       .then((r) => r.json())
-      .then((d: ReportingData) => setData(d))
-      .finally(() => setLoading(false));
+      .then((d: ReportingData) => {
+        if (!cancelled) setResult({ data: d, queryFor: queryString });
+      })
+      .catch(() => {
+        if (!cancelled) setResult({ data: null, queryFor: queryString });
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [queryString]);
+
+  const data = result.data;
+  const loading = result.queryFor !== queryString;
 
   const fmt = (n: number) => new Intl.NumberFormat(locale).format(n);
   const eur = (cents: number) =>

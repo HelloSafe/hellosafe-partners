@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { and, desc, eq, gte, lte, sql } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { clicks, conversions, trackedLinks } from "@/db/schema";
 import { getSessionContext } from "@/lib/session";

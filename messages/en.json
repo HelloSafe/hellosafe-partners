@@ -793,7 +793,8 @@
         "tools": "Tools",
         "admin": "Administration",
         "affiliation": "Affiliate",
-        "products": "Products"
+        "products": "Products",
+        "brokerage": "Brokerage"
       },
       "overview": "Overview",
       "coach": "Coach Atlas",
@@ -805,7 +806,8 @@
       "team": "Team",
       "reporting": "Reporting",
       "payouts": "Payouts",
-      "api": "API & integrations"
+      "api": "API & integrations",
+      "training": "Training"
     },
     "perks": {
       "title": "Partner perks",
@@ -1165,6 +1167,150 @@
         "close": "Close",
         "errorCreating": "Couldn't generate the link. Try again."
       }
+    },
+    "training": {
+      "title": "Atlas training",
+      "subtitle": "The HelloSafe training catalog for your sales team: sales playbooks, ORIAS/DDA compliance, Coach onboarding, claims handling. DDA hours counted toward your firm's compliance.",
+      "soonBanner": "The catalog opens in autumn — register your interest at formations@hellosafe.com to be notified first and pick your modules.",
+      "categories": {
+        "fundamentals": "Fundamentals",
+        "selling": "Selling & objection handling",
+        "atlas": "Coach Atlas",
+        "compliance": "ORIAS / DDA compliance",
+        "claims": "Claims handling",
+        "digital": "Digital & phone selling"
+      },
+      "format": {
+        "elearning": "E-learning",
+        "webinar": "Live webinar",
+        "session": "In-person / video session",
+        "hours": "{hours} h",
+        "ddaHours": "Counts towards DDA compliance",
+        "free": "Free for HelloSafe partners",
+        "paid": "From €{price} excl. tax / person"
+      },
+      "modules": [
+        {
+          "id": "m1",
+          "category": "fundamentals",
+          "title": "Le marché de l'assurance voyage",
+          "body": "Cadre, acteurs, segments (loisir / Schengen / PVT / annulation seule), enjeux 2026 du marché. Pour bien situer ce qu'on vend.",
+          "duration": 1.5,
+          "format": "elearning",
+          "price": 0
+        },
+        {
+          "id": "m2",
+          "category": "fundamentals",
+          "title": "Comment fonctionne une couverture voyage",
+          "body": "Les 8 garanties clés : médical, rapatriement, annulation, bagages, RC, retard, assistance, sports. Plafonds, franchises, exclusions standard.",
+          "duration": 2,
+          "format": "elearning",
+          "price": 0
+        },
+        {
+          "id": "m3",
+          "category": "fundamentals",
+          "title": "L'écosystème de couverture",
+          "body": "Comment se combinent Sécu, mutuelle, carte bancaire et assurance voyage dédiée. Les vrais trous dans la couverture des cartes premium.",
+          "duration": 1.5,
+          "format": "elearning",
+          "price": 0
+        },
+        {
+          "id": "m4",
+          "category": "selling",
+          "title": "Vendre l'assurance voyage : les fondamentaux",
+          "body": "Quand la proposer, comment la structurer dans le devis, intérêt du client vs. de l'agence. Code du tourisme et rémunération de l'intermédiaire.",
+          "duration": 3.5,
+          "format": "session",
+          "price": 200
+        },
+        {
+          "id": "m5",
+          "category": "selling",
+          "title": "Argumentaire face aux objections",
+          "body": "« Je suis couvert par ma carte », « C'est trop cher », « Je suis déjà sur-assuré ». Méthode CAB et SONCASE adaptées au voyage. Jeux de rôle.",
+          "duration": 7,
+          "format": "session",
+          "price": 400
+        },
+        {
+          "id": "m6",
+          "category": "atlas",
+          "title": "Lancer un diagnostic Coach Atlas en 30 secondes",
+          "body": "Le wizard pas à pas. Saisir un dossier client, lire le récap avec lui, convertir un « déjà couvert » en vente premium.",
+          "duration": 1,
+          "format": "webinar",
+          "price": 0
+        },
+        {
+          "id": "m7",
+          "category": "atlas",
+          "title": "Brander Coach Atlas à la couleur de votre agence",
+          "body": "Logo, marque, baseline, couleur. Faire disparaître HelloSafe et garder votre conseil au premier plan.",
+          "duration": 0.5,
+          "format": "elearning",
+          "price": 0
+        },
+        {
+          "id": "m8",
+          "category": "compliance",
+          "title": "Devoir de conseil & code des assurances",
+          "body": "Les obligations DDA / IDD pour la vente d'assurance voyage. Le rôle d'intermédiaire mandataire vs. distributeur. Les pièges en agence.",
+          "duration": 3.5,
+          "format": "session",
+          "price": 200
+        },
+        {
+          "id": "m9",
+          "category": "compliance",
+          "title": "Vos 15 heures DDA annuelles",
+          "body": "Suivi de vos heures de formation, justificatifs ORIAS, attestations à conserver. Module attestant.",
+          "duration": 1,
+          "format": "elearning",
+          "price": 0
+        },
+        {
+          "id": "m10",
+          "category": "claims",
+          "title": "Déclarer un sinistre côté agence",
+          "body": "Quand le client appelle. Les pièces à demander, le bon canal, les délais. Le rôle du plateau d'assistance.",
+          "duration": 2,
+          "format": "elearning",
+          "price": 0
+        },
+        {
+          "id": "m11",
+          "category": "claims",
+          "title": "Suivi & indemnisation",
+          "body": "Le parcours côté assureur, les SLA, comment rassurer un client en attente. Cas pratiques.",
+          "duration": 3.5,
+          "format": "session",
+          "price": 200
+        },
+        {
+          "id": "m12",
+          "category": "digital",
+          "title": "Vendre l'assurance par téléphone",
+          "body": "Accueil, écoute, reformulation, formulation « vendeuse ». Les déclencheurs verbaux qui font dire oui.",
+          "duration": 3.5,
+          "format": "session",
+          "price": 200
+        },
+        {
+          "id": "m13",
+          "category": "digital",
+          "title": "Convertir un visiteur de votre site en souscription",
+          "body": "Le rôle du widget HelloSafe sur votre tunnel. Pages de destination, copy, A/B test du CTA.",
+          "duration": 1,
+          "format": "webinar",
+          "price": 0
+        }
+      ],
+      "ddaNote": "HelloSafe Atlas is ORIAS-registered. Hours from this catalog count towards your mandatory 15 annual DDA training hours.",
+      "contactCta": "Ask for a custom session",
+      "contactBody": "5+ sales reps? We can run a dedicated session at your office (in-person) or by video. Write to formations@hellosafe.com with your needs."
     }
   },
   "onboarding": {

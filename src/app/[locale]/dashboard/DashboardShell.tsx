@@ -187,10 +187,22 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     ...(showProducts
       ? [
           {
-            kind: "leaf" as const,
-            href: "/dashboard/products",
-            label: t("productsCatalog"),
-            badge: "NEW",
+            kind: "group" as const,
+            label: t("sections.brokerage"),
+            items: [
+              {
+                kind: "leaf" as const,
+                href: "/dashboard/products",
+                label: t("productsCatalog"),
+                badge: "NEW",
+              },
+              {
+                kind: "leaf" as const,
+                href: "/dashboard/courtage/formations",
+                label: t("training"),
+                badge: "BIENTÔT",
+              },
+            ],
           },
         ]
       : []),

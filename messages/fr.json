@@ -31,10 +31,6 @@
       "coach": {
         "title": "Coach Atlas — l'outil de diagnostic d'assurance voyage",
         "description": "Coach Atlas révèle en 30 secondes les trous de couverture entre la carte bancaire, la mutuelle, la sécurité sociale et le contrat agence de votre client. Récap client-ready à vos couleurs, gratuit pour tous les partenaires HelloSafe."
-      },
-      "products": {
-        "title": "Produits HelloSafe — comparateur partenaire",
-        "description": "Tarifez en direct les produits d'assurance voyage HelloSafe pour vos clients. Comparateur multi-assureur, devis en 30 secondes, envoi par email ou WhatsApp."
       }
     }
   },
@@ -55,8 +51,7 @@
       "how": "Comment ça marche",
       "coach": "Coach Atlas",
       "faq": "FAQ",
-      "lang": "Langue",
-      "products": "Produits"
+      "lang": "Langue"
     },
     "footer": {
       "tagline": "Le programme d'affiliation de la meilleure offre d'assurance voyage du marché.",
@@ -256,19 +251,6 @@
       "body": "Inscription gratuite, validation sous 24 heures. Vous gardez la main sur votre expérience client, nous prenons en charge la distribution, le paiement et le support.",
       "primary": "Créer mon espace partenaire",
       "secondary": "Échanger avec un responsable"
-    },
-    "coachFeature": {
-      "eyebrow": "Coach Atlas",
-      "title": "Vos clients se croient couverts. Démontrez-le, ou démontez-le, en 30 secondes.",
-      "body": "Coach Atlas est notre outil de diagnostic interne, ouvert à tous les partenaires. Vous saisissez la carte du client, sa mutuelle et son contrat agence ; le Coach sort un récap garantie par garantie, avec les écarts en rouge et la recommandation HelloSafe à droite. Aux couleurs de votre marque, prêt à imprimer.",
-      "bullets": [
-        "Diagnostic complet en moins de 30 secondes, sur 8 garanties pondérées",
-        "Récap PDF brandé avec votre logo et vos couleurs, transmissible au client",
-        "Plus de 120 cartes bancaires et mutuelles dans le référentiel, mises à jour en continu",
-        "Inclus dans le programme partenaire, sans coût additionnel ni seuil minimum"
-      ],
-      "primaryCta": "Découvrir Coach Atlas",
-      "secondaryCta": "Devenir partenaire"
     }
   },
   "why": {
@@ -546,155 +528,6 @@
       "Webhook + export CSV"
     ]
   },
-  "coach": {
-    "hero": {
-      "eyebrow": "Coach Atlas",
-      "title": "L'outil qui révèle les trous de couverture en 30 secondes",
-      "subtitle": "Coach Atlas est un diagnostic automatique qui croise la carte bancaire, la mutuelle, la sécurité sociale et le contrat distribué de votre client pour produire un récap client-ready aux couleurs de votre marque. Gratuit pour tous les partenaires HelloSafe.",
-      "primaryCta": "Lancer ma première analyse",
-      "secondaryCta": "Voir un exemple",
-      "highlights": [
-        "Diagnostic en moins de 30 secondes",
-        "Récap PDF aux couleurs de votre marque",
-        "Gratuit, illimité, sans engagement"
-      ]
-    },
-    "intro": {
-      "eyebrow": "Pourquoi cet outil",
-      "title": "Vos clients se croient couverts. Ils ne le sont presque jamais.",
-      "body": "Une carte Visa Premier couvre 155 000 € de frais médicaux à l'étranger, mais limite la durée à 90 jours et exclut le ski hors-piste. La sécurité sociale française rembourse les soins en zone Schengen, mais quasiment rien aux États-Unis ou en Asie. Une mutuelle haut de gamme couvre le rapatriement, mais pas l'annulation toutes causes. Le Coach Atlas démêle ce maillage en quelques secondes et le rend lisible pour votre client.",
-      "stats": [
-        {
-          "value": "8",
-          "label": "garanties analysées par dossier"
-        },
-        {
-          "value": "120+",
-          "label": "cartes et mutuelles dans le référentiel"
-        },
-        {
-          "value": "30 s",
-          "label": "pour générer le récap client"
-        }
-      ]
-    },
-    "steps": {
-      "title": "Quatre étapes guidées, deux minutes",
-      "subtitle": "Le Coach est un wizard structuré, pensé pour être lancé pendant un rendez-vous client ou en autonomie depuis votre dashboard.",
-      "items": [
-        {
-          "n": "01",
-          "title": "Le voyageur",
-          "body": "Profil, tranche d'âge, accompagnants, pays de départ. Le profil détermine ce que la sécu et la mutuelle sont censées couvrir."
-        },
-        {
-          "n": "02",
-          "title": "Le voyage",
-          "body": "Destination, dates, motif (loisir, business, étude, expat, croisière), activités à risque (ski, plongée, trek). Chaque combinaison déclenche des règles de couverture spécifiques."
-        },
-        {
-          "n": "03",
-          "title": "La couverture existante",
-          "body": "Carte bancaire, mutuelle, sécurité sociale du pays de départ et, en option, le contrat que vous distribuez vous-même. Choix dans une liste de plus de 120 références."
-        },
-        {
-          "n": "04",
-          "title": "Le diagnostic",
-          "body": "Coach Atlas génère un score de couverture sur 100, recense les écarts critiques et les alertes garantie par garantie, puis propose la meilleure recommandation HelloSafe."
-        }
-      ]
-    },
-    "demo": {
-      "eyebrow": "Le récap remis au client",
-      "title": "Une page lisible, brandée, transmissible",
-      "subtitle": "Chaque garantie est présentée en trois colonnes : ce que le client a déjà, l'écart constaté, la réponse HelloSafe. Téléchargeable en PDF, à vos couleurs et à votre marque.",
-      "summaryLabel": "Synthèse",
-      "scoreLabel": "Score de couverture",
-      "scoreHint": "Calculé sur 8 garanties pondérées",
-      "criticalLabel": "Écarts critiques",
-      "warningLabel": "Alertes",
-      "rows": [
-        {
-          "label": "Frais médicaux",
-          "current": "Visa Premier · 155 000 € · 90 jours",
-          "gap": "Plafond insuffisant aux États-Unis",
-          "answer": "Atlas Premium · 4 500 000 € sans franchise",
-          "severity": "critical"
-        },
-        {
-          "label": "Rapatriement",
-          "current": "Mutuelle Generali · frais réels",
-          "gap": "Suffisant",
-          "answer": "Renforcé par Atlas en relais sécurisé",
-          "severity": "ok"
-        },
-        {
-          "label": "Annulation toutes causes",
-          "current": "Aucune source",
-          "gap": "Absente — voyage haut de gamme à risque",
-          "answer": "Atlas Premium · jusqu'à 100 % du voyage",
-          "severity": "critical"
-        },
-        {
-          "label": "Sports d'hiver hors-piste",
-          "current": "Visa Premier · exclu",
-          "gap": "Activité programmée non couverte",
-          "answer": "Atlas Sport+ · couverture incluse",
-          "severity": "warning"
-        }
-      ],
-      "footer": "Aide à la vente. Les décisions de couverture restent soumises aux conditions du contrat sélectionné."
-    },
-    "benefits": {
-      "title": "Ce que change le Coach pour votre activité",
-      "items": [
-        {
-          "badge": "Conversion",
-          "title": "L'argument qui fait dire oui",
-          "body": "L'objection \"je suis déjà couvert\" tombe quand le client voit son propre profil croisé avec sa carte et sa mutuelle. Sur les agences du réseau, le taux de conversion en RDV passe de 30 % à 70 %."
-        },
-        {
-          "badge": "Brandable",
-          "title": "Logo, couleurs, signature : votre marque",
-          "body": "Le récap remis au client porte vos couleurs et votre identité. HelloSafe disparaît visuellement. C'est votre conseil, pas notre publicité."
-        },
-        {
-          "badge": "Panier × 1,4",
-          "title": "Un client qui comprend prend la formule premium",
-          "body": "Le panier moyen monte de 79 € à 110 € quand le client a vu noir sur blanc ce qui lui manque. La pédagogie remplace l'argument tarifaire."
-        },
-        {
-          "badge": "Gratuit",
-          "title": "Inclus dans le programme partenaire",
-          "body": "Aucun coût supplémentaire, aucun seuil minimum. L'outil est accessible dès la validation du compte, sans option payante."
-        }
-      ]
-    },
-    "useCases": {
-      "title": "Plusieurs façons de l'utiliser",
-      "items": [
-        {
-          "title": "En agence, pendant un RDV",
-          "body": "Le commercial saisit la carte du client, sa mutuelle et le contrat agence. Le récap s'affiche en 30 secondes et vient nourrir la fin du rendez-vous."
-        },
-        {
-          "title": "En self-service depuis votre site",
-          "body": "Intégrez le widget Coach sur votre page contact ou dans votre tunnel devis. Vos visiteurs saisissent leurs données et reçoivent leur diagnostic par e-mail."
-        },
-        {
-          "title": "En contenu éditorial",
-          "body": "Publiez un article \"Êtes-vous bien couvert pour le PVT Canada ?\" qui invite vos lecteurs à lancer le diagnostic. Sub-ID dédié, attribution 90 jours."
-        }
-      ]
-    },
-    "finalCta": {
-      "eyebrow": "Coach Atlas",
-      "title": "Lancez votre première analyse en moins de 2 minutes",
-      "body": "L'outil est accessible depuis le dashboard partenaire dès l'activation de votre compte. Inscription gratuite, validation manuelle sous 24 heures.",
-      "primary": "Devenir partenaire",
-      "secondary": "Voir le programme"
-    }
-  },
   "faq": {
     "hero": {
       "eyebrow": "FAQ",
@@ -792,22 +625,16 @@
       "sections": {
         "tools": "Outils",
         "admin": "Administration",
-        "affiliation": "Affiliation",
-        "products": "Produits",
-        "marketplace": "Marketplace"
+        "products": "Produits"
       },
       "overview": "Vue d'ensemble",
-      "coach": "Coach Atlas",
       "links": "Mes liens",
-      "widget": "Widget",
-      "productsCatalog": "Produits",
       "perks": "Avantages",
       "profile": "Mon profil",
       "team": "Équipe",
       "reporting": "Reporting",
       "payouts": "Paiements",
-      "api": "API & intégrations",
-      "training": "Formations"
+      "api": "API & intégrations"
     },
     "perks": {
       "title": "Avantages partenaires",
@@ -1053,264 +880,6 @@
         "revenue": "CA",
         "commission": "Commission"
       }
-    },
-    "products": {
-      "title": "Comparateur produits",
-      "subtitle": "Tarifez en direct les produits HelloSafe pour le voyage de votre client. Comparez 6 offres, partagez le détail des garanties.",
-      "intents": {
-        "title": "Choisissez le type de voyage",
-        "tourism": {
-          "label": "Tourisme",
-          "body": "Voyage classique, court à moyen séjour. La majorité des cas."
-        },
-        "schengen": {
-          "label": "Visa Schengen",
-          "body": "Couverture conforme aux exigences consulaires (≥ 30 000 €)."
-        },
-        "cancel": {
-          "label": "Annulation seule",
-          "body": "Pour les clients déjà couverts médicalement, ou voyage haut de gamme."
-        },
-        "annual": {
-          "label": "Annuelle multi-voyages",
-          "body": "Une seule cotisation pour tous les voyages de l'année."
-        },
-        "pvt": {
-          "label": "PVT — Working Holiday",
-          "body": "Couverture longue durée pour les visas working holiday."
-        },
-        "other": {
-          "label": "Autres motifs",
-          "body": "Études, expatriation, croisière, etc."
-        },
-        "soon": "Bientôt"
-      },
-      "form": {
-        "title": "Profil voyage",
-        "residence": "Pays de résidence",
-        "residenceFr": "🇫🇷 France",
-        "destinations": "Destination(s)",
-        "destinationsHint": "Saisissez le code ISO du pays (ES, IT, US, TH...). On améliorera l'autocomplete.",
-        "destinationsPlaceholder": "ES",
-        "startDate": "Date de départ",
-        "endDate": "Date de retour",
-        "travelers": "Voyageurs",
-        "travelerAge": "Âge",
-        "addTraveler": "+ Ajouter un voyageur",
-        "removeTraveler": "Retirer",
-        "submit": "Comparer les offres",
-        "submitting": "Calcul des tarifs en cours…"
-      },
-      "results": {
-        "title": "{count} offres pour votre client",
-        "noResults": "Aucune offre disponible pour ce profil. Essayez d'élargir les paramètres.",
-        "back": "← Modifier le voyage",
-        "perPerson": "par personne",
-        "perTrip": "pour le voyage",
-        "guaranteeMedical": "Frais médicaux",
-        "guaranteeRepatriation": "Rapatriement",
-        "guaranteeCancellation": "Annulation",
-        "guaranteeBaggage": "Bagages",
-        "moreDetails": "Voir toutes les garanties",
-        "seeIpid": "IPID",
-        "seeCgv": "CGV",
-        "viewProduct": "Voir le produit",
-        "sortBy": "Trier par",
-        "sortPrice": "Prix",
-        "sortCoverage": "Couverture",
-        "filterTitle": "Filtres",
-        "filterCancellation": "Inclure annulation voyage",
-        "badgeBest": "Meilleur prix",
-        "badgeTopCoverage": "Meilleure couverture",
-        "score": "Score",
-        "scoreOf": "/ 100",
-        "guaranteeLiability": "Resp. civile",
-        "guaranteeDelay": "Retard transport",
-        "guaranteeAssistance": "Assistance 24/7",
-        "guaranteeSports": "Sports extrêmes",
-        "shareCta": "Envoyer au client",
-        "modalDetailsTitle": "Détail des garanties",
-        "modalDetailsClose": "Fermer",
-        "offersFound": "{count} offres pour ce voyage",
-        "personalize": "Personnalisez la couverture",
-        "filtersTitle": "Filtres garanties",
-        "filterRequired": "Doit inclure :",
-        "showAllGuarantees": "Toutes les garanties",
-        "hideGuarantees": "Masquer",
-        "scoreCoverage": "Couverture",
-        "compareMode": "Mode comparaison",
-        "compareCount": "{count} sélectionnées",
-        "compareLaunch": "Comparer côte à côte",
-        "compareLimit": "3 offres maximum",
-        "modifyTrip": "Modifier le voyage",
-        "stepperTrip": "Voyage",
-        "stepperQuote": "Devis",
-        "stepperShare": "Envoyer au client"
-      },
-      "errors": {
-        "invalidDates": "La date de retour doit être après la date de départ.",
-        "noTravelers": "Ajoutez au moins un voyageur.",
-        "noDestination": "Saisissez au moins une destination.",
-        "fetchFailed": "Impossible de récupérer les offres. Réessayez."
-      },
-      "share": {
-        "title": "Envoyer le devis à votre client",
-        "subtitle": "Le client reçoit un lien sécurisé qui ouvre le comparateur HelloSafe avec son voyage déjà saisi. Il n'a plus qu'à finaliser sa souscription.",
-        "linkLabel": "Lien à partager",
-        "copy": "Copier",
-        "copied": "Copié !",
-        "channelEmail": "Envoyer par email",
-        "channelWhatsapp": "Envoyer par WhatsApp",
-        "emailSubject": "Votre devis assurance voyage",
-        "emailBody": "Bonjour,\n\nVoici le lien pour finaliser votre souscription d'assurance voyage HelloSafe. Le devis est déjà préparé en fonction de votre voyage.\n\n{url}\n\nÀ très vite,",
-        "whatsappBody": "Bonjour, voici votre devis HelloSafe : {url}",
-        "close": "Fermer",
-        "errorCreating": "Impossible de générer le lien. Réessayez."
-      }
-    },
-    "training": {
-      "title": "Formations Atlas",
-      "subtitle": "Le catalogue de formation HelloSafe pour vos commerciaux : argumentaires de vente, conformité ORIAS/DDA, prise en main du Coach, gestion des sinistres. Heures DDA comptabilisées pour la conformité de votre cabinet.",
-      "soonBanner": "Le catalogue ouvre à la rentrée — inscrivez votre intérêt à formations@hellosafe.com pour être prévenu en priorité et choisir vos modules.",
-      "categories": {
-        "fundamentals": "Fondamentaux",
-        "selling": "Vente & argumentation",
-        "atlas": "Coach Atlas",
-        "compliance": "Conformité ORIAS / DDA",
-        "claims": "Gestion des sinistres",
-        "digital": "Vente digitale & téléphone"
-      },
-      "format": {
-        "elearning": "E-learning",
-        "webinar": "Webinaire live",
-        "session": "Session présentielle / visio",
-        "hours": "{hours} h",
-        "ddaHours": "Compte pour la conformité DDA",
-        "free": "Gratuit pour les partenaires HelloSafe",
-        "paid": "À partir de {price} € HT / personne"
-      },
-      "modules": [
-        {
-          "id": "m1",
-          "category": "fundamentals",
-          "title": "Le marché de l'assurance voyage",
-          "body": "Cadre, acteurs, segments (loisir / Schengen / PVT / annulation seule), enjeux 2026 du marché. Pour bien situer ce qu'on vend.",
-          "duration": 1.5,
-          "format": "elearning",
-          "price": 0
-        },
-        {
-          "id": "m2",
-          "category": "fundamentals",
-          "title": "Comment fonctionne une couverture voyage",
-          "body": "Les 8 garanties clés : médical, rapatriement, annulation, bagages, RC, retard, assistance, sports. Plafonds, franchises, exclusions standard.",
-          "duration": 2,
-          "format": "elearning",
-          "price": 0
-        },
-        {
-          "id": "m3",
-          "category": "fundamentals",
-          "title": "L'écosystème de couverture",
-          "body": "Comment se combinent Sécu, mutuelle, carte bancaire et assurance voyage dédiée. Les vrais trous dans la couverture des cartes premium.",
-          "duration": 1.5,
-          "format": "elearning",
-          "price": 0
-        },
-        {
-          "id": "m4",
-          "category": "selling",
-          "title": "Vendre l'assurance voyage : les fondamentaux",
-          "body": "Quand la proposer, comment la structurer dans le devis, intérêt du client vs. de l'agence. Code du tourisme et rémunération de l'intermédiaire.",
-          "duration": 3.5,
-          "format": "session",
-          "price": 200
-        },
-        {
-          "id": "m5",
-          "category": "selling",
-          "title": "Argumentaire face aux objections",
-          "body": "« Je suis couvert par ma carte », « C'est trop cher », « Je suis déjà sur-assuré ». Méthode CAB et SONCASE adaptées au voyage. Jeux de rôle.",
-          "duration": 7,
-          "format": "session",
-          "price": 400
-        },
-        {
-          "id": "m6",
-          "category": "atlas",
-          "title": "Lancer un diagnostic Coach Atlas en 30 secondes",
-          "body": "Le wizard pas à pas. Saisir un dossier client, lire le récap avec lui, convertir un « déjà couvert » en vente premium.",
-          "duration": 1,
-          "format": "webinar",
-          "price": 0
-        },
-        {
-          "id": "m7",
-          "category": "atlas",
-          "title": "Brander Coach Atlas à la couleur de votre agence",
-          "body": "Logo, marque, baseline, couleur. Faire disparaître HelloSafe et garder votre conseil au premier plan.",
-          "duration": 0.5,
-          "format": "elearning",
-          "price": 0
-        },
-        {
-          "id": "m8",
-          "category": "compliance",
-          "title": "Devoir de conseil & code des assurances",
-          "body": "Les obligations DDA / IDD pour la vente d'assurance voyage. Le rôle d'intermédiaire mandataire vs. distributeur. Les pièges en agence.",
-          "duration": 3.5,
-          "format": "session",
-          "price": 200
-        },
-        {
-          "id": "m9",
-          "category": "compliance",
-          "title": "Vos 15 heures DDA annuelles",
-          "body": "Suivi de vos heures de formation, justificatifs ORIAS, attestations à conserver. Module attestant.",
-          "duration": 1,
-          "format": "elearning",
-          "price": 0
-        },
-        {
-          "id": "m10",
-          "category": "claims",
-          "title": "Déclarer un sinistre côté agence",
-          "body": "Quand le client appelle. Les pièces à demander, le bon canal, les délais. Le rôle du plateau d'assistance.",
-          "duration": 2,
-          "format": "elearning",
-          "price": 0
-        },
-        {
-          "id": "m11",
-          "category": "claims",
-          "title": "Suivi & indemnisation",
-          "body": "Le parcours côté assureur, les SLA, comment rassurer un client en attente. Cas pratiques.",
-          "duration": 3.5,
-          "format": "session",
-          "price": 200
-        },
-        {
-          "id": "m12",
-          "category": "digital",
-          "title": "Vendre l'assurance par téléphone",
-          "body": "Accueil, écoute, reformulation, formulation « vendeuse ». Les déclencheurs verbaux qui font dire oui.",
-          "duration": 3.5,
-          "format": "session",
-          "price": 200
-        },
-        {
-          "id": "m13",
-          "category": "digital",
-          "title": "Convertir un visiteur de votre site en souscription",
-          "body": "Le rôle du widget HelloSafe sur votre tunnel. Pages de destination, copy, A/B test du CTA.",
-          "duration": 1,
-          "format": "webinar",
-          "price": 0
-        }
-      ],
-      "ddaNote": "HelloSafe Atlas est immatriculé ORIAS. Les heures de formation que vous suivez ici comptent pour vos 15 heures DDA annuelles obligatoires.",
-      "contactCta": "Demander une session sur mesure",
-      "contactBody": "Vous avez 5+ commerciaux ? On peut organiser une session dédiée chez vous (en présentiel) ou en visio. Écrivez à formations@hellosafe.com avec votre besoin."
     }
   },
   "onboarding": {
@@ -1336,7 +905,7 @@
       },
       "agency": {
         "label": "Agence de voyage",
-        "sub": "Bureau, OTA, distribution"
+        "sub": "Bureau, OTA — envoyez le Coach par WhatsApp / e-mail"
       },
       "visa": {
         "label": "Spécialiste visa",
@@ -1394,8 +963,8 @@
       },
       "suggestions": {
         "agency": {
-          "title": "Lancez votre première analyse Coach en 90 secondes",
-          "body": "Montrez à un client ce que sa carte, sa mutuelle et sa sécu couvrent vraiment, et où Atlas ferme le trou. Le récap est aux couleurs de votre marque."
+          "title": "Envoyez le Coach HelloSafe à votre client",
+          "body": "Générez votre premier lien tracké vers le Coach HelloSafe. Envoyez-le à votre client par WhatsApp ou e-mail : il fait son diagnostic, souscrit en ligne, et la commission tombe sur votre compte."
         },
         "blogCreator": {
           "title": "Générez votre premier lien traqué",
@@ -1531,36 +1100,6 @@
     "errors": {
       "generic": "Erreur",
       "connection": "Erreur de connexion au serveur."
-    }
-  },
-  "productsLp": {
-    "hero": {
-      "eyebrow": "Comparateur partenaire",
-      "title": "Tarifez les produits HelloSafe en direct, devant votre client",
-      "subtitle": "Saisissez le voyage, comparez 6 offres avec leurs garanties et leurs prix réels, envoyez le lien de souscription par email ou WhatsApp. Inclus dans le programme partenaire.",
-      "primaryCta": "Lancer une simulation",
-      "secondaryCta": "Voir le programme"
-    },
-    "features": {
-      "title": "Ce que ça change pour votre activité",
-      "items": [
-        {
-          "title": "Devis en 30 secondes",
-          "body": "Le tarif réel s'affiche en live, calculé par chaque assureur. Plus besoin de jongler entre plusieurs extranets."
-        },
-        {
-          "title": "Comparaison côte à côte",
-          "body": "6 offres affichées simultanément, avec score de couverture, prix et garanties principales. Le client voit, comprend, choisit."
-        },
-        {
-          "title": "Envoi par email ou WhatsApp",
-          "body": "Un clic, le client reçoit un lien sécurisé qui ouvre le comparateur avec son voyage déjà saisi. Il finalise sa souscription en quelques secondes."
-        },
-        {
-          "title": "Aux couleurs de votre marque",
-          "body": "Pour les agences, l'expérience est habillée à votre identité. HelloSafe disparaît visuellement, c'est votre conseil qui est mis en avant."
-        }
-      ]
     }
   }
 }

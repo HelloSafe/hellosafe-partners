@@ -2,17 +2,15 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { BrandingForm } from "../../settings/branding/BrandingForm";
 import { AccountTab } from "./AccountTab";
 import { CompanyTab } from "./CompanyTab";
 
-type Tab = "account" | "brand" | "company";
+type Tab = "account" | "company";
 
 export function ProfileTabs() {
   const t = useTranslations("dashboard.account");
   const tabs: { id: Tab; label: string }[] = [
     { id: "account", label: t("tabs.account") },
-    { id: "brand", label: t("tabs.brand") },
     { id: "company", label: t("tabs.company") },
   ];
 
@@ -64,7 +62,6 @@ export function ProfileTabs() {
 
       <div className="mt-8">
         {active === "account" && <AccountTab />}
-        {active === "brand" && <BrandingForm />}
         {active === "company" && <CompanyTab />}
       </div>
     </div>

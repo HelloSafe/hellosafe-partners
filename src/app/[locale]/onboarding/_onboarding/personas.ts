@@ -20,17 +20,12 @@ export const PERSONAS: ReadonlyArray<{ id: Persona; icon: string }> = [
 
 /** Send the user to the most relevant first action by persona. */
 export function personaFirstAction(p: Persona | null): string {
-  if (!p) return "/dashboard";
-  switch (p) {
-    case "agency":
-      return "/dashboard/coach/new";
-    case "blog":
-    case "creator":
-    case "visa":
-    case "other":
-    default:
-      return "/dashboard/links";
-  }
+  // Every persona is now an affiliate at heart: generate links, drive
+  // traffic to hellosafe.com, get paid on conversions. Agencies in
+  // particular use the public Coach on hellosafe.com and share its
+  // URL with clients via WhatsApp/email through their tracked link.
+  void p;
+  return "/dashboard/links";
 }
 
 /**

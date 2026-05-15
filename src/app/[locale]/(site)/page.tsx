@@ -3,7 +3,6 @@ import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Hero } from "./_home/Hero";
 import { Gains } from "./_home/Gains";
-import { CoachFeature } from "./_home/CoachFeature";
 import { ProfileSelector } from "./_home/ProfileSelector";
 import { Testimonials } from "./_home/Testimonials";
 import {
@@ -40,7 +39,6 @@ export default async function LandingPage({
       <Hero />
       <LogosMarquee />
       <Gains />
-      <CoachFeature />
       <Stats />
       <ProfileSelector />
       <Testimonials />

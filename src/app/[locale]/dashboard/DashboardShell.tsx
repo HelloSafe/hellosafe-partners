@@ -155,6 +155,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     label: string;
     badge?: string;
     exact?: boolean;
+    subtle?: boolean;
   };
   type Group = { kind: "group"; label: string; items: Leaf[] };
   const tools: Array<Leaf | Group> = [
@@ -164,38 +165,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       label: t("overview"),
       exact: true,
     },
-    { kind: "leaf", href: "/dashboard/coach", label: t("coach") },
-    {
-      kind: "group",
-      label: t("sections.affiliation"),
-      items: [
-        { kind: "leaf", href: "/dashboard/links", label: t("links") },
-        {
-          kind: "leaf",
-          href: "/dashboard/widget",
-          label: t("widget"),
-          badge: "NEW",
-        },
-      ],
-    },
-    {
-      kind: "group" as const,
-      label: t("sections.marketplace"),
-      items: [
-        {
-          kind: "leaf" as const,
-          href: "/dashboard/products",
-          label: t("productsCatalog"),
-          badge: "NEW",
-        },
-        {
-          kind: "leaf" as const,
-          href: "/dashboard/courtage/formations",
-          label: t("training"),
-          badge: "BIENTÔT",
-        },
-      ],
-    },
+    { kind: "leaf", href: "/dashboard/links", label: t("links") },
     {
       kind: "leaf",
       href: "/dashboard/perks",
@@ -299,6 +269,7 @@ type LeafItem = {
   label: string;
   badge?: string;
   exact?: boolean;
+  subtle?: boolean;
 };
 
 type GroupItem = { kind: "group"; label: string; items: LeafItem[] };
@@ -315,16 +286,21 @@ function NavLeafLink({
   const active = item.exact
     ? pathname === item.href
     : pathname.startsWith(item.href);
+  const subtle = item.subtle ?? false;
+  const sizeCls = subtle ? "h-8 ml-6 text-[0.8rem]" : "h-10";
+  const inactiveCls = subtle
+    ? "text-ink-500 hover:bg-surface-100 hover:text-ink-900"
+    : "text-ink-700 hover:bg-surface-100";
   return (
     <Link
       href={item.href as never}
-      className={`flex items-center px-3 h-10 rounded-lg text-sm font-medium transition-colors ${
-        indent ? "ml-3" : ""
+      className={`flex items-center px-3 rounded-lg font-medium transition-colors ${sizeCls} ${
+        indent && !subtle ? "ml-3" : ""
       } ${
         active
           ? "bg-brand-50 text-brand-700"
-          : "text-ink-700 hover:bg-surface-100"
-      }`}
+          : inactiveCls
+      } ${subtle ? "" : "text-sm"}`}
     >
       <span className="truncate">{item.label}</span>
       {item.badge && (

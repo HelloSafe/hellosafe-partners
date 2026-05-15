@@ -94,12 +94,6 @@ export function PayoutsPanel() {
             >
               {isEn ? "Generate a tracked link" : "Générer un lien tracké"} →
             </Link>
-            <Link
-              href={"/dashboard/widget" as never}
-              className="inline-flex items-center h-12 px-6 rounded-xl border border-surface-300 bg-white text-sm font-semibold text-ink-900 hover:border-brand-300 hover:text-brand-700 transition-colors"
-            >
-              {isEn ? "Embed the Coach widget" : "Intégrer le Coach"}
-            </Link>
           </div>
         </section>
         <section className="grid gap-4 sm:grid-cols-3">

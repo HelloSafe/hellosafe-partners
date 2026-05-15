@@ -95,12 +95,6 @@ export function Overview() {
                 >
                   {isEn ? "Create my first link" : "Créer mon premier lien"} →
                 </Link>
-                <Link
-                  href={"/dashboard/widget" as never}
-                  className="inline-flex items-center h-12 px-6 rounded-xl border border-surface-300 bg-white text-sm font-semibold text-ink-900 hover:border-brand-300 hover:text-brand-700 transition-colors"
-                >
-                  {isEn ? "Or embed the Coach widget" : "Ou intégrer le Coach"}
-                </Link>
               </div>
             </div>
             <div className="hidden lg:flex justify-center">

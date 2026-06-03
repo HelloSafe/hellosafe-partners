@@ -3,6 +3,7 @@ import { getResend, MAIL_FROM } from "./client";
 import { conversionNotificationTemplate } from "./templates/conversion-notification";
 import { partnerApprovedTemplate } from "./templates/partner-approved";
 import { partnerRejectedTemplate } from "./templates/partner-rejected";
+import { resetPasswordTemplate } from "./templates/reset-password";
 import { welcomeTemplate } from "./templates/welcome";
 import type {
   EmailTemplate,
@@ -12,6 +13,7 @@ import type {
 import type { ConversionNotificationData } from "./templates/conversion-notification";
 import type { PartnerApprovedData } from "./templates/partner-approved";
 import type { PartnerRejectedData } from "./templates/partner-rejected";
+import type { ResetPasswordData } from "./templates/reset-password";
 import type { WelcomeData } from "./templates/welcome";
 
 /**
@@ -40,6 +42,10 @@ type TemplateMap = {
     template: EmailTemplate<ConversionNotificationData>;
     data: ConversionNotificationData;
   };
+  "reset-password": {
+    template: EmailTemplate<ResetPasswordData>;
+    data: ResetPasswordData;
+  };
 };
 
 const TEMPLATES: { [K in keyof TemplateMap]: TemplateMap[K]["template"] } = {
@@ -47,6 +53,7 @@ const TEMPLATES: { [K in keyof TemplateMap]: TemplateMap[K]["template"] } = {
   "partner-approved": partnerApprovedTemplate,
   "partner-rejected": partnerRejectedTemplate,
   "conversion-notification": conversionNotificationTemplate,
+  "reset-password": resetPasswordTemplate,
 };
 
 export type SendOptions<K extends keyof TemplateMap> = {

@@ -3,7 +3,10 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { db } from "@/db";
-import { users, sessions, accounts, verifications } from "@/db/schema";
+import { users, sessions, accounts, verifications, partners } from "@/db/schema";
+import { newId, newPartnerCode } from "@/lib/ids";
+import { derivePartnerIdentity } from "@/lib/partners/identity";
+import { send } from "@/lib/mail";
 
 const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
@@ -30,6 +33,17 @@ export const auth = betterAuth({
     minPasswordLength: 8,
     // Email verification can be enabled later when we wire Resend.
     requireEmailVerification: false,
+    // Password reset: Better Auth generates the token + URL; we just deliver
+    // it. `url` already points at our /reset-password page (via the redirectTo
+    // passed by the client) with the validated token appended.
+    sendResetPassword: async ({ user, url }) => {
+      await send({
+        to: user.email,
+        template: "reset-password",
+        data: { name: user.name, resetUrl: url },
+        locale: "fr",
+      });
+    },
   },
   socialProviders: {
     google: {
@@ -48,6 +62,49 @@ export const auth = betterAuth({
         required: false,
         defaultValue: "partner",
         input: false, // not settable via signUp API
+      },
+    },
+  },
+  databaseHooks: {
+    user: {
+      create: {
+        // Single source of truth for partner provisioning. Every account that
+        // is created through the auth API — email/password OR Google OAuth —
+        // gets its own `partners` row with an affiliate code here, so the
+        // affiliate ID exists from minute one regardless of signup method.
+        //
+        // Admins are seeded directly against the DB (not via this API path),
+        // so they never trigger this hook. The email/password signup route
+        // runs AFTER this and enriches the row with the form fields; OAuth
+        // users land with `profileCompletedAt` NULL and are walked through
+        // /complete-profile before their account goes to review.
+        after: async (user) => {
+          const { companyName, contactName } = derivePartnerIdentity(user);
+          try {
+            await db.insert(partners).values({
+              id: newId(),
+              userId: user.id,
+              partnerCode: newPartnerCode(),
+              companyName,
+              contactName,
+              status: "pending",
+              // profileCompletedAt intentionally left NULL.
+            });
+          } catch (err) {
+            // Never let partner provisioning break the auth flow itself. A
+            // unique-violation here means the row already exists, which is
+            // fine; anything else is logged for investigation.
+            console.error("[auth] partner provisioning failed", err);
+          }
+
+          // Welcome email — best-effort, must not block account creation.
+          send({
+            to: user.email,
+            template: "welcome",
+            data: { name: contactName, loginUrl: `${APP_URL}/login` },
+            locale: "fr",
+          }).catch((e) => console.error("[mail] welcome failed", e));
+        },
       },
     },
   },
@@ -80,7 +137,7 @@ export const auth = betterAuth({
       // Cap social signin churn to absorb popup loops.
       "/sign-in/social": { window: 60, max: 10 },
       // Forgot-password / verification email floods.
-      "/forget-password": { window: 600, max: 3 },
+      "/request-password-reset": { window: 600, max: 3 },
       "/send-verification-email": { window: 600, max: 3 },
     },
   },

@@ -26,6 +26,21 @@ export const OnboardingSchema = z.object({
 });
 export type OnboardingInput = z.infer<typeof OnboardingSchema>;
 
+/**
+ * Self-service: OAuth profile completion. Google signups arrive with only a
+ * name/email, so we collect company + site details before the account goes to
+ * review. Mirrors the email/password signup body (minus credentials).
+ */
+export const CompleteProfileSchema = z.object({
+  companyName: z.string().trim().min(1, "MISSING_FIELDS"),
+  contactName: z.string().trim().min(1, "MISSING_FIELDS"),
+  website: z.string().trim().optional().nullable(),
+  audience: z.string().trim().optional().nullable(),
+  country: z.string().trim().optional().nullable(),
+  monthlyVisitors: z.union([z.string(), z.number()]).optional().nullable(),
+});
+export type CompleteProfileInput = z.infer<typeof CompleteProfileSchema>;
+
 /** Self-service: white-label branding for the coach output. */
 export const BrandingSchema = z.object({
   agencyName: z.string().optional(),

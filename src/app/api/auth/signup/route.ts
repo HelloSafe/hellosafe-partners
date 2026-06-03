@@ -6,16 +6,16 @@ import { auth } from "@/lib/auth";
 import { db } from "@/db";
 import { users, partners } from "@/db/schema";
 import { newId, newPartnerCode } from "@/lib/ids";
-import { send } from "@/lib/mail";
-import { appUrl } from "@/lib/app-url";
 import {
   clientIp,
   rateLimitResponse,
   signupLimiter,
 } from "@/lib/ratelimit";
 
-// Wrapper around Better Auth signUpEmail that ALSO creates the partner record
-// in the same call, preserving the existing single-form UX.
+// Wrapper around Better Auth signUpEmail. Partner provisioning (the affiliate
+// code + welcome email) is handled centrally by the `user.create` hook in
+// auth.ts; this route only enriches that partner with the signup form fields
+// and marks the profile complete.
 const Body = z.object({
   email: z.string().trim().toLowerCase().email(),
   password: z.string().min(8, "PASSWORD_TOO_SHORT"),
@@ -103,27 +103,41 @@ export async function POST(req: NextRequest) {
       ? parseInt(monthlyVisitors, 10) || null
       : monthlyVisitors ?? null;
 
-  await db.insert(partners).values({
-    id: newId(),
-    userId,
-    partnerCode: newPartnerCode(),
-    companyName,
-    contactName,
-    website: website || null,
-    audience: audience || null,
-    country: country || null,
-    monthlyVisitors: visitors,
-    status: "pending",
-  });
+  // The `user.create` hook (auth.ts) already provisioned a pending partner
+  // with its affiliate code and sent the welcome email. Enrich that row with
+  // the form fields and mark the profile complete — the email/password form
+  // collects everything up front, so these users skip /complete-profile.
+  const enriched = await db
+    .update(partners)
+    .set({
+      companyName,
+      contactName,
+      website: website || null,
+      audience: audience || null,
+      country: country || null,
+      monthlyVisitors: visitors,
+      profileCompletedAt: new Date(),
+    })
+    .where(eq(partners.userId, userId))
+    .returning({ id: partners.id });
 
-  // Welcome email — best-effort. Inngest will replace this with a queued
-  // event in the next iteration so retries are automatic.
-  send({
-    to: email,
-    template: "welcome",
-    data: { name: contactName, loginUrl: `${appUrl()}/login` },
-    locale: "fr",
-  }).catch((e) => console.error("[mail] welcome failed", e));
+  // Defense in depth: if the hook didn't run for any reason, create the row
+  // now so the user is never left without a partner profile.
+  if (enriched.length === 0) {
+    await db.insert(partners).values({
+      id: newId(),
+      userId,
+      partnerCode: newPartnerCode(),
+      companyName,
+      contactName,
+      website: website || null,
+      audience: audience || null,
+      country: country || null,
+      monthlyVisitors: visitors,
+      status: "pending",
+      profileCompletedAt: new Date(),
+    });
+  }
 
   return NextResponse.json({ ok: true, status: "pending" }, { status: 201 });
 }

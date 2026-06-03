@@ -16,6 +16,7 @@ export type AnalyticsEvent =
     }
   | { name: "login_completed"; props: { method: "email" | "google" } }
   | { name: "logout"; props: Record<string, never> }
+  | { name: "profile_completed"; props: Record<string, never> }
   | { name: "onboarding_step"; props: { step: 1 | 2 | 3; persona?: string } }
   | { name: "onboarding_completed"; props: { persona?: string } }
   | {

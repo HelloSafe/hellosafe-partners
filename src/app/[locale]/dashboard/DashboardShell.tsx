@@ -35,66 +35,38 @@ export function useDashboardSession(): DashboardSession {
   return ctx;
 }
 
-export function DashboardShell({ children }: { children: React.ReactNode }) {
+/**
+ * Authenticated dashboard chrome. The session is resolved server-side in the
+ * layout (auth + partner-approval gating live there); this component only
+ * renders the sidebar/header for an already-approved, onboarded partner.
+ */
+export function DashboardShell({
+  session,
+  children,
+}: {
+  session: DashboardSession;
+  children: React.ReactNode;
+}) {
   const t = useTranslations("dashboard.nav");
   const tc = useTranslations("common");
   const pathname = usePathname();
   const router = useRouter();
-  const [state, setState] = useState<
-    | { phase: "loading" }
-    | { phase: "pending"; reason: "pending" | "rejected" | "no_partner"; me: DashboardSession | null }
-    | { phase: "ready"; session: DashboardSession }
-  >({ phase: "loading" });
 
+  // Identify for product analytics once we have the resolved session.
   useEffect(() => {
-    let cancelled = false;
-    fetch("/api/auth/me", { cache: "no-store" })
-      .then((r) => r.json())
-      .then((d) => {
-        if (cancelled) return;
-        if (!d?.user) {
-          router.replace("/login");
-          return;
-        }
-        if (!d.partner) {
-          setState({ phase: "pending", reason: "no_partner", me: d });
-          return;
-        }
-        if (d.partner.status === "pending") {
-          setState({
-            phase: "pending",
-            reason: "pending",
-            me: d as DashboardSession,
-          });
-          return;
-        }
-        if (d.partner.status === "rejected") {
-          setState({
-            phase: "pending",
-            reason: "rejected",
-            me: d as DashboardSession,
-          });
-          return;
-        }
-        // Approved but not yet onboarded → walk them through onboarding first.
-        if (!d.partner.onboardedAt) {
-          router.replace("/onboarding" as never);
-          return;
-        }
-        const session = d as DashboardSession;
-        identify(session.user.id, {
-          email: session.user.email,
-          role: session.user.role,
-          partnerId: session.partner.id,
-          companyName: session.partner.companyName,
-        });
-        setState({ phase: "ready", session });
-      })
-      .catch(() => router.replace("/login"));
-    return () => {
-      cancelled = true;
-    };
-  }, [router, pathname]);
+    identify(session.user.id, {
+      email: session.user.email,
+      role: session.user.role,
+      partnerId: session.partner.id,
+      companyName: session.partner.companyName,
+    });
+  }, [
+    session.user.id,
+    session.user.email,
+    session.user.role,
+    session.partner.id,
+    session.partner.companyName,
+  ]);
 
   const logout = async () => {
     track("logout", {});
@@ -103,51 +75,6 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     await authClient.signOut();
     router.replace("/");
   };
-
-  if (state.phase === "loading") {
-    return (
-      <div className="flex items-center justify-center min-h-dvh">
-        <div className="h-6 w-6 rounded-full border-2 border-brand-500 border-t-transparent animate-spin" />
-      </div>
-    );
-  }
-
-  if (state.phase === "pending") {
-    const msg =
-      state.reason === "rejected"
-        ? {
-            title: "Inscription non retenue",
-            body: "Notre équipe n'a pas pu valider votre candidature. Contactez-nous si vous pensez qu'il s'agit d'une erreur.",
-          }
-        : state.reason === "no_partner"
-        ? {
-            title: "Profil partenaire introuvable",
-            body: "Votre compte existe mais n'est pas associé à un profil partenaire. Contactez le support.",
-          }
-        : {
-            title: "Compte en cours de validation",
-            body: "Notre équipe vérifie votre dossier, vous recevrez un e-mail dès l'approbation (sous 24 h ouvrées).",
-          };
-    return (
-      <div className="flex items-center justify-center min-h-dvh bg-surface-100 px-6">
-        <div className="max-w-md w-full rounded-2xl border border-surface-200 bg-white p-8 text-center">
-          <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-warning-50 text-warning-600 text-2xl">
-            ⏳
-          </span>
-          <h1 className="mt-4 text-2xl font-bold">{msg.title}</h1>
-          <p className="mt-3 text-ink-700 leading-relaxed">{msg.body}</p>
-          <button
-            onClick={logout}
-            className="mt-6 inline-flex h-10 px-5 items-center justify-center rounded-lg border border-surface-300 text-sm font-semibold hover:bg-surface-50"
-          >
-            {tc("cta.logout")}
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  const { session } = state;
 
   type Leaf = {
     kind: "leaf";

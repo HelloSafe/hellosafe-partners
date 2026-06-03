@@ -12,6 +12,24 @@ import {
 } from "./schema";
 import { newId, newPartnerCode, newShortCode } from "../lib/ids";
 
+const IS_PROD = process.env.NODE_ENV === "production";
+
+/**
+ * Demo passwords are fine for local dev but must never be planted in a real
+ * database. Prefer an env override; only fall back to the demo value outside
+ * production. In production a strong (>= 8 char) env value is mandatory.
+ */
+function seedPassword(envKey: string, devFallback: string): string {
+  const fromEnv = process.env[envKey];
+  if (fromEnv && fromEnv.length >= 8) return fromEnv;
+  if (IS_PROD) {
+    throw new Error(
+      `Refusing to seed an account with a default password. Set ${envKey} (>= 8 chars).`,
+    );
+  }
+  return devFallback;
+}
+
 async function upsertUser(opts: {
   email: string;
   password: string;
@@ -84,6 +102,8 @@ async function upsertApprovedPartner(
     agencyLogoUrl: info.agencyLogoUrl ?? null,
     status: "approved",
     approvedAt: new Date(),
+    // Demo partners are fully set up — skip the profile-completion gate.
+    profileCompletedAt: new Date(),
   });
   console.log(`  + partner approved ${info.companyName}`);
   return (
@@ -252,12 +272,21 @@ async function seedLinksAndConversions(partnerId: string) {
 }
 
 async function main() {
+  if (IS_PROD && process.env.SEED_ALLOW_PRODUCTION !== "true") {
+    console.error(
+      "Refusing to run the demo seed against a production database.\n" +
+        "It creates demo accounts. To bootstrap a production admin intentionally,\n" +
+        "set SEED_ALLOW_PRODUCTION=true and provide strong SEED_*_PASSWORD env vars.",
+    );
+    process.exit(1);
+  }
+
   console.log("Seeding HelloSafe Partners database…\n");
 
   console.log("1. Admin (legacy test account)");
   await upsertUser({
     email: "admin@hellosafe.test",
-    password: "changeme",
+    password: seedPassword("SEED_ADMIN_PASSWORD", "changeme"),
     name: "HelloSafe Admin",
     role: "admin",
   });
@@ -265,7 +294,7 @@ async function main() {
   console.log("\n1bis. Antoine — persistent demo admin");
   const antoineUser = await upsertUser({
     email: "antoine@hellosafe.fr",
-    password: "demo1234",
+    password: seedPassword("SEED_ANTOINE_PASSWORD", "demo1234"),
     name: "Antoine Fruchard",
     role: "admin",
   });
@@ -286,7 +315,7 @@ async function main() {
   console.log("\n2. Demo blog partner (for affiliate tracking demo)");
   const blogUser = await upsertUser({
     email: "demo@partner.fr",
-    password: "partner123",
+    password: seedPassword("SEED_BLOG_PASSWORD", "partner123"),
     name: "Julien Démo",
     role: "partner",
   });
@@ -305,7 +334,7 @@ async function main() {
   console.log("\n3. Demo agency partner (for the Coach tool demo)");
   const agencyUser = await upsertUser({
     email: "agency@hellosafe.test",
-    password: "agency123",
+    password: seedPassword("SEED_AGENCY_PASSWORD", "agency123"),
     name: "Caroline B.",
     role: "partner",
   });
@@ -330,12 +359,14 @@ async function main() {
   void agencyPartner;
 
   console.log("\nDone.\n");
-  console.log("--- Credentials ---");
-  console.log("  Antoine  antoine@hellosafe.fr  / demo1234    → /fr/admin (persistent demo)");
-  console.log("  Admin    admin@hellosafe.test  / changeme    → /fr/admin");
-  console.log("  Blog     demo@partner.fr       / partner123  → /fr/dashboard");
-  console.log("  Agency   agency@hellosafe.test / agency123   → /fr/dashboard");
-  console.log("");
+  if (!IS_PROD) {
+    console.log("--- Credentials (dev defaults; override via SEED_*_PASSWORD) ---");
+    console.log("  Antoine  antoine@hellosafe.fr  / demo1234    → /fr/admin (persistent demo)");
+    console.log("  Admin    admin@hellosafe.test  / changeme    → /fr/admin");
+    console.log("  Blog     demo@partner.fr       / partner123  → /fr/dashboard");
+    console.log("  Agency   agency@hellosafe.test / agency123   → /fr/dashboard");
+    console.log("");
+  }
   process.exit(0);
 }
 

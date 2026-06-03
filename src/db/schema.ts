@@ -8,7 +8,6 @@ import {
   uniqueIndex,
   index,
   bigint,
-  jsonb,
   boolean,
 } from "drizzle-orm/pg-core";
 
@@ -29,18 +28,6 @@ export const payoutStatus = pgEnum("payout_status", [
   "pending",
   "processing",
   "paid",
-]);
-export const coverageType = pgEnum("coverage_type", [
-  "card",
-  "mutuelle",
-  "social_security",
-  "partner_contract",
-]);
-export const coverageSource = pgEnum("coverage_source", [
-  "seed",
-  "payload",
-  "manual",
-  "imported",
 ]);
 
 // ---------- users ----------
@@ -84,6 +71,13 @@ export const partners = pgTable(
     monthlyVisitors: integer("monthly_visitors"),
     status: partnerStatus("status").notNull().default("pending"),
     approvedAt: timestamp("approved_at", { withTimezone: true }),
+    // Profile completion. Set the moment a partner has provided its
+    // company / site details. Email-password signups complete the profile at
+    // creation (the form collects everything); OAuth (Google) signups land
+    // with this NULL and are routed through /complete-profile first.
+    profileCompletedAt: timestamp("profile_completed_at", {
+      withTimezone: true,
+    }),
     // Agency branding for the white-label coach output.
     agencyName: text("agency_name"),
     agencyLogoUrl: text("agency_logo_url"),
@@ -169,6 +163,8 @@ export const clicks = pgTable(
     index("clicks_link_idx").on(t.linkId),
     index("clicks_partner_idx").on(t.partnerId),
     index("clicks_created_idx").on(t.createdAt),
+    // Serves the partner-scoped, date-windowed aggregates (reporting / overview).
+    index("clicks_partner_created_idx").on(t.partnerId, t.createdAt),
   ],
 );
 
@@ -200,6 +196,10 @@ export const conversions = pgTable(
     index("conversions_partner_idx").on(t.partnerId),
     index("conversions_link_idx").on(t.linkId),
     index("conversions_status_idx").on(t.status),
+    // Serves the admin per-partner stats (partner + non-cancelled status)…
+    index("conversions_partner_status_idx").on(t.partnerId, t.status),
+    // …and the partner-scoped, date-windowed aggregates (reporting / overview).
+    index("conversions_partner_created_idx").on(t.partnerId, t.createdAt),
   ],
 );
 
@@ -313,66 +313,6 @@ export const verifications = pgTable(
   (t) => [index("verifications_identifier_idx").on(t.identifier)],
 );
 
-// ---------- coverage profiles (cards / mutuelles / social security / partner contracts) ----------
-
-export const coverageProfiles = pgTable(
-  "coverage_profiles",
-  {
-    id: text("id").primaryKey(),
-    // null partner_id = global baseline (cards, mutuelles, social_security)
-    // non-null = partner-specific contract (e.g. agency's own product)
-    partnerId: text("partner_id").references(() => partners.id, {
-      onDelete: "cascade",
-    }),
-    type: coverageType("type").notNull(),
-    source: coverageSource("source").notNull().default("manual"),
-    name: text("name").notNull(),
-    issuer: text("issuer"),
-    country: text("country"),
-    locale: text("locale").notNull().default("fr"),
-    data: jsonb("data").notNull().default(sql`'{}'::jsonb`),
-    active: boolean("active").notNull().default(true),
-    notes: text("notes"),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
-    updatedAt: timestamp("updated_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
-  },
-  (t) => [
-    index("coverage_partner_idx").on(t.partnerId),
-    index("coverage_type_idx").on(t.type),
-    index("coverage_locale_idx").on(t.locale),
-  ],
-);
-
-// ---------- gap analyses (one per session of the coach wizard) ----------
-
-export const gapAnalyses = pgTable(
-  "gap_analyses",
-  {
-    id: text("id").primaryKey(),
-    partnerId: text("partner_id")
-      .notNull()
-      .references(() => partners.id, { onDelete: "cascade" }),
-    clientLabel: text("client_label").notNull(),
-    locale: text("locale").notNull().default("fr"),
-    inputs: jsonb("inputs").notNull(),
-    output: jsonb("output").notNull(),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
-    updatedAt: timestamp("updated_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
-  },
-  (t) => [
-    index("gap_partner_idx").on(t.partnerId),
-    index("gap_created_idx").on(t.createdAt),
-  ],
-);
-
 // ---------- relations ----------
 
 export const usersRelations = relations(users, ({ one, many }) => ({
@@ -442,7 +382,3 @@ export type Payout = typeof payouts.$inferSelect;
 export type Session = typeof sessions.$inferSelect;
 export type Account = typeof accounts.$inferSelect;
 export type Verification = typeof verifications.$inferSelect;
-export type CoverageProfile = typeof coverageProfiles.$inferSelect;
-export type NewCoverageProfile = typeof coverageProfiles.$inferInsert;
-export type GapAnalysis = typeof gapAnalyses.$inferSelect;
-export type NewGapAnalysis = typeof gapAnalyses.$inferInsert;

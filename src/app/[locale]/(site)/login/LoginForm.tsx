@@ -87,12 +87,12 @@ export function LoginForm() {
             <span className="text-sm font-medium text-ink-700">
               {t("fields.password")}
             </span>
-            <a
-              href="mailto:support@hellosafe.com?subject=Mot%20de%20passe%20oubli%C3%A9"
+            <Link
+              href="/forgot-password"
               className="text-xs text-brand-700 hover:underline"
             >
               {t("forgot")}
-            </a>
+            </Link>
           </div>
           <input
             type="password"

@@ -20,8 +20,8 @@ export const partnerApprovedTemplate: EmailTemplate<PartnerApprovedData> = {
       : "Bienvenue. Place à ton premier lien traqué.";
 
     const body = isEn
-      ? `Hi ${greet},\n\nGood news: your account is approved. You can now generate tracked links, run Coach analyses for your clients, and start earning recurring commissions.\n\nJump in: ${dashboardUrl}`
-      : `Salut ${greet},\n\nBonne nouvelle : ton compte est validé. Tu peux maintenant générer des liens traqués, lancer des analyses Coach pour tes clients, et toucher des commissions récurrentes.\n\nVas-y : ${dashboardUrl}`;
+      ? `Hi ${greet},\n\nGood news: your account is approved. You can now generate tracked links and start earning recurring commissions.\n\nJump in: ${dashboardUrl}`
+      : `Salut ${greet},\n\nBonne nouvelle : ton compte est validé. Tu peux maintenant générer des liens traqués et toucher des commissions récurrentes.\n\nVas-y : ${dashboardUrl}`;
 
     const html = `<!doctype html>
 <html><body style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#1a1a2e;">

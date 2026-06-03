@@ -220,7 +220,10 @@ Body:
 3. In the Google Cloud Console, add your production URL to *Authorized
    JavaScript origins* and `${prod}/api/auth/google/callback` to *Authorized
    redirect URIs*.
-4. After first deploy, run `npm run db:seed` once with your production
-   `DATABASE_URL` (locally, with the prod value temporarily) to create the
-   admin user — or sign up normally and approve yourself with another admin
-   account.
+4. Create your first admin. **Preferred:** sign up normally, then flip your
+   row to `role = 'admin'` in the DB. The demo seed refuses to run against a
+   production database by default (it plants demo accounts). If you must use
+   it to bootstrap, set `SEED_ALLOW_PRODUCTION=true` **and** provide strong
+   passwords via `SEED_ADMIN_PASSWORD` / `SEED_ANTOINE_PASSWORD` /
+   `SEED_BLOG_PASSWORD` / `SEED_AGENCY_PASSWORD` (the weak `demo1234` /
+   `changeme` defaults are dev-only and rejected in production).

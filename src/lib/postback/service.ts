@@ -5,6 +5,7 @@ import { conversions, partners, trackedLinks } from "@/db/schema";
 import { newId } from "@/lib/ids";
 import { inngest } from "@/lib/inngest/client";
 import { log } from "@/lib/log";
+import { splitRef, toCents } from "./parse";
 import type { PostbackPayload, SimulateConversionInput } from "./validators";
 
 /**
@@ -20,27 +21,6 @@ import type { PostbackPayload, SimulateConversionInput } from "./validators";
  */
 
 // ===================== Helpers =====================
-
-function toCents(v: number | string | undefined): number {
-  if (v == null) return 0;
-  const n = typeof v === "string" ? parseFloat(v) : v;
-  if (!Number.isFinite(n)) return 0;
-  return Math.round(n * 100);
-}
-
-/**
- * Parse the "<partnerCode>-<shortCode>" ref produced by /r redirect
- * cookie. partnerCode itself contains a dash (e.g. "hs-abc123") so we
- * split on the LAST dash.
- */
-function splitRef(ref: string): { partnerCode: string; shortCode: string } | null {
-  const lastDash = ref.lastIndexOf("-");
-  if (lastDash < 0) return null;
-  return {
-    partnerCode: ref.slice(0, lastDash),
-    shortCode: ref.slice(lastDash + 1),
-  };
-}
 
 async function findLinkByShortCode(shortCode: string) {
   const rows = await db

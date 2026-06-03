@@ -1,8 +1,6 @@
 import { NextRequest } from "next/server";
-import { and, desc, eq, sql } from "drizzle-orm";
-import { db } from "@/db";
-import { clicks, conversions, trackedLinks } from "@/db/schema";
 import { getSessionContext } from "@/lib/session";
+import { loadPerLinkBreakdown } from "@/lib/reporting/service";
 
 export const dynamic = "force-dynamic";
 
@@ -25,51 +23,7 @@ export async function GET(req: NextRequest) {
   const to = params.get("to") ? new Date(params.get("to")!) : now;
   const subId = (params.get("subid") ?? "").trim();
 
-  const rows = await db
-    .select({
-      linkId: trackedLinks.id,
-      label: trackedLinks.label,
-      destination: trackedLinks.destination,
-      subId: trackedLinks.subId,
-      campaign: trackedLinks.campaign,
-      createdAt: trackedLinks.createdAt,
-      clicks: sql<number>`(
-        select count(*)::int from ${clicks}
-        where ${clicks.linkId} = ${trackedLinks.id}
-          and ${clicks.createdAt} >= ${from} and ${clicks.createdAt} <= ${to}
-      )`,
-      pendingConv: sql<number>`(
-        select count(*)::int from ${conversions}
-        where ${conversions.linkId} = ${trackedLinks.id}
-          and ${conversions.status} = 'pending'
-          and ${conversions.createdAt} >= ${from} and ${conversions.createdAt} <= ${to}
-      )`,
-      validatedConv: sql<number>`(
-        select count(*)::int from ${conversions}
-        where ${conversions.linkId} = ${trackedLinks.id}
-          and ${conversions.status} = 'validated'
-          and ${conversions.createdAt} >= ${from} and ${conversions.createdAt} <= ${to}
-      )`,
-      revenueCents: sql<number>`(
-        select coalesce(sum(${conversions.amountCents}),0)::bigint from ${conversions}
-        where ${conversions.linkId} = ${trackedLinks.id}
-          and ${conversions.status} = 'validated'
-          and ${conversions.createdAt} >= ${from} and ${conversions.createdAt} <= ${to}
-      )`,
-      commissionCents: sql<number>`(
-        select coalesce(sum(${conversions.commissionCents}),0)::bigint from ${conversions}
-        where ${conversions.linkId} = ${trackedLinks.id}
-          and ${conversions.status} = 'validated'
-          and ${conversions.createdAt} >= ${from} and ${conversions.createdAt} <= ${to}
-      )`,
-    })
-    .from(trackedLinks)
-    .where(
-      subId
-        ? and(eq(trackedLinks.partnerId, partnerId), eq(trackedLinks.subId, subId))
-        : eq(trackedLinks.partnerId, partnerId),
-    )
-    .orderBy(desc(trackedLinks.createdAt));
+  const rows = await loadPerLinkBreakdown(partnerId, from, to, subId);
 
   const esc = (v: unknown) => {
     const s = v === null || v === undefined ? "" : String(v);
@@ -103,8 +57,8 @@ export async function GET(req: NextRequest) {
         r.clicks,
         r.pendingConv,
         r.validatedConv,
-        (Number(r.revenueCents) / 100).toFixed(2),
-        (Number(r.commissionCents) / 100).toFixed(2),
+        (r.revenueCents / 100).toFixed(2),
+        (r.commissionCents / 100).toFixed(2),
       ]
         .map(esc)
         .join(";"),

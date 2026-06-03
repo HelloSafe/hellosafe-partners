@@ -22,7 +22,6 @@ export function Footer() {
               <ul className="mt-3 space-y-2 text-sm">
                 <li><Link className="text-ink-700 hover:text-brand-500" href="/why-partner">{t("links.why")}</Link></li>
                 <li><Link className="text-ink-700 hover:text-brand-500" href="/how-it-works">{t("links.how")}</Link></li>
-                <li><Link className="text-ink-700 hover:text-brand-500" href={"/coach" as never}>{t("links.coach")}</Link></li>
               </ul>
             </div>
             <div>
@@ -31,7 +30,6 @@ export function Footer() {
               </h3>
               <ul className="mt-3 space-y-2 text-sm">
                 <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/blog" as never}>{t("links.blog")}</Link></li>
-                <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/agency" as never}>{t("links.agency")}</Link></li>
                 <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/visa" as never}>{t("links.visa")}</Link></li>
                 <li><Link className="text-ink-700 hover:text-brand-700" href={"/for/creator" as never}>{t("links.creator")}</Link></li>
               </ul>

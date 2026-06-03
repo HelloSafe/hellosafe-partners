@@ -1,8 +1,9 @@
 import "server-only";
-import { and, desc, eq, gte, ne, sql } from "drizzle-orm";
+import { and, eq, gte, ne, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { clicks, conversions, trackedLinks } from "@/db/schema";
 import type { Partner } from "@/db/schema";
+import { attachLinkStats } from "@/lib/links/aggregate";
 
 /**
  * Read-only services backing the partner self-service dashboard.
@@ -78,29 +79,49 @@ export async function getOverview(partner: Partner) {
     });
   }
 
-  // Top 5 links by all-time validated commission.
-  const top = await db
-    .select({
-      id: trackedLinks.id,
-      label: trackedLinks.label,
-      destination: trackedLinks.destination,
-      language: trackedLinks.language,
-      subId: trackedLinks.subId,
-      clicks: sql<number>`count(distinct ${clicks.id})::int`,
-      sales: sql<number>`count(distinct ${conversions.id}) filter (where ${conversions.status} <> 'cancelled')::int`,
-      commissionCents: sql<number>`coalesce(sum(${conversions.commissionCents}) filter (where ${conversions.status} <> 'cancelled'), 0)::bigint`,
-    })
-    .from(trackedLinks)
-    .leftJoin(clicks, eq(clicks.linkId, trackedLinks.id))
-    .leftJoin(conversions, eq(conversions.linkId, trackedLinks.id))
-    .where(eq(trackedLinks.partnerId, partnerId))
-    .groupBy(trackedLinks.id)
-    .orderBy(
-      desc(
-        sql`coalesce(sum(${conversions.commissionCents}) filter (where ${conversions.status} <> 'cancelled'), 0)`,
-      ),
-    )
-    .limit(5);
+  // Top 5 links by all-time validated commission. Pre-aggregate each side
+  // separately, then merge — joining clicks AND conversions in one query fans
+  // out the commission SUM by the per-link click count.
+  const [linkRows, topClickRows, topSalesRows] = await Promise.all([
+    db
+      .select({
+        id: trackedLinks.id,
+        label: trackedLinks.label,
+        destination: trackedLinks.destination,
+        language: trackedLinks.language,
+        subId: trackedLinks.subId,
+      })
+      .from(trackedLinks)
+      .where(eq(trackedLinks.partnerId, partnerId)),
+    db
+      .select({ linkId: clicks.linkId, clicks: sql<number>`count(*)::int` })
+      .from(clicks)
+      .where(eq(clicks.partnerId, partnerId))
+      .groupBy(clicks.linkId),
+    db
+      .select({
+        linkId: conversions.linkId,
+        sales: sql<number>`count(*)::int`,
+        commissionCents: sql<number>`coalesce(sum(${conversions.commissionCents}),0)::bigint`,
+      })
+      .from(conversions)
+      .where(
+        and(eq(conversions.partnerId, partnerId), ne(conversions.status, "cancelled")),
+      )
+      .groupBy(conversions.linkId),
+  ]);
+
+  const top = attachLinkStats(
+    linkRows,
+    topClickRows.map((c) => ({ linkId: c.linkId, clicks: Number(c.clicks) })),
+    topSalesRows.map((s) => ({
+      linkId: s.linkId,
+      sales: Number(s.sales),
+      commissionCents: Number(s.commissionCents),
+    })),
+  )
+    .sort((a, b) => b.commissionCents - a.commissionCents)
+    .slice(0, 5);
 
   return {
     range: { days: OVERVIEW_DAYS, since: since.toISOString() },
@@ -110,10 +131,7 @@ export async function getOverview(partner: Partner) {
       commissionCents: Number(convAgg?.commissionCents ?? 0),
     },
     daily,
-    topLinks: top.map((t) => ({
-      ...t,
-      commissionCents: Number(t.commissionCents),
-    })),
+    topLinks: top,
     partner: {
       name: partner.contactName,
       companyName: partner.companyName,

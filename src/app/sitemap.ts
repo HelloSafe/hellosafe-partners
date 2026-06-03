@@ -7,7 +7,6 @@ const STATIC_PATHS = [
   "/",
   "/why-partner",
   "/how-it-works",
-  "/coach",
   "/faq",
   "/signup",
   "/login",
@@ -15,7 +14,6 @@ const STATIC_PATHS = [
 
 const PERSONA_SLUGS = [
   "blog",
-  "agency",
   "visa",
   "creator",
 ] as const;

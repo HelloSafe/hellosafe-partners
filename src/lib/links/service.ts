@@ -1,9 +1,10 @@
 import "server-only";
-import { desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq, ne, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { clicks, conversions, trackedLinks } from "@/db/schema";
 import { newId, newShortCode } from "@/lib/ids";
 import { appUrl } from "@/lib/app-url";
+import { attachLinkStats } from "./aggregate";
 import { type DestinationKey } from "./destinations";
 import type { CreateLinkInput } from "./validators";
 
@@ -24,32 +25,52 @@ export function shortUrl(code: string) {
 
 /** List all of a partner's links with click + sales aggregations. */
 export async function listLinksWithStats(partnerId: string) {
-  const rows = await db
-    .select({
-      id: trackedLinks.id,
-      shortCode: trackedLinks.shortCode,
-      label: trackedLinks.label,
-      destination: trackedLinks.destination,
-      language: trackedLinks.language,
-      campaign: trackedLinks.campaign,
-      subId: trackedLinks.subId,
-      createdAt: trackedLinks.createdAt,
-      clicks: sql<number>`coalesce(count(distinct ${clicks.id}), 0)::int`,
-      sales: sql<number>`coalesce(count(distinct ${conversions.id}) filter (where ${conversions.status} <> 'cancelled'), 0)::int`,
-      commissionCents: sql<number>`coalesce(sum(${conversions.commissionCents}) filter (where ${conversions.status} <> 'cancelled'), 0)::bigint`,
-    })
-    .from(trackedLinks)
-    .leftJoin(clicks, eq(clicks.linkId, trackedLinks.id))
-    .leftJoin(conversions, eq(conversions.linkId, trackedLinks.id))
-    .where(eq(trackedLinks.partnerId, partnerId))
-    .groupBy(trackedLinks.id)
-    .orderBy(desc(trackedLinks.createdAt));
+  // Pre-aggregate each side separately, then merge in JS. Joining clicks AND
+  // conversions in one query fans out the commission SUM by the click count.
+  const [links, clickRows, salesRows] = await Promise.all([
+    db
+      .select({
+        id: trackedLinks.id,
+        shortCode: trackedLinks.shortCode,
+        label: trackedLinks.label,
+        destination: trackedLinks.destination,
+        language: trackedLinks.language,
+        campaign: trackedLinks.campaign,
+        subId: trackedLinks.subId,
+        createdAt: trackedLinks.createdAt,
+      })
+      .from(trackedLinks)
+      .where(eq(trackedLinks.partnerId, partnerId))
+      .orderBy(desc(trackedLinks.createdAt)),
+    db
+      .select({ linkId: clicks.linkId, clicks: sql<number>`count(*)::int` })
+      .from(clicks)
+      .where(eq(clicks.partnerId, partnerId))
+      .groupBy(clicks.linkId),
+    db
+      .select({
+        linkId: conversions.linkId,
+        sales: sql<number>`count(*)::int`,
+        commissionCents: sql<number>`coalesce(sum(${conversions.commissionCents}),0)::bigint`,
+      })
+      .from(conversions)
+      .where(
+        and(eq(conversions.partnerId, partnerId), ne(conversions.status, "cancelled")),
+      )
+      .groupBy(conversions.linkId),
+  ]);
 
-  return rows.map((r) => ({
-    ...r,
-    commissionCents: Number(r.commissionCents),
-    url: shortUrl(r.shortCode),
-  }));
+  const withStats = attachLinkStats(
+    links,
+    clickRows.map((c) => ({ linkId: c.linkId, clicks: Number(c.clicks) })),
+    salesRows.map((s) => ({
+      linkId: s.linkId,
+      sales: Number(s.sales),
+      commissionCents: Number(s.commissionCents),
+    })),
+  );
+
+  return withStats.map((r) => ({ ...r, url: shortUrl(r.shortCode) }));
 }
 
 // ===================== Create =====================

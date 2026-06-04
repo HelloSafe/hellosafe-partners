@@ -1,5 +1,6 @@
 import "server-only";
 import { getResend, MAIL_FROM } from "./client";
+import { adminNewPartnerTemplate } from "./templates/admin-new-partner";
 import { conversionNotificationTemplate } from "./templates/conversion-notification";
 import { partnerApprovedTemplate } from "./templates/partner-approved";
 import { partnerRejectedTemplate } from "./templates/partner-rejected";
@@ -10,6 +11,7 @@ import type {
   Locale,
   RenderedEmail,
 } from "./types";
+import type { AdminNewPartnerData } from "./templates/admin-new-partner";
 import type { ConversionNotificationData } from "./templates/conversion-notification";
 import type { PartnerApprovedData } from "./templates/partner-approved";
 import type { PartnerRejectedData } from "./templates/partner-rejected";
@@ -30,6 +32,10 @@ import type { WelcomeData } from "./templates/welcome";
 
 type TemplateMap = {
   welcome: { template: EmailTemplate<WelcomeData>; data: WelcomeData };
+  "admin-new-partner": {
+    template: EmailTemplate<AdminNewPartnerData>;
+    data: AdminNewPartnerData;
+  };
   "partner-approved": {
     template: EmailTemplate<PartnerApprovedData>;
     data: PartnerApprovedData;
@@ -50,6 +56,7 @@ type TemplateMap = {
 
 const TEMPLATES: { [K in keyof TemplateMap]: TemplateMap[K]["template"] } = {
   welcome: welcomeTemplate,
+  "admin-new-partner": adminNewPartnerTemplate,
   "partner-approved": partnerApprovedTemplate,
   "partner-rejected": partnerRejectedTemplate,
   "conversion-notification": conversionNotificationTemplate,

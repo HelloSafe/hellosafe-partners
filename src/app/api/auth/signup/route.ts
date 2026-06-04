@@ -6,6 +6,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/db";
 import { users, partners } from "@/db/schema";
 import { newId, newPartnerCode } from "@/lib/ids";
+import { notifyAdminNewPartner } from "@/lib/partners/notify";
 import {
   clientIp,
   rateLimitResponse,
@@ -138,6 +139,16 @@ export async function POST(req: NextRequest) {
       profileCompletedAt: new Date(),
     });
   }
+
+  // Alert the team that a partner is now in the review queue. Awaited (not
+  // fire-and-forget) so the email is dispatched before this serverless
+  // function can be frozen; the helper swallows its own errors.
+  await notifyAdminNewPartner({
+    partnerName: contactName,
+    partnerEmail: email,
+    companyName,
+    website: website || null,
+  });
 
   return NextResponse.json({ ok: true, status: "pending" }, { status: 201 });
 }

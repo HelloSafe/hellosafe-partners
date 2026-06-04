@@ -6,6 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "lint": "eslint",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
@@ -18,15 +22,15 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
+    "@opennextjs/cloudflare": "^1.19.11",
     "@sentry/nextjs": "^10.51.0",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
     "better-auth": "^1.6.9",
     "drizzle-orm": "^0.45.2",
     "inngest": "^4.2.6",
-    "next": "16.2.4",
+    "next": "^16.2.7",
     "next-intl": "^4.9.1",
-    "postgres": "^3.4.9",
     "posthog-js": "^1.372.8",
     "posthog-node": "^5.33.2",
     "react": "19.2.4",
@@ -43,11 +47,11 @@
     "@vitest/ui": "^4.1.5",
     "drizzle-kit": "^0.31.10",
     "eslint": "^9",
-    "eslint-config-next": "16.2.4",
+    "eslint-config-next": "^16.2.7",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5",
-    "vercel": "^51.8.0",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.5",
+    "wrangler": "^4.97.0"
   }
 }

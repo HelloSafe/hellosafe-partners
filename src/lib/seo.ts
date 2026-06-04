@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 
-/** Site root URL — set via NEXT_PUBLIC_APP_URL in Vercel env. */
+/** Site root URL — set via NEXT_PUBLIC_APP_URL (Cloudflare Workers env).
+ *  The fallback is the production domain so canonical/OG URLs stay valid
+ *  even if the env var is missing in a preview build. */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ||
-  "https://hellosafe-partners.vercel.app";
+  "https://partners.hellosafe.com";
 
 const OG_LOCALE: Record<string, string> = {
   fr: "fr_FR",

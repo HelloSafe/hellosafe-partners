@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
+import { appUrl } from "@/lib/app-url";
 
-export const runtime = "edge";
 export const alt = "HelloSafe Atlas";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -15,6 +15,10 @@ export default async function Image({
   const t = await getTranslations({ locale, namespace: "seo" });
   const title = t("pages.home.title");
   const description = t("pages.home.description");
+  // Bare host (no protocol) for the footer label, derived from the
+  // configured app URL so it tracks the real domain instead of a
+  // hardcoded one.
+  const host = new URL(appUrl()).host;
   return new ImageResponse(
     (
       <div
@@ -143,7 +147,7 @@ export default async function Image({
               alignSelf: "center",
             }}
           >
-            hellosafe-partners.vercel.app
+            {host}
           </span>
         </div>
       </div>

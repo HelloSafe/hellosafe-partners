@@ -1,12 +1,13 @@
 /**
- * Hot-path tracked-link redirect. Runs on Vercel Edge so the latency
- * stays tight worldwide. The DB round-trip uses Neon's HTTP driver
- * (`@neondatabase/serverless`); the click is logged asynchronously via
- * an Inngest event so the redirect never waits on a write.
+ * Hot-path tracked-link redirect. Runs on the Cloudflare Workers runtime
+ * (via OpenNext) so the latency stays tight worldwide. The DB round-trip
+ * uses Neon's HTTP driver (`@neondatabase/serverless`); the click is
+ * logged asynchronously via an Inngest event so the redirect never waits
+ * on a write.
  *
- * Migration path to Cloudflare Workers later: this file's only deps are
- * `@neondatabase/serverless` (works on CF), `inngest` (works on CF),
- * Web Crypto, and pure helpers — no Vercel-specific APIs are used here.
+ * Every dep here is Workers-safe: `@neondatabase/serverless` (SQL over
+ * fetch), `inngest`, Web Crypto, and pure helpers — no Node-only or
+ * platform-specific APIs.
  */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -26,7 +27,6 @@ import {
   redirectLimiter,
 } from "@/lib/ratelimit";
 
-export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 const FALLBACK = "https://hellosafe.com/fr/travel-insurance";
@@ -80,7 +80,11 @@ export async function GET(
         ipHash,
         userAgent: req.headers.get("user-agent"),
         referer: req.headers.get("referer"),
-        country: req.headers.get("x-vercel-ip-country"),
+        // Cloudflare sets cf-ipcountry; keep the Vercel header as a
+        // fallback so the field still resolves if we ever run elsewhere.
+        country:
+          req.headers.get("cf-ipcountry") ??
+          req.headers.get("x-vercel-ip-country"),
         subIdOverride,
       },
     })

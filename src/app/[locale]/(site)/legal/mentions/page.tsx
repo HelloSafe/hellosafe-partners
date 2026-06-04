@@ -57,11 +57,11 @@ export default async function MentionsPage({
       <h2>Hébergement</h2>
       <p>Le Site est hébergé par :</p>
       <ul>
-        <li>Vercel Inc.</li>
-        <li>440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis</li>
+        <li>Cloudflare, Inc.</li>
+        <li>101 Townsend Street, San Francisco, CA 94107, États-Unis</li>
         <li>
-          <a href="https://vercel.com" target="_blank" rel="noopener">
-            vercel.com
+          <a href="https://www.cloudflare.com" target="_blank" rel="noopener">
+            cloudflare.com
           </a>
         </li>
       </ul>

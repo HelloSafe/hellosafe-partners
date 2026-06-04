@@ -17,6 +17,10 @@
 /.next/
 /out/
 
+# opennext / cloudflare workers build output + wrangler local state
+/.open-next/
+/.wrangler/
+
 # production
 /build
 
@@ -34,6 +38,10 @@ yarn-error.log*
 .env*
 # …but the secret-free template SHOULD be committed.
 !.env.example
+# wrangler/workerd local secrets for `opennextjs-cloudflare preview`.
+# NOT matched by .env* above (different prefix) — must be listed explicitly.
+.dev.vars
+.dev.vars.*
 
 # vercel
 .vercel

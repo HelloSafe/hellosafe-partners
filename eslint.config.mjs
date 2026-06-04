@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // OpenNext → Workers build output (huge generated bundles; linting it
+    // OOMs eslint and is pointless — it's generated, not source).
+    ".open-next/**",
   ]),
 ]);
 

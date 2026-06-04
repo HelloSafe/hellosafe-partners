@@ -1,10 +1,15 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import { withSentryConfig } from "@sentry/nextjs";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  // Only one next/image in the app — serve images as-is rather than depend on
+  // Cloudflare's (paid) image resizing. Revisit if image usage grows.
+  images: { unoptimized: true },
+};
 
 // Sentry only uploads sourcemaps when SENTRY_AUTH_TOKEN is present. In dev
 // and CI without a token, withSentryConfig is a build-time no-op for
@@ -31,3 +36,8 @@ const withWrappers = (cfg: NextConfig) => {
 };
 
 export default withWrappers(nextConfig);
+
+// Binds Cloudflare resources during `next dev` so local dev matches the
+// Workers runtime. No-op in production builds. Must run after the config is
+// defined (per @opennextjs/cloudflare setup).
+initOpenNextCloudflareForDev();

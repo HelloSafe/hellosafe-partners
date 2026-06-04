@@ -593,6 +593,7 @@
     "signup": {
       "title": "Créez votre espace partenaire",
       "subtitle": "Inscription gratuite, validation sous 24h. Aucun engagement.",
+      "profileQuestion": "Vous êtes…",
       "fields": {
         "companyName": "Nom de société / média",
         "contactName": "Nom du contact principal",

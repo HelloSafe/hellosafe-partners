@@ -593,6 +593,7 @@
     "signup": {
       "title": "Create your partner space",
       "subtitle": "Free signup, 24-hour validation. No commitment.",
+      "profileQuestion": "You are…",
       "fields": {
         "companyName": "Company / media name",
         "contactName": "Main contact name",

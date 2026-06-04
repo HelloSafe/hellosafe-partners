@@ -7,6 +7,7 @@ import { db } from "@/db";
 import { users, partners } from "@/db/schema";
 import { newId, newPartnerCode } from "@/lib/ids";
 import { notifyAdminNewPartner } from "@/lib/partners/notify";
+import { VALID_PERSONAS } from "@/lib/partners/types";
 import {
   clientIp,
   rateLimitResponse,
@@ -29,6 +30,9 @@ const Body = z.object({
     .union([z.string(), z.number()])
     .optional()
     .nullable(),
+  // Self-declared profile from the signup selector. Persisted so onboarding
+  // step 1 is pre-selected; optional because the selector can be skipped.
+  persona: z.enum(VALID_PERSONAS).optional().nullable(),
 });
 
 export async function POST(req: NextRequest) {
@@ -64,6 +68,7 @@ export async function POST(req: NextRequest) {
     audience,
     country,
     monthlyVisitors,
+    persona,
   } = parsed.data;
 
   // Better Auth handles: hashing, duplicate detection, session creation,
@@ -117,6 +122,7 @@ export async function POST(req: NextRequest) {
       audience: audience || null,
       country: country || null,
       monthlyVisitors: visitors,
+      ...(persona ? { persona } : {}),
       profileCompletedAt: new Date(),
     })
     .where(eq(partners.userId, userId))
@@ -135,6 +141,7 @@ export async function POST(req: NextRequest) {
       audience: audience || null,
       country: country || null,
       monthlyVisitors: visitors,
+      persona: persona ?? null,
       status: "pending",
       profileCompletedAt: new Date(),
     });

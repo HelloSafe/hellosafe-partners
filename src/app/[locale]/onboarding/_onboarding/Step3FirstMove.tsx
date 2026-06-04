@@ -50,10 +50,6 @@ export function Step3FirstMove({
           body={t("features.links.body")}
         />
         <FeatureBadge
-          title={t("features.coach.title")}
-          body={t("features.coach.body")}
-        />
-        <FeatureBadge
           title={t("features.contracts.title")}
           body={t("features.contracts.body")}
         />

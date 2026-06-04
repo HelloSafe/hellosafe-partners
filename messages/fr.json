@@ -31,6 +31,18 @@
       "coach": {
         "title": "Coach Atlas — l'outil de diagnostic d'assurance voyage",
         "description": "Coach Atlas révèle en 30 secondes les trous de couverture entre la carte bancaire, la mutuelle, la sécurité sociale et le contrat agence de votre client. Récap client-ready à vos couleurs, gratuit pour tous les partenaires HelloSafe."
+      },
+      "mentions": {
+        "title": "Mentions légales",
+        "description": "Informations légales du programme partenaires HelloSafe : éditeur HELLO SAFE (SAS, SIREN 883 069 593), immatriculation ORIAS n° 21 008 038 en qualité de courtier en assurance, hébergement et propriété intellectuelle."
+      },
+      "privacy": {
+        "title": "Politique de confidentialité",
+        "description": "Comment HelloSafe traite et protège vos données personnelles dans le cadre du programme partenaires : finalités, sous-traitants, durées de conservation, cookies essentiels et exercice de vos droits RGPD."
+      },
+      "terms": {
+        "title": "Conditions générales d'utilisation",
+        "description": "Les conditions générales d'utilisation du programme partenaires HelloSafe : inscription et validation, engagements du partenaire, calcul et paiement des commissions, suspension et droit applicable."
       }
     }
   },
@@ -181,8 +193,8 @@
         {
           "slug": "agency",
           "label": "Agence de voyage",
-          "tag": "Coach intégré",
-          "blurb": "Le Coach d'analyse de couverture s'intègre dans vos rendez-vous client. La souscription se fait dans la foulée."
+          "tag": "Revenu sans licence",
+          "blurb": "Vous partagez le Coach HelloSafe à votre client par WhatsApp ou e-mail. Il compare, souscrit en ligne, et vous touchez la commission — sans ORIAS."
         },
         {
           "slug": "visa",
@@ -896,7 +908,7 @@
     "step1": {
       "label": "Étape 1 / 3",
       "title": "Quel type de partenaire êtes-vous ?",
-      "subtitle": "On adapte l'onboarding et votre première action. Tous les outils Atlas — générateur de liens, Coach, contrats, paiements — sont accessibles à tout le monde, peu importe votre profil."
+      "subtitle": "On adapte l'onboarding et votre première action. Tous les outils Atlas — générateur de liens, contrats, paiements — sont accessibles à tout le monde, peu importe votre profil."
     },
     "personas": {
       "blog": {
@@ -948,10 +960,6 @@
           "title": "Liens traqués",
           "body": "Deep-links + Sub-ID"
         },
-        "coach": {
-          "title": "Coach",
-          "body": "Analyseur d'écarts pour n'importe quel client"
-        },
         "contracts": {
           "title": "Mes contrats",
           "body": "Distribuez votre produit"
@@ -976,130 +984,38 @@
         },
         "other": {
           "title": "Choisissez votre outil, Atlas s'adapte à votre flux",
-          "body": "Liens traqués, Coach, contrats, paiements : tous les outils sont débloqués dès le premier jour."
-        }
-      }
-    }
-  },
-  "coachWizard": {
-    "header": {
-      "newAnalysis": "Nouvelle analyse",
-      "steps": {
-        "traveler": "Voyageur",
-        "trip": "Voyage",
-        "coverage": "Couvertures",
-        "review": "Récapitulatif"
-      }
-    },
-    "nav": {
-      "back": "Retour",
-      "continue": "Continuer →",
-      "computing": "Analyse en cours…",
-      "generate": "Générer l'analyse →"
-    },
-    "step1": {
-      "ref": {
-        "label": "Référence dossier client",
-        "hint": "Texte libre, visible uniquement dans votre dashboard. Ex : « M. Martin — Bali mai ».",
-        "placeholder": "Ex : Mme Martin — Bali mai"
-      },
-      "ageRange": {
-        "label": "Tranche d'âge du voyageur"
-      },
-      "country": {
-        "label": "Pays de départ",
-        "hint": "Détermine le catalogue de cartes et la base sécurité sociale (Sécu FR ou assurance maladie provinciale CA).",
-        "fr": "🇫🇷 France",
-        "ca": "🇨🇦 Canada"
-      },
-      "companions": {
-        "label": "Voyage avec…",
-        "hint": "Cochez chaque type d'accompagnant. Le Coach signalera qui n'est pas couvert par la carte."
-      }
-    },
-    "step2": {
-      "destination": {
-        "label": "Destination",
-        "hint": "Pays et (si pertinent) ville ou région. Précisez USA/Canada ou Asie quand c'est pertinent.",
-        "placeholder": "Ex : Indonésie (Bali)"
-      },
-      "startDate": "Date de départ",
-      "endDate": "Date de retour",
-      "tripValue": {
-        "label": "Valeur estimée du voyage (par personne, en €)",
-        "hint": "Sert à dimensionner la recommandation d'annulation."
-      },
-      "purpose": {
-        "label": "Type de voyage",
-        "options": {
-          "leisure": "Loisirs",
-          "business": "Professionnel",
-          "study": "Études",
-          "expat": "Expatriation",
-          "visa_required": "Visa requis",
-          "cruise": "Croisière"
-        }
-      },
-      "activities": {
-        "label": "Activités à risque",
-        "options": {
-          "winter_sports": "Ski / sports d'hiver",
-          "diving": "Plongée",
-          "trekking": "Trek / randonnée",
-          "extreme_sports": "Sports extrêmes",
-          "motorbike": "Moto",
-          "none": "Aucune"
+          "body": "Liens traqués, contrats, paiements : tous les outils sont débloqués dès le premier jour."
         }
       }
     },
-    "step3": {
-      "card": {
-        "label": "Carte bancaire",
-        "hint": "Sélectionnez la plus proche. La bibliothèque s'enrichira.",
-        "noCard": "Pas de carte / je ne sais pas"
-      },
-      "mutuelle": {
-        "label": "Mutuelle santé",
-        "none": "Aucune"
-      },
-      "socialSecurity": {
-        "labelFr": "Sécurité sociale du pays de départ (Sécu FR)",
-        "labelCa": "Sécurité sociale du pays de départ (Assurance maladie CA)",
-        "hint": "Sélectionnée automatiquement selon le pays de départ.",
-        "skip": "Ignorer"
-      },
-      "partnerContract": {
-        "label": "Votre contrat distribué",
-        "hint": "Gérez vos contrats depuis Mes contrats. Pré-chargé : Club Med.",
-        "none": "Aucun"
+    "testimonial": {
+      "eyebrow": "Ils l'utilisent déjà",
+      "byPersona": {
+        "blog": {
+          "quote": "Mon guide PVT Canada écrit en 2024 me rapporte aujourd'hui plus que toutes mes bannières AdSense combinées.",
+          "author": "Sarah L.",
+          "role": "Blog voyage FR, 45k visites/mois",
+          "metric": "+18 % RPV"
+        },
+        "agency": {
+          "quote": "Je partage le lien du Coach HelloSafe par WhatsApp après chaque rendez-vous. Le client compare, souscrit, et je touche ma commission sans un seul formulaire ORIAS.",
+          "author": "Khadija B.",
+          "role": "Agence de voyage, 2 bureaux à Lyon",
+          "metric": "1 850 €/mois"
+        },
+        "visa": {
+          "quote": "L'API est propre, la doc est honnête, et l'équipe répond en moins d'une heure. On a remplacé notre ancien programme en 4 heures de dev.",
+          "author": "Romain D.",
+          "role": "Comparateur visa, CTO",
+          "metric": "Intégration < 4h"
+        },
+        "creator": {
+          "quote": "Les conditions négociées font la différence pour ma communauté : mes followers trouvent moins cher que sur le site de l'assureur.",
+          "author": "Camille M.",
+          "role": "Créatrice Instagram voyage, 120k followers",
+          "metric": "3,1× taux de clic"
+        }
       }
-    },
-    "step4": {
-      "intro": "Vérification rapide avant de lancer l'analyse.",
-      "blocks": {
-        "traveler": "Voyageur",
-        "trip": "Voyage",
-        "coverage": "Couvertures"
-      },
-      "rows": {
-        "reference": "Référence",
-        "ageRange": "Tranche d'âge",
-        "departure": "Départ",
-        "companions": "Accompagnants",
-        "solo": "Seul",
-        "destination": "Destination",
-        "dates": "Dates",
-        "tripValue": "Valeur",
-        "activities": "Activités",
-        "card": "Carte",
-        "mutuelle": "Mutuelle",
-        "socialSecurity": "Sécu",
-        "partnerContract": "Contrat distribué"
-      }
-    },
-    "errors": {
-      "generic": "Erreur",
-      "connection": "Erreur de connexion au serveur."
     }
   }
 }

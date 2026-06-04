@@ -31,6 +31,18 @@
       "coach": {
         "title": "Atlas Coach — the travel insurance gap analyzer",
         "description": "Atlas Coach reveals coverage gaps in 30 seconds across credit card, top-up insurance, social security and the agency contract. Client-ready recap, branded to your colors. Free for every HelloSafe partner."
+      },
+      "mentions": {
+        "title": "Legal notice",
+        "description": "Legal information for the HelloSafe partner program: publisher HELLO SAFE (SAS, SIREN 883 069 593), ORIAS registration no. 21 008 038 as an insurance broker, hosting and intellectual property."
+      },
+      "privacy": {
+        "title": "Privacy policy",
+        "description": "How HelloSafe processes and protects your personal data within the partner program: purposes, sub-processors, retention periods, essential cookies and how to exercise your GDPR rights."
+      },
+      "terms": {
+        "title": "Terms of use",
+        "description": "The terms of use for the HelloSafe partner program: signup and approval, partner obligations, commission calculation and payout, suspension and governing law."
       }
     }
   },
@@ -181,8 +193,8 @@
         {
           "slug": "agency",
           "label": "Travel agency",
-          "tag": "Built-in sales coach",
-          "blurb": "Reps pull up the Coach in the meeting, client signs the insurance on the spot."
+          "tag": "Revenue, no license",
+          "blurb": "You share the HelloSafe Coach with your client by WhatsApp or email. They compare, subscribe online, and you earn the commission — no broker license."
         },
         {
           "slug": "visa",
@@ -896,7 +908,7 @@
     "step1": {
       "label": "Step 1 / 3",
       "title": "Which kind of partner are you?",
-      "subtitle": "We'll tailor the onboarding and your first action. Every Atlas tool — link generator, Coach, contracts, payouts — is available to everyone, regardless of profile."
+      "subtitle": "We'll tailor the onboarding and your first action. Every Atlas tool — link generator, contracts, payouts — is available to everyone, regardless of profile."
     },
     "personas": {
       "blog": {
@@ -948,10 +960,6 @@
           "title": "Tracked links",
           "body": "Deep links + Sub-ID"
         },
-        "coach": {
-          "title": "Coach",
-          "body": "Coverage gap analyzer for any client"
-        },
         "contracts": {
           "title": "My contracts",
           "body": "Distribute your own product"
@@ -976,130 +984,38 @@
         },
         "other": {
           "title": "Pick your tool — Atlas adapts to your workflow",
-          "body": "Tracked links, Coach, contracts, payouts: every tool is unlocked from day one."
-        }
-      }
-    }
-  },
-  "coachWizard": {
-    "header": {
-      "newAnalysis": "New analysis",
-      "steps": {
-        "traveler": "Traveler",
-        "trip": "Trip",
-        "coverage": "Coverage",
-        "review": "Review"
-      }
-    },
-    "nav": {
-      "back": "Back",
-      "continue": "Continue →",
-      "computing": "Computing…",
-      "generate": "Generate analysis →"
-    },
-    "step1": {
-      "ref": {
-        "label": "Client reference",
-        "hint": "Free text, only visible inside your dashboard. e.g. \"Mr Smith — Bali May\".",
-        "placeholder": "e.g. Mr Smith — Bali May"
-      },
-      "ageRange": {
-        "label": "Age range"
-      },
-      "country": {
-        "label": "Departure country",
-        "hint": "Drives the card catalog and social security baseline (FR Sécu or CA provincial health insurance).",
-        "fr": "🇫🇷 France",
-        "ca": "🇨🇦 Canada"
-      },
-      "companions": {
-        "label": "Traveling with…",
-        "hint": "Tap each kind of companion. The Coach will flag who isn't covered by the card insurance."
-      }
-    },
-    "step2": {
-      "destination": {
-        "label": "Destination",
-        "hint": "Country and (if helpful) city or region. Mention US/Canada or Asia explicitly when relevant.",
-        "placeholder": "e.g. Indonesia (Bali)"
-      },
-      "startDate": "Start date",
-      "endDate": "End date",
-      "tripValue": {
-        "label": "Estimated trip value (per person, in €)",
-        "hint": "Used to size the cancellation cap recommendation."
-      },
-      "purpose": {
-        "label": "Trip purpose",
-        "options": {
-          "leisure": "Leisure",
-          "business": "Business",
-          "study": "Study",
-          "expat": "Expat / long stay",
-          "visa_required": "Visa-required",
-          "cruise": "Cruise"
-        }
-      },
-      "activities": {
-        "label": "Risk activities",
-        "options": {
-          "winter_sports": "Skiing / winter sports",
-          "diving": "Diving",
-          "trekking": "Trekking / hiking",
-          "extreme_sports": "Extreme sports",
-          "motorbike": "Motorbike",
-          "none": "None"
+          "body": "Tracked links, contracts, payouts: every tool is unlocked from day one."
         }
       }
     },
-    "step3": {
-      "card": {
-        "label": "Bank card",
-        "hint": "Pick the closest match. We'll add more cards over time.",
-        "noCard": "No card / unsure"
-      },
-      "mutuelle": {
-        "label": "Top-up health insurance (mutuelle)",
-        "none": "None"
-      },
-      "socialSecurity": {
-        "labelFr": "Home country social security (Sécu FR)",
-        "labelCa": "Home country social security (CA health insurance)",
-        "hint": "Auto-selected based on departure country.",
-        "skip": "Skip"
-      },
-      "partnerContract": {
-        "label": "Your distributed contract",
-        "hint": "Manage your contracts in My contracts. Pre-loaded: Club Med.",
-        "none": "None"
+    "testimonial": {
+      "eyebrow": "They're already using it",
+      "byPersona": {
+        "blog": {
+          "quote": "My 2024 Canada working holiday guide pays me more today than all my AdSense banners combined.",
+          "author": "Sarah L.",
+          "role": "FR travel blog, 45k visits/month",
+          "metric": "+18% RPV"
+        },
+        "agency": {
+          "quote": "I share the HelloSafe Coach link on WhatsApp after every meeting. The client compares, subscribes, and I get my commission without a single regulatory form.",
+          "author": "Khadija B.",
+          "role": "Travel agency, 2 offices in Lyon",
+          "metric": "€1,850/month"
+        },
+        "visa": {
+          "quote": "The API is clean, the docs are honest, and the team replies in under an hour. We replaced our old program in 4 hours of dev.",
+          "author": "Romain D.",
+          "role": "Visa comparator, CTO",
+          "metric": "Integrated < 4h"
+        },
+        "creator": {
+          "quote": "The negotiated rates make the difference for my community: my followers find it cheaper than on the insurer's own site.",
+          "author": "Camille M.",
+          "role": "Instagram travel creator, 120k followers",
+          "metric": "3.1× click rate"
+        }
       }
-    },
-    "step4": {
-      "intro": "Quick review before we run the analysis.",
-      "blocks": {
-        "traveler": "Traveler",
-        "trip": "Trip",
-        "coverage": "Coverage stack"
-      },
-      "rows": {
-        "reference": "Reference",
-        "ageRange": "Age range",
-        "departure": "Departure",
-        "companions": "Companions",
-        "solo": "Solo",
-        "destination": "Destination",
-        "dates": "Dates",
-        "tripValue": "Trip value",
-        "activities": "Activities",
-        "card": "Card",
-        "mutuelle": "Mutuelle",
-        "socialSecurity": "Social security",
-        "partnerContract": "Distributed contract"
-      }
-    },
-    "errors": {
-      "generic": "Error",
-      "connection": "Could not connect to the server."
     }
   }
 }

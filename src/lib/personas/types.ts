@@ -1,4 +1,4 @@
-export type PersonaSlug = "blog" | "visa" | "creator";
+export type PersonaSlug = "blog" | "agency" | "visa" | "creator";
 
 export type Locale = "fr" | "en";
 
@@ -22,4 +22,4 @@ export type PersonaContent = {
   cta: { primary: string; secondary: string };
 };
 
-export const PERSONA_SLUGS: PersonaSlug[] = ["blog", "visa", "creator"];
+export const PERSONA_SLUGS: PersonaSlug[] = ["blog", "agency", "visa", "creator"];

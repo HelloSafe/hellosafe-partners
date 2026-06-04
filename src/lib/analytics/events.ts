@@ -23,11 +23,6 @@ export type AnalyticsEvent =
       name: "link_created";
       props: { destination: string; partnerId: string; campaign?: string };
     }
-  | { name: "coach_analysis_started"; props: { partnerId: string } }
-  | {
-      name: "coach_analysis_completed";
-      props: { partnerId: string; score: number; criticalGaps: number };
-    }
   | { name: "contract_created"; props: { partnerId: string } }
   | {
       name: "conversion_received";

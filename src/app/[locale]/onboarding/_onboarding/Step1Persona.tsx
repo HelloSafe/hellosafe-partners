@@ -12,6 +12,14 @@ export function Step1Persona({
 }) {
   const t = useTranslations("onboarding");
 
+  const quoteKey = selected && selected !== "other" ? selected : "blog";
+  const quote = t.raw(`testimonial.byPersona.${quoteKey}`) as {
+    quote: string;
+    author: string;
+    role: string;
+    metric: string;
+  };
+
   return (
     <div>
       <span className="inline-block text-xs font-semibold uppercase tracking-wider text-brand-700">
@@ -68,6 +76,29 @@ export function Step1Persona({
           );
         })}
       </div>
+
+      <figure className="mt-8 relative rounded-3xl border border-surface-200 bg-white p-6 lg:p-8 shadow-sm">
+        <span className="absolute -top-3 left-6 inline-flex items-center rounded-full bg-success-50 border border-success-600/30 px-3 py-1 text-[0.68rem] font-display font-bold uppercase tracking-wider text-success-900">
+          {quote.metric}
+        </span>
+        <span className="block text-xs font-semibold uppercase tracking-wider text-brand-700">
+          {t("testimonial.eyebrow")}
+        </span>
+        <blockquote className="mt-3 text-base lg:text-lg text-ink-900 leading-relaxed">
+          «&nbsp;{quote.quote}&nbsp;»
+        </blockquote>
+        <figcaption className="mt-5 pt-5 border-t border-surface-200 flex items-center gap-3">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-brand-700 font-display font-bold">
+            {quote.author.slice(0, 1)}
+          </span>
+          <span>
+            <span className="block font-display font-bold text-ink-900">
+              {quote.author}
+            </span>
+            <span className="block text-sm text-ink-500">{quote.role}</span>
+          </span>
+        </figcaption>
+      </figure>
     </div>
   );
 }

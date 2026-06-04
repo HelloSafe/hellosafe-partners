@@ -56,7 +56,7 @@ function hostFor(kind: IllustrationKind): string {
     case "blog":
       return "blog-voyage.fr / pvt-canada";
     case "agency":
-      return "partners.hellosafe.com / coach";
+      return "hellosafe.com / coach";
     case "visa":
       return "partners.hellosafe.com / certificate";
     case "creator":

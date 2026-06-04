@@ -53,5 +53,8 @@
     "typescript": "^5",
     "vitest": "^4.1.5",
     "wrangler": "^4.97.0"
+  },
+  "optionalDependencies": {
+    "@ast-grep/napi-linux-x64-gnu": "0.40.5"
   }
 }
